@@ -130,6 +130,15 @@
       pointer-events: none;
       white-space: nowrap;
     }
+    /* Compact variant for small inland water bodies (Dead Sea, Sea of
+       Galilee, the Gulf-of-Aqaba arm). Same typographic family as
+       .sea-label but quieter so it doesn't overpower the body of water. */
+    .sea-label.sea-label-sm {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      color: rgba(47, 79, 108, 0.6);
+    }
     .lordship-raster {
       mix-blend-mode: multiply;
       image-rendering: auto;
@@ -1550,15 +1559,16 @@
     };
     addSeaLayer(LAKE_BARDAWIL, { name: "Lake Bardawil", kind: "water" });
 
-    function addSeaLabel(latlng, text) {
+    function addSeaLabel(latlng, text, opts) {
+      const small = !!(opts && opts.small);
       L.marker(latlng, {
         interactive: false,
         pane: "seasPane",
         icon: L.divIcon({
-          className: "sea-label",
+          className: small ? "sea-label sea-label-sm" : "sea-label",
           html: text,
-          iconSize: [200, 22],
-          iconAnchor: [100, 11],
+          iconSize: small ? [120, 16] : [200, 22],
+          iconAnchor: small ? [60, 8] : [100, 11],
         }),
       }).addTo(map);
     }
@@ -1570,9 +1580,9 @@
     // lordships raster pane (z 360), so when the "Crusader lordships" layer
     // is on the painted names on the raster cover these and there's no
     // duplication; when it's off, these show.
-    addSeaLabel([31.50, 35.47], "Dead Sea");
-    addSeaLabel([32.83, 35.58], "Sea of Galilee");
-    addSeaLabel([29.20, 34.80], "Red Sea");
+    addSeaLabel([31.50, 35.47], "Dead Sea",       { small: true });
+    addSeaLabel([32.82, 35.58], "Sea of Galilee", { small: true });
+    addSeaLabel([29.00, 34.75], "Red Sea",        { small: true });
 
     // Country labels — placed at precomputed anchor points so they sit in
     // the interior rather than on the boundary line.

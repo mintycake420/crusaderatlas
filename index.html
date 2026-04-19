@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fortified Frontiers — A Crusader Atlas of the Holy Land</title>
+  <title>Kingdom of Jerusalem — A Crusader Atlas of the Holy Land</title>
   <meta name="description" content="An interactive atlas of Crusader castles, towns, and fortifications across the medieval Kingdom of Jerusalem and the surrounding Latin East." />
   <link rel="icon" type="image/png" href="favicon.png" />
-  <meta property="og:title" content="Fortified Frontiers — A Crusader Atlas of the Holy Land" />
+  <meta property="og:title" content="Kingdom of Jerusalem — A Crusader Atlas of the Holy Land" />
   <meta property="og:description" content="Interactive map of Crusader castles, towns, and fortifications across the medieval Holy Land." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://crusaderatlas.com/" />
@@ -1050,7 +1050,7 @@
     <div class="brand">
       <img class="brand-cross" src="fortress-pics/jerusalem_cross.png" width="38" height="38" alt="" aria-hidden="true" />
       <div class="brand-text">
-        <div class="title">Fortified Frontiers</div>
+        <div class="title">Kingdom of Jerusalem</div>
         <div class="subtitle">A Crusader Atlas of the Holy Land</div>
       </div>
     </div>
@@ -1088,8 +1088,8 @@
 
   <div class="layers" id="layers-ctrl">
     <h4>Map layers</h4>
-    <label><input type="checkbox" id="layer-borders" checked> Modern borders</label>
-    <label><input type="checkbox" id="layer-lordships"> Crusader lordships</label>
+    <label><input type="checkbox" id="layer-lordships" checked> Crusader lordships</label>
+    <label><input type="checkbox" id="layer-borders"> Modern borders</label>
     <label><input type="checkbox" id="layer-roads"> Pilgrim &amp; trade roads</label>
     <label><input type="checkbox" id="layer-engagements"> Battles &amp; sieges</label>
   </div>
@@ -1125,7 +1125,7 @@
   <div class="intro-wrap" id="intro-wrap">
     <div class="intro">
       <div class="intro-eyebrow">A historical map</div>
-      <h1>Fortified <span>Frontiers</span></h1>
+      <h1>Kingdom of <span>Jerusalem</span></h1>
       <p class="blurb">
         A clickable atlas of the castles, citadels, churches and fortified
         towns built or occupied by the Crusaders across the four Latin
@@ -1491,7 +1491,7 @@
         className: "country-border",
       }; },
       interactive: false,
-    }).addTo(map);
+    });
 
     // ----- Sea overlays ----------------------------------------------------
     // Coastline-precise ocean fills sourced from Natural Earth 50m ocean
@@ -1590,7 +1590,6 @@
         }),
       }).addTo(countryLabelsLayer);
     });
-    countryLabelsLayer.addTo(map);
 
     // ----- Crusader lordships reference layer (split in two halves) --------
     // The source image is split at y=2408 px (~lat 30.826N) so only the southern
@@ -2270,6 +2269,9 @@
       filterState.layerEngagements = layerEngagementsEl.checked;
       applyFilters();
     });
+    // Apply the initial checkbox state so the default-on Crusader lordships
+    // layer shows up without requiring a click.
+    syncLayers();
 
     // ----- UI wiring --------------------------------------------------------
     document.getElementById("q").addEventListener("input", (e) => {

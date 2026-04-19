@@ -1,4 +1,4 @@
-# Fortified Frontiers — A Crusader Atlas of the Holy Land
+# Kingdom of Jerusalem — A Crusader Atlas of the Holy Land
 
 Live site: [crusaderatlas.com](https://crusaderatlas.com/)
 

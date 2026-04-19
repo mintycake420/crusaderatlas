@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<svg width="300" height="350"
+	xmlns="http://www.w3.org/2000/svg">
+<defs>
+<clipPath id="border">
+<path
+	d="M 150,350
+	A 400,400 0 0,0 300,50
+	V 0 H 0 V 50
+	A 400,400 0 0,0 150,350" />
+	</clipPath>
+<clipPath id="field">
+<path
+	d="M 150,346
+	A 400,400 0 0,0 297.5,50
+	V 2.5 H 2.5 V 50
+	A 400,400 0 0,0 150,346" />
+	</clipPath>
+	</defs>
+<rect id="sable" clip-path="url(#border)"
+	fill="#000"
+	width="300" height="350" />
+<g clip-path="url(#field)">
+<rect id="field"
+	fill="#fff"
+	width="300" height="350" />
+<g id="cross"
+	stroke="#000" stroke-width="40">
+<polyline
+	points="150,0 150,350" />
+<polyline
+	points="0,120 300,120" />
+	</g>
+</g>
+</svg>

@@ -31,6 +31,15 @@
       --ochre-dim: rgba(197, 141, 44, 0.55);
       --iron-gall: #1f2d3d;
       --muted: #8a7553;
+      /* Marker fills — kept on the parchment/sepia/red-oxide/ochre palette.
+         Also consumed from JS via getPropertyValue so colors live in one place. */
+      --mk-capital: #6b1a10;
+      --mk-castle:  #9b2d1f;
+      --mk-urban:   #c58d2c;
+      --mk-tower:   #6b6545;
+      --mk-church:  #5c6b4d;
+      --mk-battle:  #9b2d1f;
+      --mk-siege:   #7a3a14;
       --muted-line: rgba(42, 26, 11, 0.18);
       --muted-line-soft: rgba(42, 26, 11, 0.08);
       --panel-shadow: 0 24px 60px -30px rgba(42, 26, 11, 0.35),
@@ -917,34 +926,27 @@
     .marker.selected svg .sel-ring { opacity: 1; }
     .marker.dimmed { opacity: 0.25; }
 
-    /* Cluster bubble (parchment ring with inner count). */
+    /* Cluster bubble (parchment coin with inner count). */
     .marker-cluster {
       background: transparent !important;
+      width: 40px !important;
+      height: 40px !important;
     }
     .marker-cluster div {
       background: var(--vellum-light) !important;
       color: var(--ink) !important;
       font-family: "Cinzel", serif !important;
-      font-weight: 600 !important;
+      font-weight: 700 !important;
       font-size: 13px !important;
       border: 1.5px solid var(--ink) !important;
-      box-shadow: 0 2px 8px rgba(42, 26, 11, 0.25);
-      width: 36px !important;
-      height: 36px !important;
-      margin-left: 2px !important;
-      margin-top: 2px !important;
-      line-height: 34px !important;
-    }
-    .marker-cluster {
-      width: 40px !important;
-      height: 40px !important;
-    }
-    .marker-cluster::before {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      border: 1px dashed rgba(42, 26, 11, 0.35);
-      border-radius: 50%;
+      border-radius: 50% !important;
+      box-shadow: 0 0 0 2px var(--vellum), 0 2px 6px rgba(42, 26, 11, 0.35) !important;
+      width: 34px !important;
+      height: 34px !important;
+      margin-left: 3px !important;
+      margin-top: 3px !important;
+      line-height: 31px !important;
+      text-align: center !important;
     }
 
     /* ---------- Intro modal ---------- */
@@ -1043,12 +1045,12 @@
 
     /* ---------- Mobile ---------- */
     @media (max-width: 820px) {
-      .topbar { flex-wrap: wrap; gap: 8px; padding: 10px 12px; }
-      .brand { border-right: none; padding-right: 0; }
-      .brand .subtitle { display: none; }
-      .brand-cross { display: none; }
-      .search { order: 3; flex-basis: 100%; }
+      .topbar { flex-wrap: nowrap; gap: 8px; padding: 8px 10px; align-items: center; }
+      .brand { display: none; }
+      .search { flex: 1; min-width: 0; }
+      .search input { width: 100%; }
       .mobile-only { display: inline-flex; }
+      .controls { flex-shrink: 0; }
 
       .detail {
         top: auto;
@@ -1072,7 +1074,7 @@
          pressed. Previously the pane was always laid out with left/right
          margins; now it is display:none until .open. */
       .filters {
-        top: 130px;
+        top: 72px;
         left: 10px;
         right: 10px;
         display: none;
@@ -1083,7 +1085,7 @@
       /* Layers: mirror the Filters drawer. Hidden by default, opened by
          the new Layers topbar button. */
       .layers {
-        top: 130px;
+        top: 72px;
         left: 10px;
         right: 10px;
         max-width: none;
@@ -1111,8 +1113,25 @@
       .intro { padding: 28px 22px; }
       .intro ul { grid-template-columns: 1fr; gap: 6px 0; }
 
-      /* Leaflet zoom control clears the (now taller) wrapped topbar. */
-      .leaflet-top.leaflet-left { top: 130px; }
+      /* Leaflet zoom control: compact, tucked just below the one-row topbar,
+         hidden while the detail bottom-sheet is open (it would overlap the
+         sheet's title and mobile users pinch to zoom anyway). */
+      .leaflet-top.leaflet-left { top: 72px; left: 4px; }
+      .leaflet-control-zoom { margin-left: 8px !important; }
+      .leaflet-control-zoom a {
+        width: 30px !important;
+        height: 30px !important;
+        line-height: 30px !important;
+        font-size: 16px !important;
+      }
+      body.detail-open .leaflet-control-zoom { display: none; }
+
+      /* Detail head: a touch more top padding so the title breathes on
+         small screens. */
+      .detail-head { padding-top: 18px; }
+
+      /* Markers lift off the warm tile texture with a subtle ink shadow. */
+      .marker svg { filter: drop-shadow(0 1px 2px rgba(42, 26, 11, 0.4)); }
     }
 
     /* ---------- Small phones (≤ 420 px) ---------- */
@@ -1122,6 +1141,16 @@
       .btn { padding: 6px 9px; font-size: 11px; }
       .detail { height: 68vh; }
       .intro { padding: 22px 18px; }
+      /* Smaller cluster coins so they don't dominate the viewport. */
+      .marker-cluster { width: 34px !important; height: 34px !important; }
+      .marker-cluster div {
+        width: 28px !important;
+        height: 28px !important;
+        line-height: 25px !important;
+        font-size: 11px !important;
+        margin-left: 3px !important;
+        margin-top: 3px !important;
+      }
     }
   </style>
 </head>
@@ -1422,15 +1451,19 @@
     const REMAINS = ["yes", "partial", "fragmentary", "unknown", "no"];
     const PRECISIONS = ["exact", "approximate"];
 
-    const COLOR = {
-      capital:      "#6b1a10",
-      major_castle: "#9b2d1f",
-      urban:        "#c58d2c",
-      tower:        "#7a8568",
-      church:       "#5b6e4e",
-      battle:       "#8b0000",
-      siege:        "#7a3a14"
-    };
+    const COLOR = (() => {
+      const css = getComputedStyle(document.documentElement);
+      const read = (name, fallback) => (css.getPropertyValue(name).trim() || fallback);
+      return {
+        capital:      read("--mk-capital", "#6b1a10"),
+        major_castle: read("--mk-castle",  "#9b2d1f"),
+        urban:        read("--mk-urban",   "#c58d2c"),
+        tower:        read("--mk-tower",   "#6b6545"),
+        church:       read("--mk-church",  "#5c6b4d"),
+        battle:       read("--mk-battle",  "#9b2d1f"),
+        siege:        read("--mk-siege",   "#7a3a14"),
+      };
+    })();
 
     // ----- Marker shape primitives ------------------------------------------
     function glyphFor(bucket, color) {
@@ -1547,7 +1580,7 @@
     L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png", {
       subdomains: "abcd",
       maxZoom: 19,
-      opacity: 0.65,
+      opacity: 0.5,
       pane: "shadowPane",
     }).addTo(map);
 
@@ -1960,6 +1993,10 @@
       panel.classList.add("open");
       document.body.classList.add("detail-open");
       panel.setAttribute("aria-hidden", "false");
+      if (window.matchMedia("(max-width: 820px)").matches) {
+        const legend = document.getElementById("legend");
+        if (legend) legend.classList.add("collapsed");
+      }
 
       document.getElementById("detail-territory").textContent = row.territory;
       document.getElementById("detail-name").textContent = row.canonical_name;
@@ -2108,6 +2145,10 @@
       panel.classList.add("open");
       document.body.classList.add("detail-open");
       panel.setAttribute("aria-hidden", "false");
+      if (window.matchMedia("(max-width: 820px)").matches) {
+        const legend = document.getElementById("legend");
+        if (legend) legend.classList.add("collapsed");
+      }
 
       const TERRITORY_HEADER = {
         water: "Natural Landmark",

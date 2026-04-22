@@ -2592,10 +2592,6 @@
     window.__atlas = { map, markers, cluster, DATA, LORDSHIPS_IMAGE_BOUNDS, filterState, openDetail, closeDetail,
                        bordersLayer, countryLabelsLayer, lordshipsLayer };
 
-    try {
-      if (!localStorage.getItem("ff_intro_dismissed")) openIntro();
-    } catch (_) { openIntro(); }
-
     // On phones, collapse the legend by default so the map is visible at
     // load. Desktop leaves it expanded. Users re-open with the chevron.
     if (window.matchMedia && window.matchMedia("(max-width: 820px)").matches) {

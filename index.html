@@ -2059,7 +2059,11 @@
         const imgSrc = isRemote
           ? row.image
           : "fortress-pics/" + encodeURIComponent(row.image).replace(/%2F/g,'/');
-        imgWrap.innerHTML = `<img src="${imgSrc}" alt="${escapeHtml(row.canonical_name)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.style.display='none'" />`;
+        const webpSrc = isRemote ? null : imgSrc.replace(/\.(jpe?g|png)$/i, '.webp');
+        const imgTag = `<img src="${imgSrc}" alt="${escapeHtml(row.canonical_name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('.detail-image').style.display='none'" />`;
+        imgWrap.innerHTML = (webpSrc && webpSrc !== imgSrc)
+          ? `<picture><source type="image/webp" srcset="${webpSrc}">${imgTag}</picture>`
+          : imgTag;
         body.appendChild(imgWrap);
       }
 
@@ -2219,7 +2223,12 @@
         if (fief.photo) {
           const ph = document.createElement("div");
           ph.className = "detail-image";
-          ph.innerHTML = '<img src="fortress-pics/' + encodeURIComponent(fief.photo) + '" alt="' + escapeHtml(props.name || '') + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'" />';
+          const phSrc = "fortress-pics/" + encodeURIComponent(fief.photo);
+          const phWebp = phSrc.replace(/\.(jpe?g|png)$/i, '.webp');
+          const phImg = '<img src="' + phSrc + '" alt="' + escapeHtml(props.name || '') + '" loading="lazy" decoding="async" onerror="this.closest(\'.detail-image\').style.display=\'none\'" />';
+          ph.innerHTML = (phWebp !== phSrc)
+            ? '<picture><source type="image/webp" srcset="' + phWebp + '">' + phImg + '</picture>'
+            : phImg;
           body.appendChild(ph);
         }
 
@@ -2348,7 +2357,11 @@
         const imgSrc = isRemote
           ? props.image
           : "fortress-pics/" + encodeURIComponent(props.image).replace(/%2F/g, '/');
-        imgWrap.innerHTML = `<img src="${imgSrc}" alt="${escapeHtml(props.short || props.name || "Medieval route")}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.style.display='none'" />`;
+        const webpSrc = isRemote ? null : imgSrc.replace(/\.(jpe?g|png)$/i, '.webp');
+        const imgTag = `<img src="${imgSrc}" alt="${escapeHtml(props.short || props.name || "Medieval route")}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('.detail-image').style.display='none'" />`;
+        imgWrap.innerHTML = (webpSrc && webpSrc !== imgSrc)
+          ? `<picture><source type="image/webp" srcset="${webpSrc}">${imgTag}</picture>`
+          : imgTag;
         body.appendChild(imgWrap);
       }
 

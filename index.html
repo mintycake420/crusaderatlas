@@ -52,6 +52,13 @@
       margin: 0;
       padding: 0;
       height: 100%;
+      /* Fullscreen map app — the document should never scroll. Without
+         this, the off-screen detail panel (transform: translateY(100%))
+         extends html's scroll area by one viewport, and on mobile the
+         user could drag the page down and reveal the empty panel sitting
+         beneath the viewport. */
+      overflow: hidden;
+      overscroll-behavior: none;
       font-family: "Spectral", Georgia, serif;
       color: var(--ink);
       background: var(--vellum);
@@ -604,7 +611,11 @@
 
     /* ---------- Detail panel ---------- */
     .detail {
-      position: absolute;
+      /* Fixed (not absolute) so the off-screen translateY(100%) state on
+         mobile doesn't extend the document's scrollable area — otherwise
+         the user could drag the page down and reveal the closed panel
+         sitting beneath the viewport. */
+      position: fixed;
       top: 16px;
       right: 16px;
       bottom: 16px;

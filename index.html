@@ -3528,6 +3528,27 @@
         detailEl.style.transform = "";
         drag = null;
       });
+
+      // Watchdog: regardless of how `.open` got onto the panel, if it ever
+      // appears with no name/body content (the empty-sheet bug some users
+      // were still hitting after scrolling on the legend or filters drawer),
+      // immediately undo it. Belt-and-braces backstop for any code path or
+      // browser quirk we haven't found.
+      const observer = new MutationObserver(() => {
+        if (!detailEl.classList.contains("open")) return;
+        const nameEl = document.getElementById("detail-name");
+        const bodyEl = document.getElementById("detail-body");
+        const empty = (!nameEl || !nameEl.textContent || nameEl.textContent === "—")
+          && (!bodyEl || bodyEl.innerHTML.trim() === "");
+        if (!empty) return;
+        detailEl.classList.remove("open");
+        detailEl.classList.remove("sheet-expanded");
+        detailEl.style.transform = "";
+        document.body.classList.remove("detail-open");
+        detailEl.setAttribute("aria-hidden", "true");
+        if (typeof syncScrim === "function") syncScrim();
+      });
+      observer.observe(detailEl, { attributes: true, attributeFilter: ["class"] });
     })();
 
     // Focus trap for any aria-modal="true" dialog that's currently open.

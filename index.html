@@ -774,6 +774,7 @@
       padding: 18px 26px 24px;
       overflow-y: auto;
       flex: 1;
+      overscroll-behavior: contain;
     }
     .detail-body::-webkit-scrollbar { width: 8px; }
     .detail-body::-webkit-scrollbar-track { background: transparent; }
@@ -1200,6 +1201,10 @@
 
     /* ---------- Mobile ---------- */
     @media (max-width: 820px) {
+      /* Disable Android Chrome pull-to-refresh — the page is a fixed map;
+         a downward swipe from the top of the screen should never reload. */
+      html, body { overscroll-behavior-y: none; }
+
       .topbar { flex-wrap: nowrap; gap: 8px; padding: 8px 10px; align-items: center; }
       .brand { display: none; }
       .search { flex: 1; min-width: 0; }
@@ -3394,13 +3399,16 @@
 
     // ----- Bottom-sheet drag (mobile) ---------------------------------------
     // Three snap states: hidden | peek (.open) | expanded (.open.sheet-expanded).
-    // Drag from the .detail-head; the body scrolls normally. Velocity-first
-    // snap so a fast flick wins over the resting position.
+    // Drag from the .detail-head OR the invisible 24px strip just below it
+    // (extending the hit zone reduces accidental Android pull-to-refresh
+    // when the finger lands a hair too high). Body still scrolls normally.
+    // Velocity-first snap so a fast flick wins over the resting position.
     (function initSheetDrag() {
       const detailEl = document.getElementById("detail");
       const headEl = detailEl.querySelector(".detail-head");
       const VELOCITY_FLICK = 0.5;     // px/ms above which we treat as a flick
       const RESISTANCE = 3;           // divisor for over-pull above 0
+      const DRAG_ZONE_OVERFLOW = 24;  // px below the head where drag still grabs
       const isMobile = () => window.matchMedia("(max-width: 820px)").matches;
 
       function getTranslateYPx(el) {
@@ -3412,14 +3420,20 @@
         if (state === "expanded") detailEl.classList.add("sheet-expanded");
         if (state === "hidden") closeDetail();
       }
+      function inDragZone(touch) {
+        if (touch.target && touch.target.closest && touch.target.closest(".detail-close")) return false;
+        if (touch.target && touch.target.closest && touch.target.closest(".detail-head")) return true;
+        const headRect = headEl.getBoundingClientRect();
+        return touch.clientY <= headRect.bottom + DRAG_ZONE_OVERFLOW;
+      }
 
       let drag = null;
 
-      headEl.addEventListener("touchstart", (e) => {
+      detailEl.addEventListener("touchstart", (e) => {
         if (!isMobile()) return;
         if (!detailEl.classList.contains("open")) return;
-        if (e.target.closest(".detail-close")) return;
         const t = e.touches[0];
+        if (!inDragZone(t)) return;
         drag = {
           startY: t.clientY,
           lastY: t.clientY,
@@ -3430,7 +3444,7 @@
         detailEl.classList.add("is-dragging");
       }, { passive: true });
 
-      headEl.addEventListener("touchmove", (e) => {
+      detailEl.addEventListener("touchmove", (e) => {
         if (!drag) return;
         const t = e.touches[0];
         let newY = drag.baseY + (t.clientY - drag.startY);
@@ -3441,7 +3455,7 @@
         e.preventDefault();
       }, { passive: false });
 
-      headEl.addEventListener("touchend", () => {
+      detailEl.addEventListener("touchend", () => {
         if (!drag) return;
         const wasExpanded = detailEl.classList.contains("sheet-expanded");
         const totalDelta = drag.lastY - drag.startY;

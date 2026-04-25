@@ -46,12 +46,14 @@
                       0 2px 6px rgba(42, 26, 11, 0.08);
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
       /* Fullscreen map app — the document should never scroll. Without
          this, the off-screen detail panel (transform: translateY(100%))
          extends html's scroll area by one viewport, and on mobile the
@@ -276,6 +278,8 @@
 
     .controls { display: flex; gap: 8px; }
     .btn {
+      appearance: none;
+      -webkit-appearance: none;
       background: var(--vellum-light);
       border: 1px solid var(--muted-line);
       color: var(--ink);
@@ -783,6 +787,9 @@
 
     .detail-body {
       padding: 18px 26px 24px;
+      /* Respect iPhone home-indicator safe area at the bottom of the sheet
+         without adding extra space on Android / desktop where env() is 0. */
+      padding-bottom: max(24px, env(safe-area-inset-bottom));
       overflow-y: auto;
       flex: 1;
       overscroll-behavior: contain;
@@ -1219,7 +1226,9 @@
       .topbar { flex-wrap: nowrap; gap: 8px; padding: 8px 10px; align-items: center; }
       .brand { display: none; }
       .search { flex: 1; min-width: 0; }
-      .search input { width: 100%; }
+      /* 16px prevents iOS Safari (and a few older Android browsers) from
+         auto-zooming the viewport when the search field gains focus. */
+      .search input { width: 100%; font-size: 16px; }
       .mobile-only { display: inline-flex; }
       .controls { flex-shrink: 0; }
 
@@ -1237,12 +1246,16 @@
         bottom: 0;
         width: 100%;
         max-width: 100%;
+        /* dvh tracks the dynamic viewport (URL bar collapse); vh is the
+           pre-2022 fallback. Browsers without dvh ignore the second pair. */
         height: 100vh;
+        height: 100dvh;
         max-height: 100vh;
+        max-height: 100dvh;
         border-radius: 12px 12px 0 0;
         transform: translateY(100%);
       }
-      .detail.open { transform: translateY(28vh); }
+      .detail.open { transform: translateY(28vh); transform: translateY(28dvh); }
       .detail.open.sheet-expanded { transform: translateY(0); }
       .detail.is-dragging { transition: none; }
 
@@ -1420,7 +1433,7 @@
       .btn { padding: 6px 9px; font-size: 11px; }
       /* Peek shows the bottom 68vh on small phones; sheet itself stays 100vh
          so the expanded state still goes edge-to-edge. */
-      .detail.open { transform: translateY(32vh); }
+      .detail.open { transform: translateY(32vh); transform: translateY(32dvh); }
       .intro { padding: 22px 18px; }
       /* Smaller cluster coins so they don't dominate the viewport. */
       .marker-cluster { width: 34px !important; height: 34px !important; }

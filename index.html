@@ -2733,14 +2733,6 @@
       if (!row || !row.canonical_name) return;
       SoundFX.parchmentOpen();
       const panel = document.getElementById("detail");
-      panel.classList.add("open");
-      document.body.classList.add("detail-open");
-      panel.setAttribute("aria-hidden", "false");
-      if (typeof syncScrim === "function") syncScrim();
-      if (window.matchMedia("(max-width: 820px)").matches) {
-        const legend = document.getElementById("legend");
-        if (legend) legend.classList.add("collapsed");
-      }
 
       document.getElementById("detail-territory").textContent = row.territory;
       document.getElementById("detail-name").textContent = row.canonical_name;
@@ -2874,6 +2866,18 @@
       if (marker && marker.getElement()) {
         marker.getElement().classList.add("selected");
       }
+
+      // Show the sheet only after content is populated. If anything above
+      // throws or guards out, the panel stays off-screen instead of
+      // appearing as an empty bottom sheet.
+      panel.classList.add("open");
+      document.body.classList.add("detail-open");
+      panel.setAttribute("aria-hidden", "false");
+      if (typeof syncScrim === "function") syncScrim();
+      if (window.matchMedia("(max-width: 820px)").matches) {
+        const legend = document.getElementById("legend");
+        if (legend) legend.classList.add("collapsed");
+      }
     }
 
     function closeDetail() {
@@ -2908,14 +2912,6 @@
       SoundFX.parchmentOpen();
       closeDetail();
       const panel = document.getElementById("detail");
-      panel.classList.add("open");
-      document.body.classList.add("detail-open");
-      panel.setAttribute("aria-hidden", "false");
-      if (typeof syncScrim === "function") syncScrim();
-      if (window.matchMedia("(max-width: 820px)").matches) {
-        const legend = document.getElementById("legend");
-        if (legend) legend.classList.add("collapsed");
-      }
 
       const TERRITORY_HEADER = {
         water: "Natural Landmark",
@@ -3017,13 +3013,8 @@
           body.appendChild(s);
         }
       }
-    }
 
-    function openRulerDetail(ruler) {
-      if (!ruler || !ruler.name) return;
-      SoundFX.parchmentOpen();
-      closeDetail();
-      const panel = document.getElementById("detail");
+      // Show only after content is populated.
       panel.classList.add("open");
       document.body.classList.add("detail-open");
       panel.setAttribute("aria-hidden", "false");
@@ -3031,11 +3022,14 @@
       if (window.matchMedia("(max-width: 820px)").matches) {
         const legend = document.getElementById("legend");
         if (legend) legend.classList.add("collapsed");
-        const rEl = document.getElementById("rulers");
-        const rBtn = document.getElementById("rulers-btn");
-        if (rEl) rEl.classList.remove("open");
-        if (rBtn) rBtn.classList.remove("active");
       }
+    }
+
+    function openRulerDetail(ruler) {
+      if (!ruler || !ruler.name) return;
+      SoundFX.parchmentOpen();
+      closeDetail();
+      const panel = document.getElementById("detail");
 
       document.getElementById("detail-territory").textContent =
         ruler.dynasty || "Crusader monarchy";
@@ -3127,6 +3121,20 @@
         }
         body.appendChild(w);
       }
+
+      // Show only after content is populated.
+      panel.classList.add("open");
+      document.body.classList.add("detail-open");
+      panel.setAttribute("aria-hidden", "false");
+      if (typeof syncScrim === "function") syncScrim();
+      if (window.matchMedia("(max-width: 820px)").matches) {
+        const legend = document.getElementById("legend");
+        if (legend) legend.classList.add("collapsed");
+        const rEl = document.getElementById("rulers");
+        const rBtn = document.getElementById("rulers-btn");
+        if (rEl) rEl.classList.remove("open");
+        if (rBtn) rBtn.classList.remove("active");
+      }
     }
 
     function renderRulers() {
@@ -3183,14 +3191,6 @@
       SoundFX.parchmentOpen();
       closeDetail();
       const panel = document.getElementById("detail");
-      panel.classList.add("open");
-      document.body.classList.add("detail-open");
-      panel.setAttribute("aria-hidden", "false");
-      if (typeof syncScrim === "function") syncScrim();
-      if (window.matchMedia("(max-width: 820px)").matches) {
-        const legend = document.getElementById("legend");
-        if (legend) legend.classList.add("collapsed");
-      }
 
       const ROAD_ROLE_LABELS = {
         pilgrim: "Pilgrim road",
@@ -3280,6 +3280,16 @@
         selectedMarker.getElement().classList.remove("selected");
       }
       selectedMarker = null;
+
+      // Show only after content is populated.
+      panel.classList.add("open");
+      document.body.classList.add("detail-open");
+      panel.setAttribute("aria-hidden", "false");
+      if (typeof syncScrim === "function") syncScrim();
+      if (window.matchMedia("(max-width: 820px)").matches) {
+        const legend = document.getElementById("legend");
+        if (legend) legend.classList.add("collapsed");
+      }
     }
 
     // ----- Layer toggles -----------------------------------------------------
@@ -3453,6 +3463,14 @@
       detailEl.addEventListener("touchstart", (e) => {
         if (!isMobile()) return;
         if (!detailEl.classList.contains("open")) return;
+        // Last-line defense: if the sheet is somehow visible with no real
+        // content (em-dash placeholders + empty body), close it on the first
+        // touch instead of letting the user drag a hollow sheet around.
+        const nameEl = document.getElementById("detail-name");
+        const bodyEl = document.getElementById("detail-body");
+        const looksEmpty = (!nameEl || !nameEl.textContent || nameEl.textContent === "—")
+          && (!bodyEl || bodyEl.innerHTML.trim() === "");
+        if (looksEmpty) { closeDetail(); return; }
         const t = e.touches[0];
         if (!inDragZone(t)) return;
         drag = {

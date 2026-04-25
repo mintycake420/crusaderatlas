@@ -2335,13 +2335,13 @@
       subdomains: "abcd",
       maxZoom: 19,
     }).addTo(map);
-
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png", {
-      subdomains: "abcd",
-      maxZoom: 19,
-      opacity: 0.5,
-      pane: "shadowPane",
-    }).addTo(map);
+    // The CARTO `voyager_only_labels` companion tile layer was previously
+    // added here with opacity 0.5 on the shadowPane. It baked in modern
+    // country / region / city / water-body labels (e.g. "South Sinai
+    // Governorate", "Gulf of Aqaba", "Amman") which are anachronistic on a
+    // 1099-1291 atlas. Modern country names (when wanted) are still
+    // available via the user-controlled `countryLabelsLayer` toggled by the
+    // Modern Borders checkbox.
 
     map.createPane("lordshipsPane");
     map.getPane("lordshipsPane").style.zIndex = 360;

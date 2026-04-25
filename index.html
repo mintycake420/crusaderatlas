@@ -2727,6 +2727,10 @@
     // ----- Detail panel -----------------------------------------------------
     let selectedMarker = null;
     function openDetail(row, marker) {
+      // Guard: never open the detail sheet without a real selection.
+      // Prevents the empty sheet that appeared on mobile when a click
+      // handler or stray gesture ever reached this function with no data.
+      if (!row || !row.canonical_name) return;
       SoundFX.parchmentOpen();
       const panel = document.getElementById("detail");
       panel.classList.add("open");
@@ -2885,9 +2889,22 @@
         selectedMarker.getElement().classList.remove("selected");
       }
       selectedMarker = null;
+      // Reset placeholders so stale text can never linger if the sheet is
+      // ever re-shown without a populator running to completion.
+      const ter = document.getElementById("detail-territory");
+      const nm  = document.getElementById("detail-name");
+      const al  = document.getElementById("detail-aliases");
+      const tg  = document.getElementById("detail-tags");
+      const bd  = document.getElementById("detail-body");
+      if (ter) ter.textContent = "—";
+      if (nm)  nm.textContent  = "—";
+      if (al)  { al.textContent = ""; al.style.display = "none"; }
+      if (tg)  tg.innerHTML = "";
+      if (bd)  bd.innerHTML = "";
     }
 
     function openFiefDetail(props) {
+      if (!props || !props.name) return;
       SoundFX.parchmentOpen();
       closeDetail();
       const panel = document.getElementById("detail");
@@ -3003,6 +3020,7 @@
     }
 
     function openRulerDetail(ruler) {
+      if (!ruler || !ruler.name) return;
       SoundFX.parchmentOpen();
       closeDetail();
       const panel = document.getElementById("detail");
@@ -3161,6 +3179,7 @@
 
     // ----- Road detail panel (click on a pilgrim/trade route) ---------------
     function openRoadDetail(props) {
+      if (!props || !(props.name || props.short)) return;
       SoundFX.parchmentOpen();
       closeDetail();
       const panel = document.getElementById("detail");
@@ -3479,6 +3498,16 @@
           else target = "hidden";
         }
         snapTo(target);
+        drag = null;
+      });
+
+      // touchcancel fires when the OS reclaims the gesture (Android pull-to-
+      // refresh, system back swipe, etc.). Without this handler `drag` would
+      // stay set and the next touchstart would mis-handle baseY.
+      detailEl.addEventListener("touchcancel", () => {
+        if (!drag) return;
+        detailEl.classList.remove("is-dragging");
+        detailEl.style.transform = "";
         drag = null;
       });
     })();

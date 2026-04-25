@@ -3,6 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Opt out of Samsung Internet / Android browser auto-dark mode. The
+       atlas is designed around a parchment/sepia palette; auto-darkening
+       desaturates the map, coat-of-arms, and ink colors. -->
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#f1e6cd" />
   <title>Kingdom of Jerusalem — A Crusader Atlas of the Holy Land</title>
   <meta name="description" content="An interactive atlas of Crusader castles, towns, and fortifications across the medieval Kingdom of Jerusalem and the surrounding Latin East." />
   <link rel="icon" type="image/png" href="favicon.png" />
@@ -18,6 +23,10 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" integrity="sha384-pmjIAcz2bAn0xukfxADbZIb3t8oRT9Sv0rvO+BR5Csr6Dhqq+nZs59P0pPKQJkEV" crossorigin="anonymous" />
   <style>
     :root {
+      /* Belt-and-braces with the <meta name="color-scheme"> opt-out: stops
+         Samsung Internet / Firefox Android / Edge mobile from auto-darkening
+         the parchment palette in their browser-level dark mode. */
+      color-scheme: light;
       --vellum: #f1e6cd;
       --vellum-light: #f7efd9;
       --vellum-edge: #e3d4ae;

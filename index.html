@@ -3515,20 +3515,37 @@
         const t = e.touches[0];
         const dy = t.clientY - drag.startY;
         if (drag.tentative) {
-          // If the body started scrolling, the user wants to scroll, not drag.
+          const isExpanded = detailEl.classList.contains("sheet-expanded");
           const bodyEl = document.getElementById("detail-body");
-          if (bodyEl && bodyEl.scrollTop > 0) { drag = null; return; }
+          // Once expanded, if body has started scrolling, the user wants to
+          // read content — abandon. (In peek state we suppress body scroll
+          // below so an upward drag can commit cleanly to expansion.)
+          if (isExpanded && bodyEl && bodyEl.scrollTop > 0) { drag = null; return; }
           if (dy >= DRAG_COMMIT_PX) {
-            // Commit. Reset startY so the sheet doesn't jump by the threshold.
+            // Commit downward → close drag. Reset startY so the sheet
+            // doesn't jump by the threshold.
             drag.tentative = false;
             drag.startY = t.clientY - DRAG_COMMIT_PX;
             detailEl.classList.add("is-dragging");
           } else if (dy <= -DRAG_COMMIT_PX) {
-            // User wants to scroll up — abandon.
-            drag = null;
-            return;
+            if (!isExpanded) {
+              // Peek + drag up → commit to expand drag. Mirror the down
+              // commit's startY adjustment so the sheet doesn't jump.
+              drag.tentative = false;
+              drag.startY = t.clientY + DRAG_COMMIT_PX;
+              detailEl.classList.add("is-dragging");
+            } else {
+              // Expanded + drag up → user wants to scroll body. Abandon.
+              drag = null;
+              return;
+            }
           } else {
-            return; // not enough motion yet
+            // Below threshold. In peek state, suppress browser scroll so an
+            // upward gesture can reach the commit threshold without the
+            // body silently scrolling first. In expanded state, let the
+            // browser scroll the body normally so we abort cleanly above.
+            if (!isExpanded) e.preventDefault();
+            return;
           }
         }
         let newY = drag.baseY + (t.clientY - drag.startY);

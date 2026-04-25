@@ -3441,9 +3441,11 @@
 
     // ----- Bottom-sheet drag (mobile) ---------------------------------------
     // Three snap states: hidden | peek (.open) | expanded (.open.sheet-expanded).
-    // Drag from the .detail-head OR the invisible 24px strip just below it
-    // (extending the hit zone reduces accidental Android pull-to-refresh
-    // when the finger lands a hair too high). Body still scrolls normally.
+    // Drag from anywhere in the panel:
+    //   - On the .detail-head (or the 24px buffer below it): immediate drag.
+    //   - On the .detail-body when it's scrolled to the very top AND the
+    //     finger is moving DOWN: drag the sheet. Otherwise the body scrolls
+    //     normally so users can read long bios without dismissing the sheet.
     // Velocity-first snap so a fast flick wins over the resting position.
     (function initSheetDrag() {
       const detailEl = document.getElementById("detail");
@@ -3451,6 +3453,7 @@
       const VELOCITY_FLICK = 0.5;     // px/ms above which we treat as a flick
       const RESISTANCE = 3;           // divisor for over-pull above 0
       const DRAG_ZONE_OVERFLOW = 24;  // px below the head where drag still grabs
+      const DRAG_COMMIT_PX = 6;       // downward motion needed to claim a body-at-top gesture
       const isMobile = () => window.matchMedia("(max-width: 820px)").matches;
 
       function getTranslateYPx(el) {
@@ -3462,11 +3465,19 @@
         if (state === "expanded") detailEl.classList.add("sheet-expanded");
         if (state === "hidden") closeDetail();
       }
-      function inDragZone(touch) {
-        if (touch.target && touch.target.closest && touch.target.closest(".detail-close")) return false;
-        if (touch.target && touch.target.closest && touch.target.closest(".detail-head")) return true;
+      // Returns: "head"     — drag immediately (header / buffer zone)
+      //          "body-top" — body is scrolled to top; drag only if user moves down
+      //          "no"       — let the browser handle the touch (close button, mid-body scroll)
+      function getDragMode(touch) {
+        if (touch.target && touch.target.closest && touch.target.closest(".detail-close")) return "no";
+        if (touch.target && touch.target.closest && touch.target.closest(".detail-head")) return "head";
         const headRect = headEl.getBoundingClientRect();
-        return touch.clientY <= headRect.bottom + DRAG_ZONE_OVERFLOW;
+        if (touch.clientY <= headRect.bottom + DRAG_ZONE_OVERFLOW) return "head";
+        const bodyEl = document.getElementById("detail-body");
+        if (bodyEl && touch.target && touch.target.closest && touch.target.closest("#detail-body") && bodyEl.scrollTop === 0) {
+          return "body-top";
+        }
+        return "no";
       }
 
       let drag = null;
@@ -3483,20 +3494,43 @@
           && (!bodyEl || bodyEl.innerHTML.trim() === "");
         if (looksEmpty) { closeDetail(); return; }
         const t = e.touches[0];
-        if (!inDragZone(t)) return;
+        const mode = getDragMode(t);
+        if (mode === "no") return;
         drag = {
           startY: t.clientY,
           lastY: t.clientY,
           startT: performance.now(),
           lastT: performance.now(),
           baseY: getTranslateYPx(detailEl),
+          // "body-top" stays tentative until the user moves down enough to
+          // commit. While tentative, we don't preventDefault — so an upward
+          // drag inside the body still scrolls the body normally.
+          tentative: mode === "body-top",
         };
-        detailEl.classList.add("is-dragging");
+        if (!drag.tentative) detailEl.classList.add("is-dragging");
       }, { passive: true });
 
       detailEl.addEventListener("touchmove", (e) => {
         if (!drag) return;
         const t = e.touches[0];
+        const dy = t.clientY - drag.startY;
+        if (drag.tentative) {
+          // If the body started scrolling, the user wants to scroll, not drag.
+          const bodyEl = document.getElementById("detail-body");
+          if (bodyEl && bodyEl.scrollTop > 0) { drag = null; return; }
+          if (dy >= DRAG_COMMIT_PX) {
+            // Commit. Reset startY so the sheet doesn't jump by the threshold.
+            drag.tentative = false;
+            drag.startY = t.clientY - DRAG_COMMIT_PX;
+            detailEl.classList.add("is-dragging");
+          } else if (dy <= -DRAG_COMMIT_PX) {
+            // User wants to scroll up — abandon.
+            drag = null;
+            return;
+          } else {
+            return; // not enough motion yet
+          }
+        }
         let newY = drag.baseY + (t.clientY - drag.startY);
         if (newY < 0) newY = newY / RESISTANCE;
         detailEl.style.transform = "translateY(" + newY + "px)";
@@ -3507,6 +3541,8 @@
 
       detailEl.addEventListener("touchend", () => {
         if (!drag) return;
+        // Never committed (body-top gesture that didn't move enough): just clear.
+        if (drag.tentative) { drag = null; return; }
         const wasExpanded = detailEl.classList.contains("sheet-expanded");
         const totalDelta = drag.lastY - drag.startY;
         const dt = Math.max(performance.now() - drag.startT, 16);
@@ -3535,6 +3571,7 @@
       // stay set and the next touchstart would mis-handle baseY.
       detailEl.addEventListener("touchcancel", () => {
         if (!drag) return;
+        if (drag.tentative) { drag = null; return; }
         detailEl.classList.remove("is-dragging");
         detailEl.style.transform = "";
         drag = null;

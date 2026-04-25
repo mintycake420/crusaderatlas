@@ -157,23 +157,6 @@
       pointer-events: none;
       white-space: nowrap;
     }
-    /* Modern city labels — visually subordinate to the historical site
-       markers and the user-controlled country labels. Sans-serif + small
-       size + low-opacity sepia keeps them as orientation aids rather than
-       focal content. Toggleable via the layer wiring below. */
-    .city-label {
-      font-family: "Inter", sans-serif;
-      font-size: 9.5px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      color: rgba(42, 26, 11, 0.5);
-      background: transparent;
-      border: none;
-      box-shadow: none;
-      text-shadow: 0 0 3px var(--vellum-light), 0 0 5px var(--vellum-light);
-      pointer-events: none;
-      white-space: nowrap;
-    }
     .lordship-raster {
       mix-blend-mode: multiply;
       image-rendering: auto;
@@ -2352,13 +2335,13 @@
       subdomains: "abcd",
       maxZoom: 19,
     }).addTo(map);
-    // The CARTO `voyager_only_labels` companion tile layer was previously
-    // added here with opacity 0.5 on the shadowPane. It baked in modern
-    // country / region / city / water-body labels (e.g. "South Sinai
-    // Governorate", "Gulf of Aqaba", "Amman") which are anachronistic on a
-    // 1099-1291 atlas. Modern country names (when wanted) are still
-    // available via the user-controlled `countryLabelsLayer` toggled by the
-    // Modern Borders checkbox.
+
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png", {
+      subdomains: "abcd",
+      maxZoom: 19,
+      opacity: 0.5,
+      pane: "shadowPane",
+    }).addTo(map);
 
     map.createPane("lordshipsPane");
     map.getPane("lordshipsPane").style.zIndex = 360;
@@ -2461,34 +2444,6 @@
     addSeaLabel([28.90, 32.95], "Gulf of Suez");
     addSeaLabel([29.00, 34.80], "Gulf of Aqaba");
     addSeaLabel([31.21, 33.16], "Lake Bardawil");
-    addSeaLabel([32.82, 35.58], "Sea of Galilee");
-    addSeaLabel([31.50, 35.47], "Dead Sea");
-
-    // Modern city labels for orientation. Hand-placed at canonical city
-    // centroids so users can locate themselves on the map without the old
-    // CARTO labels overlay (which also baked in anachronistic country and
-    // region names). Always-on, like the sea labels — they aren't
-    // anachronistic and they don't compete visually with the site markers
-    // (sans-serif, small, low-opacity sepia per .city-label).
-    const MODERN_CITY_LABELS = {
-      "Cairo":     [30.0444, 31.2357],
-      "Tel Aviv":  [32.0853, 34.7818],
-      "Amman":     [31.9539, 35.9106],
-      "Beirut":    [33.8938, 35.5018],
-      "Damascus":  [33.5138, 36.2765],
-      "Aleppo":    [36.2021, 37.1343],
-    };
-    Object.entries(MODERN_CITY_LABELS).forEach(([name, ll]) => {
-      L.marker(ll, {
-        interactive: false,
-        icon: L.divIcon({
-          className: "city-label",
-          html: name,
-          iconSize: [120, 14],
-          iconAnchor: [60, 7],
-        }),
-      }).addTo(map);
-    });
 
     // Country labels — placed at precomputed anchor points so they sit in
     // the interior rather than on the boundary line.

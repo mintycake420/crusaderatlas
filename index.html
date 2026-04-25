@@ -144,6 +144,25 @@
       image-rendering: auto;
       pointer-events: none;
     }
+
+    /* Shared scrim sits under bottom-sheet (z 600) and drawers (z 1100) but
+       above the map. Single element, single click handler — see JS. */
+    .sheet-scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(42, 26, 11, 0.35);
+      z-index: 599;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms;
+    }
+    .sheet-scrim.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    /* Scrim is a mobile pattern; on desktop, drawers coexist with the map. */
+    @media (min-width: 821px) { .sheet-scrim { display: none; } }
+
     /* ---------- Topbar ---------- */
     .topbar {
       position: absolute;
@@ -1258,14 +1277,18 @@
         padding: 4px 0;
       }
 
+      /* All close buttons meet the 44×44 touch target. */
+      .detail-close,
+      .panel-close { width: 44px; height: 44px; font-size: 22px; }
+
       /* Intro modal: single-column feature list + tighter padding so it
          fits a phone viewport. */
       .intro { padding: 28px 22px; }
       .intro ul { grid-template-columns: 1fr; gap: 6px 0; }
 
       /* Leaflet zoom control: compact, tucked just below the one-row topbar,
-         hidden while the detail bottom-sheet is open (it would overlap the
-         sheet's title and mobile users pinch to zoom anyway). */
+         hidden while the detail bottom-sheet OR any drawer is open (it would
+         overlap their content and mobile users pinch to zoom anyway). */
       .leaflet-top.leaflet-left { top: 72px; left: 4px; }
       .leaflet-control-zoom { margin-left: 8px !important; }
       .leaflet-control-zoom a {
@@ -1274,14 +1297,92 @@
         line-height: 30px !important;
         font-size: 16px !important;
       }
-      body.detail-open .leaflet-control-zoom { display: none; }
+      body.detail-open .leaflet-control-zoom,
+      body.filters-open .leaflet-control-zoom,
+      body.rulers-open .leaflet-control-zoom,
+      body.layers-open .leaflet-control-zoom { display: none; }
 
-      /* Detail head: a touch more top padding so the title breathes on
-         small screens. */
-      .detail-head { padding-top: 18px; }
+      /* Bottom-sheet drag handle — visual cue this is a sheet, not a fixed
+         panel. Only rendered when the sheet is open so the off-screen
+         (translated) sheet doesn't leak its handle into the legend area. */
+      .detail.open::after {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        width: 36px;
+        height: 4px;
+        background: var(--muted-line);
+        border-radius: 2px;
+        transform: translateX(-50%);
+        pointer-events: none;
+      }
+      .detail-head { padding-top: 24px; }
+
+      /* The whole 44px legend pill is the toggle, not just the inner row. */
+      .legend-header { min-height: 44px; padding: 12px 14px; }
 
       /* Markers lift off the warm tile texture with a subtle ink shadow. */
       .marker svg { filter: drop-shadow(0 1px 2px rgba(42, 26, 11, 0.4)); }
+
+      /* Hit-area inflation: visual marker stays 26/34px; tap box is 44×44.
+         Negative margin re-centres so cluster math is unaffected. */
+      .leaflet-marker-icon.marker {
+        padding: 9px;
+        margin: -9px 0 0 -9px;
+        box-sizing: content-box;
+      }
+    }
+
+    /* ---------- Phones (≤ 720 px) ----------------------------------------
+       Topbar wraps to two rows: row 1 = nav buttons, row 2 = full-width
+       search. Music + sound break out to a fixed FAB stack so the topbar
+       never overflows on narrow screens. Tablet (721-820 px) keeps the
+       single-row layout. */
+    @media (max-width: 720px) {
+      .topbar { flex-wrap: wrap; row-gap: 6px; padding: 8px 10px; }
+      .controls {
+        order: 1;
+        flex: 1 1 100%;
+        gap: 6px;
+        justify-content: flex-end;
+      }
+      .search {
+        order: 2;
+        flex: 1 1 100%;
+        min-width: 0;
+      }
+      .search input { width: 100%; }
+
+      /* Music + sound move to a fixed FAB stack at bottom-right, above the
+         legend pill (which sits at bottom: 10px, ~55px tall). */
+      #music-btn,
+      #sound-btn {
+        position: fixed;
+        right: 12px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border-radius: 50%;
+        background: var(--vellum-light);
+        border: 1px solid var(--muted-line);
+        box-shadow: var(--panel-shadow);
+        display: grid;
+        place-items: center;
+        z-index: 550;
+      }
+      #sound-btn { bottom: 80px; }
+      #music-btn { bottom: 132px; }
+      /* Hide FABs while a drawer or bottom-sheet is open so they don't
+         compete with the active panel. */
+      body.detail-open #music-btn,
+      body.detail-open #sound-btn,
+      body.filters-open #music-btn,
+      body.filters-open #sound-btn,
+      body.rulers-open #music-btn,
+      body.rulers-open #sound-btn,
+      body.layers-open #music-btn,
+      body.layers-open #sound-btn { display: none; }
     }
 
     /* ---------- Small phones (≤ 420 px) ---------- */
@@ -1306,6 +1407,7 @@
 </head>
 <body>
   <div id="map"></div>
+  <div class="sheet-scrim" id="sheet-scrim" aria-hidden="true"></div>
 
   <header class="topbar">
     <div class="brand">
@@ -1341,7 +1443,7 @@
     </div>
   </header>
 
-  <aside class="filters" id="filters">
+  <aside class="filters" id="filters" role="dialog" aria-modal="true" aria-label="Filters">
     <button class="panel-close" id="filters-close" type="button" aria-label="Close filters">×</button>
     <div class="filters-grid" id="filters-grid"></div>
     <div class="filters-footer">
@@ -1350,13 +1452,13 @@
     </div>
   </aside>
 
-  <aside class="rulers" id="rulers">
+  <aside class="rulers" id="rulers" role="dialog" aria-modal="true" aria-label="Kings and Queens of Jerusalem">
     <button class="panel-close" id="rulers-close" type="button" aria-label="Close rulers">×</button>
     <h3>Kings &amp; Queens of Jerusalem</h3>
     <div class="rulers-list" id="rulers-list"></div>
   </aside>
 
-  <div class="layers" id="layers-ctrl">
+  <div class="layers" id="layers-ctrl" role="dialog" aria-modal="true" aria-label="Map layers">
     <button class="panel-close" id="layers-close" type="button" aria-label="Close layers">×</button>
     <h4>Map layers</h4>
     <label><input type="checkbox" id="layer-lordships" checked> Crusader lordships</label>
@@ -1365,7 +1467,7 @@
     <label><input type="checkbox" id="layer-engagements"> Battles &amp; sieges</label>
   </div>
 
-  <aside class="detail" id="detail" aria-hidden="true">
+  <aside class="detail" id="detail" role="dialog" aria-modal="true" aria-label="Site detail" aria-hidden="true">
     <div class="detail-head">
       <button class="detail-close" id="detail-close" aria-label="Close">×</button>
       <div class="detail-eyebrow" id="detail-territory">—</div>
@@ -2611,6 +2713,7 @@
       panel.classList.add("open");
       document.body.classList.add("detail-open");
       panel.setAttribute("aria-hidden", "false");
+      if (typeof syncScrim === "function") syncScrim();
       if (window.matchMedia("(max-width: 820px)").matches) {
         const legend = document.getElementById("legend");
         if (legend) legend.classList.add("collapsed");
@@ -2756,6 +2859,7 @@
       panel.classList.remove("open");
       document.body.classList.remove("detail-open");
       panel.setAttribute("aria-hidden", "true");
+      if (typeof syncScrim === "function") syncScrim();
       if (selectedMarker && selectedMarker.getElement()) {
         selectedMarker.getElement().classList.remove("selected");
       }
@@ -2769,6 +2873,7 @@
       panel.classList.add("open");
       document.body.classList.add("detail-open");
       panel.setAttribute("aria-hidden", "false");
+      if (typeof syncScrim === "function") syncScrim();
       if (window.matchMedia("(max-width: 820px)").matches) {
         const legend = document.getElementById("legend");
         if (legend) legend.classList.add("collapsed");
@@ -2883,6 +2988,7 @@
       panel.classList.add("open");
       document.body.classList.add("detail-open");
       panel.setAttribute("aria-hidden", "false");
+      if (typeof syncScrim === "function") syncScrim();
       if (window.matchMedia("(max-width: 820px)").matches) {
         const legend = document.getElementById("legend");
         if (legend) legend.classList.add("collapsed");
@@ -3040,6 +3146,7 @@
       panel.classList.add("open");
       document.body.classList.add("detail-open");
       panel.setAttribute("aria-hidden", "false");
+      if (typeof syncScrim === "function") syncScrim();
       if (window.matchMedia("(max-width: 820px)").matches) {
         const legend = document.getElementById("legend");
         if (legend) legend.classList.add("collapsed");
@@ -3201,50 +3308,100 @@
     const filterBtnEl = document.getElementById("filter-btn");
     const layersBtnEl = document.getElementById("layers-btn");
     const rulersBtnEl = document.getElementById("rulers-btn");
+    const scrimEl = document.getElementById("sheet-scrim");
+
+    // Scrim follows whichever overlay is open. detail-open is set/unset by
+    // openDetail/closeDetail; the drawer body classes are managed below.
+    function syncScrim() {
+      const open = document.body.classList.contains("detail-open")
+        || document.body.classList.contains("filters-open")
+        || document.body.classList.contains("rulers-open")
+        || document.body.classList.contains("layers-open");
+      scrimEl.classList.toggle("open", open);
+    }
     function closeMobileFilters() {
       filtersEl.classList.remove("open");
       filterBtnEl.classList.remove("active");
+      document.body.classList.remove("filters-open");
+      syncScrim();
     }
     function closeMobileLayers() {
       layersEl.classList.remove("open");
       layersBtnEl.classList.remove("active");
+      document.body.classList.remove("layers-open");
+      syncScrim();
     }
     function closeMobileRulers() {
       rulersEl.classList.remove("open");
       rulersBtnEl.classList.remove("active");
+      document.body.classList.remove("rulers-open");
+      syncScrim();
+    }
+    function closeAllMobileOverlays() {
+      closeDetail();
+      closeMobileFilters();
+      closeMobileLayers();
+      closeMobileRulers();
     }
     filterBtnEl.addEventListener("click", (e) => {
       SoundFX.rustle();
       closeMobileLayers();
       closeMobileRulers();
-      filtersEl.classList.toggle("open");
-      e.currentTarget.classList.toggle("active");
+      const opened = filtersEl.classList.toggle("open");
+      e.currentTarget.classList.toggle("active", opened);
+      document.body.classList.toggle("filters-open", opened);
+      syncScrim();
     });
     layersBtnEl.addEventListener("click", (e) => {
       SoundFX.rustle();
       closeMobileFilters();
       closeMobileRulers();
-      layersEl.classList.toggle("open");
-      e.currentTarget.classList.toggle("active");
+      const opened = layersEl.classList.toggle("open");
+      e.currentTarget.classList.toggle("active", opened);
+      document.body.classList.toggle("layers-open", opened);
+      syncScrim();
     });
     rulersBtnEl.addEventListener("click", (e) => {
       SoundFX.rustle();
       closeMobileFilters();
       closeMobileLayers();
-      rulersEl.classList.toggle("open");
-      e.currentTarget.classList.toggle("active");
+      const opened = rulersEl.classList.toggle("open");
+      e.currentTarget.classList.toggle("active", opened);
+      document.body.classList.toggle("rulers-open", opened);
+      syncScrim();
     });
     document.getElementById("filters-close").addEventListener("click", closeMobileFilters);
     document.getElementById("layers-close").addEventListener("click", closeMobileLayers);
     document.getElementById("rulers-close").addEventListener("click", closeMobileRulers);
     document.getElementById("detail-close").addEventListener("click", closeDetail);
+
+    // Tap the scrim → dismiss whatever's on top.
+    scrimEl.addEventListener("click", closeAllMobileOverlays);
+
+    // Focus trap for any aria-modal="true" dialog that's currently open.
+    // Lets keyboard / screen-reader users tab without escaping into the
+    // (now-inert) page chrome behind the scrim.
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
-        closeDetail();
-        closeMobileFilters();
-        closeMobileLayers();
-        closeMobileRulers();
+        closeAllMobileOverlays();
         closeIntro();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const dialog = document.querySelector('[role="dialog"][aria-modal="true"].open');
+      if (!dialog) return;
+      const focusable = dialog.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        last.focus();
+        e.preventDefault();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        first.focus();
+        e.preventDefault();
       }
     });
     renderRulers();

@@ -1327,21 +1327,12 @@
       .intro { padding: 28px 22px; }
       .intro ul { grid-template-columns: 1fr; gap: 6px 0; }
 
-      /* Leaflet zoom control: compact, tucked just below the one-row topbar,
-         hidden while the detail bottom-sheet OR any drawer is open (it would
-         overlap their content and mobile users pinch to zoom anyway). */
+      /* Leaflet zoom control: hidden on mobile entirely. Pinch-to-zoom is
+         the primary gesture and the +/- buttons just take screen real
+         estate. The leaflet-top.leaflet-left positioning still applies in
+         case future controls reuse this corner. */
       .leaflet-top.leaflet-left { top: 72px; left: 4px; }
-      .leaflet-control-zoom { margin-left: 8px !important; }
-      .leaflet-control-zoom a {
-        width: 30px !important;
-        height: 30px !important;
-        line-height: 30px !important;
-        font-size: 16px !important;
-      }
-      body.detail-open .leaflet-control-zoom,
-      body.filters-open .leaflet-control-zoom,
-      body.rulers-open .leaflet-control-zoom,
-      body.layers-open .leaflet-control-zoom { display: none; }
+      .leaflet-control-zoom { display: none !important; }
 
       /* Bottom-sheet drag handle — visual cue this is a sheet, not a fixed
          panel. Only rendered when the sheet is open so the off-screen
@@ -1361,7 +1352,34 @@
       .detail-head { padding-top: 24px; }
 
       /* The whole 44px legend pill is the toggle, not just the inner row. */
-      .legend-header { min-height: 44px; padding: 12px 14px; }
+      .legend-header { min-height: 44px; padding: 10px 14px; }
+
+      /* When the legend is collapsed on mobile, hug content width instead of
+         spanning full-width across the bottom of the screen — the pill
+         becomes a discrete bottom-left tab. Expanded state stays full-width
+         so the legend rows remain readable. display:none on the body forces
+         the auto-width to fit the header alone (max-height: 0 alone leaves
+         the body's content width contributing). */
+      .legend.collapsed {
+        right: auto;
+        width: auto;
+      }
+      .legend.collapsed .legend-body { display: none; }
+
+      /* Music + sound: hidden on all mobile (tablet too). Non-essential
+         and they otherwise crowded the topbar / FAB area. The buttons stay
+         in the DOM so click handlers remain valid; desktop is unaffected. */
+      #music-btn,
+      #sound-btn { display: none !important; }
+
+      /* Compact the OSM/CARTO/Pringle attribution row so it stops eating a
+         visible strip at the bottom of the viewport. License-required text
+         stays visible per OSM attribution guidelines, just smaller. */
+      .leaflet-control-attribution {
+        font-size: 9px !important;
+        padding: 1px 6px !important;
+        line-height: 1.3 !important;
+      }
 
       /* Markers lift off the warm tile texture with a subtle ink shadow. */
       .marker svg { filter: drop-shadow(0 1px 2px rgba(42, 26, 11, 0.4)); }
@@ -1377,9 +1395,8 @@
 
     /* ---------- Phones (≤ 720 px) ----------------------------------------
        Topbar wraps to two rows: row 1 = nav buttons, row 2 = full-width
-       search. Music + sound break out to a fixed FAB stack so the topbar
-       never overflows on narrow screens. Tablet (721-820 px) keeps the
-       single-row layout. */
+       search. Music + sound are hidden globally on mobile (see ≤820 block).
+       Tablet (721-820 px) keeps the single-row layout. */
     @media (max-width: 720px) {
       .topbar { flex-wrap: wrap; row-gap: 6px; padding: 8px 10px; }
       .controls {
@@ -1394,36 +1411,6 @@
         min-width: 0;
       }
       .search input { width: 100%; }
-
-      /* Music + sound move to a fixed FAB stack at bottom-right, above the
-         legend pill (which sits at bottom: 10px, ~55px tall). */
-      #music-btn,
-      #sound-btn {
-        position: fixed;
-        right: 12px;
-        width: 44px;
-        height: 44px;
-        padding: 0;
-        border-radius: 50%;
-        background: var(--vellum-light);
-        border: 1px solid var(--muted-line);
-        box-shadow: var(--panel-shadow);
-        display: grid;
-        place-items: center;
-        z-index: 550;
-      }
-      #sound-btn { bottom: 80px; }
-      #music-btn { bottom: 132px; }
-      /* Hide FABs while a drawer or bottom-sheet is open so they don't
-         compete with the active panel. */
-      body.detail-open #music-btn,
-      body.detail-open #sound-btn,
-      body.filters-open #music-btn,
-      body.filters-open #sound-btn,
-      body.rulers-open #music-btn,
-      body.rulers-open #sound-btn,
-      body.layers-open #music-btn,
-      body.layers-open #sound-btn { display: none; }
     }
 
     /* ---------- Small phones (≤ 420 px) ---------- */

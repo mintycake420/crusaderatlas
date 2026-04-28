@@ -998,6 +998,27 @@
       z-index: 2;
     }
     .panel-close:hover { background: var(--vellum); color: var(--red-oxide); }
+    .glossary .panel-close {
+      display: grid;
+      top: 10px;
+      right: 12px;
+      width: 22px;
+      height: 22px;
+      border: 0;
+      color: var(--sepia);
+      font-size: 18px;
+      opacity: 0.65;
+      transition: opacity 120ms ease, color 120ms ease, background 120ms ease;
+    }
+    .glossary .panel-close:hover {
+      background: transparent;
+      opacity: 1;
+      color: var(--red-oxide);
+    }
+    .glossary .panel-close:focus-visible {
+      outline: 1px solid var(--muted-line);
+      outline-offset: 2px;
+    }
     /* Mobile-only elements hidden on desktop by default. */
     .mobile-only { display: none; }
     .detail-eyebrow {
@@ -1442,26 +1463,31 @@
     }
     .intro-close-x {
       position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 32px;
-      height: 32px;
+      top: 14px;
+      right: 16px;
+      width: 22px;
+      height: 22px;
+      border: 0;
       border-radius: 50%;
       background: transparent;
-      border: 1px solid var(--muted-line);
-      color: var(--ink);
+      color: var(--sepia);
       font-size: 18px;
       line-height: 1;
       cursor: pointer;
       display: grid;
       place-items: center;
       z-index: 2;
-      transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+      opacity: 0.65;
+      transition: opacity 120ms ease, color 120ms ease, background 120ms ease;
     }
     .intro-close-x:hover {
-      background: var(--vellum);
-      border-color: var(--ink-soft);
+      background: transparent;
+      opacity: 1;
       color: var(--red-oxide);
+    }
+    .intro-close-x:focus-visible {
+      outline: 1px solid var(--muted-line);
+      outline-offset: 2px;
     }
     .intro-eyebrow {
       font-family: "IM Fell DW Pica SC", "Spectral", serif;
@@ -1644,11 +1670,35 @@
       /* All close buttons meet the 44×44 touch target. */
       .detail-close,
       .panel-close { width: 44px; height: 44px; font-size: 22px; }
+      .glossary .panel-close {
+        top: 8px;
+        right: 8px;
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--muted-line);
+        color: var(--ink);
+        font-size: 22px;
+        opacity: 1;
+      }
+      .glossary .panel-close:hover {
+        background: var(--vellum);
+      }
 
       /* Intro modal: single-column feature list + tighter padding so it
          fits a phone viewport. */
       .intro { padding: 28px 22px; }
       .intro ul { grid-template-columns: 1fr; gap: 6px 0; }
+      .intro-close-x {
+        top: 10px;
+        right: 10px;
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--muted-line);
+        color: var(--ink);
+        font-size: 22px;
+        opacity: 1;
+      }
+      .intro-close-x:hover { background: var(--vellum); }
 
       /* Leaflet zoom control: hidden on mobile entirely. Pinch-to-zoom is
          the primary gesture and the +/- buttons just take screen real
@@ -2395,9 +2445,11 @@
     ];
 
     const GLOSSARY_CATEGORIES = [
-      { slug: "monarchs", label: "Monarchs" },
-      { slug: "crusades", label: "Crusades" },
-      { slug: "people",   label: "People" },
+      { slug: "monarchs",        label: "Monarchs" },
+      { slug: "crusades",        label: "Crusades" },
+      { slug: "crusader-states", label: "Crusader States" },
+      { slug: "civil-wars",      label: "Civil Wars" },
+      { slug: "people",          label: "People" },
       { slug: "houses",   label: "Noble Houses" },
       { slug: "orders",   label: "Military Orders" },
       { slug: "society",  label: "Law, Society & Sources" }
@@ -3050,6 +3102,288 @@
         ],
         image_url: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Fran%C3%A7ais_9081%2C_fol._296%2C_Mariage_de_Gui_de_Lusignan_et_Sibylle_de_J%C3%A9rusalem.jpeg",
         wiki_url: "https://en.wikipedia.org/wiki/Assizes_of_Jerusalem",
+        wiki_he_url: ""
+      },
+      {
+        id: "revolt-of-hugh-of-jaffa",
+        name: "Revolt of Hugh II of Jaffa",
+        category: "civil-wars",
+        see_also: ["melisende", "fulk", "haute-cour"],
+        era: "1134",
+        also_known_as: ["Hugh of Le Puiset's revolt"],
+        short: "The first major internal rebellion in the kingdom — Count Hugh II of Jaffa's challenge to King Fulk after Fulk tried to sideline Queen Melisende and the local Frankish nobility.",
+        body: [
+          "The first major internal rebellion in the kingdom's history pitted Hugh II, Count of Jaffa and a cousin of Queen Melisende, against the queen's husband, King Fulk of Anjou. The trouble was constitutional: Fulk had attempted to sideline Melisende from real power and to favour his own Angevin retinue over the established local Frankish baronage, and the poulain nobility rallied around Hugh as the natural leader of the resistance. Rumours of an affair between Melisende and Hugh were used as a political pretext for the conflict.",
+          "Hugh was accused of treason and challenged to judicial combat. He fled to the Fatimid-held city of Ascalon for help — an act that made his condemnation inevitable — and after returning under negotiated safe-conduct was sentenced to a three-year exile. While awaiting passage at Jerusalem an attempted assassination by a Breton knight in the streets of the city left him severely wounded and produced a wave of public sympathy that swept through the kingdom.",
+          "The political settlement that followed forced Fulk to grant Melisende an equal share in the government. From 1134 onwards husband and wife signed charters jointly, and after Fulk's death in 1143 Melisende governed in her own right as regent for their son Baldwin III — the constitutional precedent that the revolt had effectively created."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Atentat.jpg/960px-Atentat.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Hugh_II_of_Jaffa",
+        wiki_he_url: ""
+      },
+      {
+        id: "melisende-baldwin-iii-civil-war",
+        name: "Civil War between Melisende and Baldwin III",
+        category: "civil-wars",
+        see_also: ["melisende", "baldwin-iii"],
+        era: "1152",
+        also_known_as: ["Mother–son war"],
+        short: "The brief but decisive struggle between Queen Melisende and her grown son Baldwin III for sole rule of the kingdom — the only time the Tower of David was besieged by its own queen's son.",
+        body: [
+          "After the death of Fulk in 1143 Melisende ruled the kingdom as regent for the thirteen-year-old Baldwin III. When the prince reached his majority he demanded full sovereignty, but Melisende refused to step down — she had ruled in her own name for almost a decade and the kingdom's seal was hers.",
+          "Baldwin's first attempt at a settlement was to divide the realm: he would take the north (Acre and Tyre and the wealthy coastal lordships) and his mother the south (Jerusalem and Nablus and the Judean heartland). Melisende rejected the partition. In 1152 Baldwin launched a short military campaign through the kingdom, the bulk of the great barons declaring for him, and finally besieged his mother in the Tower of David in Jerusalem.",
+          "When Melisende surrendered, the agreed settlement was restrained: she retired to her personal fief of Nablus with her dignity and her household intact, and the joint rule was over. Baldwin was sole king from 1152 until his early death in 1163, and Melisende remained an influential dowager until she died in 1161."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Baudouin_III_sermonnant_M%C3%A9lissende.jpg/960px-Baudouin_III_sermonnant_M%C3%A9lissende.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Melisende%2C_Queen_of_Jerusalem",
+        wiki_he_url: ""
+      },
+      {
+        id: "succession-crisis-1186",
+        name: "Succession Crisis of 1185–1186",
+        category: "civil-wars",
+        see_also: ["sibylla", "guy-of-lusignan", "raymond-iii-of-tripoli", "baldwin-iv", "baldwin-v", "isabella-i"],
+        era: "1185–1186",
+        also_known_as: ["Coup of Sibylla and Guy"],
+        short: "The bitter factional struggle that followed the deaths of the leper king Baldwin IV and the boy-king Baldwin V — and the chaotic coronation that handed the kingdom to Guy of Lusignan a year before Hattin.",
+        body: [
+          "The death of the leper king Baldwin IV in 1185 left the throne to his eight-year-old nephew Baldwin V, with Raymond III of Tripoli as regent and Joscelin III of Courtenay as the boy's guardian. The arrangement masked a deeper rift: a Court Party led by Baldwin's mother Agnes of Courtenay and her son-in-law Guy of Lusignan against a Barons' Party led by Raymond III and the Ibelins.",
+          "When Baldwin V died unexpectedly in the summer of 1186 the crisis broke into the open. Sibylla and Guy, supported by the patriarch Heraclius, the masters of the Templars and Hospitallers, and Joscelin III, slipped into Jerusalem behind a sympathetic faction and had Sibylla crowned alone — whereupon she immediately set the royal crown on her husband's head. Raymond III, marshalling the rest of the barons at Nablus, attempted to crown Sibylla's half-sister Isabella I instead, but the plan collapsed when Isabella's young husband Humphrey IV of Toron refused to play the king and slipped away to do homage to Guy.",
+          "The kingdom was so divided after the coronation that Raymond III initially refused to acknowledge Guy at all, and even negotiated a separate truce with Saladin from his lordship of Tiberias. The internal rift contributed directly to the lack of strategic coordination on the eve of Hattin in 1187: when the Frankish field army marched east to its destruction, it was a kingdom that had not yet finished its civil war."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Fran%C3%A7ais_2629%2C_fol._300%2C_Couronnement_de_Gui_de_Lusignan.jpeg/960px-Fran%C3%A7ais_2629%2C_fol._300%2C_Couronnement_de_Gui_de_Lusignan.jpeg",
+        wiki_url: "https://en.wikipedia.org/wiki/Sibylla%2C_Queen_of_Jerusalem",
+        wiki_he_url: ""
+      },
+      {
+        id: "war-of-the-lombards",
+        name: "War of the Lombards",
+        category: "civil-wars",
+        see_also: ["frederick-ii", "john-of-ibelin", "house-of-ibelin", "conrad-ii", "haute-cour"],
+        era: "1228–1243",
+        also_known_as: ["Imperial–Ibelin war"],
+        short: "The fifteen-year struggle between supporters of the Holy Roman Emperor Frederick II and the local baronial party led by the Ibelins — out of which emerged the most fully articulated feudal constitution of the medieval Latin East.",
+        body: [
+          "Frederick II claimed the kingdom of Jerusalem in right of his wife Isabella II and, after her death, as regent for their son Conrad II. He attempted to impose centralised imperial rule on the realm through a series of bailiffs (the 'Lombards' of contemporary chronicles, named for their north-Italian origins), which the local nobility — led by the powerful Ibelin family — viewed as a violation of their traditional feudal rights and the customary law of the Haute Cour.",
+          "The conflict ranged across Cyprus and the Levantine mainland for fifteen years. Major engagements included the imperial garrison's holding of Tyre, the Ibelin victory at the Battle of Agridi (1232) on Cyprus, and the long sieges of the Hohenstaufen-held castles of Saint Hilarion, Buffavento and Kantara — four-year struggles that ended with the imperial party expelled from the island.",
+          "The Ibelins and their allies eventually drove out the imperial representatives from the mainland as well. From 1243 until the fall of the kingdom in 1291 the throne remained effectively vacant or held by absentee Hohenstaufen heirs, and real authority lay with the Haute Cour and the great baronial families. The legal treatises of John of Ibelin, Philip of Novara, and the Livre au roi were composed in the wake of this conflict and codify the constitutional theory the war produced."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Saint_Hilarion_Castle%2C_Northern_Cyprus_-_panoramio_%286%29.jpg/960px-Saint_Hilarion_Castle%2C_Northern_Cyprus_-_panoramio_%286%29.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/War_of_the_Lombards",
+        wiki_he_url: ""
+      },
+      {
+        id: "war-of-saint-sabas",
+        name: "War of Saint Sabas",
+        category: "civil-wars",
+        see_also: ["italian-maritime-communes", "knights-templar", "knights-hospitaller", "house-of-ibelin"],
+        era: "1256–1258",
+        also_known_as: ["Saint Sabas war"],
+        short: "A property dispute between Venice and Genoa in Acre that escalated into a kingdom-wide civil war pulling in nearly every major faction and permanently weakening the realm's defences.",
+        body: [
+          "What began as a property dispute over the monastery of Saint Sabas in Acre between the Italian maritime republics of Venice and Genoa escalated into a full-scale civil war that involved nearly every major faction in the kingdom. The two communes had long competed for warehouses, churches, and tax exemptions inside the city; control of the Saint Sabas estate was the trigger, but the underlying contest was over the commercial primacy of the Latin East.",
+          "The factions of the kingdom split sharply along Venetian and Genoese lines. Venice was supported by the Knights Templar, the Count of Jaffa, the Provençal commune of Marseille, and the Ibelins. Genoa was supported by the Hospitallers, the Catalan merchants, the bourgeoisie of Tyre, and Philip of Montfort. Pitched battles were fought in Acre's harbour and streets, and naval engagements ranged across the eastern Mediterranean.",
+          "The war devastated the commercial infrastructure of Acre — the kingdom's de-facto capital — and drove the Genoese commune out of the city for the next thirty years. Venice eventually won the naval battles, but the internal division had permanently weakened the realm's ability to coordinate its defences. When Baybars's Mamluks began their methodical reduction of the Frankish strongholds in the 1260s and 1270s, the kingdom met them as a fractured coalition rather than a single state."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Mar_Saba_%28Photo_by_Jean_%26_Nathalie%2C_2011%29.jpg/960px-Mar_Saba_%28Photo_by_Jean_%26_Nathalie%2C_2011%29.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/War_of_Saint_Sabas",
+        wiki_he_url: ""
+      },
+      {
+        id: "hugh-iii-charles-of-anjou-dispute",
+        name: "Dispute between Hugh III and Charles of Anjou",
+        category: "civil-wars",
+        see_also: ["hugh-i", "house-of-lusignan", "mamluk-sultanate"],
+        era: "1277–1285",
+        also_known_as: ["Angevin–Lusignan crown dispute"],
+        short: "The final dynastic struggle for the throne of Jerusalem — between the resident Lusignan king of Cyprus and the absentee Charles of Anjou — that paralysed the kingdom on the eve of the Mamluk conquest.",
+        body: [
+          "The last decades of the kingdom were marred by a struggle for the crown between Hugh III of Cyprus, of the House of Lusignan, and Charles of Anjou, the king of Sicily. Charles purchased a parallel dynastic claim from Maria of Antioch — granddaughter of Isabella I, and the senior surviving heir in her own line — and in 1277 sent his vicar Roger of San Severino with an Angevin garrison to seize Acre in his name.",
+          "For several years the kingdom was effectively split. Acre and the great military orders recognised Charles, while the northern lordships and the loyal Lusignan barons recognised Hugh III. Charles's vicars governed from Acre as Latin emperors-in-waiting, with the Templars in particular acting as Angevin partisans. Hugh III withdrew to Cyprus in frustration and reigned from there as the rightful king of Jerusalem in title only.",
+          "The Sicilian Vespers of 1282 and Charles's death in 1285 broke the Angevin claim, and Hugh III's son Henry II of Lusignan was crowned in Tyre in 1286 as the last Frankish king of Jerusalem to reign on the mainland. By then the Angevin–Lusignan paralysis had cost the kingdom almost a decade of unified planning, and the Mamluks under Qalawun and al-Ashraf Khalil were within five years of taking Acre."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Charles_of_Sicily.jpg/960px-Charles_of_Sicily.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Hugh_III_of_Cyprus",
+        wiki_he_url: ""
+      },
+      {
+        id: "county-of-edessa",
+        name: "County of Edessa",
+        category: "crusader-states",
+        subcategory: "core",
+        see_also: ["baldwin-i", "first-crusade", "second-crusade", "zengi"],
+        era: "1098–1150",
+        also_known_as: ["Comitatus Edessanus"],
+        short: "The first and most exposed of the Crusader states — an inland Armenian–Frankish principality across the Euphrates that was also the first to fall.",
+        body: [
+          "The County of Edessa was the first of the Crusader states to be established. Baldwin of Boulogne, brother of Godfrey, broke off from the main First Crusade in early 1098 and made his way to the prosperous Armenian-Christian city of Edessa, where its ruler Thoros adopted him as heir. When Thoros was overthrown and killed in March 1098, Baldwin assumed control of the city as count, founding a state that stretched well east of the Euphrates and made common cause with the local Armenian population.",
+          "Edessa was geographically the most exposed of the Latin polities. Cut off from the sea, surrounded by Muslim Mosul and Aleppo to the south and east, and dependent on a thin Frankish military elite ruling a much larger non-Latin population, it was always vulnerable. Baldwin was succeeded in turn by Baldwin of Le Bourg (later Baldwin II of Jerusalem) and by the Courtenay line; the county lived in near-continuous warfare with the Artuqids and the Zengids.",
+          "The end came in late 1144, when Imad ad-Din Zengi of Mosul stormed the city while its count Joscelin II was absent. The fall of Edessa shocked Latin Christendom and was the immediate cause of the Second Crusade. The remaining western fragments of the county, governed from Turbessel, held out for another six years before they were sold to the Byzantines in 1150 — but most of those territories were quickly swept up by Nur ad-Din. Edessa was the first Crusader state created and the first to be lost."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Banner_of_the_County_of_Edessa.png/960px-Banner_of_the_County_of_Edessa.png",
+        wiki_url: "https://en.wikipedia.org/wiki/County_of_Edessa",
+        wiki_he_url: ""
+      },
+      {
+        id: "principality-of-antioch",
+        name: "Principality of Antioch",
+        category: "crusader-states",
+        subcategory: "core",
+        see_also: ["bohemond-i-of-antioch", "tancred", "first-crusade"],
+        era: "1098–1268",
+        also_known_as: ["Principatus Antiochiae"],
+        short: "The Norman-founded northern Crusader state with its capital at Antioch — held for 170 years before Baybars took the city in 1268.",
+        body: [
+          "The Principality of Antioch was founded by Bohemond of Taranto, the Norman commander of the southern Italian contingent of the First Crusade, after the long siege of the city in 1097–98. Bohemond seized Antioch by clandestine arrangement with a tower captain on 3 June 1098, then defended it against a relief army from Mosul; he refused to hand the city back to the Byzantine emperor Alexios I despite earlier oaths and made it the seat of his own dynasty.",
+          "Antioch was the most Byzantine in flavour of the Frankish states — its principal subject populations were Greek Orthodox, Armenian, and Syriac, and its rulers maintained an uneasy combination of feudal homage to Constantinople and Latin lordship over the local elites. Through the 12th century it was repeatedly torn between Antiochene and Byzantine claims and held off (and was sometimes overrun by) Aleppine and Mosuli incursions. The principality reached its territorial peak in the 1130s and again, in a smaller form, after the Third Crusade.",
+          "Mamluk pressure under Baybars took the inland fortresses and the great port of Latakia in the 1260s; Antioch itself fell on 18 May 1268, in one of the cruellest sacks of the period. Some chroniclers report a casualty list and slave-haul larger than at any single Crusader-era capture. After 1268 the principality survived only as a title held by the Lusignan kings of Cyprus."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Banner_of_the_Principality_of_Antioch.png/960px-Banner_of_the_Principality_of_Antioch.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Principality_of_Antioch",
+        wiki_he_url: ""
+      },
+      {
+        id: "kingdom-of-jerusalem",
+        name: "Kingdom of Jerusalem",
+        category: "crusader-states",
+        subcategory: "core",
+        see_also: ["godfrey", "baldwin-i", "haute-cour", "outremer", "first-crusade", "third-crusade"],
+        era: "1099–1291",
+        also_known_as: ["Latin Kingdom of Jerusalem", "Regnum Hierosolymitanum"],
+        short: "The largest and longest-lived of the four classic Crusader states, founded after the conquest of Jerusalem in 1099 and surviving in coastal form until the fall of Acre in 1291.",
+        body: [
+          "Founded by the leaders of the First Crusade after the storming of Jerusalem on 15 July 1099, the kingdom was the central political achievement of the Latin East. Godfrey of Bouillon refused the title of king and ruled as Advocatus Sancti Sepulchri until his death in 1100; his brother Baldwin had no such scruples and was crowned the first king at Bethlehem on Christmas Day 1100. Over the next two generations the kingdom expanded to incorporate the entire coastal plain from Beirut to Ascalon, the Galilee, and the Transjordan plateau as far south as Aqaba.",
+          "The First Kingdom (1099–1187) was governed from Jerusalem itself and reached its territorial maximum under Baldwin III and Amalric I. Its political life was structured around the Haute Cour — the assembly of crown vassals — and a sophisticated body of customary law that would later be codified in the Assises de Jérusalem. Catastrophe came at the Battle of Hattin in July 1187, where Saladin destroyed the field army; within months he had taken Jerusalem and reduced the realm to a handful of coastal strongholds.",
+          "The Second Kingdom (1192–1291), refounded after the Third Crusade, was governed from Acre and was effectively a coastal strip from Tyre to Jaffa. It survived for almost a century through diplomacy, the military orders, and Italian naval support, but was steadily reduced by the Mamluks under Baybars and Qalawun. Acre fell to al-Ashraf Khalil on 18 May 1291, ending Latin rule on the mainland; the title was carried on by the Lusignan kings of Cyprus until the family's last days."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Vexillum_Regni_Hierosolymae.svg/960px-Vexillum_Regni_Hierosolymae.svg.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Kingdom_of_Jerusalem",
+        wiki_he_url: "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%9C%D7%9B%D7%AA_%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+      },
+      {
+        id: "county-of-tripoli",
+        name: "County of Tripoli",
+        category: "crusader-states",
+        subcategory: "core",
+        see_also: ["raymond-iii-of-tripoli", "first-crusade"],
+        era: "1102–1289",
+        also_known_as: ["Comitatus Tripolitanus"],
+        short: "The southern-Frankish coastal county on the Lebanese seaboard, founded by Raymond IV of Toulouse and held for almost two centuries before its capture by Qalawun in 1289.",
+        body: [
+          "The County of Tripoli was the latest-founded of the four classic Crusader states. After the success of the First Crusade, Raymond IV of Toulouse — its wealthiest and most senior leader — turned to the conquest of the Lebanese coast and established a base on the headland of Mount Pilgrim above the Muslim city of Tripoli. He died in 1105 before completing the siege; his cousin William-Jordan and his son Bertrand quarrelled over the inheritance, and Tripoli itself only fell to a combined Frankish-Genoese assault on 12 July 1109.",
+          "From its capital at Tripoli the county controlled a long strip of mountainous coast running from Maraclea in the north to the heights above Beirut in the south, including the great inland fortress of Krak des Chevaliers (granted to the Hospitallers in 1142) and the Templar-held Tortosa. Politically the counts maintained a careful relationship with their stronger neighbour the Kingdom of Jerusalem; Raymond III of Tripoli, the most famous of the line, served twice as regent of Jerusalem and led the baronial party in the catastrophe of 1186–87.",
+          "The county survived Hattin and the loss of Jerusalem largely intact, propped up by its Italian merchant connections and its formidable inland castles. The Mamluk advance under Baybars in the 1260s and 1270s reduced its hinterland — Krak des Chevaliers fell in 1271 — and the city of Tripoli itself was finally taken and razed by Sultan Qalawun in April 1289, two years before the fall of Acre."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/MapofTripoli.png/960px-MapofTripoli.png",
+        wiki_url: "https://en.wikipedia.org/wiki/County_of_Tripoli",
+        wiki_he_url: ""
+      },
+      {
+        id: "kingdom-of-cyprus",
+        name: "Kingdom of Cyprus",
+        category: "crusader-states",
+        subcategory: "broader",
+        see_also: ["house-of-lusignan", "aimery", "hugh-i", "henry-ii", "war-of-the-lombards", "third-crusade"],
+        era: "1192–1489",
+        also_known_as: ["Lusignan Cyprus", "Regnum Cypri"],
+        short: "The Lusignan island kingdom founded by Richard the Lionheart's sale of conquered Cyprus to Guy of Lusignan in 1192 — the longest-lasting Crusader state of all.",
+        body: [
+          "Cyprus passed into Frankish hands when Richard I of England seized the island during his 1191 detour on the way to the Third Crusade, in retaliation for the rough treatment of his shipwrecked sister and bride-to-be by the local ruler Isaac Komnenos. Richard sold it first to the Knights Templar (who returned it after a year of unprofitable rule) and then in 1192 to Guy of Lusignan, the deposed king of Jerusalem, as compensation for the mainland throne he had lost.",
+          "Guy's brother Aimery established the kingdom in the formal sense — he was crowned king in 1197 and codified its law in the Livre au roi around 1200. The kingdom was governed from Nicosia and its institutions closely paralleled those of the mainland Kingdom of Jerusalem, with which the Lusignans repeatedly held both crowns in personal union. From 1228 to 1243 the island was the principal battleground of the War of the Lombards, the constitutional struggle between the imperial party and the Ibelin-led baronial party that produced the Assises de Jérusalem.",
+          "After the fall of Acre in 1291 Cyprus became the last redoubt of the Latin East. The Lusignans ruled it for almost three centuries, building a remarkable Gothic culture at Nicosia and Famagusta. The kingdom was inherited by Catherine Cornaro, a Venetian, who was forced to cede it to the Republic of Venice in 1489 — ending Lusignan rule but extending Latin rule for another eighty-two years until the Ottoman conquest of 1571."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Medieval_Cyprus.png/960px-Medieval_Cyprus.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Kingdom_of_Cyprus",
+        wiki_he_url: ""
+      },
+      {
+        id: "latin-empire-of-constantinople",
+        name: "Latin Empire of Constantinople",
+        category: "crusader-states",
+        subcategory: "broader",
+        see_also: ["fourth-crusade", "kingdom-of-thessalonica", "principality-of-achaea", "duchy-of-athens", "duchy-of-naxos"],
+        era: "1204–1261",
+        also_known_as: ["Imperium Constantinopolitanum", "Latin Romania"],
+        short: "The short-lived Frankish empire founded on the ruins of Byzantium after the sack of Constantinople in 1204, and the parent state of the broader Frankish Greece.",
+        body: [
+          "The Latin Empire was the Crusader state created by the leaders of the diverted Fourth Crusade after the sack of Constantinople on 12–13 April 1204. The crusade leadership and their Venetian allies divided the Byzantine territories under the Partitio Romaniae treaty: a fourth and an eighth went to the new emperor, three-eighths to the rest of the Crusader nobility, and three-eighths (almost all the strategic ports) to Venice. Baldwin IX of Flanders was elected the first Latin emperor on 9 May 1204 and crowned in Hagia Sophia.",
+          "From its capital at Constantinople the empire claimed sovereignty over almost all the former Byzantine lands, but its actual control was thin and uneven. A constellation of Frankish vassal states emerged within and beside it — the Kingdom of Thessalonica, the Principality of Achaea, the Duchy of Athens, the Aegean Duchy of Naxos — while Greek successor states at Nicaea, Trebizond, and Epirus carried on the imperial tradition in opposition. The empire was almost continuously at war on multiple fronts.",
+          "The empire was retaken by Michael VIII Palaiologos of Nicaea, who entered an undefended Constantinople on 25 July 1261 and restored the Byzantine Empire under his own dynasty. The titular Latin imperial line carried on in exile in Italy and France for another century; the daughter-states in Greece survived much longer, but the central Latin Empire itself lasted just fifty-seven years."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/LatinEmpire2.png/960px-LatinEmpire2.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Latin_Empire",
+        wiki_he_url: ""
+      },
+      {
+        id: "kingdom-of-thessalonica",
+        name: "Kingdom of Thessalonica",
+        category: "crusader-states",
+        subcategory: "broader",
+        see_also: ["fourth-crusade", "latin-empire-of-constantinople", "house-of-montferrat", "principality-of-achaea"],
+        era: "1204–1224",
+        also_known_as: ["Regno di Salonicco"],
+        short: "The shortest-lived of the Crusader states — a Latin kingdom in northern Greece carved out for Boniface of Montferrat after the Fourth Crusade and conquered by the Despotate of Epirus in 1224.",
+        body: [
+          "The Kingdom of Thessalonica was created in the immediate aftermath of the Fourth Crusade, in 1204, when Boniface of Montferrat — the original elected leader of the crusade and the disappointed candidate for the imperial throne in Constantinople — was given the second-largest city of the former Byzantine Empire as compensation. Thessalonica passed nominally under the suzerainty of the Latin Empire, but Boniface ruled it as an effectively independent kingdom with vassals stretching south through Thessaly.",
+          "Boniface himself spent most of his short reign on campaign south of his capital, conquering Macedonia, Thessaly, and northern central Greece. He was killed in an ambush by Bulgarians in September 1207, and his infant son Demetrius inherited a kingdom under intense pressure from the Byzantine successor state of Epirus. Regents and a series of weak boy-rulers governed for the next sixteen years.",
+          "The end came with the rise of Theodore Komnenos Doukas of Epirus, who had spent the 1210s conquering all of central Greece and Macedonia from the Latin successor states. He took Thessalonica itself in 1224, was crowned 'Emperor of the Romans' in the city, and ended the Latin kingdom altogether. Demetrius fled to the West and lived out his life as a titular king under Hohenstaufen protection. Of all the Latin states of Greece, Thessalonica had been the most powerful at its founding and the briefest in its life."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/LDAM_%28f._024v%29_Rei_de_Salonica.jpg/960px-LDAM_%28f._024v%29_Rei_de_Salonica.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Kingdom_of_Thessalonica",
+        wiki_he_url: ""
+      },
+      {
+        id: "principality-of-achaea",
+        name: "Principality of Achaea",
+        category: "crusader-states",
+        subcategory: "broader",
+        see_also: ["fourth-crusade", "latin-empire-of-constantinople", "house-of-montferrat"],
+        era: "1205–1432",
+        also_known_as: ["Principality of Morea", "Principatus Achaeae"],
+        short: "The most successful and longest-lived of the Frankish states in mainland Greece — the Latin lordship of the Peloponnese (Morea), founded after the Fourth Crusade.",
+        body: [
+          "The Principality of Achaea was carved out of the Peloponnese by William of Champlitte and Geoffrey I of Villehardouin in 1205, in the chaotic aftermath of the Fourth Crusade and its dismemberment of the Byzantine Empire. The two knights had originally been sent south by Boniface of Montferrat, king of Thessalonica, to secure the southern flank; finding the Greek garrisons either weak or willing to negotiate, they conquered most of the peninsula in three campaigning seasons.",
+          "Under the Villehardouin dynasty (1205–1278), the principality became the most prosperous and culturally vivid of the Latin states in Greece. Its court at Andravida, and later at the spectacular hilltop palace of Mystras, drew visitors from across Latin Europe; the chivalric epic the Chronicle of the Morea preserves a vivid (if partisan) account of its history. Achaea was the dominant power in mainland Frankish Greece, holding overlordship at various times over the Duchy of Athens and the great Aegean lordships.",
+          "Decline set in after the loss of Mystras to the Byzantine Despotate of the Morea in 1262 and the Angevin takeover of the principality in 1278. By the late 14th century the Frankish baronage had been reduced to a few coastal strongholds, mostly in the Navarrese Company's hands, and in 1432 the Despotate of the Morea finally absorbed what remained. A small Frankish revival in 1453–54, in the chaos of the Ottoman conquest, was the last episode."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Coat_of_arms_of_the_Principality_of_Achaea.svg/960px-Coat_of_arms_of_the_Principality_of_Achaea.svg.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Principality_of_Achaea",
+        wiki_he_url: ""
+      },
+      {
+        id: "duchy-of-athens",
+        name: "Duchy of Athens",
+        category: "crusader-states",
+        subcategory: "broader",
+        see_also: ["fourth-crusade", "latin-empire-of-constantinople", "principality-of-achaea"],
+        era: "1205–1458",
+        also_known_as: ["Ducatus Athenarum"],
+        short: "The Frankish duchy that ruled Athens, Thebes, and most of central Greece for over two and a half centuries — passing in turn through Burgundian, Catalan, and Florentine hands.",
+        body: [
+          "The Duchy of Athens was founded by Otto de la Roche, a Burgundian knight of the Fourth Crusade, who took possession of Athens and Thebes in 1205 with the title 'Lord' and the unofficial style 'Duke'; full ducal status was confirmed by Louis IX of France in 1260. Under the de la Roche dynasty (1205–1308) and their Brienne cousins, the duchy held most of central Greece — Attica, Boeotia, parts of Thessaly — and was a wealthy producer of silk, glass, and grain.",
+          "In 1311 the duchy was overthrown by the Catalan Company, a band of Aragonese mercenaries originally hired by the Byzantines and now adrift in Greece looking for territory. At the Battle of Halmyros (15 March 1311) they annihilated the Frankish chivalry — perhaps eight hundred knights killed in a single day — and seized the duchy for themselves. Catalan rule (1311–1388) governed the duchy from Thebes as a frontier outpost of the Crown of Aragon and the Kingdom of Sicily.",
+          "The Catalans were displaced in turn by the Florentine Acciaioli family in 1388, who held Athens until the Ottoman conquest. Sultan Mehmed II's troops took the city in 1456; the last Florentine duke, Franco Acciaioli, surrendered the Acropolis in 1458, ending the longest-lived Frankish duchy in Greece."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Arms_of_the_House_of_de_la_Roche.svg/960px-Arms_of_the_House_of_de_la_Roche.svg.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Duchy_of_Athens",
+        wiki_he_url: ""
+      },
+      {
+        id: "duchy-of-naxos",
+        name: "Duchy of Naxos",
+        category: "crusader-states",
+        subcategory: "broader",
+        see_also: ["fourth-crusade", "latin-empire-of-constantinople", "italian-maritime-communes"],
+        era: "1207–1579",
+        also_known_as: ["Duchy of the Archipelago", "Duchy of the Aegean"],
+        short: "The Venetian-Cycladic duchy founded by Marco Sanudo in the wake of the Fourth Crusade — a maritime principality of two dozen Aegean islands, the longest-lived Frankish state of all.",
+        body: [
+          "The Duchy of the Archipelago was founded by Marco Sanudo, a great-nephew of Doge Enrico Dandolo of Venice, in 1207 — three years after the Fourth Crusade. Sanudo equipped his own ships, fought his way into the central Aegean, and seized Naxos and the surrounding islands for himself; the Venetian state did not officially endorse his conquest, but it tolerated and ultimately benefited from a private duchy of Cycladic waters.",
+          "The Sanudi ruled twenty-one islands from a remarkable Frankish fortress on Naxos itself, with subordinate lordships scattered from Andros and Tinos in the north to Santorini and Anaphi in the south. Successive dukes wove a careful diplomatic web among Venice, the Latin Empire, the Byzantine successor states, and the Crusader Kingdom of Cyprus. The duchy passed by marriage to the Crispo family of Verona in 1383, who continued the Frankish rule in essentially the same form.",
+          "Decline came with the Ottoman advance in the central Aegean. The duchy became an Ottoman vassal in 1537 and was repeatedly raided by Hayreddin Barbarossa; the Crispi were finally deposed in 1566. A short-lived Joseph Nasi tenure as duke under Ottoman appointment ended in 1579, when the duchy was formally annexed to the Ottoman Empire — the very last Frankish state of the Latin East to disappear."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Coat_of_Arms_of_the_House_of_Sanudo.svg/960px-Coat_of_Arms_of_the_House_of_Sanudo.svg.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Duchy_of_the_Archipelago",
         wiki_he_url: ""
       }
     ];
@@ -4215,9 +4549,10 @@
     let glossaryExpandedCategory = null;
 
     const GLOSSARY_SUBGROUP_LABELS = {
-      monarchs: { jerusalem: "Jerusalem", antioch: "Antioch", tripoli: "Tripoli", edessa: "Edessa", cyprus: "Cyprus" },
-      people:   { chroniclers: "Chroniclers", notables: "Notables", adversaries: "Adversaries" },
-      society:  { law: "Law & Institutions", religion: "Religion", polities: "Adversary Polities", society: "Society & Identity", sources: "Sources & Manuscripts" }
+      monarchs:         { jerusalem: "Jerusalem", antioch: "Antioch", tripoli: "Tripoli", edessa: "Edessa", cyprus: "Cyprus" },
+      "crusader-states": { core: "Core Crusader States", broader: "Broader Crusader States" },
+      people:           { chroniclers: "Chroniclers", notables: "Notables", adversaries: "Adversaries" },
+      society:          { law: "Law & Institutions", religion: "Religion", polities: "Adversary Polities", society: "Society & Identity", sources: "Sources & Manuscripts" }
     };
 
     function glossaryChronoKey(entry) {
@@ -4393,7 +4728,7 @@
       const wrap = document.createElement("div");
       wrap.className = "glossary-entries";
       const entries = GLOSSARY.filter(e => e.category === catSlug);
-      const isChrono = (catSlug === "monarchs" || catSlug === "crusades");
+      const isChrono = (catSlug === "monarchs" || catSlug === "crusades" || catSlug === "civil-wars" || catSlug === "crusader-states");
       if (isChrono) {
         entries.sort((a, b) => glossaryChronoKey(a) - glossaryChronoKey(b));
       } else {

@@ -604,7 +604,33 @@
       color: var(--ink-soft);
       text-align: center;
     }
+    .glossary-rail-group {
+      font-family: "IM Fell DW Pica SC", "Spectral", serif;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      padding: 12px 8px 4px;
+      margin-top: 6px;
+      border-top: 1px solid var(--muted-line-soft);
+    }
+    .glossary-rail-group:first-child {
+      margin-top: 0;
+      padding-top: 4px;
+      border-top: 0;
+    }
     .glossary-accordion { display: flex; flex-direction: column; }
+    .glossary-accordion-group { border-bottom: 1px solid var(--muted-line); }
+    .glossary-accordion-group:last-child { border-bottom: none; }
+    .glossary-accordion-group-header {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .glossary-accordion-group.expanded > .glossary-accordion-group-header .glossary-accordion-chevron { transform: rotate(90deg); }
+    .glossary-accordion-group-body {
+      padding: 0 0 6px 12px;
+      border-top: 1px solid var(--muted-line-soft);
+    }
     .glossary-accordion-cat { border-bottom: 1px solid var(--muted-line-soft); }
     .glossary-accordion-cat:last-child { border-bottom: none; }
     .glossary-accordion-header {
@@ -1771,7 +1797,7 @@
        search. Music + sound are hidden globally on mobile (see ≤820 block).
        Tablet (721-820 px) keeps the single-row layout. */
     @media (max-width: 720px) {
-      .topbar { flex-wrap: wrap; row-gap: 6px; padding: 8px 10px; position: relative; }
+      .topbar { flex-wrap: wrap; row-gap: 6px; padding: 8px 10px; position: relative; top: 0; left: 0; right: auto; }
       .brand { position: absolute; top: 8px; left: 10px; z-index: 1; }
       .brand-cross { width: 24px; height: 24px; }
       .controls {
@@ -4528,6 +4554,7 @@
       if (window.matchMedia("(max-width: 820px)").matches) {
         const legend = document.getElementById("legend");
         if (legend) legend.classList.add("collapsed");
+        if (typeof closeMobileGlossary === "function") closeMobileGlossary();
       }
     }
 
@@ -4546,7 +4573,8 @@
 
     let glossaryCategoryFilter = "monarchs";
     let glossarySearchQuery = "";
-    let glossaryExpandedCategory = null;
+    let glossaryExpandedGroup = null;
+    let glossaryExpandedKey = null;
 
     const GLOSSARY_SUBGROUP_LABELS = {
       monarchs:         { jerusalem: "Jerusalem", antioch: "Antioch", tripoli: "Tripoli", edessa: "Edessa", cyprus: "Cyprus" },
@@ -4554,6 +4582,38 @@
       people:           { chroniclers: "Chroniclers", notables: "Notables", adversaries: "Adversaries" },
       society:          { law: "Law & Institutions", religion: "Religion", polities: "Adversary Polities", society: "Society & Identity", sources: "Sources & Manuscripts" }
     };
+
+    // Two-level navigation: groups → keys. A "key" is either a category slug
+    // ("monarchs") or a "category:subcategory" slice ("people:chroniclers")
+    // when we want to surface a subcategory as a top-line navigation item.
+    const GLOSSARY_GROUPS = [
+      { slug: "realms",       label: "Realms & Rulers", keys: ["monarchs", "crusader-states", "houses"] },
+      { slug: "conflicts",    label: "Conflicts",       keys: ["crusades", "civil-wars"] },
+      { slug: "people-group", label: "People",          keys: ["people:chroniclers", "people:notables", "people:adversaries"] },
+      { slug: "institutions", label: "Institutions",    keys: ["orders", "society"] }
+    ];
+
+    function parseGlossaryKey(key) {
+      if (!key) return { cat: null, sub: null };
+      const i = key.indexOf(":");
+      return i < 0 ? { cat: key, sub: null } : { cat: key.slice(0, i), sub: key.slice(i + 1) };
+    }
+    function getGlossaryKeyEntries(key) {
+      const { cat, sub } = parseGlossaryKey(key);
+      if (!cat) return [];
+      return GLOSSARY.filter(e => e.category === cat && (sub == null || e.subcategory === sub));
+    }
+    function getGlossaryKeyLabel(key) {
+      const { cat, sub } = parseGlossaryKey(key);
+      if (sub != null) {
+        return (GLOSSARY_SUBGROUP_LABELS[cat] && GLOSSARY_SUBGROUP_LABELS[cat][sub]) || sub;
+      }
+      const c = GLOSSARY_CATEGORIES.find(c => c.slug === cat);
+      return c ? c.label : (cat || "");
+    }
+    function findGlossaryGroupForKey(key) {
+      return GLOSSARY_GROUPS.find(g => g.keys.includes(key)) || null;
+    }
 
     function glossaryChronoKey(entry) {
       if (entry._ruler && typeof entry._ruler.reign_start === "number") return entry._ruler.reign_start;
@@ -4671,10 +4731,7 @@
       if (window.matchMedia("(max-width: 820px)").matches) {
         const legend = document.getElementById("legend");
         if (legend) legend.classList.add("collapsed");
-        const gEl = document.getElementById("glossary");
-        const gBtn = document.getElementById("glossary-btn");
-        if (gEl) gEl.classList.remove("open");
-        if (gBtn) gBtn.classList.remove("active");
+        if (typeof closeMobileGlossary === "function") closeMobileGlossary();
       }
     }
 
@@ -4724,22 +4781,25 @@
       return btn;
     }
 
-    function buildGlossaryCategoryEntries(catSlug) {
+    function buildGlossaryCategoryEntries(key) {
       const wrap = document.createElement("div");
       wrap.className = "glossary-entries";
-      const entries = GLOSSARY.filter(e => e.category === catSlug);
-      const isChrono = (catSlug === "monarchs" || catSlug === "crusades" || catSlug === "civil-wars" || catSlug === "crusader-states");
+      const { cat, sub } = parseGlossaryKey(key);
+      const entries = getGlossaryKeyEntries(key);
+      const isChrono = (cat === "monarchs" || cat === "crusades" || cat === "civil-wars" || cat === "crusader-states");
       if (isChrono) {
         entries.sort((a, b) => glossaryChronoKey(a) - glossaryChronoKey(b));
       } else {
         entries.sort((a, b) => a.name.localeCompare(b.name));
       }
-      const subgroupLabels = GLOSSARY_SUBGROUP_LABELS[catSlug];
+      // Render subgroup dividers only when showing the FULL category (sub == null).
+      // When already drilled into a subcategory, the dividers are redundant.
+      const subgroupLabels = (sub == null) ? GLOSSARY_SUBGROUP_LABELS[cat] : null;
       if (subgroupLabels) {
         const groups = {};
         entries.forEach(e => {
-          const sub = e.subcategory || "_other";
-          (groups[sub] = groups[sub] || []).push(e);
+          const s = e.subcategory || "_other";
+          (groups[s] = groups[s] || []).push(e);
         });
         Object.keys(subgroupLabels).forEach(subSlug => {
           const groupEntries = groups[subSlug];
@@ -4796,25 +4856,43 @@
       wrap.className = "glossary-cascade";
       const rail = document.createElement("div");
       rail.className = "glossary-rail";
-      const visibleCats = GLOSSARY_CATEGORIES.filter(c =>
-        GLOSSARY.some(e => e.category === c.slug));
-      if (!visibleCats.some(c => c.slug === glossaryCategoryFilter)) {
-        glossaryCategoryFilter = visibleCats[0] ? visibleCats[0].slug : null;
-      }
-      visibleCats.forEach(cat => {
-        const count = GLOSSARY.filter(e => e.category === cat.slug).length;
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "glossary-rail-row" + (glossaryCategoryFilter === cat.slug ? " active" : "");
-        btn.innerHTML =
-          '<span class="glossary-rail-label">' + escapeHtml(cat.label) + '</span>' +
-          '<span class="glossary-rail-count">' + count + '</span>';
-        btn.addEventListener("click", () => {
-          glossaryCategoryFilter = cat.slug;
-          renderGlossary();
+
+      // Walk the groups, emitting a section header followed by each non-empty
+      // key as a rail button. Default the active filter to the first key if
+      // the current value is no longer visible (e.g. after a data change).
+      const allVisibleKeys = [];
+      GLOSSARY_GROUPS.forEach(group => {
+        group.keys.forEach(k => {
+          if (getGlossaryKeyEntries(k).length > 0) allVisibleKeys.push(k);
         });
-        rail.appendChild(btn);
       });
+      if (!allVisibleKeys.includes(glossaryCategoryFilter)) {
+        glossaryCategoryFilter = allVisibleKeys[0] || null;
+      }
+
+      GLOSSARY_GROUPS.forEach(group => {
+        const groupKeys = group.keys.filter(k => getGlossaryKeyEntries(k).length > 0);
+        if (groupKeys.length === 0) return;
+        const groupHeader = document.createElement("div");
+        groupHeader.className = "glossary-rail-group";
+        groupHeader.textContent = group.label;
+        rail.appendChild(groupHeader);
+        groupKeys.forEach(key => {
+          const count = getGlossaryKeyEntries(key).length;
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "glossary-rail-row" + (glossaryCategoryFilter === key ? " active" : "");
+          btn.innerHTML =
+            '<span class="glossary-rail-label">' + escapeHtml(getGlossaryKeyLabel(key)) + '</span>' +
+            '<span class="glossary-rail-count">' + count + '</span>';
+          btn.addEventListener("click", () => {
+            glossaryCategoryFilter = key;
+            renderGlossary();
+          });
+          rail.appendChild(btn);
+        });
+      });
+
       const pane = document.createElement("div");
       pane.className = "glossary-pane";
       if (glossaryCategoryFilter) {
@@ -4828,32 +4906,65 @@
     function buildGlossaryAccordion() {
       const wrap = document.createElement("div");
       wrap.className = "glossary-accordion";
-      GLOSSARY_CATEGORIES.forEach(cat => {
-        const count = GLOSSARY.filter(e => e.category === cat.slug).length;
-        if (!count) return;
-        const item = document.createElement("div");
-        item.className = "glossary-accordion-cat" +
-          (glossaryExpandedCategory === cat.slug ? " expanded" : "");
-        const header = document.createElement("button");
-        header.type = "button";
-        header.className = "glossary-accordion-header";
-        header.setAttribute("aria-expanded", glossaryExpandedCategory === cat.slug ? "true" : "false");
-        header.innerHTML =
+      GLOSSARY_GROUPS.forEach(group => {
+        const groupKeys = group.keys.filter(k => getGlossaryKeyEntries(k).length > 0);
+        if (!groupKeys.length) return;
+        const groupCount = groupKeys.reduce((s, k) => s + getGlossaryKeyEntries(k).length, 0);
+        const isGroupExpanded = glossaryExpandedGroup === group.slug;
+
+        const groupItem = document.createElement("div");
+        groupItem.className = "glossary-accordion-group" + (isGroupExpanded ? " expanded" : "");
+        const groupHeader = document.createElement("button");
+        groupHeader.type = "button";
+        groupHeader.className = "glossary-accordion-header glossary-accordion-group-header";
+        groupHeader.setAttribute("aria-expanded", isGroupExpanded ? "true" : "false");
+        groupHeader.innerHTML =
           '<span class="glossary-accordion-chevron" aria-hidden="true">▸</span>' +
-          '<span class="glossary-accordion-label">' + escapeHtml(cat.label) + '</span>' +
-          '<span class="glossary-rail-count">' + count + '</span>';
-        header.addEventListener("click", () => {
-          glossaryExpandedCategory = (glossaryExpandedCategory === cat.slug) ? null : cat.slug;
+          '<span class="glossary-accordion-label">' + escapeHtml(group.label) + '</span>' +
+          '<span class="glossary-rail-count">' + groupCount + '</span>';
+        groupHeader.addEventListener("click", () => {
+          if (glossaryExpandedGroup === group.slug) {
+            glossaryExpandedGroup = null;
+          } else {
+            glossaryExpandedGroup = group.slug;
+          }
+          glossaryExpandedKey = null;
           renderGlossary();
         });
-        item.appendChild(header);
-        if (glossaryExpandedCategory === cat.slug) {
-          const innerBody = document.createElement("div");
-          innerBody.className = "glossary-accordion-body";
-          innerBody.appendChild(buildGlossaryCategoryEntries(cat.slug));
-          item.appendChild(innerBody);
+        groupItem.appendChild(groupHeader);
+
+        if (isGroupExpanded) {
+          const subWrap = document.createElement("div");
+          subWrap.className = "glossary-accordion-group-body";
+          groupKeys.forEach(key => {
+            const count = getGlossaryKeyEntries(key).length;
+            const isKeyExpanded = glossaryExpandedKey === key;
+            const item = document.createElement("div");
+            item.className = "glossary-accordion-cat" + (isKeyExpanded ? " expanded" : "");
+            const header = document.createElement("button");
+            header.type = "button";
+            header.className = "glossary-accordion-header";
+            header.setAttribute("aria-expanded", isKeyExpanded ? "true" : "false");
+            header.innerHTML =
+              '<span class="glossary-accordion-chevron" aria-hidden="true">▸</span>' +
+              '<span class="glossary-accordion-label">' + escapeHtml(getGlossaryKeyLabel(key)) + '</span>' +
+              '<span class="glossary-rail-count">' + count + '</span>';
+            header.addEventListener("click", () => {
+              glossaryExpandedKey = isKeyExpanded ? null : key;
+              renderGlossary();
+            });
+            item.appendChild(header);
+            if (isKeyExpanded) {
+              const innerBody = document.createElement("div");
+              innerBody.className = "glossary-accordion-body";
+              innerBody.appendChild(buildGlossaryCategoryEntries(key));
+              item.appendChild(innerBody);
+            }
+            subWrap.appendChild(item);
+          });
+          groupItem.appendChild(subWrap);
         }
-        wrap.appendChild(item);
+        wrap.appendChild(groupItem);
       });
       return wrap;
     }

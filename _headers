@@ -4,8 +4,29 @@
 /coat-of-arms/*
   Cache-Control: public, max-age=31536000, immutable
 
+/og-image.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=31536000, immutable
+
 /*.png
   Cache-Control: public, max-age=31536000, immutable
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Cache-Control: public, max-age=3600
+
+/sites/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/glossary/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/lordships/*
+  Cache-Control: public, max-age=3600, must-revalidate
 
 /index.html
   Cache-Control: public, max-age=0, must-revalidate

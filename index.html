@@ -10,12 +10,49 @@
   <meta name="theme-color" content="#f1e6cd" />
   <title>Kingdom of Jerusalem — A Crusader Atlas of the Holy Land</title>
   <meta name="description" content="An interactive atlas of Crusader castles, towns, and fortifications across the medieval Kingdom of Jerusalem and the surrounding Latin East." />
+  <link rel="canonical" href="https://crusaderatlas.com/" />
   <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta property="og:title" content="Kingdom of Jerusalem — A Crusader Atlas of the Holy Land" />
   <meta property="og:description" content="Interactive map of Crusader castles, towns, and fortifications across the medieval Holy Land." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://crusaderatlas.com/" />
+  <meta property="og:site_name" content="Crusader Atlas" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://crusaderatlas.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Hand-drawn map of the Crusader Kingdom of Jerusalem and the Latin East" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kingdom of Jerusalem — A Crusader Atlas of the Holy Land" />
+  <meta name="twitter:description" content="Interactive map of Crusader castles, towns, and fortifications across the medieval Holy Land." />
+  <meta name="twitter:image" content="https://crusaderatlas.com/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Crusader Atlas",
+    "alternateName": "Kingdom of Jerusalem — A Crusader Atlas of the Holy Land",
+    "url": "https://crusaderatlas.com/",
+    "description": "An interactive atlas of Crusader castles, towns, and fortifications across the medieval Kingdom of Jerusalem and the surrounding Latin East, 1099–1291.",
+    "inLanguage": "en"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Map",
+    "name": "Kingdom of Jerusalem — A Crusader Atlas of the Holy Land",
+    "url": "https://crusaderatlas.com/",
+    "mapType": "https://schema.org/VenueMap",
+    "description": "Hand-curated historical map of Crusader-era sites — castles, churches, fortified towns, battles, and routes — across the Kingdom of Jerusalem and neighboring Latin states (1099–1291).",
+    "about": {
+      "@type": "Place",
+      "name": "Kingdom of Jerusalem",
+      "description": "Medieval Crusader state founded after the First Crusade in 1099, ending with the fall of Acre in 1291."
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IM+Fell+DW+Pica+SC&family=Spectral:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -1797,15 +1834,34 @@
        search. Music + sound are hidden globally on mobile (see ≤820 block).
        Tablet (721-820 px) keeps the single-row layout. */
     @media (max-width: 720px) {
-      .topbar { flex-wrap: wrap; row-gap: 6px; padding: 8px 10px; position: relative; top: 0; left: 0; right: auto; }
-      .brand { position: absolute; top: 8px; left: 10px; z-index: 1; }
-      .brand-cross { width: 24px; height: 24px; }
+      /* Two-row topbar: row 1 = brand + nav buttons as one tight left-aligned
+         cluster; row 2 = full-width search. The brand was previously
+         position:absolute and the controls had flex:1 1 100% / justify-content:
+         flex-end, which stranded the icon at the left and the buttons at the
+         right with empty air between. Now both sit in the flex flow. */
+      .topbar {
+        flex-wrap: wrap;
+        align-items: center;
+        column-gap: 8px;
+        row-gap: 6px;
+        padding: 8px 10px;
+        position: relative;
+        top: 0; left: 0; right: auto;
+      }
+      .brand {
+        position: static;
+        flex: 0 0 auto;
+        order: 0;
+        gap: 0;
+        padding-right: 0;
+        border-right: 0;
+      }
+      .brand-cross { width: 28px; height: 28px; }
       .controls {
         order: 1;
-        flex: 1 1 100%;
+        flex: 0 1 auto;
         gap: 6px;
-        justify-content: flex-end;
-        min-height: 28px;
+        justify-content: flex-start;
       }
       .search {
         order: 2;
@@ -1838,6 +1894,14 @@
   </style>
 </head>
 <body>
+  <noscript>
+    <div style="max-width:760px;margin:2rem auto;padding:1.5rem;font-family:Georgia,serif;color:#2a1a0b;background:#f7efd9;border:1px solid #e3d4ae;line-height:1.55;">
+      <h1 style="font-family:'Cinzel',serif;margin:0 0 0.5rem;">Kingdom of Jerusalem — A Crusader Atlas of the Holy Land</h1>
+      <p>An interactive, hand-curated atlas of Crusader-era sites — castles, churches, fortified towns, battles, and routes — across the Kingdom of Jerusalem and neighbouring Latin states, 1099–1291.</p>
+      <p>The map and search require JavaScript. Please enable it, or visit <a href="https://crusaderatlas.com/">crusaderatlas.com</a> in a modern browser.</p>
+      <p>The atlas covers Crusader castles such as Krak des Chevaliers, Belvoir, Montfort, and Kerak; the cities of Jerusalem, Acre, Antioch, Tripoli, and Edessa; the major battles of Hattin, Arsuf, and La Forbie; and the Military Orders of the Templars, Hospitallers, and Teutonic Knights.</p>
+    </div>
+  </noscript>
   <div id="map"></div>
   <div class="sheet-scrim" id="sheet-scrim" aria-hidden="true"></div>
 
@@ -5561,6 +5625,45 @@
     if (window.matchMedia && window.matchMedia("(max-width: 820px)").matches) {
       document.getElementById("legend").classList.add("collapsed");
     }
+
+    // Deep-link handler: ?site=, ?entry=, ?fief= open the matching detail
+    // panel on load. The static landing pages under /sites/, /glossary/, and
+    // /lordships/ link here so a search-engine click round-trips into the
+    // live atlas. Slug must match build_landing_pages.js's slugify().
+    (() => {
+      const params = new URLSearchParams(location.search);
+      const toSlug = (s) => String(s || "").toLowerCase()
+        .normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .replace(/['’‘]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+
+      const siteSlug = params.get("site");
+      const entrySlug = params.get("entry");
+      const fiefSlug = params.get("fief");
+
+      if (siteSlug) {
+        const row = DATA.find(r => r && r.canonical_name && toSlug(r.canonical_name) === siteSlug);
+        if (row) {
+          if (typeof row.lat === "number" && typeof row.lon === "number") {
+            map.flyTo([row.lat, row.lon], Math.max(map.getZoom(), 11), { duration: 0.7 });
+          }
+          openDetail(row);
+        }
+        return;
+      }
+
+      if (entrySlug) {
+        const entry = GLOSSARY.find(e => e && e.id === entrySlug);
+        if (entry) openGlossaryEntryAuto(entry);
+        return;
+      }
+
+      if (fiefSlug && typeof LORDSHIPS !== "undefined" && LORDSHIPS && LORDSHIPS.features) {
+        const f = LORDSHIPS.features.find(ft => ft && ft.properties && toSlug(ft.properties.name) === fiefSlug);
+        if (f) openFiefDetail(f.properties);
+      }
+    })();
   </script>
 </body>
 </html>

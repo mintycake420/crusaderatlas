@@ -3960,6 +3960,15 @@
       interactive: false,
       className: "lordship-raster",
     });
+    [[lordshipsTopLayer, "lordships-top.png"], [lordshipsBottomLayer, "lordships-bottom.png"]].forEach(([layer, pngFallback]) => {
+      layer.on("error", function () {
+        const img = layer.getElement();
+        if (img && !img.dataset.fallbackTried) {
+          img.dataset.fallbackTried = "1";
+          img.src = pngFallback;
+        }
+      });
+    });
     const lordshipsLayer = L.layerGroup([lordshipsTopLayer, lordshipsBottomLayer]);
 
     // Invisible clickable polygons on top of the PNG overlay
@@ -5680,7 +5689,7 @@
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/sw.js").catch(() => {});
+        setTimeout(() => navigator.serviceWorker.register("/sw.js").catch(() => {}), 3000);
       });
     }
   </script>

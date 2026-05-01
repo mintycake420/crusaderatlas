@@ -5,15 +5,12 @@
 //   everything else (tiles, unpkg, fonts) → network passthrough (their own caches handle it)
 //
 // Bump CACHE_VERSION whenever you ship a breaking change to this file.
-const CACHE_VERSION = "atlas-v1";
+const CACHE_VERSION = "atlas-v2";
 const HTML_CACHE = CACHE_VERSION + "-html";
 const ASSET_CACHE = CACHE_VERSION + "-assets";
 
-self.addEventListener("install", (event) => {
+self.addEventListener("install", () => {
   self.skipWaiting();
-  event.waitUntil(
-    caches.open(HTML_CACHE).then((c) => c.add("/"))
-  );
 });
 
 self.addEventListener("activate", (event) => {
@@ -37,6 +34,7 @@ function isHtmlRequest(req, url) {
 
 function isAssetRequest(url) {
   const path = url.pathname;
+  if (/^\/lordships-(top|bottom)\.(webp|png)$/i.test(path)) return false;
   if (path.startsWith("/fortress-pics/") || path.startsWith("/coat-of-arms/")) return true;
   return /\.(png|webp|jpe?g|svg|ico)$/i.test(path);
 }

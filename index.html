@@ -1506,11 +1506,14 @@
       background: rgba(42, 26, 11, 0.55);
       z-index: 1500;
       display: grid;
-      place-items: center;
+      place-items: safe center;
       padding: 24px;
       opacity: 0;
       pointer-events: none;
       transition: opacity 260ms ease;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
     }
     .intro-wrap.open { opacity: 1; pointer-events: auto; }
     .intro {

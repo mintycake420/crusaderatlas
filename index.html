@@ -4254,15 +4254,7 @@
       if (row.image) {
         const imgWrap = document.createElement("div");
         imgWrap.className = "detail-image";
-        const isRemote = /^https?:\/\//i.test(row.image);
-        const imgSrc = isRemote
-          ? row.image
-          : "fortress-pics/" + encodeURIComponent(row.image).replace(/%2F/g,'/');
-        const webpSrc = isRemote ? null : imgSrc.replace(/\.(jpe?g|png)$/i, '.webp');
-        const imgTag = `<img src="${imgSrc}" alt="${escapeHtml(row.canonical_name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('.detail-image').style.display='none'" />`;
-        imgWrap.innerHTML = (webpSrc && webpSrc !== imgSrc)
-          ? `<picture><source type="image/webp" srcset="${webpSrc}">${imgTag}</picture>`
-          : imgTag;
+        imgWrap.innerHTML = buildDetailImageMarkup(row.image, row.canonical_name);
         body.appendChild(imgWrap);
       }
 
@@ -4444,12 +4436,7 @@
         if (fief.photo) {
           const ph = document.createElement("div");
           ph.className = "detail-image";
-          const phSrc = "fortress-pics/" + encodeURIComponent(fief.photo);
-          const phWebp = phSrc.replace(/\.(jpe?g|png)$/i, '.webp');
-          const phImg = '<img src="' + phSrc + '" alt="' + escapeHtml(props.name || '') + '" loading="lazy" decoding="async" onerror="this.closest(\'.detail-image\').style.display=\'none\'" />';
-          ph.innerHTML = (phWebp !== phSrc)
-            ? '<picture><source type="image/webp" srcset="' + phWebp + '">' + phImg + '</picture>'
-            : phImg;
+          ph.innerHTML = buildDetailImageMarkup(fief.photo, props.name || "");
           body.appendChild(ph);
         }
 
@@ -4552,17 +4539,7 @@
       if (ruler.image_url) {
         const imgWrap = document.createElement("div");
         imgWrap.className = "detail-image ruler-portrait";
-        const isRemote = /^https?:\/\//i.test(ruler.image_url);
-        const imgSrc = isRemote
-          ? ruler.image_url
-          : "fortress-pics/" + encodeURIComponent(ruler.image_url).replace(/%2F/g, '/');
-        const webpSrc = isRemote ? null : imgSrc.replace(/\.(jpe?g|png)$/i, '.webp');
-        const imgTag = '<img src="' + imgSrc + '" alt="' + escapeHtml(ruler.name) +
-          '" loading="lazy" decoding="async" referrerpolicy="no-referrer" ' +
-          'onerror="this.closest(\'.detail-image\').style.display=\'none\'" />';
-        imgWrap.innerHTML = (webpSrc && webpSrc !== imgSrc)
-          ? '<picture><source type="image/webp" srcset="' + webpSrc + '">' + imgTag + '</picture>'
-          : imgTag;
+        imgWrap.innerHTML = buildDetailImageMarkup(ruler.image_url, ruler.name);
         body.appendChild(imgWrap);
       }
 
@@ -4722,17 +4699,7 @@
       if (entry.image_url) {
         const imgWrap = document.createElement("div");
         imgWrap.className = "detail-image ruler-portrait";
-        const isRemote = /^https?:\/\//i.test(entry.image_url);
-        const imgSrc = isRemote
-          ? entry.image_url
-          : "fortress-pics/" + encodeURIComponent(entry.image_url).replace(/%2F/g, '/');
-        const webpSrc = isRemote ? null : imgSrc.replace(/\.(jpe?g|png)$/i, '.webp');
-        const imgTag = '<img src="' + imgSrc + '" alt="' + escapeHtml(entry.name) +
-          '" loading="lazy" decoding="async" referrerpolicy="no-referrer" ' +
-          'onerror="this.closest(\'.detail-image\').style.display=\'none\'" />';
-        imgWrap.innerHTML = (webpSrc && webpSrc !== imgSrc)
-          ? '<picture><source type="image/webp" srcset="' + webpSrc + '">' + imgTag + '</picture>'
-          : imgTag;
+        imgWrap.innerHTML = buildDetailImageMarkup(entry.image_url, entry.name);
         body.appendChild(imgWrap);
       }
 
@@ -4805,15 +4772,19 @@
     function glossaryThumbHtml(entry) {
       if (!entry.image_url) return GLOSSARY_BOOK_SVG;
       const isRemote = /^https?:\/\//i.test(entry.image_url);
-      const src = isRemote
-        ? entry.image_url
-        : "fortress-pics/" + encodeURIComponent(entry.image_url).replace(/%2F/g, '/');
-      const webp = isRemote ? src : src.replace(/\.(jpe?g|png)$/i, '.webp');
-      const imgTag = '<img class="glossary-thumb" src="' + src + '" alt="" loading="lazy" decoding="async" ' +
+      if (isRemote) {
+        return '<img class="glossary-thumb" src="' + entry.image_url +
+          '" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" ' +
+          'onerror="this.outerHTML = window.__glossaryBookSvg || \'\'" />';
+      }
+      // Glossary thumbs render at ~24-48 CSS px; the -400 derivative is the
+      // smallest variant we ship and is plenty.
+      const src = "fortress-pics/" + encodeURIComponent(entry.image_url).replace(/%2F/g, '/');
+      const webp400 = src.replace(/\.(jpe?g|png)$/i, '-400.webp');
+      const fb400 = src.replace(/\.(jpe?g|png)$/i, function(m) { return '-400' + m.toLowerCase(); });
+      const imgTag = '<img class="glossary-thumb" src="' + fb400 + '" alt="" loading="lazy" decoding="async" ' +
         'onerror="this.outerHTML = window.__glossaryBookSvg || \'\'" />';
-      return (webp !== src)
-        ? '<picture><source type="image/webp" srcset="' + webp + '">' + imgTag + '</picture>'
-        : imgTag;
+      return '<picture><source type="image/webp" srcset="' + webp400 + '">' + imgTag + '</picture>';
     }
 
     function openGlossaryEntryAuto(entry) {
@@ -5058,6 +5029,34 @@
         .replace(/'/g, "&#39;");
     }
 
+    // Build the <picture>/<img> markup for a detail-panel photograph.
+    // Local images get four sources: on mobile (<=820 px) we *always* serve
+    // the 400-px derivative regardless of DPR -- a slight quality dip on
+    // retina is the explicit trade for the bandwidth win on cellular. On
+    // desktop the browser picks between 400w and the full file by DPR.
+    // Remote URLs (Wikimedia etc.) stay a bare <img>, no derivatives exist.
+    function buildDetailImageMarkup(imageRef, alt) {
+      const isRemote = /^https?:\/\//i.test(imageRef);
+      const altEsc = escapeHtml(alt || "");
+      if (isRemote) {
+        return '<img src="' + imageRef + '" alt="' + altEsc +
+          '" loading="lazy" decoding="async" referrerpolicy="no-referrer"' +
+          ' onerror="this.parentElement.style.display=\'none\'" />';
+      }
+      const src = "fortress-pics/" + encodeURIComponent(imageRef).replace(/%2F/g, '/');
+      const webpFull = src.replace(/\.(jpe?g|png)$/i, '.webp');
+      const webp400 = src.replace(/\.(jpe?g|png)$/i, '-400.webp');
+      const fb400 = src.replace(/\.(jpe?g|png)$/i, function(m) { return '-400' + m.toLowerCase(); });
+      return '<picture>' +
+        '<source media="(max-width: 820px)" type="image/webp" srcset="' + webp400 + '">' +
+        '<source media="(max-width: 820px)" srcset="' + fb400 + '">' +
+        '<source type="image/webp" srcset="' + webp400 + ' 400w, ' + webpFull + ' 1200w" sizes="400px">' +
+        '<img src="' + fb400 + '" srcset="' + fb400 + ' 400w, ' + src + ' 1200w" sizes="400px"' +
+        ' alt="' + altEsc + '" loading="lazy" decoding="async"' +
+        ' onerror="this.closest(\'.detail-image\').style.display=\'none\'" />' +
+        '</picture>';
+    }
+
     // ----- Road detail panel (click on a pilgrim/trade route) ---------------
     function openRoadDetail(props) {
       if (!props || !(props.name || props.short)) return;
@@ -5109,20 +5108,13 @@
       body.scrollTop = 0;
       panel.scrollTop = 0;
 
-      // Route photograph or manuscript illumination (if available). Same
-      // local-vs-remote handling as openDetail.
+      // Route photograph or manuscript illumination (if available).
       if (props.image) {
         const imgWrap = document.createElement("div");
         imgWrap.className = "detail-image";
-        const isRemote = /^https?:\/\//i.test(props.image);
-        const imgSrc = isRemote
-          ? props.image
-          : "fortress-pics/" + encodeURIComponent(props.image).replace(/%2F/g, '/');
-        const webpSrc = isRemote ? null : imgSrc.replace(/\.(jpe?g|png)$/i, '.webp');
-        const imgTag = `<img src="${imgSrc}" alt="${escapeHtml(props.short || props.name || "Medieval route")}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('.detail-image').style.display='none'" />`;
-        imgWrap.innerHTML = (webpSrc && webpSrc !== imgSrc)
-          ? `<picture><source type="image/webp" srcset="${webpSrc}">${imgTag}</picture>`
-          : imgTag;
+        imgWrap.innerHTML = buildDetailImageMarkup(
+          props.image, props.short || props.name || "Medieval route"
+        );
         body.appendChild(imgWrap);
       }
 

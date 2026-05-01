@@ -13,6 +13,7 @@
   <link rel="canonical" href="https://crusaderatlas.com/" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
   <meta property="og:title" content="Kingdom of Jerusalem — A Crusader Atlas of the Holy Land" />
   <meta property="og:description" content="Interactive map of Crusader castles, towns, and fortifications across the medieval Holy Land." />
   <meta property="og:type" content="website" />
@@ -55,7 +56,15 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IM+Fell+DW+Pica+SC&family=Spectral:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://basemaps.cartocdn.com" crossorigin>
+  <link rel="dns-prefetch" href="https://a.basemaps.cartocdn.com">
+  <link rel="dns-prefetch" href="https://b.basemaps.cartocdn.com">
+  <link rel="dns-prefetch" href="https://c.basemaps.cartocdn.com">
+  <link rel="dns-prefetch" href="https://d.basemaps.cartocdn.com">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IM+Fell+DW+Pica+SC&family=Spectral:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IM+Fell+DW+Pica+SC&family=Spectral:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IM+Fell+DW+Pica+SC&family=Spectral:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap"></noscript>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" integrity="sha384-pmjIAcz2bAn0xukfxADbZIb3t8oRT9Sv0rvO+BR5Csr6Dhqq+nZs59P0pPKQJkEV" crossorigin="anonymous" />
   <style>
@@ -5211,9 +5220,14 @@
     syncLayers();
 
     // ----- UI wiring --------------------------------------------------------
+    let qFilterTimer;
     document.getElementById("q").addEventListener("input", (e) => {
-      filterState.q = e.target.value;
-      applyFilters();
+      const v = e.target.value;
+      clearTimeout(qFilterTimer);
+      qFilterTimer = setTimeout(() => {
+        filterState.q = v;
+        applyFilters();
+      }, 120);
     });
     // Small helper so the mobile Filters and Layers drawers don't stack on
      // top of each other — opening one closes the other.
@@ -5291,13 +5305,19 @@
     (function () {
       const searchEl = document.getElementById("glossary-search");
       if (!searchEl) return;
-      searchEl.addEventListener("input", (e) => {
-        glossarySearchQuery = e.target.value || "";
+      let timer;
+      const apply = (v) => {
+        glossarySearchQuery = v;
         renderGlossary();
+      };
+      searchEl.addEventListener("input", (e) => {
+        const v = e.target.value || "";
+        clearTimeout(timer);
+        timer = setTimeout(() => apply(v), 150);
       });
       searchEl.addEventListener("search", (e) => {
-        glossarySearchQuery = e.target.value || "";
-        renderGlossary();
+        clearTimeout(timer);
+        apply(e.target.value || "");
       });
     })();
     document.getElementById("detail-close").addEventListener("click", closeDetail);
@@ -5656,6 +5676,13 @@
         if (f) openFiefDetail(f.properties);
       }
     })();
+  </script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/sw.js").catch(() => {});
+      });
+    }
   </script>
 </body>
 </html>

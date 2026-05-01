@@ -1,0 +1,25 @@
+{
+  "name": "Crusader Atlas",
+  "short_name": "Crusader Atlas",
+  "description": "Interactive historical atlas of Crusader-era sites in the Kingdom of Jerusalem and neighboring Latin states, 1099-1291.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f1e6cd",
+  "theme_color": "#f1e6cd",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1629,6 +1629,11 @@
       white-space: nowrap;
     }
     .intro-support a:hover { opacity: 0.75; }
+    .intro .mobile-only { display: none; }
+    @media (max-width: 820px) {
+      .intro .desktop-only { display: none; }
+      .intro .mobile-only { display: block; }
+    }
     .intro .btn { font-size: 13px; padding: 10px 20px; }
     .intro .btn.primary {
       background: var(--ink);
@@ -2026,20 +2031,27 @@
       <button class="intro-close-x" id="intro-close-x" type="button" aria-label="Close">×</button>
       <div class="intro-eyebrow">An atlas of the Latin East</div>
       <h1>Kingdom of <span>Jerusalem</span></h1>
-      <p class="blurb">
+      <p class="blurb desktop-only">
         Between 1099 and 1291, a network of crusader states held the
         eastern Mediterranean, a region known to them as Outremer. At its
         center stood the Kingdom of Jerusalem, the crown jewel of western
         Christendom. Its frontier was built in stone — castles, walled
         towns, and watchtowers strung along ridge and coast.
       </p>
-      <p class="blurb">
+      <p class="blurb desktop-only">
         CrusaderAtlas attempts to map that world onto the present. Every
         fortress, church, and battlefield is placed on a modern map, with
         each location carefully curated: who held it, when it fell, and
         what remains. Open a marker to explore further — full accounts,
         links to Wikipedia, and, where possible, photographs of the site
         as it stands today.
+      </p>
+      <p class="blurb mobile-only">
+        Between 1099 and 1291, the crusader states held a fortified
+        frontier across the eastern Mediterranean — a region known to
+        them as Outremer. CrusaderAtlas places every castle, church,
+        and battlefield on a modern map. Tap a marker for the full
+        account, Wikipedia links, and photographs of what survives today.
       </p>
       <ul>
         <li>⛫ Capital cities (Jerusalem, Acre &amp; Tyre)</li>
@@ -2050,13 +2062,13 @@
         <li>⚔ Battles (open-field engagements)</li>
         <li>🏰 Sieges (assaults on fortifications)</li>
       </ul>
-      <p class="blurb" style="margin-top:14px">
+      <p class="blurb desktop-only" style="margin-top:14px">
         Explore the kingdom through its layers. Trace the twenty-two
         baronies that shaped its political landscape, follow the battles
         and sieges that defined its history, or move along the pilgrim and
         trade routes that sustained it.
       </p>
-      <p class="blurb">
+      <p class="blurb desktop-only">
         Most histories of the Crusader states unfold on the page, where
         geography becomes abstract and details become muddled. Here, it
         does not. Every name has a coordinate, every campaign has a route,

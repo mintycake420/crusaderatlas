@@ -5,7 +5,7 @@
 //   everything else (tiles, unpkg, fonts) → network passthrough (their own caches handle it)
 //
 // Bump CACHE_VERSION whenever you ship a breaking change to this file.
-const CACHE_VERSION = "atlas-v3";
+const CACHE_VERSION = "atlas-v4";
 const HTML_CACHE = CACHE_VERSION + "-html";
 const ASSET_CACHE = CACHE_VERSION + "-assets";
 

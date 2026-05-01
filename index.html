@@ -1609,6 +1609,23 @@
       border-bottom: 1px dotted var(--muted);
     }
     .intro-actions a:hover { color: var(--red-oxide); border-color: var(--red-oxide); }
+    .intro-support {
+      font-family: "Spectral", serif;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      text-align: center;
+      margin: 4px 0 18px;
+      opacity: 0.85;
+    }
+    .intro-support a {
+      color: var(--red-oxide);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--red-oxide);
+      transition: opacity 120ms ease;
+      white-space: nowrap;
+    }
+    .intro-support a:hover { opacity: 0.75; }
     .intro .btn { font-size: 13px; padding: 10px 20px; }
     .intro .btn.primary {
       background: var(--ink);
@@ -2046,6 +2063,9 @@
       </p>
       <p class="blurb" style="margin-top:10px; font-style:italic; opacity:0.78;">
         What survives, where it stood.
+      </p>
+      <p class="intro-support">
+        CrusaderAtlas is free and ad-free. If it's been useful to you, you can support its upkeep at <a href="https://ko-fi.com/yotamkatz" target="_blank" rel="noopener noreferrer">☕ ko-fi.com/yotamkatz</a>.
       </p>
       <div class="intro-actions">
         <a id="intro-dismiss-forever">Don't show again</a>
@@ -3817,6 +3837,10 @@
       opacity: 0.5,
       pane: "shadowPane",
     }).addTo(map);
+
+    map.attributionControl.addAttribution(
+      '<a href="https://ko-fi.com/yotamkatz" target="_blank" rel="noopener noreferrer" title="Support CrusaderAtlas on Ko-fi">♥ Support</a>'
+    );
 
     map.createPane("lordshipsPane");
     map.getPane("lordshipsPane").style.zIndex = 360;

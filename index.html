@@ -1176,6 +1176,13 @@
       margin-top: 5px;
       opacity: 0.75;
     }
+    /* Invisible wide hitbox layered above each pilgrim route so finger-taps
+       within ~12 px of the line still register on the route, not on the
+       fiefdom polygon below. pointer-events: stroke is required because the
+       SVG default (visiblePainted) ignores opacity-0 strokes. !important is
+       needed to beat Leaflet's `.leaflet-pane > svg path.leaflet-interactive`
+       rule which forces pointer-events: auto. */
+    .road-hitbox { pointer-events: stroke !important; cursor: pointer; }
     /* Road-route tag in the detail panel. */
     .tag.tag-road {
       color: #6a2f10;
@@ -4868,6 +4875,7 @@
     });
     const roadsMainLayer = L.geoJSON(ROADS, {
       pane: "roadsPane",
+      interactive: false,
       style: (feat) => ({
         color: (feat.properties && feat.properties.color) || "#8a3a16",
         weight: ROAD_WEIGHT,
@@ -4876,34 +4884,52 @@
         lineCap: "round",
         lineJoin: "round",
       }),
-      onEachFeature: (feature, layer) => {
+    });
+    // Wide invisible hitbox so taps within a finger's width of the route
+    // win the hit-test against the fiefdom polygon underneath. Click, hover
+    // and tooltip all live here; the visible main layer is purely cosmetic.
+    const roadsHitboxLayer = L.geoJSON(ROADS, {
+      pane: "roadsPane",
+      style: () => ({
+        color: "#000",
+        weight: 24,
+        opacity: 0,
+        lineCap: "round",
+        lineJoin: "round",
+        className: "road-hitbox",
+      }),
+      onEachFeature: (feature, hitLayer) => {
         const p = feature.properties || {};
         const label = p.short || p.name || "Medieval route";
         const note = p.summary ? "<br><span class=\"road-tooltip-note\">" + p.summary + "</span>" : "";
-        layer.bindTooltip("<strong>" + label + "</strong>" + note + "<br><span class=\"road-tooltip-hint\">click for full history</span>", {
+        hitLayer.bindTooltip("<strong>" + label + "</strong>" + note + "<br><span class=\"road-tooltip-hint\">click for full history</span>", {
           sticky: true,
           direction: "top",
           className: "road-tooltip",
           opacity: 0.95,
         });
-        layer.on("click", (e) => {
+        let visibleLayer = null;
+        roadsMainLayer.eachLayer((ml) => {
+          if (ml.feature && ml.feature.properties && ml.feature.properties.name === p.name) {
+            visibleLayer = ml;
+          }
+        });
+        hitLayer.on("click", (e) => {
           L.DomEvent.stopPropagation(e);
           openRoadDetail(p);
-          // Drop focus from the SVG path so the browser's focus outline
-          // doesn't paint a black rectangle around the route.
           const el = e.target.getElement && e.target.getElement();
           if (el && el.blur) el.blur();
         });
-        layer.on("mouseover", (e) => {
-          e.target.setStyle({ weight: ROAD_HOVER_WEIGHT, opacity: 1.0 });
+        hitLayer.on("mouseover", (e) => {
+          if (visibleLayer) visibleLayer.setStyle({ weight: ROAD_HOVER_WEIGHT, opacity: 1.0 });
           if (e.target.getElement()) e.target.getElement().style.cursor = "pointer";
         });
-        layer.on("mouseout", (e) => {
-          e.target.setStyle({ weight: ROAD_WEIGHT, opacity: 0.95 });
+        hitLayer.on("mouseout", () => {
+          if (visibleLayer) visibleLayer.setStyle({ weight: ROAD_WEIGHT, opacity: 0.95 });
         });
       },
     });
-    const roadsLayer = L.layerGroup([roadsHaloLayer, roadsMainLayer]);
+    const roadsLayer = L.layerGroup([roadsHaloLayer, roadsMainLayer, roadsHitboxLayer]);
 
     // ----- Build markers ----------------------------------------------------
     const cluster = L.markerClusterGroup({

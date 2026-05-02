@@ -1513,7 +1513,7 @@
       pointer-events: none;
       transition: opacity 260ms ease;
       overflow-y: auto;
-      overscroll-behavior: contain;
+      overscroll-behavior: none;
       -webkit-overflow-scrolling: touch;
     }
     .intro-wrap.open { opacity: 1; pointer-events: auto; }
@@ -5593,8 +5593,16 @@
       document.getElementById("legend").classList.toggle("collapsed");
     });
 
-    function openIntro() { document.getElementById("intro-wrap").classList.add("open"); }
-    function closeIntro() { document.getElementById("intro-wrap").classList.remove("open"); }
+    function openIntro() {
+      const w = document.getElementById("intro-wrap");
+      w.scrollTop = 0;
+      w.classList.add("open");
+    }
+    function closeIntro() {
+      const w = document.getElementById("intro-wrap");
+      w.classList.remove("open");
+      setTimeout(() => { w.scrollTop = 0; }, 320);
+    }
     document.getElementById("intro-close").addEventListener("click", () => { SoundFX.parchmentClose(); closeIntro(); });
     document.getElementById("intro-close-x").addEventListener("click", () => { SoundFX.parchmentClose(); closeIntro(); });
     document.getElementById("about-btn").addEventListener("click", openIntro);

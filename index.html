@@ -1375,6 +1375,89 @@
     .wiki-row a:hover::before { color: var(--vellum-light); }
 
     /* ---------- Legend ---------- */
+    .cartouche {
+      position: absolute;
+      top: 86px;
+      left: 56px;
+      z-index: 500;
+      width: 282px;
+      background: linear-gradient(180deg, var(--vellum-light), var(--vellum));
+      border: 1px solid var(--muted-line);
+      box-shadow: var(--panel-shadow);
+      border-radius: 4px;
+      padding: 12px 16px 14px;
+      pointer-events: auto;
+    }
+    .cartouche::before {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px solid var(--muted-line-soft);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .cartouche-toggle {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--sepia);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      border-radius: 3px;
+      z-index: 1;
+    }
+    .cartouche-toggle:hover { background: rgba(122, 75, 29, 0.08); }
+    .cartouche-chevron {
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      line-height: 1;
+      transition: transform 200ms ease;
+      display: inline-block;
+    }
+    .cartouche.collapsed .cartouche-chevron { transform: rotate(-90deg); }
+    .cartouche-eyebrow {
+      position: relative;
+      font-family: "IM Fell DW Pica SC", "Spectral", serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      margin-bottom: 6px;
+    }
+    .cartouche-title {
+      position: relative;
+      font-family: "Cinzel", serif;
+      font-weight: 600;
+      font-size: 13.5px;
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+      color: var(--ink);
+      margin: 0;
+      padding-right: 24px;
+    }
+    .cartouche-body {
+      position: relative;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--muted-line-soft);
+    }
+    .cartouche-caption {
+      font-family: "Spectral", serif;
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+    .cartouche.collapsed .cartouche-body { display: none; }
+    .cartouche.collapsed { padding-bottom: 12px; }
+    .cartouche-btn { display: none; }
+
     .legend {
       position: absolute;
       bottom: 28px;
@@ -1656,8 +1739,10 @@
       html, body { overscroll-behavior-y: none; }
 
       .topbar { flex-wrap: nowrap; gap: 8px; padding: 8px 10px; align-items: center; }
-      .brand { display: inline-flex; flex: 0 0 auto; gap: 0; padding: 0; border-right: 0; }
-      .brand-text { display: none; }
+      .brand { display: inline-flex; flex: 0 0 auto; gap: 6px; padding: 0; border-right: 0; align-items: center; }
+      .brand-text { display: flex; }
+      .brand .title { font-size: 12.5px; letter-spacing: 0.08em; }
+      .brand .subtitle { display: none; }
       .brand-cross { width: 28px; height: 28px; }
       .search { flex: 1; min-width: 0; }
       /* 16px prevents iOS Safari (and a few older Android browsers) from
@@ -1753,9 +1838,30 @@
       }
       .layers.open { display: block; }
 
-      /* Visible close "×" on both drawers. */
+      /* Cartouche: hide the always-on desktop card and expose it as a
+         drawer opened by the (i) topbar button. Same pattern as Layers. */
+      .cartouche {
+        position: fixed;
+        top: calc(var(--topbar-h, 72px) + 8px);
+        left: 10px;
+        right: 10px;
+        width: auto;
+        max-width: none;
+        max-height: calc(100vh - var(--topbar-h, 72px) - 24px);
+        overflow: auto;
+        padding-top: 36px;
+        display: none;
+        z-index: 1100;
+      }
+      .cartouche.open { display: block; }
+      .cartouche-toggle { display: none; }
+      .cartouche.collapsed .cartouche-body { display: block; }
+      .cartouche-btn { display: inline-flex; align-items: center; justify-content: center; }
+
+      /* Visible close "×" on the drawers. */
       .filters .panel-close,
-      .layers .panel-close { display: grid; }
+      .layers .panel-close,
+      .cartouche .panel-close { display: grid; }
 
       /* Touch-sized rows for every checkbox label we show in floating
          panels. Hit target is a full-width 44px row; the 14×14 checkbox
@@ -1887,11 +1993,12 @@
       }
       .brand {
         position: static;
-        flex: 0 0 auto;
+        flex: 1 1 100%;
         order: 0;
-        gap: 0;
+        gap: 8px;
         padding-right: 0;
         border-right: 0;
+        justify-content: center;
       }
       .brand-cross { width: 28px; height: 28px; }
       .controls {
@@ -1910,7 +2017,7 @@
 
     /* ---------- Small phones (≤ 420 px) ---------- */
     @media (max-width: 420px) {
-      .brand .title { font-size: 18px; }
+      .brand .title { font-size: 11.5px; letter-spacing: 0.06em; }
       .topbar { gap: 6px; }
       .btn { padding: 6px 9px; font-size: 11px; }
       /* Peek shows the bottom 68vh on small phones; sheet itself stays 100vh
@@ -1946,7 +2053,7 @@
     <div class="brand">
       <img class="brand-cross" src="fortress-pics/jerusalem_cross.png" width="38" height="38" alt="" aria-hidden="true" />
       <div class="brand-text">
-        <div class="title">Kingdom of Jerusalem</div>
+        <div class="title">Kingdom of Jerusalem c. 1165</div>
         <div class="subtitle">A Crusader Atlas of the Holy Land</div>
       </div>
     </div>
@@ -1959,6 +2066,13 @@
       <button class="btn" id="filter-btn">Filters</button>
       <button class="btn mobile-only" id="layers-btn">Layers</button>
       <button class="btn" id="about-btn">About</button>
+      <button class="btn mobile-only cartouche-btn" id="cartouche-btn" type="button" title="Map context" aria-label="Map context">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <line x1="12" y1="11" x2="12" y2="17"></line>
+          <circle cx="12" cy="7.5" r="1" fill="currentColor" stroke="none"></circle>
+        </svg>
+      </button>
       <button class="btn" id="music-btn" title="Play background music" aria-label="Toggle music">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M9 18V5l12-2v13"></path>
@@ -1975,6 +2089,18 @@
       </button>
     </div>
   </header>
+
+  <aside class="cartouche" id="cartouche" role="region" aria-label="Map epoch and scope">
+    <button class="panel-close cartouche-close" id="cartouche-close" type="button" aria-label="Close map context">×</button>
+    <button class="cartouche-toggle" id="cartouche-toggle" type="button" aria-expanded="true" aria-controls="cartouche-body" aria-label="Toggle map context">
+      <span class="cartouche-chevron" aria-hidden="true">▾</span>
+    </button>
+    <div class="cartouche-eyebrow">c. 1165</div>
+    <h2 class="cartouche-title">The Kingdom of Jerusalem at Its Greatest Territorial &amp; Feudal Reach</h2>
+    <div class="cartouche-body" id="cartouche-body">
+      <p class="cartouche-caption">This view represents the Kingdom of Jerusalem at its widest practical reach in the mid-12th century, including royal domains, major lordships, dependent or vassal territories, and contested frontier zones. Boundaries are approximate and reflect spheres of rule, homage, fortification, and influence rather than modern borders.</p>
+    </div>
+  </aside>
 
   <aside class="filters" id="filters" role="dialog" aria-modal="true" aria-label="Filters">
     <button class="panel-close" id="filters-close" type="button" aria-label="Close filters">×</button>
@@ -3039,6 +3165,510 @@
         wiki_he_url: ""
       },
       {
+        id: "albert-of-aachen",
+        name: "Albert of Aachen",
+        category: "people",
+        subcategory: "chroniclers",
+        see_also: ["fulcher-of-chartres", "first-crusade"],
+        era: "fl. c. 1100 – c. 1158",
+        also_known_as: ["Albertus Aquensis", "Albert of Aix"],
+        short: "German cleric of Aachen whose Historia Ierosolimitana, compiled from the testimony of returning pilgrims, preserves the fullest surviving account of the People's Crusade and the eastern campaign of 1097–99.",
+        body: [
+          "Albert was a canon of the cathedral of Aachen who, by his own admission, never set foot in the East. He worked his Historia Ierosolimitana up between roughly 1125 and 1150 from the spoken accounts of returning Crusaders and from now-lost written sources, and he writes with the unguarded enthusiasm of a man who envied the men he interviewed.",
+          "What makes the Historia indispensable is its coverage. Where Fulcher of Chartres and Raymond of Aguilers each follow a single contingent, Albert pulls in material from across the whole expedition — most importantly the disastrous People's Crusade led by Peter the Hermit, for which he is the principal source, and the long siege of Antioch, where his details often correct or supplement the eyewitness chronicles.",
+          "Modern scholarship has rehabilitated Albert from the dismissive judgement of nineteenth-century editors, who treated him as a fabulist; he is now read as a careful compiler whose Latin is plain, whose chronology is mostly sound, and whose preservation of otherwise lost oral tradition makes him a foundational text for any account of the First Crusade."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Passages_d%27outremer_Fr5594%2C_fol._19r%2C_Concile_de_Clermont.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Albert_of_Aachen",
+        wiki_he_url: "https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%91%D7%A8%D7%98_%D7%9E%D7%90%D7%90%D7%9B%D7%9F"
+      },
+      {
+        id: "raymond-of-aguilers",
+        name: "Raymond of Aguilers",
+        category: "people",
+        subcategory: "chroniclers",
+        see_also: ["fulcher-of-chartres", "albert-of-aachen", "first-crusade"],
+        era: "fl. 1090s – c. 1105",
+        also_known_as: ["Raimundus de Aguilers", "Raimond d'Aguilers"],
+        short: "Provençal chaplain to Raymond IV of Toulouse and the principal eyewitness for the southern French contingent on the First Crusade — chiefly remembered as the believer-in-chief of the Holy Lance found at Antioch.",
+        body: [
+          "Raymond was a canon of Le Puy who joined the crusade in the entourage of his namesake count Raymond IV of Toulouse, and served on the road as chaplain to both the count and the papal legate Adhémar of Le Puy. With the death of Adhémar at Antioch in 1098 he became one of the senior Provençal clerics on the expedition and a participant at every major decision of the southern leadership.",
+          "His Historia Francorum qui ceperunt Iherusalem, written in the East and finished shortly after the capture of Jerusalem in 1099, is the chief source for the southern French part of the crusade — the long march down the Syrian coast under Raymond IV, the trial-by-fire of Peter Bartholomew, and above all the discovery of the Holy Lance buried in the cathedral of St Peter at Antioch, of which Raymond was a true believer and most insistent witness.",
+          "The text is partial, devout, and often visionary, and modern historians read it precisely for its un-edited Provençal perspective: Raymond saw the crusade as a pilgrimage led by miracles, and his Historia is the freshest record of how that view was held by the men who lived through it."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Holy_Lance_Antioch.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Raymond_of_Aguilers",
+        wiki_he_url: ""
+      },
+      {
+        id: "anna-komnene",
+        name: "Anna Komnene",
+        category: "people",
+        subcategory: "chroniclers",
+        see_also: ["first-crusade"],
+        era: "1083 – 1153",
+        also_known_as: ["Anna Comnena", "Anna Komnena"],
+        short: "Byzantine princess and historian whose Alexiad — the biography of her father, Emperor Alexios I — gives the only sustained narrative of the First Crusade's passage through Constantinople from a Greek point of view.",
+        body: [
+          "Anna was the eldest daughter of Alexios I Komnenos and Irene Doukaina, born in the imperial purple chamber in 1083 and raised at the heart of the Byzantine court. She was an exceptionally educated woman — read in Aristotle, Homer, and the Church Fathers — and after the failure of her plot to secure the throne for her husband on her father's death she retired to the monastery of Kecharitomene, where in old age she composed the Alexiad.",
+          "The Alexiad covers her father's reign from 1081 to 1118 in fifteen books, and devotes its tenth and eleventh to the arrival of the First Crusade in 1096–97. Her sketches of the western leaders are unforgettable: Bohemond of Taranto, whom she clearly admired and feared, is rendered as a heroic giant whose blue eyes 'concealed an immense amount of guile'; Godfrey of Bouillon and the rest emerge mostly as quarrelsome barbarians whom her father had to bribe past Constantinople by careful turns.",
+          "The book is a Greek aristocratic eulogy of a beloved father, openly partisan and shaped by classical models — but it is the only contemporary view of the crusade from the receiving end, and the foundation for everything we know about Byzantine policy toward the Latin east in the years before the Crusader states took shape."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/b/bb/Anna_Komnene.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Anna_Komnene",
+        wiki_he_url: "https://he.wikipedia.org/wiki/%D7%90%D7%A0%D7%94_%D7%A7%D7%95%D7%9E%D7%A0%D7%A0%D7%94"
+      },
+      {
+        id: "ibn-al-qalanisi",
+        name: "Ibn al-Qalanisi",
+        category: "people",
+        subcategory: "chroniclers",
+        see_also: ["usama-ibn-munqidh", "ibn-al-athir", "second-crusade"],
+        era: "c. 1071 – 1160",
+        also_known_as: ["Abu Ya'la Hamza ibn al-Asad ibn al-Qalanisi"],
+        short: "Damascene chancery secretary and twice mayor of his city, whose Continuation of the Chronicle of Damascus is the principal Muslim contemporary source for the First and Second Crusades.",
+        body: [
+          "Ibn al-Qalanisi came from an established Damascene family and was educated in literature, law, and the chancery hand. He served as head of the city's diwan and was elected ra'is — mayor — of Damascus on two occasions, which placed him at the centre of its political life through the long years when Damascus stood between the Crusader states and the Zengid drive to Sunni reunification.",
+          "His Dhayl Tarikh Dimashq — literally a 'continuation' of the older history of Hilal al-Sabi — runs from 1056 to within months of his death in 1160 and is the only Muslim chronicle written in Syria during the lifetime of the First Crusade. He records the Frankish capture of Jerusalem, the long Frankish-Damascene struggle on the upper Yarmuk, the failed Crusader siege of Damascus in 1148, and the rise of Nur al-Din with the dispassionate eye of a city secretary who watched the world change at his desk.",
+          "Translated into English by H. A. R. Gibb in 1932 as The Damascus Chronicle of the Crusades, his work is now indispensable for any serious history of the twelfth-century Levant — Gibb singled out his rare habit of recording the day of the week along with the date as an unusually conscientious chronological practice for the period."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Umayyad_Mosque%2C_Damascus.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Ibn_al-Qalanisi",
+        wiki_he_url: ""
+      },
+      {
+        id: "ibn-al-athir",
+        name: "Ibn al-Athir",
+        category: "people",
+        subcategory: "chroniclers",
+        see_also: ["ibn-al-qalanisi", "imad-ad-din-al-isfahani", "baha-ad-din-ibn-shaddad", "third-crusade", "saladin"],
+        era: "1160 – 1233",
+        also_known_as: ["Izz ad-Din Abu al-Hasan Ali ibn Muhammad al-Jazari"],
+        short: "Mosul-born universal historian whose al-Kamil fi'l-Tarikh is the standard Sunni history of the central Middle Ages and the principal Muslim narrative of Hattin, the Third Crusade, and the early Ayyubid years.",
+        body: [
+          "Ibn al-Athir was born in 1160 at Cizre on the upper Tigris into a scholarly family closely tied to the Zengid atabegs of Mosul. He moved to Mosul as a young man, studied widely in Baghdad, Damascus, and Aleppo, and travelled with Saladin's army on at least one campaign — though his dynastic loyalty to the Zengids gives his account of Saladin a coolness rare in the Arabic sources of the period.",
+          "His al-Kamil fi'l-Tarikh — 'The Complete History' — runs from the Creation to the year 1231 in eleven volumes and is the most ambitious universal chronicle in Arabic before Ibn Khaldun. For the period 1097 to 1231 he is the indispensable Muslim narrative source, weighing alongside Ibn al-Qalanisi for the First Crusade, alongside Imad ad-Din and Baha ad-Din for the era of Saladin, and standing largely alone for the early Ayyubid succession crises that followed.",
+          "He died at Mosul in 1233, where his tomb survived as a local shrine until it was bulldozed by ISIS in 2014. D. S. Richards' three-volume English translation of the crusading sections of the Kamil (2006–08) is now the standard reference for Anglophone readers."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/7/76/Battle_of_Cresson.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Ali_ibn_al-Athir",
+        wiki_he_url: ""
+      },
+      {
+        id: "imad-ad-din-al-isfahani",
+        name: "Imad ad-Din al-Isfahani",
+        category: "people",
+        subcategory: "chroniclers",
+        see_also: ["baha-ad-din-ibn-shaddad", "ibn-al-athir", "third-crusade", "saladin"],
+        era: "1125 – 1201",
+        also_known_as: ["Muhammad ibn Muhammad ibn Hamid al-Katib", "'Imad al-Din al-Katib"],
+        short: "Saladin's Persian-born chancery secretary and panegyrist; his al-Fath al-Qussi fi'l-Fath al-Qudsi is the closest surviving inside account of the 1187 campaign and the recovery of Jerusalem.",
+        body: [
+          "Imad ad-Din was born in Isfahan in 1125 to a family of Persian scholar-officials, and studied law in Baghdad before being drawn into the Zengid administration of Nur al-Din. After Nur al-Din's death he transferred his service to Saladin in 1175, and for the rest of his life accompanied the sultan on virtually every campaign, drafting state correspondence in the magnificent rhymed prose for which his Arabic was already famous.",
+          "Of his many works, two stand at the heart of crusading studies. The Barq al-Shami ('Syrian Lightning'), a contemporary diary of Saladin's wars in seven books, survives only in fragments — but those fragments contain Imad ad-Din's own eyewitness description of the Battle of Hattin, the negotiations for Jerusalem in October 1187, and the entry of the sultan into the city. The al-Fath al-Qussi fi'l-Fath al-Qudsi ('The Eloquent Conquest of the Conquest of Jerusalem'), written in the months immediately after, expands those passages into a sustained, ornate, sometimes bewilderingly elaborate official history of the campaign.",
+          "His chancery prose can frustrate modern readers — he loved a triple synonym and a buried Quranic allusion — but the Fath al-Qussi gives us the recapture of Jerusalem in the words of the man who wrote Saladin's letters."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/a/aa/%27Imad_al-Din_Muhammad_bin_Muhammad_bin_Hamid_al-Katib_al-Isfahani_%28d.1201%29%3B_Tarikh_al-Barq_al-Bana%2C_Mamluk_Syria%2C_15th_century.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Imad_ad-Din_al-Isfahani",
+        wiki_he_url: ""
+      },
+      {
+        id: "baha-ad-din-ibn-shaddad",
+        name: "Baha ad-Din ibn Shaddad",
+        category: "people",
+        subcategory: "chroniclers",
+        see_also: ["imad-ad-din-al-isfahani", "ibn-al-athir", "third-crusade", "saladin"],
+        era: "1145 – 1234",
+        also_known_as: ["Baha al-Din Yusuf ibn Rafi ibn Shaddad", "Bohadinus"],
+        short: "Saladin's intimate companion, qadi of his army from 1188, and author of the Sirat Salah ad-Din — the eyewitness biography written by the man who slept in the sultan's tent through the Third Crusade.",
+        body: [
+          "Baha ad-Din was born at Mosul in 1145, studied law at the Nizamiyya of Baghdad, and rose to a teaching chair in his home city before the king of Mosul sent him on embassy to Saladin in 1188. The sultan, who had read his earlier book on the religious obligation of jihad, recruited him on the spot as qadi al-askar — chief judge of the army — and from then until Saladin's death in 1193 the two men were rarely apart.",
+          "His Sirat Salah ad-Din, composed in the 1220s after long years as qadi of Aleppo, is the warmest of the medieval Arabic biographies of any sultan. It records the Battle of Hattin, the long siege of Acre, and the negotiations of the Treaty of Jaffa with Richard the Lionheart from inside the command tent, with affectionate close-up details: Saladin praying through the small hours in the saddle, weeping at news of his lieutenants' deaths, refusing to retire to comfort while his men suffered in the lines.",
+          "The book is partisan — its purpose is praise — but Baha ad-Din was a sharp lawyer and his testimony on dates, troop movements, and the texts of letters has stood up to seven centuries of cross-checking. His memoir is read alongside Imad ad-Din's Fath al-Qussi as the foundation pair of Muslim sources for Saladin's reign."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/5/5a/BOHADINUS%2C_Yusuf_ibn_Raffi_ibn_Shaddad%2C_known_as_%281145-1234%29._Vita_et_res_gestae_Sultani%2C_almalichi_alnasiri%2C_Saladini._Edited_and_translated_by_Albert_Schultens._Leiden%3B_Samuel_Luchtmans%2C_1732.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Baha_al-Din_ibn_Shaddad",
+        wiki_he_url: ""
+      },
+      {
+        id: "ernoul",
+        name: "Ernoul",
+        category: "people",
+        subcategory: "chroniclers",
+        see_also: ["eracles", "william-of-tyre", "saladin"],
+        era: "fl. 1180s",
+        also_known_as: ["Ernoul of Ibelin"],
+        short: "Squire to Balian of Ibelin and the eyewitness Frankish voice for the Hattin year — his Old French chronicle, surviving inside the later Chronique d'Ernoul et de Bernard le Trésorier, is the partisan but indispensable counterweight to the Latin sources for 1187.",
+        body: [
+          "Almost nothing is known about Ernoul beyond what he tells us himself: that he was a young squire in the household of Balian of Ibelin, that he was at the rearguard with his master at the disaster of Hattin in July 1187, and that he was present at the surrender of Jerusalem to Saladin three months later. Some scholars have tentatively identified him with the later Frankish lord Arneis of Gibelet; others doubt this. He survives, like a great many medieval witnesses, only as the voice of his own pages.",
+          "The text he wrote is now embedded in a longer composite chronicle, the Chronique d'Ernoul et de Bernard le Trésorier, but the Hattin section preserves the perspective of the Ibelin party — sympathetic to Raymond III of Tripoli and his peace policy, harshly critical of Reynald of Châtillon and the new King Guy whom they blamed for the catastrophe. It is also the source for some of the unforgettable particulars of that summer: the True Cross carried into the field on the morning of the battle, the prisoners stripped and roped together in the heat, the long bargaining over the ransoms in besieged Jerusalem.",
+          "Ernoul's chronicle was reworked into Old French and used by the continuators of William of Tyre as the backbone of their account of the years 1184–1228, which means that through this anonymous squire the partisan Ibelin reading of the Hattin disaster shaped most of what later medieval Europe believed about it."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/c/c6/BalianofIbelin1490.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Ernoul",
+        wiki_he_url: ""
+      },
+      {
+        id: "jacques-de-vitry",
+        name: "Jacques de Vitry",
+        category: "people",
+        subcategory: "chroniclers",
+        see_also: ["fifth-crusade", "pullani"],
+        era: "c. 1160/70 – 1240",
+        also_known_as: ["James of Vitry", "Jacobus de Vitriaco"],
+        short: "Bishop of Acre during the Fifth Crusade, later cardinal, and author of the Historia Orientalis — the most ambitious and most quoted thirteenth-century western description of the Latin East.",
+        body: [
+          "Jacques de Vitry was a French theologian and famous preacher of the school of Paris who was elected bishop of Acre in 1214 and consecrated two years later. He arrived to find his diocese in the disordered state which his Historia later made notorious — Italian merchant communes at each other's throats in the streets, parishioners speaking a babel of European tongues, and what he saw as a worldly Frankish nobility that had lost the crusading edge of its grandparents.",
+          "He preached the Fifth Crusade across Italy and France, marched with the army to Damietta in 1218, witnessed Francis of Assisi's celebrated visit to the camp of the Sultan al-Kamil, and is the source for many of the best stories of that strange and unsuccessful expedition. His vivid Latin letters from Acre and Damietta, addressed to friends in Europe, are themselves among the most readable primary sources of the thirteenth-century east.",
+          "The Historia Orientalis, written in two main books in the years after his return, is part history of the Holy Land from the rise of Islam, part ethnographic survey of its peoples — Franks, Greeks, Syrians, Pullani, Bedouin, the eastern Christian sects — and part moral indictment of the failures of the kingdom. It became one of the most widely read western texts on the Levant in the later Middle Ages and is the principal thirteenth-century narrative source for the Latin East before the loss of Acre in 1291."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Seal_of_James_of_Vitry.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Jacques_de_Vitry",
+        wiki_he_url: ""
+      },
+      {
+        id: "templar-of-tyre",
+        name: "Templar of Tyre",
+        category: "people",
+        subcategory: "chroniclers",
+        see_also: ["eracles", "ernoul"],
+        era: "fl. c. 1255 – c. 1320",
+        also_known_as: ["Templier de Tyr", "the Anonymous of Tyre"],
+        short: "Anonymous Frankish secretary in Acre and Cyprus whose chronicle of the years 1243–1314 forms the third part of the Gestes des Chiprois — the eyewitness Frankish source for the fall of Acre in 1291 and the dissolution of the Templars.",
+        body: [
+          "The unnamed author known to scholarship as the 'Templar of Tyre' was born about 1255 to a Frankish family of Tyre, and spent his career as a secretary in the service first of Guillaume de Beaujeu, the last grand master of the Temple to die in the East, and afterwards of the kings of Cyprus. He was not himself a Templar — the title is a misnomer fastened on him by his nineteenth-century editor — but he was Beaujeu's confidant, present at the master's death on the walls of Acre on 18 May 1291, and one of the very few literate Franks who escaped the city alive.",
+          "His chronicle, written in Old French in Cyprus between about 1315 and 1320, was later attached as the third part of the composite Gestes des Chiprois ('Deeds of the Cypriots'). It covers the years 1243 to 1314 and is the eyewitness Frankish source for the slow contraction of the kingdom under Mamluk pressure — the loss of Tripoli in 1289, the collapse of Acre two years later, the refugee resettlement on Cyprus — and concludes with the trial and burning of the Templar leadership in Paris in 1314, news of which reached him in Famagusta from the West.",
+          "Brusque, factual, and written from the inside of a defeated administration, his account is the irreplaceable Frankish witness to the end of the kingdom of Jerusalem."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/1/1b/SiegeOfAcre1291.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Templar_of_Tyre",
+        wiki_he_url: ""
+      },
+      {
+        id: "saewulf",
+        name: "Sæwulf",
+        category: "people",
+        subcategory: "travellers-christian",
+        see_also: ["fulcher-of-chartres", "first-crusade"],
+        era: "fl. 1102 – 1103",
+        also_known_as: ["Saewulf", "Sewulf"],
+        short: "Anglo-Saxon Christian pilgrim — possibly an English merchant turned monk — whose Latin account of his pilgrimage to Jerusalem in 1102–03 is the earliest western traveller's description of the Latin kingdom in its founding years.",
+        body: [
+          "Sæwulf is known only from his own Relatio de peregrinatione ad Hierosolymam et Terram Sanctam, a brief Latin pilgrimage account that he probably composed at Malmesbury Abbey on his return. Internal details suggest a former English merchant who took the cowl in middle age — William of Malmesbury appears to refer to such a man — and who undertook the journey to atone for the sins of his trading life.",
+          "He sailed from Monopoli in Apulia in July 1102, was nearly wrecked in the harbour of Jaffa as he disembarked, and walked up to Jerusalem along the road Baldwin I had only just secured. His description of the city is one of the earliest after the Crusader conquest: he records the Holy Sepulchre with its temporary roof, the still-ruined buildings on the Temple Mount, the springs and gates, and the wider holy geography from Bethlehem and Bethany down to Jericho and the Jordan, walked at his own slow pace.",
+          "His return voyage in May 1103 — eight weeks fighting contrary winds along the coast of Asia Minor before reaching Constantinople — is the other half of the value of his text: a vivid eyewitness reminder that the maritime infrastructure on which the kingdom would depend was, in those first years, still a precarious thing."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Uppsala_map_of_Jerusalem.jpg/1280px-Uppsala_map_of_Jerusalem.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Saewulf",
+        wiki_he_url: ""
+      },
+      {
+        id: "daniel-the-traveller",
+        name: "Daniel the Traveller",
+        category: "people",
+        subcategory: "travellers-christian",
+        see_also: ["saewulf", "first-crusade"],
+        era: "fl. 1106 – 1108",
+        also_known_as: ["Daniel of Kiev", "Daniel the Pilgrim", "Igumen Daniel"],
+        short: "Russian Orthodox abbot of Chernigov whose long Hozhdenie ('Journey') is the earliest surviving travel narrative in Old East Slavic and the most detailed early-twelfth-century pilgrimage account of the Holy Land.",
+        body: [
+          "Daniel was the abbot (igumen) of a small monastery in Kievan Rus' — probably in the Chernigov principality, though the identification is not secure — who travelled to the Latin kingdom of Jerusalem about 1106 and stayed for sixteen months. He was received in person by King Baldwin I, was given a candle to place at Christ's tomb on behalf of 'all the Russian Land', and was permitted to inspect the Holy Sepulchre during the Easter ceremony of the Holy Fire — for which he is the earliest detailed western witness.",
+          "His Khozhdenie (Old East Slavic for 'a going') is the earliest surviving travel narrative in the Russian language. It is at once a route-book — distances in days, river crossings, the practical question of which roads were safe under Frankish patrol — and a working pilgrim's guide, with detailed reverent descriptions of the holy sites at Jerusalem, Bethlehem, Hebron, the Jordan, Galilee, and Mount Tabor.",
+          "Daniel is also a Russian historical witness for the texture of life in the early kingdom: his sympathetic but observant account of King Baldwin, of the Frankish patrol that escorted him to the Jordan, and of the small Greek and Russian Christian communities he met in the streets of Jerusalem make him an indispensable counterpoint to the Latin chronicles of the same years."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Saint_Andrew_of_Smolensk_%28center%29%2C_Daniel_the_Pilgrim_%28right%29_and_the_venerable_Nicetas_of_Medikion_%28left%29.jpg/960px-Saint_Andrew_of_Smolensk_%28center%29%2C_Daniel_the_Pilgrim_%28right%29_and_the_venerable_Nicetas_of_Medikion_%28left%29.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Daniel_the_Traveller",
+        wiki_he_url: ""
+      },
+      {
+        id: "rorgo-fretellus",
+        name: "Rorgo Fretellus",
+        category: "people",
+        subcategory: "travellers-christian",
+        see_also: ["fulcher-of-chartres", "john-of-wurzburg"],
+        era: "fl. c. 1119 – 1154",
+        also_known_as: ["Fretellus", "Rorgo of Nazareth"],
+        short: "Frankish-born canon of the Holy Sepulchre and later archdeacon of Nazareth and chancellor of Antioch, whose Liber locorum sanctorum was the most widely copied Latin pilgrim handbook of the kingdom's first century.",
+        body: [
+          "Fretellus was a northern French cleric who came east as a chaplain in the early years of the kingdom, served as a canon of the Holy Sepulchre, and rose through the patronage of the Antiochene court to become archdeacon of Nazareth and eventually chancellor of the Principality of Antioch.",
+          "His Latin Liber locorum sanctorum terre Iherusalem is not a personal travel diary but a synthesised topographic guide to the holy sites of Palestine, drawing on Jerome and the Latin pilgrimage tradition and supplemented by his own decades of residence. The work circulated widely in twelfth-century Europe, was translated into Old French and copied across more than a hundred manuscripts, and provided the textual backbone for many of the better-known later twelfth-century pilgrim guides — including those of John of Würzburg and Theoderich.",
+          "His career is itself a small portrait of the Frankish ecclesiastical world: a settled colonial clergyman who had walked the kingdom long enough to write its sites into a stable Latin shape, and whose handbook gave Western Europeans the working vocabulary in which they imagined the Holy Land for the next century and a half."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/en/9/95/Rorgo_Fretellus%2C_start.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Rorgo_Fretellus",
+        wiki_he_url: ""
+      },
+      {
+        id: "john-of-wurzburg",
+        name: "John of Würzburg",
+        category: "people",
+        subcategory: "travellers-christian",
+        see_also: ["theoderich", "rorgo-fretellus", "william-of-tyre"],
+        era: "fl. c. 1160 – 1170",
+        also_known_as: ["Johannes Wirziburgensis"],
+        short: "German priest from Würzburg whose Latin Descriptio Terrae Sanctae records what he saw in Jerusalem under King Amalric I, with a famously chauvinist insistence on the German contribution to the kingdom's history.",
+        body: [
+          "John of Würzburg was a Franconian priest who travelled to the Holy Land sometime in the 1160s and dedicated his Descriptio Terrae Sanctae to a friend at home named Dietrich. He paced the streets of Jerusalem with a guidebook (probably a copy of Fretellus) in hand, recording the inscriptions that decorated the Holy Sepulchre and the Templum Domini, the new church of St Mary Latin, and the buildings of the Hospital — the last in a passage that is still the basic source for the size and routine of the Hospitallers in their first headquarters.",
+          "What gives the text its peculiar interest is John's editorial intrusion. He noticed, with audible irritation, that the inscriptions and other monuments of the kingdom attributed the conquest of 1099 almost wholly to the French contingents and said nothing of the Germans who had marched and died with them — Godfrey of Bouillon being credited as a French rather than as a German leader. His Descriptio is in part a polemic intended to put the Germans back into the historical record of 1099.",
+          "He is therefore a useful corrective to William of Tyre's smoother official narrative: a Latin clergyman of the second generation, walking the same streets as his French colleagues but reading the kingdom's monuments from outside its dominant nationality."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/a/ac/John_of_W%C3%BCrzburg.PNG",
+        wiki_url: "https://en.wikipedia.org/wiki/John_of_W%C3%BCrzburg",
+        wiki_he_url: ""
+      },
+      {
+        id: "john-phokas",
+        name: "John Phokas",
+        category: "people",
+        subcategory: "travellers-christian",
+        see_also: ["anna-komnene", "saewulf"],
+        era: "fl. c. 1185",
+        also_known_as: ["Ioannes Phokas", "John Phocas"],
+        short: "Byzantine Greek pilgrim — formerly a soldier in the campaigns of Manuel I Komnenos, later a monk on Patmos — whose Ekphrasis is the principal twelfth-century Greek description of the Latin kingdom on the eve of Hattin.",
+        body: [
+          "John Phokas was a subject of the Byzantine Empire who had served as a soldier in the eastern campaigns of Emperor Manuel I Komnenos — accompanying the imperial army to the sea off Attaleia in 1166 — and who, in later life, retired to the monastery of St John on the island of Patmos, where his father had earlier become a monk. He undertook a pilgrimage to the Holy Land about 1185, two years before Hattin, and recorded it in a short Greek text known as the Ekphrasis or 'Concise Description'.",
+          "The Ekphrasis is the only sustained twelfth-century Greek account of pilgrimage to a Holy Land governed by Latins. Phokas describes the route from Antioch southwards down the coast — Latakia, Tortosa, Tripoli, Beirut, Sidon, Tyre — into Galilee and Jerusalem, naming the great Crusader fortresses along the way and pausing for sympathetic descriptions of the Greek-rite monasteries (Mar Sabas, the Cave of the Annunciation at Nazareth) that had survived under Frankish lordship.",
+          "His tone is that of a working Byzantine soldier-monk: short on doctrinal grievance and long on practical observation. The text gives us Greek eyes on the Latin kingdom in the last years before the catastrophe and is, alongside Anna Komnene's Alexiad and the Madaba Map, one of the basic Greek sources for the medieval geography of the Holy Land."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Madaba_map.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/John_Phokas",
+        wiki_he_url: ""
+      },
+      {
+        id: "theoderich",
+        name: "Theoderich",
+        category: "people",
+        subcategory: "travellers-christian",
+        see_also: ["john-of-wurzburg", "rorgo-fretellus"],
+        era: "fl. c. 1169 – 1174",
+        also_known_as: ["Theodericus", "Theoderic the Pilgrim"],
+        short: "German Christian pilgrim, probably a Bavarian monk, whose Libellus de Locis Sanctis is the most architecturally detailed surviving description of Jerusalem under the Latin kingdom.",
+        body: [
+          "Theoderich is one of those medieval authors known almost entirely through the prologue of his single surviving book. He was a German cleric — likely a monk and possibly to be identified with the bishop Theoderich of Würzburg — who travelled to the Holy Land between roughly 1169 and 1174 and afterwards composed the Libellus de Locis Sanctis as a memorial of what he had seen.",
+          "What sets him apart is his eye for buildings. He counted columns and bays in the Holy Sepulchre, transcribed inscriptions in the Templum Domini and Templum Salomonis, paced out the dimensions of the Templar headquarters and the Hospital, and produced a description so technically precise that nineteenth- and twentieth-century archaeologists used the text to reconstruct portions of the rotunda before its 1808 fire and reconstruction.",
+          "Read alongside John of Würzburg, his slightly earlier compatriot, Theoderich gives us the most concentrated documentary picture we possess of Jerusalem in the twenty years before Hattin — and the indispensable point of comparison against which the post-1187 Muslim-built city must be measured."
+        ],
+        image_url: "",
+        wiki_url: "https://en.wikipedia.org/wiki/Theoderich_(pilgrim)",
+        wiki_he_url: ""
+      },
+      {
+        id: "wilbrand-of-oldenburg",
+        name: "Wilbrand of Oldenburg",
+        category: "people",
+        subcategory: "travellers-christian",
+        see_also: ["fifth-crusade", "jacques-de-vitry"],
+        era: "c. 1180 – 1233",
+        also_known_as: ["Wilbrandus de Oldenburg"],
+        short: "German nobleman, future bishop of Paderborn and Utrecht, whose Itinerarium Terrae Sanctae of 1211–12 is a sober, well-informed account of the Latin East a generation before the Fifth Crusade.",
+        body: [
+          "Wilbrand was a younger son of the count of Oldenburg, a canon of Hildesheim cathedral, and a rising man at the court of Otto IV. In late 1211 he set out for the Latin East as part of an embassy commissioned by the German emperor and the king of Cyprus, and stayed long enough to inspect the principal cities of the kingdom and the Christian states of Cilician Armenia.",
+          "His Itinerarium Terrae Sanctae is the best surviving German pilgrim account of the third decade of the thirteenth century. He is informative on the recovery of Frankish life in Acre after Saladin, the harbour of Tyre, the great hospital at Acre, the customs of the Cypriot court, and — most usefully — on the fortifications and lordships of Cilician Armenia, which he traversed at considerable length.",
+          "On his return Wilbrand entered the imperial chancery, served as bishop of Paderborn from 1225 and of Utrecht from 1227, and was an important figure in the politics of the Lower Rhine until his death in 1233. The Itinerarium is the work of a young clerical diplomat with a careful eye for fortification, market, and harbour, and it is one of the basic narrative sources for the Latin East between the loss of Jerusalem and the Fifth Crusade."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/0/0b/SA_5043-Anno_1227._De_graaf_van_Gelre_en_de_heer_van_Amstel_in_het_Domkapittel_van_Utrecht.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Wilbrand_of_Oldenburg",
+        wiki_he_url: ""
+      },
+      {
+        id: "thietmar",
+        name: "Thietmar",
+        category: "people",
+        subcategory: "travellers-christian",
+        see_also: ["wilbrand-of-oldenburg", "fifth-crusade"],
+        era: "fl. 1217 – 1218",
+        also_known_as: ["Magister Thietmarus", "Thietmar the Pilgrim"],
+        short: "German pilgrim of unknown background whose Peregrinatio of 1217 is one of the few western accounts of an unauthorised journey through Ayyubid territory in the years just before the Fifth Crusade.",
+        body: [
+          "Thietmar — known only by his first name and the description Magister — was a learned German cleric who travelled overland through the Ayyubid sultanate to Sinai and the holy mountain of St Catherine in 1217, in the months before the Fifth Crusade arrived at Acre.",
+          "His Peregrinatio is a vivid pilgrim's narrative, distinguished from most western itineraries of the period by the fact that he travelled without official Frankish escort and crossed the inland frontier into Muslim territory. He records the Greek monastery of Mar Sabas in the Judean wilderness, the deserts south of the Dead Sea, the long and exhausting passage through Sinai to the monastery of St Catherine, the small Christian-Bedouin guides who took him from oasis to oasis, and the practicalities of pilgrimage at the very edge of Frankish reach.",
+          "His text is short, vivid, and for many of the places he describes the only surviving thirteenth-century western description — particularly for the Sinai monasteries and the Bedouin route from Hebron to Mount Sinai. Like Burchard of Mount Sion a generation later, Thietmar shows us a Holy Land much wider than the Frankish coastal kingdom."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/en/3/3c/Herzog_August_Bibliothek_Wolfenb%C3%BCttel%2C_Cod._Guelf._42.3_Aug._2%C2%B0%2C_folio_187r.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Thietmar_(pilgrim)",
+        wiki_he_url: ""
+      },
+      {
+        id: "burchard-of-mount-sion",
+        name: "Burchard of Mount Sion",
+        category: "people",
+        subcategory: "travellers-christian",
+        see_also: ["riccoldo-da-monte-di-croce", "templar-of-tyre"],
+        era: "fl. c. 1274 – 1284",
+        also_known_as: ["Burchardus de Monte Sion"],
+        short: "German Dominican friar whose Descriptio Terrae Sanctae, written from a base in the Mount Sion convent in Jerusalem in the 1270s, was the standard medieval guide to the Holy Land for the next two centuries.",
+        body: [
+          "Burchard was a German Dominican who arrived in the Latin East in 1274 and lived for nearly a decade in the Dominican convent on Mount Sion in Jerusalem — a remarkable position, since the city had been in Mamluk hands since 1244 and the friars there enjoyed only a precarious tolerance.",
+          "His Descriptio Terrae Sanctae, completed about 1283, is the most ambitious medieval Latin geographical treatment of the Holy Land. He organised the country into a series of sectors radiating from Acre as the centre point, walked them himself wherever possible, and recorded distances, settlements, churches, ruins, and the contemporary religious populations — Christian, Muslim, Jewish, Druze, Samaritan — of each. He was unusual for his fair-minded ethnography and for his realism about the political weakness of the residual Frankish coast.",
+          "The Descriptio circulated in over a hundred manuscripts in the late Middle Ages and remained the standard western reference book for the geography of the Holy Land down to the sixteenth century — read, copied, and quoted by every later pilgrim and crusading propagandist who needed an authoritative description of the land they hoped to recover."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/9/96/1283_Descriptio_Terrae_Sanctae.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Burchard_of_Mount_Sion",
+        wiki_he_url: ""
+      },
+      {
+        id: "riccoldo-da-monte-di-croce",
+        name: "Riccoldo da Monte di Croce",
+        category: "people",
+        subcategory: "travellers-christian",
+        see_also: ["burchard-of-mount-sion", "templar-of-tyre"],
+        era: "c. 1243 – 1320",
+        also_known_as: ["Riccoldo Pennini", "Ricoldo of Montecroce"],
+        short: "Florentine Dominican missionary and traveller whose Liber Peregrinationis records his long journey through the Holy Land, Mesopotamia, and Mongol-ruled Baghdad in the years on either side of the fall of Acre.",
+        body: [
+          "Riccoldo was a Tuscan Dominican from a family with property at Monte di Croce outside Florence. He entered the order at Santa Maria Novella in 1267 and was sent east in 1288 as part of the Dominican mission to convert the Muslims of the Mamluk and Ilkhanid worlds. He spent more than a decade in the East — much of it in Baghdad, by then a Mongol Ilkhanid city — and returned to Florence in about 1300.",
+          "His Liber Peregrinationis is the chief result of that journey. It records his pilgrimage through Acre, Galilee, the Templar fortresses of the coast, and the holy sites of Jerusalem before the city's loss in 1291; his ride through the Jazira to Mosul, Tabriz, and Baghdad; the cataclysmic news of the fall of Acre, which reached him in Mosul; and his sustained and unusually careful eyewitness study of contemporary Islamic religious practice. His later treatise Contra legem Sarracenorum — the most influential western refutation of Islam written in the high Middle Ages — was the direct fruit of those years.",
+          "Riccoldo is therefore a hinge figure: the last western pilgrim of any consequence to walk the Frankish kingdom before its end, and the principal European authority on Mamluk Islam for the generation that came after."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Ricoldo_de_montecroce_%26_nicolas_IV.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Riccoldo_da_Monte_di_Croce",
+        wiki_he_url: ""
+      },
+      {
+        id: "benjamin-of-tudela",
+        name: "Benjamin of Tudela",
+        category: "people",
+        subcategory: "travellers-jewish",
+        see_also: ["petachiah-of-regensburg", "yehuda-alharizi"],
+        era: "c. 1130 – 1173",
+        also_known_as: ["Binyamin mi-Tudela", "Benjamin ben Jonah"],
+        short: "Navarrese Jewish merchant whose Sefer ha-Massa'ot ('Book of Travels') of c. 1165–73 is the most ambitious medieval Hebrew geography of the Mediterranean, the Latin East, and the Jewish communities of every place between Tudela and Baghdad.",
+        body: [
+          "Benjamin was a Jewish merchant from the small Navarrese town of Tudela who, between roughly 1165 and 1173, undertook an exceptionally long journey across the Mediterranean and the central Islamic world — south through Christian Spain, across Provence, down the length of Italy, by ship through the Aegean to Constantinople, on through Cyprus to the Latin kingdom of Jerusalem, then overland through Syria, Mesopotamia, and as far as the borders of Persia, returning by sea by way of Egypt and Sicily.",
+          "His Sefer ha-Massa'ot — written in Hebrew, almost certainly in Tudela on his return — is the chief medieval Jewish source for the demography, leadership, and economic life of every Jewish community he visited along the way. It records the Jews of Marseilles, of Constantinople (where he is the first reliable witness to the size of the Karaite community), of Jerusalem (where he names two hundred Jews living in the city under Frankish rule), of Tiberias, Damascus, Aleppo, Mosul, and the great academies of Baghdad.",
+          "He was also a careful observer of the surrounding world: his descriptions of the Frankish kingdom, of the silk-weaving industry of Thebes, of the Crusader port of Acre, and of the political balance between the Latins and the Egyptian Fatimids in the years before Saladin make him one of the most useful single sources for the twelfth-century eastern Mediterranean — Jewish and Gentile alike."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/d/d8/Benjam%C3%ADn_de_Tudela_%28cropped%29.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Benjamin_of_Tudela",
+        wiki_he_url: "https://he.wikipedia.org/wiki/%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F_%D7%9E%D7%98%D7%95%D7%93%D7%9C%D7%94"
+      },
+      {
+        id: "petachiah-of-regensburg",
+        name: "Petachiah of Regensburg",
+        category: "people",
+        subcategory: "travellers-jewish",
+        see_also: ["benjamin-of-tudela", "samuel-ben-samson"],
+        era: "fl. c. 1170 – 1187",
+        also_known_as: ["Petachiah ben Yaakov", "Petahyah ha-Lavan"],
+        short: "Bavarian rabbi whose Sibbuv ('Circuit') describes a long Ashkenazi Jewish journey through Eastern Europe, Armenia, Mesopotamia, and the Holy Land in the years just before Hattin.",
+        body: [
+          "Petachiah was a learned rabbi of Regensburg whose elder brother Yitzhak was a prominent Tosafist scholar and whose own travels seem to have been undertaken partly in search of Jewish learning at distant academies and partly as private pilgrimage. He set out in the 1170s and his journey, recorded by a disciple after his return, traversed Bohemia, Poland, the Rus' principalities, the steppe lands of the Khazars, the kingdom of Armenia, the Tigris cities of Mosul and Baghdad, and the Holy Land itself.",
+          "His Sibbuv is short, irregular, and full of marvels — Petachiah was particularly interested in the burial places of biblical figures and rabbinic sages — but it is also the only twelfth-century Ashkenazi Jewish travel narrative we possess. He describes the Jewish academies of Baghdad with respectful awe, names the gaonim he met there, and on his arrival in Jerusalem records what he found of the Jewish community of the holy city in the last years of Frankish rule.",
+          "Petachiah is the natural complement to his slightly older Sephardi contemporary Benjamin of Tudela: a Jewish German pilgrim with different sources and a different temperament, walking many of the same roads in the same generation, and seeing the same Mediterranean Jewish world through the eyes of central European Ashkenazi piety."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Petachiah.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Petachiah_of_Regensburg",
+        wiki_he_url: "https://he.wikipedia.org/wiki/%D7%A4%D7%AA%D7%97%D7%99%D7%94_%D7%9E%D7%A8%D7%92%D7%A0%D7%A1%D7%91%D7%95%D7%A8%D7%92"
+      },
+      {
+        id: "samuel-ben-samson",
+        name: "Samuel ben Samson",
+        category: "people",
+        subcategory: "travellers-jewish",
+        see_also: ["yehuda-alharizi", "petachiah-of-regensburg"],
+        era: "fl. 1210",
+        also_known_as: ["Shmuel ben Shimshon"],
+        short: "French rabbi who accompanied a delegation of three hundred Provençal and English Jewish scholars to the Holy Land in 1210–11 and recorded their visits to the tombs of biblical and rabbinic figures across Galilee.",
+        body: [
+          "Samuel ben Samson was a rabbi of northern France who in 1210 took part in one of the most ambitious organised Jewish journeys of the medieval period — the so-called Aliyat ha-Sheloshmeʾot, the 'pilgrimage of the three hundred' English and French Tosafist scholars who set out for the Holy Land together. The motives of the group are not fully recovered, but the move was substantial enough to repopulate the Jewish communities of Acre and Jerusalem in the early years of the thirteenth century.",
+          "His brief Hebrew account is one of the chief witnesses to that journey. It records the route from the coast through Galilee, the visits the group paid to the traditional tombs of the prophets, patriarchs, and Talmudic sages — particularly at Meron, Tiberias, and the cluster of holy graves at Tzfat and the upper Hula — and the prayers said at each of them. The text is fragmentary and has only survived through later anthologies of Jewish travel literature, but it is the principal eyewitness Hebrew description of the Galilean tomb-pilgrimage tradition that became central to later Jewish piety.",
+          "Read alongside Yehuda Alharizi a few years later, Samuel gives us the working religious geography of Jewish Palestine just before the Khwarazmian and Mamluk catastrophes of the mid-thirteenth century."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/1/18/%D7%A8%D7%91%D7%99_%D7%A9%D7%9E%D7%95%D7%90%D7%9C_%D7%91%D7%A8_%D7%A9%D7%9E%D7%A9%D7%95%D7%9F_%D7%9E%D7%A9%D7%AA%D7%98%D7%97_%D7%A2%D7%9C_%D7%A7%D7%91%D7%A8_%D7%A6%D7%A4%D7%A0%D7%99%D7%94_%D7%94%D7%A0%D7%91%D7%99%D7%90.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Samuel_ben_Samson",
+        wiki_he_url: ""
+      },
+      {
+        id: "menachem-ben-peretz-of-hebron",
+        name: "Menachem ben Peretz of Hebron",
+        category: "people",
+        subcategory: "travellers-jewish",
+        see_also: ["nahmanides", "samuel-ben-samson"],
+        era: "fl. c. 1215",
+        also_known_as: ["Menachem ben Peretz the Hebronite"],
+        short: "Otherwise unknown thirteenth-century Jewish pilgrim from Hebron whose short Hebrew itinerary names the holy graves of the Galilee in some of the same terms used by his contemporaries Samuel ben Samson and Yehuda Alharizi.",
+        body: [
+          "Menachem ben Peretz is one of the medieval Jewish travellers we know only through the fragments of his own pen. The byname 'of Hebron' suggests he was a member of the small Jewish community that survived in the city around the Cave of the Patriarchs — perhaps a descendant of the families that had returned in the years immediately after Saladin's reopening of the holy sites to Jewish worship.",
+          "His brief Hebrew itinerary, preserved within the great anthologies of Jewish travel literature collected from the seventeenth century onward, lists the tombs of biblical and rabbinic figures from the upper Galilee down through Tiberias and the coastal plain, and includes some of the earliest surviving Hebrew descriptions of the holy graves of Meron and Safed. He travelled in roughly the same generation as Samuel ben Samson, and his short text is one of the principal companion pieces to the better-known accounts of the Aliyat ha-Sheloshmeʾot of 1210.",
+          "He is included here for the same reason every minor traveller of his century is — that the bare list of names, distances, and tomb-locations he wrote down constitutes for the medieval scholar a piece of indispensable factual ground on which the larger picture of Jewish life in thirteenth-century Palestine has been built."
+        ],
+        image_url: "",
+        wiki_url: "",
+        wiki_he_url: ""
+      },
+      {
+        id: "yehuda-alharizi",
+        name: "Yehuda Alharizi",
+        category: "people",
+        subcategory: "travellers-jewish",
+        see_also: ["benjamin-of-tudela", "samuel-ben-samson", "nahmanides"],
+        era: "1165 – 1225",
+        also_known_as: ["Judah al-Harizi", "Yehuda ben Shlomo Alharizi"],
+        short: "Castilian-born Hebrew poet, translator of Maimonides, and traveller whose rhymed-prose maqamat — the Tahkemoni — preserve a glittering eyewitness portrait of Jewish communities across Provence, Egypt, Syria, the Crusader kingdom, and Iraq in the early thirteenth century.",
+        body: [
+          "Alharizi was born in Toledo into the late efflorescence of Sephardi Hebrew letters, was educated in both Arabic and Hebrew literature, and made his early reputation as a translator: his Hebrew renderings of Maimonides' Guide for the Perplexed and of the Arabic maqamat of al-Hariri put two of the central works of Arabic-language Jewish thought into the hands of Ashkenazi Europe.",
+          "From about 1216 he travelled across the eastern Mediterranean, supporting himself as a poet and intermediary between rival Jewish patrons in Marseille, Alexandria, Cairo, Damascus, Aleppo, Mosul, and Baghdad. His great Hebrew rhymed-prose work, the Tahkemoni — fifty maqamat composed in the years of his travels — preserves vivid named portraits of the leading rabbinic and lay figures of every community he visited, the only literary source we have for many of them.",
+          "His comments on the Latin kingdom and on the Jewish community of Jerusalem in the brief window of restored Frankish access in the 1220s have made him one of the most cited single Hebrew witnesses for the early-thirteenth-century Latin East. He died in Aleppo in 1225, a few years before Frederick II's recovery of Jerusalem, and was the last great Sephardi traveller of his generation."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/8/85/Sefer_Refu%27_at_ha_Geviyah%2C_Judah_Al_Harizi.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Yehuda_Alharizi",
+        wiki_he_url: "https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%95%D7%93%D7%94_%D7%90%D7%9C%D7%97%D7%A8%D7%99%D7%96%D7%99"
+      },
+      {
+        id: "nahmanides",
+        name: "Nahmanides",
+        category: "people",
+        subcategory: "travellers-jewish",
+        see_also: ["yehuda-alharizi", "menachem-ben-peretz-of-hebron"],
+        era: "1194 – 1270",
+        also_known_as: ["Moses ben Nachman", "Ramban", "Bonastruc ça Porta"],
+        short: "Catalan rabbi, philosopher, and biblical commentator whose flight to the Holy Land in 1267 — after the Disputation of Barcelona — refounded the Jewish community of Jerusalem in the last years of the kingdom of Acre.",
+        body: [
+          "Nahmanides was the leading rabbinic scholar of thirteenth-century Catalonia: physician at Girona, author of a great Talmudic and biblical commentary, leader of the kabbalistic school of his city, and the rabbinic disputant chosen by James I of Aragon to defend Judaism in the famous public Disputation of Barcelona in 1263. The disputation went well enough for him to publish a polemical account of it that the Dominicans then prosecuted; in 1267 he sailed for the Holy Land and never returned.",
+          "He arrived at Acre in late August 1267 and went up to Jerusalem within the month. The Holy City had been all but emptied of Jews by the Khwarazmian sack of 1244 and the subsequent Mamluk wars; Nahmanides records in a famous letter to his son that on his arrival he could find only two Jewish dye-makers living in the city. He set about restoring synagogue worship — the so-called Ramban Synagogue in the Jewish Quarter is traditionally said to date from his refoundation — and presided over an embryonic community there for the rest of his life.",
+          "He died at Acre in 1270 at the age of seventy-six, and his last years are the principal hinge between the great age of medieval Sephardi Jewish learning and the small but continuous Jewish community of Mamluk Palestine that succeeded the Frankish kingdom."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/1/1f/Nahmanides_painting.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Nachmanides",
+        wiki_he_url: "https://he.wikipedia.org/wiki/%D7%9E%D7%A9%D7%94_%D7%91%D7%9F_%D7%A0%D7%97%D7%9E%D7%9F"
+      },
+      {
+        id: "ibn-jubayr",
+        name: "Ibn Jubayr",
+        category: "people",
+        subcategory: "travellers-muslim",
+        see_also: ["usama-ibn-munqidh", "ali-al-harawi", "saladin"],
+        era: "1145 – 1217",
+        also_known_as: ["Abu al-Husayn Muhammad ibn Ahmad ibn Jubayr al-Kinani"],
+        short: "Andalusian Arab traveller and secretary to the governor of Granada whose Rihla — the great twelfth-century Arabic travel diary — is the most quoted Muslim eyewitness account of the Crusader states at the height of Saladin's power.",
+        body: [
+          "Ibn Jubayr was an educated Andalusian, secretary to the Almohad governor of Granada, who in 1183 set out on a hajj that would take him by ship from Ceuta to Alexandria, overland through Cairo and the Red Sea to Mecca and Medina, and then back through Mesopotamia, Mosul, Aleppo, Damascus, and the Frankish-held Syrian coast — finally returning to Granada in April 1185 by way of Sicily.",
+          "His Rihla, the book of that journey, is the foundational Arabic travel narrative and one of the most quoted single sources for the twelfth-century Mediterranean. He is closely observed on the markets and customs duties of Frankish Acre and Tyre, on the surprising civility of the Crusader checkpoints he passed through, and on the social arrangements of mixed-religion frontier villages in the kingdom — material so vivid that almost every modern history of cultural contact in the Latin East quotes it.",
+          "His Rihla also founded a literary genre. Ibn Battuta in the fourteenth century imitates Ibn Jubayr; the Maghribi traveller-secretaries of the later Middle Ages took his form as their model. He undertook two further pilgrimages in old age and died at Alexandria in 1217 — the last of which voyages overlapped with the early movements of the Fifth Crusade."
+        ],
+        image_url: "",
+        wiki_url: "https://en.wikipedia.org/wiki/Ibn_Jubayr",
+        wiki_he_url: ""
+      },
+      {
+        id: "ali-al-harawi",
+        name: "Ali al-Harawi",
+        category: "people",
+        subcategory: "travellers-muslim",
+        see_also: ["ibn-jubayr", "saladin"],
+        era: "d. 1215",
+        also_known_as: ["Abu al-Hasan Ali ibn Abi Bakr al-Harawi"],
+        short: "Persian-born Sufi traveller and pilgrimage geographer whose Kitab al-Isharat — a guide to the holy graves and shrines of Islam — was compiled from a working life on the road across the central Islamic world, including the Crusader Levant.",
+        body: [
+          "Ali al-Harawi was a Persian-born Sufi from Herat who spent his life in motion across the central Islamic world — Egypt, the Maghrib, Syria, the Jazira, Iraq, Anatolia, and the holy cities — visiting the burial places of prophets, companions of the Prophet, and Sufi masters wherever he went. He moved through Frankish-held Syria more than once during the years of Saladin and the Third Crusade, and was a familiar figure at the courts of the Ayyubid princes of Aleppo and Damascus.",
+          "His Kitab al-Isharat ila Marifat al-Ziyarat ('Book of Indications for Knowledge of Pilgrimage Sites') is the systematic record of those decades of travel. It catalogues, region by region, the shrines and tombs that the medieval Muslim pilgrim was expected to visit — including those of biblical figures who were also venerated by Christians and Jews, which makes the book a unique cross-religious gazetteer of holy sites in twelfth-century Syria-Palestine.",
+          "Saladin's son al-Zahir Ghazi, ruler of Aleppo, became his patron in old age and built him a madrasa-mausoleum complex in the city, where al-Harawi died in 1215 and where his grave became itself a pilgrimage site. His career exemplifies the practical tolerance and learned mobility of the middle-period Islamic world that the Latin sources almost never quite see."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Aleppo_Citadel_01.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Ali_of_Herat",
+        wiki_he_url: ""
+      },
+      {
         id: "john-of-ibelin",
         name: "John of Ibelin",
         category: "people",
@@ -3187,6 +3817,168 @@
         image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Erhard_Reuwich_Sarazenen_1486.png/960px-Erhard_Reuwich_Sarazenen_1486.png",
         wiki_url: "https://en.wikipedia.org/wiki/Saracen",
         wiki_he_url: "https://he.wikipedia.org/wiki/%D7%A1%D7%A8%D7%A6%D7%A0%D7%99%D7%9D"
+      },
+      {
+        id: "fatimid-caliphate",
+        name: "Fatimid Caliphate",
+        category: "society",
+        subcategory: "polities",
+        see_also: ["seljuk-empire", "ayyubid-sultanate", "first-crusade"],
+        era: "909 – 1171",
+        also_known_as: ["al-Khilafa al-Fatimiyya", "Fatimid Egypt"],
+        short: "Shi'a Isma'ili caliphate based in Cairo whose loss of Jerusalem to the First Crusade and slow eclipse by Saladin set the political shape of the early Latin East.",
+        body: [
+          "Founded in 909 in Ifriqiya by 'Ubayd Allah al-Mahdi, the Fatimid imam-caliphate moved its capital to the new city of al-Qahira (Cairo) in 969 and at its height ruled North Africa, Egypt, the Hijaz, and much of Syria-Palestine. As Isma'ili Shi'a in a Sunni-majority world, the Fatimids built a sophisticated counter-caliphate against the Abbasids of Baghdad and at the time of the First Crusade had recovered Jerusalem from the Seljuks only in August 1098 — a year before the Franks took it from them.",
+          "The eleventh and twelfth centuries were the long Fatimid decline. Real power had passed from the imam-caliph to a succession of viziers, and the dynasty's military weakness on its Syrian frontier was a precondition for the unopposed Crusader settlement of the coast. Through the 1160s rival Frankish and Zengid expeditions repeatedly invaded a tottering Egypt for control of its tax revenue.",
+          "The end came when Saladin, sent originally as a Zengid lieutenant under his uncle Shirkuh, was installed as Fatimid vizier in 1169. Two years later, on the death of the last Fatimid caliph al-Adid in September 1171, he abolished the caliphate, restored Sunni allegiance to Baghdad, and so transformed Egypt from the strategic shelter of the Crusader states into the engine of their reconquest."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/b/bc/Fatimid_Caliphate.PNG",
+        wiki_url: "https://en.wikipedia.org/wiki/Fatimid_Caliphate",
+        wiki_he_url: "https://he.wikipedia.org/wiki/%D7%A4%D7%90%D7%98%D7%9E%D7%99%D7%9D"
+      },
+      {
+        id: "burid-dynasty",
+        name: "Burid Dynasty",
+        category: "society",
+        subcategory: "polities",
+        see_also: ["zengid-dynasty", "second-crusade", "ibn-al-qalanisi"],
+        era: "1104 – 1154",
+        also_known_as: ["Burid emirate", "atabegs of Damascus"],
+        short: "Turkic atabeg dynasty of Damascus that held the city as an independent buffer between the Crusader states and the rising Zengid power, ending in surrender to Nur ad-Din in 1154.",
+        body: [
+          "The Burids were founded by Toghtekin, a former Seljuk slave-soldier and atabeg of Damascus who took the city in his own name on the death of his nominal master in 1104. Through the next half-century the dynasty's rulers — Toghtekin, his son Buri, and the increasingly weak Mu'in ad-Din Unur — kept Damascus precariously independent in the gap between two larger powers, the Frankish kingdom to the south and the Zengid principality to the north.",
+          "Under Unur in the 1140s the Burid emirate signed open alliances with the Latin kingdom of Jerusalem against the Zengids, and it was the breakdown of that delicate balance that produced one of the kingdom's strangest moments — the Frankish siege of Damascus during the Second Crusade in July 1148, undertaken against a Damascene regime that had been a working ally only months before. The siege failed in four days, and the Burid leadership immediately reopened communications with Nur ad-Din.",
+          "Within six years the dynasty was finished. Nur ad-Din entered Damascus in April 1154 — by negotiation rather than storm — and absorbed the city into the Zengid principality. Ibn al-Qalanisi, secretary in the Burid chancery and twice ra'is of Damascus, lived through and recorded the whole period from inside the regime's last administration."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/8/87/Burids._Shihab_al-Din_Mahmud_%281135-1140%29_Dimashq_mint._Dated_AH_533_%28AD_1138-9%29.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Burid_dynasty",
+        wiki_he_url: ""
+      },
+      {
+        id: "zengid-dynasty",
+        name: "Zengid Dynasty",
+        category: "society",
+        subcategory: "polities",
+        see_also: ["burid-dynasty", "ayyubid-sultanate", "second-crusade", "saladin", "ibn-al-athir", "nur-ad-din", "zengi"],
+        era: "1127 – 1250",
+        also_known_as: ["Banu Zangi", "atabegs of Mosul and Aleppo"],
+        short: "Turkic Sunni dynasty of Mosul and Aleppo whose conquest of Edessa in 1144 triggered the Second Crusade and whose sponsorship of the rise of Saladin produced the unified Sunni state that would retake Jerusalem.",
+        body: [
+          "The dynasty was founded in 1127 when the Seljuk sultan appointed the Turkic commander Imad ad-Din Zengi as atabeg of Mosul. Zengi added Aleppo to his governorship in 1128 and from those twin capitals built the first effective Sunni reunification of the Jazira and northern Syria for almost a generation. His most famous act — the storming and reconquest of the Crusader county of Edessa in December 1144 — was the spark for the disastrous Second Crusade.",
+          "Zengi's son Nur ad-Din (r. 1146–74) refined the project. He absorbed Damascus from the Burids in 1154, ringed the Frankish kingdom with a continuous Sunni front for the first time, and from 1163 sent successive expeditions to Egypt under his Kurdish lieutenant Shirkuh to neutralise the Fatimids. Those expeditions ended in 1169 with Shirkuh's nephew Saladin installed as Fatimid vizier — nominally as Nur ad-Din's deputy.",
+          "Saladin's break from his Zengid overlords on Nur ad-Din's death in 1174 fractured the dynasty politically, but the Zengid name continued in attenuated form at Mosul, Sinjar, and other Jaziran towns until the last branch fell to the Mongols and the rising Ayyubid successors in the mid-thirteenth century."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/1/1f/Zengid_territory.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Zengid_dynasty",
+        wiki_he_url: ""
+      },
+      {
+        id: "ayyubid-sultanate",
+        name: "Ayyubid Dynasty",
+        category: "society",
+        subcategory: "polities",
+        see_also: ["zengid-dynasty", "mamluk-sultanate", "fatimid-caliphate", "saladin", "al-kamil", "nur-ad-din", "third-crusade", "fifth-crusade", "sixth-crusade"],
+        era: "1171 – 1260s",
+        also_known_as: ["Banu Ayyub", "Sultanate of Egypt and Syria"],
+        short: "Sunni Kurdish dynasty founded by Saladin on the ruins of the Fatimid Caliphate; the Ayyubid state was the central Muslim power against the Crusader kingdom from 1187 until the Mamluk takeover of Egypt in 1250.",
+        body: [
+          "Saladin abolished the Fatimid Caliphate of Cairo in September 1171 and on Nur ad-Din's death three years later began assembling a single Sunni state that by 1186 stretched from Cairo to Aleppo. His decisive victory at Hattin in July 1187 destroyed the Frankish field army of Jerusalem, broke open every interior castle of the kingdom, and reduced the Crusader states to a coastal strip — the political settlement under which the Latin East lived for the next century.",
+          "After Saladin's death in 1193 the Ayyubids were a confederation rather than a centralised sultanate: branches in Egypt, Damascus, Aleppo, Hama, Homs, and the Jazira fought, allied, and intermarried for influence over the family head. That decentralisation became the basis of a working modus vivendi with the Franks of Acre — al-Adil and al-Kamil ran a frontier of pragmatic truces, prisoner exchanges, and the famous return of Jerusalem to Frederick II without a battle in 1229.",
+          "The Egyptian core fell in 1250 when the slave-soldier corps of the late sultan al-Salih Ayyub, fresh from defeating Louis IX's crusade at Mansura, murdered his son Turanshah and installed one of their own as sultan. The Ayyubid name continued in declining Syrian principalities through the 1260s, but the Mamluk Sultanate was the political successor and the new opponent of the Latin East."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Ayyubid_Sultanate_1193_AD.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Ayyubid_dynasty",
+        wiki_he_url: "https://he.wikipedia.org/wiki/%D7%94%D7%A9%D7%95%D7%A9%D7%9C%D7%AA_%D7%94%D7%90%D7%99%D7%95%D7%91%D7%99%D7%AA"
+      },
+      {
+        id: "mamluk-sultanate",
+        name: "Mamluk Sultanate",
+        category: "society",
+        subcategory: "polities",
+        see_also: ["ayyubid-sultanate", "baybars", "seventh-crusade", "eighth-crusade", "templar-of-tyre"],
+        era: "1250 – 1517",
+        also_known_as: ["Sultanate of Cairo", "Bahri Mamluks", "State of the Turks"],
+        short: "Slave-soldier sultanate of Egypt that destroyed the Mongol field army at Ain Jalut in 1260 and over the next three decades reduced every Crusader stronghold on the Levantine coast — Antioch in 1268, Tripoli in 1289, Acre in 1291.",
+        body: [
+          "The Mamluks ('owned ones') were Turkic and later Circassian slave-soldiers raised, trained, and emancipated by the Ayyubid sultans of Egypt as their household troops. In 1250, after the corps drowned Louis IX's crusade at Mansura, they assassinated the heir of their late master al-Salih Ayyub and installed one of their own commanders as sultan, beginning a unique political system in which sultanate passed not by inheritance but by promotion through a barracks elite.",
+          "The new regime was tested almost at once. In September 1260 the Mamluk army under Qutuz and his lieutenant Baybars met and shattered a Mongol expeditionary force at Ain Jalut in the Jezreel Valley — the first decisive defeat of the Mongols and the moment Egypt established itself as the indispensable shield of the Sunni world. Within months Baybars had murdered Qutuz and taken the throne.",
+          "Baybars (r. 1260–77) and his successors Qalawun and al-Ashraf Khalil pursued a sustained reduction of the Crusader states. Caesarea, Arsuf, Safed, and Antioch fell to Baybars in the 1260s; Krak des Chevaliers in 1271; Tripoli to Qalawun in 1289; and Acre, after a six-week siege, to al-Ashraf Khalil on 18 May 1291. With it the kingdom of Jerusalem ended on the mainland, and the Mamluk sultanate became the master of the Levant for the next two and a quarter centuries."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Mamluk_Sultanate_of_Cairo_1317_AD.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Mamluk_Sultanate",
+        wiki_he_url: "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%9C%D7%95%D7%9B%D7%99%D7%9D"
+      },
+      {
+        id: "nizari-ismaili-state",
+        name: "Nizari Ismaili State",
+        category: "society",
+        subcategory: "polities",
+        see_also: ["seljuk-empire", "knights-templar", "knights-hospitaller"],
+        era: "1090 – 1273 (Syria)",
+        also_known_as: ["the Assassins", "Hashashin", "Order of Assassins"],
+        short: "Network of Isma'ili mountain fortresses in Persia and Syria — the 'Assassins' of the Latin sources — whose practice of targeted political killing made them a small but uniquely feared element of crusading-era Levantine politics.",
+        body: [
+          "The Nizari state was founded in 1090 when Hassan-i Sabbah, an Isma'ili da'i in revolt against the Seljuk sultanate, seized the mountain fortress of Alamut in the Elburz of northern Persia. From Alamut the Nizaris built a decentralised network of self-governing fortified communities, propagating an esoteric Isma'ili doctrine and defending themselves not by armies — they had none — but by a discipline of trained killers who would assassinate hostile rulers, often at the cost of their own lives.",
+          "The Syrian branch, founded in the early twelfth century from Alamut, fortified a string of Jebel Bahra strongholds — Masyaf, Qadmus, Kahf, Khawabi, al-Ullaiqah — directly across the inland frontier from the Crusader principality of Antioch and the County of Tripoli. Under their most famous master Rashid ad-Din Sinan, 'the Old Man of the Mountain' (d. c. 1192), they paid tribute by turn to Saladin and to the Templars, and were credited with the murder of Conrad of Montferrat at Tyre in April 1192 and at least two attempts on Saladin himself.",
+          "The Persian Nizari state was destroyed by the Mongols in 1256 when Hulagu Khan reduced Alamut and its sister fortresses one by one. The Syrian fortresses lasted slightly longer, until the Mamluk sultan Baybars stripped them of their independence between 1265 and 1273. The community survived as a religious tradition — Isma'ili Nizaris are now led by the Aga Khan — but as a political and military force it ended with Baybars."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/9/9c/Alamut.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Nizari_Ismaili_state",
+        wiki_he_url: ""
+      },
+      {
+        id: "khwarazmian-dynasty",
+        name: "Khwarazmian Dynasty",
+        category: "society",
+        subcategory: "polities",
+        see_also: ["ayyubid-sultanate", "mamluk-sultanate", "barons-crusade"],
+        era: "1077 – 1231",
+        also_known_as: ["Khwarezmian Empire", "Khwarezmshahs"],
+        short: "Persianate Sunni empire of Central Asia that touched Crusader history twice — through the destruction of the Seljuk world in the early 13th century and through the Khwarazmian remnants who sacked Jerusalem and crushed the Frankish army at La Forbie in 1244.",
+        body: [
+          "The Khwarazmshahs were originally a Turkic governor's dynasty in Khwarezm under the late Seljuks. Through the late twelfth century they expanded into a major Persianate empire ruling Iran, Khorasan, and Transoxiana — and at their peak under 'Ala ad-Din Muhammad II (r. 1200–20) they formally extinguished the Great Seljuks of Persia and stretched from the Aral Sea to the Persian Gulf.",
+          "Their independent existence ended catastrophically in 1219–21 when an embassy dispute with the new Mongol confederation under Genghis Khan provoked the Mongol invasion of Central Asia. The Khwarazmian empire was annihilated in two seasons: Bukhara, Samarqand, Merv, Nishapur, and the Khwarazmian heartland were sacked in turn, and the last Khwarazmshah Jalal ad-Din died fugitive in the Kurdish mountains in 1231.",
+          "Their relevance to Crusader history is concentrated in a single year. In 1244 a band of Khwarazmian cavalry — landless mercenaries left over from the wreck of their state, hired by the Ayyubid sultan al-Salih Ayyub of Egypt — broke into the kingdom of Jerusalem, sacked the Holy City on 11 July, and on 17–18 October destroyed the joint Frankish-Damascene field army at La Forbie outside Gaza. La Forbie was the most damaging Frankish defeat since Hattin and is conventionally taken as the moment the kingdom of Jerusalem became militarily unrecoverable."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/b/bc/Map_of_the_Khwarazmian_Empire.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Khwarazmian_Empire",
+        wiki_he_url: ""
+      },
+      {
+        id: "seljuk-empire",
+        name: "Seljuk Empire",
+        category: "society",
+        subcategory: "polities",
+        see_also: ["fatimid-caliphate", "first-crusade", "anna-komnene", "principality-of-antioch"],
+        era: "1037 – 1194",
+        also_known_as: ["Great Seljuks", "Seljukid Empire"],
+        short: "Turco-Persianate Sunni empire whose victory at Manzikert in 1071 opened Anatolia to Turkic settlement, and whose disintegration after 1092 created the political vacuum into which the First Crusade marched.",
+        body: [
+          "The Seljuks were a clan of Oghuz Turks from the Eurasian steppe who under Toghrul Beg seized Nishapur in 1038 and Baghdad in 1055 — the latter as the new 'sultans' restoring the Sunni Abbasid caliph against his Shi'a Buyid overlords. Under Toghrul's nephew Alp Arslan (r. 1063–72) and Alp Arslan's son Malik Shah I (r. 1072–92) the Great Seljuk Sultanate became the dominant power of the central Islamic world, stretching from the Hindu Kush to the Anatolian plateau.",
+          "Their crucial moment for European history was the Battle of Manzikert on 26 August 1071, where Alp Arslan annihilated the field army of the Byzantine emperor Romanos IV and opened Anatolia to permanent Turkmen settlement. Within twenty years a cadet branch had founded the Sultanate of Rum at Nicaea, and the Seljuk-aligned Danishmendids had secured central Anatolia. The cumulative loss of half their old territory was the immediate provocation that led Alexios I Komnenos to appeal to the West for aid in 1095.",
+          "Malik Shah's death in 1092 fractured the Great Seljuk state into competing successor sultanates almost overnight, and it is into that wreckage that the First Crusade marched in 1097. The Seljuks of Anatolia (Rum), of Damascus, of Aleppo, of Mosul, and of the Jazira each fought the Crusaders separately, and the political shape of the early Latin East was determined by the fact that the empire that should have opposed it had already eaten itself."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/5/56/Map_of_the_Seljuk_Empire_%281092%29.png",
+        wiki_url: "https://en.wikipedia.org/wiki/Seljuk_Empire",
+        wiki_he_url: "https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%99%D7%9E%D7%A4%D7%A8%D7%99%D7%94_%D7%94%D7%A1%D7%9C%D7%92%27%D7%95%D7%A7%D7%99%D7%AA"
+      },
+      {
+        id: "artuqids",
+        name: "Artuqids",
+        category: "society",
+        subcategory: "polities",
+        see_also: ["seljuk-empire", "first-crusade", "principality-of-antioch", "county-of-edessa"],
+        era: "1102 – 1409",
+        also_known_as: ["Artukids", "Artuklu Beyliği"],
+        short: "Turkmen dynasty of the upper Tigris and Diyarbakır region whose victory over Roger of Antioch at the Field of Blood in 1119 was one of the most damaging Frankish defeats in the principality's history.",
+        body: [
+          "The Artuqids descended from Artuq Bey, an Oghuz Turkmen commander in late-Seljuk service who briefly held Jerusalem itself for the Seljuk sultanate in the 1080s before the Fatimid recovery of 1098. After his death his sons carved out independent emirates in the upper Mesopotamian frontier — chiefly at Hisn Kayfa, Mardin, and Mayyafariqin — which became a constant northern threat to the Frankish principality of Antioch and the county of Edessa.",
+          "Their most famous moment came on 28 June 1119, when Ilghazi of Mardin caught Roger of Salerno's Antiochene field army in a marching column at Sarmada and annihilated it in a single morning's fight. The Crusader sources called the place Ager Sanguinis — the Field of Blood — and Antioch lost its prince and most of its knighthood in the same hour; only a forced relief march by King Baldwin II of Jerusalem prevented the principality from collapsing entirely.",
+          "After Ilghazi the dynasty fragmented into smaller branches and was progressively absorbed by Zengids, Ayyubids, and finally the Aq Qoyunlu Turkmens. The Artuqid emirate of Mardin survived as a tributary into 1409. Modern travellers know them best for the spectacular bridge over the Batman river at Hasankeyf, built by Fakhr ad-Din Qara Arslan in 1116 and one of the great surviving works of medieval Islamic engineering."
+        ],
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Artuqidsmap.jpg",
+        wiki_url: "https://en.wikipedia.org/wiki/Artuqids",
+        wiki_he_url: ""
       },
       {
         id: "william-of-tyre-historia",
@@ -3559,9 +4351,7 @@
       {"id":"italian-maritime-communes","name":"Italian Maritime Communes","category":"society","subcategory":"society","see_also":["venetian-crusade"],"era":"11th–13th c.","also_known_as":["Venetians","Genoese","Pisans","Amalfitans"],"short":"The Italian naval and merchant powers whose fleets, quarters, and privileges made the Crusader states commercially viable and politically unstable.","body":["The Crusader states could not survive on cavalry alone. They needed ships: to bring pilgrims, settlers, horses, grain, siege engines, and money across the Mediterranean. Venice, Genoa, Pisa, and earlier Amalfi supplied that maritime lifeline, and in return received tax exemptions, courts, churches, warehouses, streets, and fortified quarters inside the great ports of the Latin East.","Their role was indispensable but disruptive. Venetian help made the capture of Tyre possible in 1124; Genoese and Pisan ships repeatedly shaped the fate of Acre, Jaffa, and other coastal cities. By the thirteenth century the rival communes inside Acre could behave almost like states within the state, and their commercial feuds helped turn the kingdom's capital into a factional battlefield. The Latin East was never only a feudal frontier; it was also a Mediterranean trading system."],"image_url":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Maritime_republics_map_-_IT.png/960px-Maritime_republics_map_-_IT.png","wiki_url":"https://en.wikipedia.org/wiki/Maritime_republics","wiki_he_url":""},
       {"id":"turcopoles-and-sergeants","name":"Turcopoles and Sergeants","category":"society","subcategory":"society","see_also":["knights-templar","knights-hospitaller"],"era":"12th–13th c.","also_known_as":["Turcopoli","sergeants","mounted sergeants"],"short":"The non-knightly soldiers who filled out Crusader armies and garrisons, from local light cavalry to urban and castle sergeants.","body":["Crusader warfare was never fought by knights alone. Sergeants served as infantry, garrison troops, crossbowmen, guards, and lesser mounted soldiers, while turcopoles were locally adapted light cavalry, often using eastern equipment and tactics better suited to scouting, raiding, and frontier warfare than the heavy charge of western knights.","The distinction mattered because the Latin East was chronically short of knights. Castles, cities, and lordships owed specified numbers of mounted knights, but they also depended on much larger bodies of sergeants to hold walls, guard roads, and sustain campaigns. The military orders employed turcopoles extensively, and their commanders, the turcopoliers, became important officers. Understanding them makes the kingdom's armies look less like a narrow aristocratic cavalry force and more like a mixed frontier military system."],"image_url":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Turcopole%2C_12th_century.jpg/960px-Turcopole%2C_12th_century.jpg","wiki_url":"https://en.wikipedia.org/wiki/Turcopole","wiki_he_url":""},
       {"id":"latin-patriarchate-of-jerusalem","name":"Latin Patriarchate of Jerusalem","category":"society","subcategory":"religion","see_also":["haute-cour","true-cross"],"era":"1099–1291 in the Latin East","also_known_as":[],"short":"The Latin ecclesiastical hierarchy created after the conquest of Jerusalem, central to coronations, relics, diplomacy, and disputes over the Holy City.","body":["After the capture of Jerusalem in 1099, the crusaders installed a Latin patriarch in place of the existing Greek Orthodox hierarchy and reorganised the sacred geography of the Holy Land under Latin ecclesiastical authority. The patriarchate controlled churches, estates, clergy, relic processions, and much of the ceremonial life that gave the kingdom its claim to be more than an ordinary frontier state.","The patriarch could crown kings, carry the True Cross in war, negotiate during crises, and place rulers or cities under ecclesiastical pressure. Relations with the monarchy were not always smooth: Daimbert of Pisa tried to make Jerusalem a church-ruled lordship under Godfrey and Baldwin I, while later patriarchs clashed with Frederick II after his excommunicated diplomacy restored Jerusalem in 1229. The patriarchate helps explain why politics in the kingdom so often passed through altars, relics, and coronations."],"image_url":"https://upload.wikimedia.org/wikipedia/commons/1/11/Jerusalem_LatinPatriarchate_9092.jpg","wiki_url":"https://en.wikipedia.org/wiki/Latin_Patriarchate_of_Jerusalem","wiki_he_url":""},
-      {"id":"true-cross","name":"True Cross","category":"society","subcategory":"religion","see_also":["saladin","latin-patriarchate-of-jerusalem"],"era":"12th c.; lost at Hattin, 1187","also_known_as":[],"short":"The kingdom's most powerful battlefield relic, carried with the army as a sign of divine protection until its loss at Hattin.","body":["The relic venerated as the True Cross was kept in Jerusalem and became the most potent sacred object of the Latin Kingdom. It was not merely devotional. When carried with the army, it signalled that the defence of the kingdom was a holy war fought under the protection of the Crucifixion itself, and its presence could stiffen morale in moments of extreme danger.","The relic accompanied Frankish armies at victories such as Montgisard and at the catastrophe of Hattin. Its capture by Saladin in 1187 was therefore a spiritual as well as military disaster: the army had been destroyed, the king's authority shattered, and the kingdom's central relic lost with it. Later crusaders repeatedly sought its return, but it never again functioned as the living war-standard of the Latin Kingdom."],"image_url":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Giotto_Crucifixion.jpg/960px-Giotto_Crucifixion.jpg","wiki_url":"https://en.wikipedia.org/wiki/True_Cross","wiki_he_url":""},
-      {"id":"ayyubid-sultanate","name":"Ayyubid Sultanate","category":"society","subcategory":"polities","see_also":["saladin","al-kamil","fifth-crusade","sixth-crusade","mamluk-sultanate"],"era":"1171–1260","also_known_as":[],"short":"The dynasty founded by Saladin that united Egypt and Syria and became the principal opponent of the Crusader states after Hattin.","body":["The Ayyubid Sultanate emerged when Saladin, originally a commander in Nur ad-Din's service, took control of Egypt and ended the Fatimid caliphate in 1171. After Nur ad-Din's death, Saladin gradually extended his authority over Syria, creating the Egypt-Syria union that the kings of Jerusalem had long feared. Hattin and the capture of Jerusalem in 1187 were the decisive results of that strategic encirclement.","After Saladin, Ayyubid rule was often divided among competing princes in Egypt, Damascus, Aleppo, Kerak, and other centres. That fragmentation gave the Franks room to negotiate as well as fight: the Fifth Crusade, Sixth Crusade, and Barons' Crusade all depended on Ayyubid rivalries. The dynasty was therefore both the conqueror of the First Kingdom and the diplomatic world in which the thirteenth-century coastal kingdom survived."],"image_url":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Ayyubid_Sultanate_1193_AD.jpg/960px-Ayyubid_Sultanate_1193_AD.jpg","wiki_url":"https://en.wikipedia.org/wiki/Ayyubid_dynasty","wiki_he_url":""},
-      {"id":"mamluk-sultanate","name":"Mamluk Sultanate","category":"society","subcategory":"polities","see_also":["baybars","seventh-crusade","ayyubid-sultanate"],"era":"1250–1517","also_known_as":[],"short":"The military slave-sultanate of Egypt and Syria that destroyed the remaining Crusader enclaves in the late thirteenth century.","body":["The Mamluk Sultanate was founded by military slave elites who seized power in Egypt during the crisis of the Seventh Crusade. Its early rulers defeated both crusader armies and Mongol invasions, then turned Egypt and Syria into a more centralised military state than the Franks had faced under the fragmented later Ayyubids.","For the Crusader states, the Mamluks were the final adversary. Baybars reduced castles and ports throughout the 1260s and 1270s; Qalawun took Tripoli in 1289; and al-Ashraf Khalil captured Acre in 1291, ending the Latin kingdom on the mainland. The Mamluk advance explains why so many map sites have a final thirteenth-century destruction horizon: the conquest was not a single collapse, but a deliberate dismantling of the Frankish coastal system."],"image_url":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Mamluk_Sultanate_of_Cairo_1317_AD.jpg/960px-Mamluk_Sultanate_of_Cairo_1317_AD.jpg","wiki_url":"https://en.wikipedia.org/wiki/Mamluk_Sultanate","wiki_he_url":""}
+      {"id":"true-cross","name":"True Cross","category":"society","subcategory":"religion","see_also":["saladin","latin-patriarchate-of-jerusalem"],"era":"12th c.; lost at Hattin, 1187","also_known_as":[],"short":"The kingdom's most powerful battlefield relic, carried with the army as a sign of divine protection until its loss at Hattin.","body":["The relic venerated as the True Cross was kept in Jerusalem and became the most potent sacred object of the Latin Kingdom. It was not merely devotional. When carried with the army, it signalled that the defence of the kingdom was a holy war fought under the protection of the Crucifixion itself, and its presence could stiffen morale in moments of extreme danger.","The relic accompanied Frankish armies at victories such as Montgisard and at the catastrophe of Hattin. Its capture by Saladin in 1187 was therefore a spiritual as well as military disaster: the army had been destroyed, the king's authority shattered, and the kingdom's central relic lost with it. Later crusaders repeatedly sought its return, but it never again functioned as the living war-standard of the Latin Kingdom."],"image_url":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Giotto_Crucifixion.jpg/960px-Giotto_Crucifixion.jpg","wiki_url":"https://en.wikipedia.org/wiki/True_Cross","wiki_he_url":""}
     ].forEach(e => GLOSSARY.push(e));
 
     // Expanded battle narratives keyed by battle canonical name.
@@ -4680,7 +5470,7 @@
     const GLOSSARY_SUBGROUP_LABELS = {
       monarchs:         { jerusalem: "Jerusalem", antioch: "Antioch", tripoli: "Tripoli", edessa: "Edessa", cyprus: "Cyprus" },
       "crusader-states": { core: "Core Crusader States", broader: "Broader Crusader States" },
-      people:           { chroniclers: "Chroniclers", notables: "Notables", adversaries: "Adversaries" },
+      people:           { chroniclers: "Chroniclers", "travellers-christian": "Christian Travellers", "travellers-jewish": "Jewish Travellers", "travellers-muslim": "Muslim Travellers", notables: "Notables", adversaries: "Adversaries" },
       society:          { law: "Law & Institutions", religion: "Religion", polities: "Adversary Polities", society: "Society & Identity", sources: "Sources & Manuscripts" }
     };
 
@@ -4690,7 +5480,7 @@
     const GLOSSARY_GROUPS = [
       { slug: "realms",       label: "Realms & Rulers", keys: ["monarchs", "crusader-states", "houses"] },
       { slug: "conflicts",    label: "Conflicts",       keys: ["crusades", "civil-wars"] },
-      { slug: "people-group", label: "People",          keys: ["people:chroniclers", "people:notables", "people:adversaries"] },
+      { slug: "people-group", label: "People",          keys: ["people:chroniclers", "people:travellers-christian", "people:travellers-jewish", "people:travellers-muslim", "people:notables", "people:adversaries"] },
       { slug: "institutions", label: "Institutions",    keys: ["orders", "society"] }
     ];
 
@@ -5288,6 +6078,9 @@
     const filterBtnEl = document.getElementById("filter-btn");
     const layersBtnEl = document.getElementById("layers-btn");
     const glossaryBtnEl = document.getElementById("glossary-btn");
+    const cartoucheEl = document.getElementById("cartouche");
+    const cartoucheBtnEl = document.getElementById("cartouche-btn");
+    const cartoucheToggleEl = document.getElementById("cartouche-toggle");
     const scrimEl = document.getElementById("sheet-scrim");
 
     // Scrim follows whichever overlay is open. detail-open is set/unset by
@@ -5296,7 +6089,8 @@
       const open = document.body.classList.contains("detail-open")
         || document.body.classList.contains("filters-open")
         || document.body.classList.contains("glossary-open")
-        || document.body.classList.contains("layers-open");
+        || document.body.classList.contains("layers-open")
+        || document.body.classList.contains("cartouche-open");
       scrimEl.classList.toggle("open", open);
     }
     function closeMobileFilters() {
@@ -5317,16 +6111,25 @@
       document.body.classList.remove("glossary-open");
       syncScrim();
     }
+    function closeMobileCartouche() {
+      if (!cartoucheEl) return;
+      cartoucheEl.classList.remove("open");
+      if (cartoucheBtnEl) cartoucheBtnEl.classList.remove("active");
+      document.body.classList.remove("cartouche-open");
+      syncScrim();
+    }
     function closeAllMobileOverlays() {
       closeDetail();
       closeMobileFilters();
       closeMobileLayers();
       closeMobileGlossary();
+      closeMobileCartouche();
     }
     filterBtnEl.addEventListener("click", (e) => {
       SoundFX.rustle();
       closeMobileLayers();
       closeMobileGlossary();
+      closeMobileCartouche();
       const opened = filtersEl.classList.toggle("open");
       e.currentTarget.classList.toggle("active", opened);
       document.body.classList.toggle("filters-open", opened);
@@ -5336,6 +6139,7 @@
       SoundFX.rustle();
       closeMobileFilters();
       closeMobileGlossary();
+      closeMobileCartouche();
       const opened = layersEl.classList.toggle("open");
       e.currentTarget.classList.toggle("active", opened);
       document.body.classList.toggle("layers-open", opened);
@@ -5345,14 +6149,55 @@
       SoundFX.rustle();
       closeMobileFilters();
       closeMobileLayers();
+      closeMobileCartouche();
       const opened = glossaryEl.classList.toggle("open");
       e.currentTarget.classList.toggle("active", opened);
       document.body.classList.toggle("glossary-open", opened);
       syncScrim();
     });
+    if (cartoucheBtnEl && cartoucheEl) {
+      cartoucheBtnEl.addEventListener("click", (e) => {
+        SoundFX.rustle();
+        closeMobileFilters();
+        closeMobileLayers();
+        closeMobileGlossary();
+        const opened = cartoucheEl.classList.toggle("open");
+        e.currentTarget.classList.toggle("active", opened);
+        document.body.classList.toggle("cartouche-open", opened);
+        syncScrim();
+      });
+    }
+    (function trackTopbarHeight() {
+      const tb = document.querySelector(".topbar");
+      if (!tb) return;
+      const apply = () => {
+        const h = tb.getBoundingClientRect().height;
+        document.documentElement.style.setProperty("--topbar-h", h + "px");
+      };
+      apply();
+      window.addEventListener("resize", apply);
+      if (typeof ResizeObserver !== "undefined") {
+        new ResizeObserver(apply).observe(tb);
+      }
+    })();
+    if (cartoucheToggleEl && cartoucheEl) {
+      if (localStorage.getItem("ff_cartouche_collapsed") === "1") {
+        cartoucheEl.classList.add("collapsed");
+        cartoucheToggleEl.setAttribute("aria-expanded", "false");
+      }
+      cartoucheToggleEl.addEventListener("click", () => {
+        const collapsed = cartoucheEl.classList.toggle("collapsed");
+        cartoucheToggleEl.setAttribute("aria-expanded", collapsed ? "false" : "true");
+        try { localStorage.setItem("ff_cartouche_collapsed", collapsed ? "1" : "0"); } catch (_) {}
+      });
+    }
     document.getElementById("filters-close").addEventListener("click", closeMobileFilters);
     document.getElementById("layers-close").addEventListener("click", closeMobileLayers);
     document.getElementById("glossary-close").addEventListener("click", closeMobileGlossary);
+    {
+      const cartoucheCloseEl = document.getElementById("cartouche-close");
+      if (cartoucheCloseEl) cartoucheCloseEl.addEventListener("click", closeMobileCartouche);
+    }
     (function () {
       const searchEl = document.getElementById("glossary-search");
       if (!searchEl) return;

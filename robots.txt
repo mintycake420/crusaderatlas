@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://crusaderatlas.com/sitemap.xml
+Sitemap: https://crusaderatlas.com/sitemap-images.xml

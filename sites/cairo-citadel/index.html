@@ -29,7 +29,7 @@
 <meta name="twitter:image" content="https://crusaderatlas.com/og-image.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Crusader Atlas","item":"https://crusaderatlas.com/"},{"@type":"ListItem","position":2,"name":"Sites","item":"https://crusaderatlas.com/"},{"@type":"ListItem","position":3,"name":"Cairo Citadel","item":"https://crusaderatlas.com/sites/cairo-citadel/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Crusader Atlas","item":"https://crusaderatlas.com/"},{"@type":"ListItem","position":2,"name":"Sites","item":"https://crusaderatlas.com/sites/"},{"@type":"ListItem","position":3,"name":"Cairo Citadel","item":"https://crusaderatlas.com/sites/cairo-citadel/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Place","name":"Cairo Citadel","description":"Saladin began the Cairo Citadel in 1176 on a spur of the Mokattam hills overlooking the city. It was a deliberate strategic move: a single fortified enclosure unifying the Fatimid palace city of al-Qahira with the older settlement of al-Fustat, and giving the new Ayyubid sultanate a defensible command centre from which to co-ordinate the wars against the Crusader states. From this citadel Saladin and his heirs directed the campaigns that broke the Kingdom of Jerusalem at Hattin in 1187 and the…","url":"https://crusaderatlas.com/sites/cairo-citadel/","geo":{"@type":"GeoCoordinates","latitude":30.0294,"longitude":31.2611},"containedInPlace":{"@type":"AdministrativeArea","name":"Egypt"},"image":"https://crusaderatlas.com/fortress-pics/Flickr_-_HuTect_ShOts_-_Citadel_of_Salah_El.Din_and_Masjid_Muhammad_Ali_%D9%82%D9%84%D8%B9%D8%A9_%D8%B5%D9%84%D8%A7%D8%AD_%D8%A7%D9%84%D8%AF%D9%8A%D9%86_%D8%A7%D9%84%D8%A3%D9%8A%D9%88%D8%A8%D9%8A_%D9%88%D9%85%D8%B3%D8%AC%D8%AF_%D9%85%D8%AD%D9%85%D8%AF_%D8%B9%D9%84%D9%8A_-_Cairo_-_Egypt_-_17_04_2010_(4).jpg"}</script>
 <style>:root{color-scheme:light;--vellum:#f1e6cd;--vellum-light:#f7efd9;--vellum-edge:#e3d4ae;--ink:#2a1a0b;--ink-soft:#4a3018;--sepia:#7a4b1d;--sepia-light:#9b6b35;--red-oxide:#9b2d1f;--ochre:#c58d2c;--muted:#8a7553}
 *{box-sizing:border-box}
@@ -69,14 +69,27 @@ article h2{font-family:Cinzel,Georgia,serif;font-weight:600;font-size:24px;margi
 .lord-table th{background:var(--vellum);font-weight:600}
 footer.site-foot{max-width:780px;margin:48px auto 24px;padding:16px 24px;font-size:13px;color:var(--muted);border-top:1px solid var(--vellum-edge);text-align:center}
 footer.site-foot a{color:var(--sepia)}
-@media (max-width:560px){h1{font-size:32px}main{padding:20px 16px 32px}}</style>
+.back-link{font-size:14px;color:var(--sepia);text-decoration:none;display:inline-block;margin:0 0 16px}
+.back-link:hover{text-decoration:underline}
+.az-nav{margin:24px 0 32px;padding:12px 16px;background:var(--vellum);border:1px solid var(--vellum-edge);font-family:Cinzel,Georgia,serif;font-size:15px;line-height:2;letter-spacing:.04em}
+.az-nav a{color:var(--ink);text-decoration:none;display:inline-block;min-width:1.3em;text-align:center}
+.az-nav a:hover{color:var(--red-oxide)}
+.az-section{margin:32px 0}
+.az-section h2{font-family:Cinzel,Georgia,serif;font-size:28px;font-weight:700;margin:0 0 12px;color:var(--sepia);padding-bottom:6px;border-bottom:1px solid var(--vellum-edge)}
+.section-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:6px 24px}
+.section-list li{padding:4px 0;font-size:15px;line-height:1.45}
+.section-list a{color:var(--ink);text-decoration:none;font-weight:500}
+.section-list a:hover{color:var(--red-oxide);text-decoration:underline}
+.section-list .sub{display:block;color:var(--muted);font-size:13px;font-style:italic;margin-top:1px}
+.index-intro p{margin:0 0 12px}
+@media (max-width:560px){h1{font-size:32px}main{padding:20px 16px 32px}.section-list{grid-template-columns:1fr}}</style>
 </head>
 <body>
 <header class="brand-bar">
 <a class="brand" href="/">Crusader Atlas</a>
 </header>
 <main>
-<nav class="breadcrumb"><a href="/">Crusader Atlas</a> <span aria-hidden="true">›</span> <a href="/">Sites</a> <span aria-hidden="true">›</span> <span aria-current="page">Cairo Citadel</span></nav>
+<nav class="breadcrumb"><a href="/">Crusader Atlas</a> <span aria-hidden="true">›</span> <a href="/sites/">Sites</a> <span aria-hidden="true">›</span> <span aria-current="page">Cairo Citadel</span></nav>
 <article>
 <h1>Cairo Citadel</h1>
 <p class="aliases">Also known as Citadel of Saladin, Qal&#39;at al-Jabal, Salah ad-Din Citadel</p>

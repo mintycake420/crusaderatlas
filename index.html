@@ -1824,6 +1824,36 @@
       color: var(--vellum-light);
     }
 
+    /* ---------- Drawer-open focus mode ----------
+       When any drawer is open (filters / glossary / layers / detail), suppress
+       the competing map chrome (Leaflet zoom controls, cartouche caption,
+       legend) so attention stays on the active drawer. The body classes are
+       set/unset by the open/close helpers in JS and the same rules apply on
+       both desktop and mobile (mobile already display:nones some of these via
+       their own rules; opacity:0 is a no-op there, not a conflict). Using
+       opacity + pointer-events instead of display:none keeps the transition
+       smooth and avoids reflow when drawers open. */
+    .leaflet-control-zoom,
+    .cartouche,
+    .legend {
+      transition: opacity 0.18s ease;
+    }
+    body.filters-open .leaflet-control-zoom,
+    body.glossary-open .leaflet-control-zoom,
+    body.layers-open .leaflet-control-zoom,
+    body.detail-open .leaflet-control-zoom,
+    body.filters-open .cartouche,
+    body.glossary-open .cartouche,
+    body.layers-open .cartouche,
+    body.detail-open .cartouche,
+    body.filters-open .legend,
+    body.glossary-open .legend,
+    body.layers-open .legend,
+    body.detail-open .legend {
+      opacity: 0;
+      pointer-events: none;
+    }
+
     /* ---------- Mobile ---------- */
     @media (max-width: 820px) {
       /* Disable Android Chrome pull-to-refresh — the page is a fixed map;

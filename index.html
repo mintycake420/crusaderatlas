@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <!-- Opt out of Samsung Internet / Android browser auto-dark mode. The
        atlas is designed around a parchment/sepia palette; auto-darkening
        desaturates the map, coat-of-arms, and ink colors. -->
@@ -10,6 +10,7 @@
   <meta name="theme-color" content="#f1e6cd" />
   <title>Kingdom of Jerusalem — A Crusader Atlas of the Holy Land</title>
   <meta name="description" content="An interactive atlas of Crusader castles, towns, and fortifications across the medieval Kingdom of Jerusalem and the surrounding Latin East." />
+  <meta name="author" content="Crusader Atlas" />
   <link rel="canonical" href="https://crusaderatlas.com/" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -30,10 +31,14 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Hand-drawn map of the Crusader Kingdom of Jerusalem and the Latin East" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:secure_url" content="https://crusaderatlas.com/og-image.png?v=2" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Kingdom of Jerusalem — A Crusader Atlas of the Holy Land" />
   <meta name="twitter:description" content="Interactive map of Crusader castles, towns, and fortifications across the medieval Holy Land." />
   <meta name="twitter:image" content="https://crusaderatlas.com/og-image.png?v=2" />
+  <meta name="twitter:image:alt" content="Hand-drawn map of the Crusader Kingdom of Jerusalem and the Latin East" />
+  <meta name="twitter:url" content="https://crusaderatlas.com/" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -42,7 +47,16 @@
     "alternateName": "Kingdom of Jerusalem — A Crusader Atlas of the Holy Land",
     "url": "https://crusaderatlas.com/",
     "description": "An interactive atlas of Crusader castles, towns, and fortifications across the medieval Kingdom of Jerusalem and the surrounding Latin East, 1099–1291.",
-    "inLanguage": "en"
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Crusader Atlas",
+      "url": "https://crusaderatlas.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://crusaderatlas.com/apple-touch-icon.png"
+      }
+    }
   }
   </script>
   <script type="application/ld+json">
@@ -58,6 +72,39 @@
       "name": "Kingdom of Jerusalem",
       "description": "Medieval Crusader state founded after the First Crusade in 1099, ending with the fall of Acre in 1291."
     }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Crusader Atlas",
+    "url": "https://crusaderatlas.com/",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "description": "An interactive atlas of Crusader-era castles, churches, fortified towns, battles, lordships, and routes across the Kingdom of Jerusalem and neighboring Latin states (1099–1291).",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Crusader Atlas",
+        "item": "https://crusaderatlas.com/"
+      }
+    ]
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,6 +155,38 @@
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -64px;
+      left: 8px;
+      background: var(--ink);
+      color: var(--vellum);
+      padding: 8px 14px;
+      text-decoration: none;
+      border-radius: 4px;
+      z-index: 10000;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      transition: top 0.18s ease;
+    }
+    .skip-link:focus {
+      top: 8px;
+      outline: 2px solid var(--vellum);
+      outline-offset: 2px;
+    }
 
     html, body {
       margin: 0;
@@ -2051,15 +2130,78 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#map">Skip to interactive map</a>
   <noscript>
-    <div style="max-width:760px;margin:2rem auto;padding:1.5rem;font-family:Georgia,serif;color:#2a1a0b;background:#f7efd9;border:1px solid #e3d4ae;line-height:1.55;">
-      <h1 style="font-family:'Cinzel',serif;margin:0 0 0.5rem;">Kingdom of Jerusalem — A Crusader Atlas of the Holy Land</h1>
-      <p>An interactive, hand-curated atlas of Crusader-era sites — castles, churches, fortified towns, battles, and routes — across the Kingdom of Jerusalem and neighbouring Latin states, 1099–1291.</p>
-      <p>The map and search require JavaScript. Please enable it, or visit <a href="https://crusaderatlas.com/">crusaderatlas.com</a> in a modern browser.</p>
-      <p>The atlas covers Crusader castles such as Krak des Chevaliers, Belvoir, Montfort, and Kerak; the cities of Jerusalem, Acre, Antioch, Tripoli, and Edessa; the major battles of Hattin, Arsuf, and La Forbie; and the Military Orders of the Templars, Hospitallers, and Teutonic Knights.</p>
+    <div style="max-width:760px;margin:2rem auto;padding:1.5rem;font-family:Georgia,serif;color:#2a1a0b;background:#f7efd9;border:1px solid #e3d4ae;line-height:1.6;">
+      <h1 style="font-family:'Cinzel',serif;margin:0 0 0.6rem;font-size:1.6rem;">Kingdom of Jerusalem — A Crusader Atlas of the Holy Land</h1>
+      <p><strong>An interactive, hand-curated historical atlas of the Crusader Kingdom of Jerusalem, 1099–1291.</strong> Castles, churches, fortified towns, battles, lordships, pilgrim roads, and surviving Crusader remains across Israel and the wider Latin East.</p>
+      <p>The map, search, glossary, and layer toggles require JavaScript. Please enable it in your browser, or browse the static landing pages linked below.</p>
+      <h2 style="font-family:'Cinzel',serif;margin:1.2rem 0 0.4rem;font-size:1.15rem;">Scope of the atlas</h2>
+      <p>The Crusader Atlas documents the medieval Kingdom of Jerusalem at its widest practical reach (c. 1165) and the neighbouring Latin states — the County of Tripoli, the Principality of Antioch, and the County of Edessa. Coverage includes Crusader castles in Israel, the Galilee, the coastal plain, the Negev frontier, and Transjordan; Crusader churches and monasteries; fortified Frankish towns; major battlefields and sieges; the military orders of the Templars, Hospitallers, Teutonic Knights, and Order of Saint Lazarus; and the feudal lordships that made up the kingdom.</p>
+      <p>Borders and lordship polygons are a historical reconstruction and should be understood as approximate spheres of rule, homage, and influence rather than modern political boundaries.</p>
+      <h2 style="font-family:'Cinzel',serif;margin:1.2rem 0 0.4rem;font-size:1.15rem;">Castles &amp; fortresses</h2>
+      <p>
+        <a href="/sites/belvoir-castle/">Belvoir Castle (Kokhav HaYarden)</a> ·
+        <a href="/sites/atlit-chateau-pelerin/">Atlit (Château Pèlerin)</a> ·
+        <a href="/sites/montfort-castle/">Montfort Castle</a> ·
+        <a href="/sites/belmont-castle-suba-tzova/">Belmont Castle</a> ·
+        <a href="/sites/qalat-jiddin-yehiam-fortress/">Yehiam Fortress (Judin)</a> ·
+        <a href="/sites/ateret-fortress-chastelet-vadum-iacob/">Ateret (Chastellet, Vadum Iacob)</a> ·
+        <a href="/sites/kerak-castle/">Kerak</a> ·
+        <a href="/sites/krak-des-chevaliers/">Krak des Chevaliers</a> ·
+        <a href="/sites/saone/">Saone (Sahyun)</a>
+      </p>
+      <h2 style="font-family:'Cinzel',serif;margin:1.2rem 0 0.4rem;font-size:1.15rem;">Holy cities &amp; fortified towns</h2>
+      <p>
+        <a href="/sites/jerusalem/">Jerusalem</a> ·
+        <a href="/sites/acre/">Acre</a> ·
+        <a href="/sites/tyre/">Tyre</a> ·
+        <a href="/sites/saint-louis-castle-sidon/">Sidon</a> ·
+        <a href="/glossary/principality-of-antioch/">Antioch</a> ·
+        <a href="/sites/citadel-of-raymond-de-saint-gilles-tripoli/">Tripoli</a> ·
+        <a href="/sites/crusader-church-of-caesarea-maritima/">Caesarea Maritima</a> ·
+        <a href="/sites/jaffa/">Jaffa</a> ·
+        <a href="/sites/ascalon/">Ascalon</a>
+      </p>
+      <h2 style="font-family:'Cinzel',serif;margin:1.2rem 0 0.4rem;font-size:1.15rem;">Battles &amp; sieges</h2>
+      <p>
+        <a href="/sites/battle-of-hattin-1187/">Battle of Hattin (1187)</a> ·
+        <a href="/sites/battle-of-arsuf-1191/">Battle of Arsuf (1191)</a> ·
+        <a href="/sites/battle-of-montgisard-1177/">Battle of Montgisard (1177)</a> ·
+        <a href="/sites/battle-of-la-forbie-1244/">Battle of La Forbie (1244)</a> ·
+        <a href="/sites/siege-of-jerusalem-1099/">Siege of Jerusalem (1099)</a> ·
+        <a href="/sites/siege-of-acre-1291/">Siege of Acre (1291)</a>
+      </p>
+      <h2 style="font-family:'Cinzel',serif;margin:1.2rem 0 0.4rem;font-size:1.15rem;">Lordships of the kingdom</h2>
+      <p>
+        <a href="/lordships/royal-domain-jerusalem/">Royal Domain — Jerusalem</a> ·
+        <a href="/lordships/royal-domain-acre/">Royal Domain — Acre</a> ·
+        <a href="/lordships/principality-of-galilee/">Principality of Galilee</a> ·
+        <a href="/lordships/county-of-jaffa-and-ascalon/">County of Jaffa and Ascalon</a> ·
+        <a href="/lordships/lordship-of-sidon/">Lordship of Sidon</a> ·
+        <a href="/lordships/lordship-of-oultrejordain/">Lordship of Oultrejordain</a> ·
+        <a href="/lordships/seigneury-of-tyre/">Seigneury of Tyre</a> ·
+        <a href="/lordships/lordship-of-arsuf/">Lordship of Arsuf</a>
+      </p>
+      <h2 style="font-family:'Cinzel',serif;margin:1.2rem 0 0.4rem;font-size:1.15rem;">People &amp; the military orders</h2>
+      <p>
+        <a href="/glossary/baldwin-i/">Baldwin I</a> ·
+        <a href="/glossary/baldwin-iv/">Baldwin IV the Leper</a> ·
+        <a href="/glossary/melisende/">Queen Melisende</a> ·
+        <a href="/glossary/saladin/">Saladin</a> ·
+        <a href="/glossary/guy-of-lusignan/">Guy of Lusignan</a> ·
+        <a href="/glossary/knights-templar/">Knights Templar</a> ·
+        <a href="/glossary/knights-hospitaller/">Knights Hospitaller</a> ·
+        <a href="/glossary/teutonic-order/">Teutonic Order</a>
+      </p>
+      <p style="margin-top:1.4rem;font-size:0.9rem;color:#7a4b1d;">When JavaScript is enabled, the interactive map at <a href="https://crusaderatlas.com/">crusaderatlas.com</a> lets you filter by site type, toggle lordship overlays and pilgrim roads, search names, and open detailed dossiers on every site.</p>
     </div>
   </noscript>
-  <div id="map"></div>
+  <main id="main-content" role="main" aria-label="Interactive Crusader Atlas map">
+    <h1 class="sr-only">Crusader Atlas — Interactive Map of the Kingdom of Jerusalem</h1>
+    <p class="sr-only">An interactive, hand-curated historical atlas of Crusader-era sites — castles, churches, fortified towns, battles, lordships, and routes — across the Kingdom of Jerusalem and the neighbouring Latin states, 1099–1291. Explore surviving Crusader castles in Israel and the Levant including Belvoir, Atlit (Château Pèlerin), Montfort, Belmont, Yehiam, Acre, Kerak, and Krak des Chevaliers; the holy cities of Jerusalem and Acre; the principal battles of Hattin, Arsuf, Montgisard, and La Forbie; and the military orders of the Templars, Hospitallers, and Teutonic Knights.</p>
+    <div id="map"></div>
+  </main>
   <div class="sheet-scrim" id="sheet-scrim" aria-hidden="true"></div>
 
   <header class="topbar">
@@ -6605,6 +6747,19 @@
       }
     })();
   </script>
+  <footer class="site-footer sr-only" aria-label="About this atlas">
+    <p>Crusader Atlas — an independent, hand-curated historical project documenting the Crusader Kingdom of Jerusalem and the wider Latin East, 1099–1291. Explore key entities:
+      <a href="/sites/jerusalem/">Jerusalem</a>,
+      <a href="/sites/acre/">Acre</a>,
+      <a href="/sites/belvoir-castle/">Belvoir Castle</a>,
+      <a href="/sites/atlit-chateau-pelerin/">Atlit (Château Pèlerin)</a>,
+      <a href="/sites/montfort-castle/">Montfort Castle</a>,
+      <a href="/glossary/baldwin-i/">Baldwin I</a>,
+      <a href="/glossary/saladin/">Saladin</a>,
+      <a href="/sites/battle-of-hattin-1187/">Battle of Hattin</a>,
+      <a href="/lordships/principality-of-galilee/">Principality of Galilee</a>.
+    </p>
+  </footer>
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {

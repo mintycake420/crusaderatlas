@@ -98,3 +98,12 @@ For larger discussions (new buckets, new glossary categories, methodology questi
 - **Basemap tiles** — [CARTO](https://carto.com/) Voyager, based on [OpenStreetMap](https://www.openstreetmap.org/) data.
 - **Typography** — Cinzel, IM Fell DW Pica SC, Spectral, and Inter (Google Fonts).
 - **Photography** — site photographs are a mix of original work, public-domain Wikimedia images, and CC-licensed contributions; per-image attributions appear in each site's detail panel.
+
+## License
+
+Content (data, photos, written descriptions) is licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Code is licensed under MIT.
+
+If you use the atlas in academic work, please cite as:
+"Crusader Atlas — https://crusaderatlas.com/"

@@ -46,6 +46,9 @@
 /lordships/*
   Cache-Control: public, max-age=3600, must-revalidate
 
+/regions/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
 /sw.js
   Cache-Control: public, max-age=0, must-revalidate
 

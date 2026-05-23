@@ -53,6 +53,21 @@ Each landing page is 8–15 KB: parchment-palette inline CSS, real `<h1>`/`<p>` 
 
 The SPA recognises those query params at startup and routes to the relevant detail panel, so search-engine traffic that lands on a static page can return to the live, interactive view in one click.
 
+## Open dataset
+
+The atlas data is published as structured GeoJSON, JSON, and CSV files under [`data/`](data/):
+
+- **[`sites.geojson`](data/geojson/sites.geojson)** — 170 Crusader sites with coordinates, descriptions, images, and Wikipedia links
+- **[`lordships.geojson`](data/geojson/lordships.geojson)** — 27 feudal lordship polygons with succession tables and heraldry
+- **[`routes.geojson`](data/geojson/routes.geojson)** — 7 pilgrim and trade routes as polylines
+- **[`rulers.json`](data/json/rulers.json)** — 24 monarchs of Jerusalem with biographies
+- **[`glossary.json`](data/json/glossary.json)** — 129 encyclopedic entries on crusades, orders, people, and institutions
+- **[`battles.json`](data/json/battles.json)** — 11 extended battle and siege narratives
+
+All geographic files render as interactive maps on GitHub. Data is also available as flat CSV exports in [`data/csv/`](data/csv/). See [`data/README.md`](data/README.md) for the full data dictionary, example queries in Python / JavaScript / R / QGIS, and schema documentation.
+
+The dataset is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). For citation, see [`data/CITATION.cff`](data/CITATION.cff).
+
 ## Running locally
 
 The site is fully static. From this directory:

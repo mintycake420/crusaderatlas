@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Crusader Atlas — Battles",
+  "description": "Extended battle and siege narratives for the Crusader Atlas. Each entry contains a cross-reference to the corresponding site in sites.geojson and an array of prose paragraphs.",
+  "type": "object",
+  "required": ["metadata", "battles"],
+  "properties": {
+    "metadata": {
+      "$ref": "#/definitions/metadata"
+    },
+    "battles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/battleEntry"
+      },
+      "description": "Array of extended battle/siege narratives."
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "metadata": {
+      "type": "object",
+      "description": "Export metadata block common to all Crusader Atlas data files.",
+      "required": ["title", "description", "source", "repository", "license", "version", "generated", "record_count"],
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "source": { "type": "string" },
+        "repository": { "type": "string", "format": "uri" },
+        "license": { "type": "string" },
+        "version": { "type": "string" },
+        "generated": { "type": "string" },
+        "record_count": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "battleEntry": {
+      "type": "object",
+      "required": ["id", "name", "paragraphs"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Kebab-case slug derived from the battle name."
+        },
+        "name": {
+          "type": "string",
+          "description": "Canonical name of the battle or siege (e.g., 'Battle of Hattin (1187)')."
+        },
+        "site_id": {
+          "type": ["string", "null"],
+          "description": "Cross-reference to the site's id in sites.geojson. Null if no matching site exists."
+        },
+        "paragraphs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "description": "Ordered prose paragraphs narrating the battle or siege."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

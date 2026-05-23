@@ -1,0 +1,168 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Crusader Atlas — Glossary",
+  "description": "Glossary of Crusader-era terms, people, events, military orders, and institutions. Includes both hand-authored entries and entries projected from the rulers dataset. Organized by category with optional subgroup subdivisions.",
+  "type": "object",
+  "required": ["metadata", "categories", "subgroup_labels", "navigation_groups", "entries"],
+  "properties": {
+    "metadata": {
+      "$ref": "#/definitions/metadata"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/categoryDef"
+      },
+      "description": "Ordered list of glossary categories. The order determines the desktop rail default (first non-empty category is preselected)."
+    },
+    "subgroup_labels": {
+      "type": "object",
+      "description": "Map from category slug to an ordered object of { subgroup_slug: display_label } pairs. Categories not listed here render as flat lists. Entries with a subcategory whose category has subgroup labels but no matching key fall into an '_other' bucket.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": { "type": "string" }
+      }
+    },
+    "navigation_groups": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/navigationGroup"
+      },
+      "description": "Groupings of categories for navigation UI (e.g. topbar pills). Each group has a label and an ordered list of category keys."
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/glossaryEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "metadata": {
+      "type": "object",
+      "description": "Export metadata block common to all Crusader Atlas data files.",
+      "required": ["title", "description", "source", "repository", "license", "version", "generated", "record_count"],
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "source": { "type": "string" },
+        "repository": { "type": "string", "format": "uri" },
+        "license": { "type": "string" },
+        "version": { "type": "string" },
+        "generated": { "type": "string", "description": "Date the export was generated (YYYY-MM-DD)." },
+        "record_count": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "categoryDef": {
+      "type": "object",
+      "required": ["slug", "label"],
+      "properties": {
+        "slug": {
+          "type": "string",
+          "description": "Machine-readable category identifier (e.g. 'monarchs', 'crusades', 'orders')."
+        },
+        "label": {
+          "type": "string",
+          "description": "Human-readable display label for this category."
+        }
+      },
+      "additionalProperties": false
+    },
+    "navigationGroup": {
+      "type": "object",
+      "required": ["slug", "label", "keys"],
+      "properties": {
+        "slug": {
+          "type": "string",
+          "description": "Identifier for this navigation group."
+        },
+        "label": {
+          "type": "string",
+          "description": "Display label for this navigation group."
+        },
+        "keys": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Ordered list of category slugs that belong to this group."
+        }
+      },
+      "additionalProperties": false
+    },
+    "glossaryEntry": {
+      "type": "object",
+      "required": ["id", "name", "category", "source"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique kebab-case identifier. For ruler-projected entries this is the kebab-cased ruler id (e.g. 'baldwin-i'). Used for see_also cross-references and deep-link query parameters."
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the glossary entry."
+        },
+        "category": {
+          "type": "string",
+          "description": "Category slug this entry belongs to. Must match a slug in the top-level categories array."
+        },
+        "subcategory": {
+          "type": ["string", "null"],
+          "description": "Subgroup slug within the category (e.g. 'jerusalem' within 'monarchs', 'chroniclers' within 'people'). Null if the entry is ungrouped or the category has no subgroups."
+        },
+        "era": {
+          "type": ["string", "null"],
+          "description": "Time period or date range as a display string (e.g. '1100-1118', '1187'). Used for chronological sorting in the monarchs, crusades, and battles categories."
+        },
+        "also_known_as": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Alternative names, spellings, or titles for this entry. Searched alongside the primary name."
+        },
+        "short": {
+          "type": ["string", "null"],
+          "description": "One-line summary shown in list views and search results."
+        },
+        "body": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Prose paragraphs for the detail view. Each array element is one paragraph. For ruler-projected entries, sourced from the ruler's bio field."
+        },
+        "image_url": {
+          "type": ["string", "null"],
+          "description": "Image filename (bare, in fortress-pics/) or a remote https:// URL. Null if no image is available."
+        },
+        "wikipedia": {
+          "type": "object",
+          "description": "Wikipedia article links for this entry.",
+          "properties": {
+            "en": {
+              "type": ["string", "null"],
+              "description": "URL of the English Wikipedia article, or null."
+            },
+            "he": {
+              "type": ["string", "null"],
+              "description": "URL of the Hebrew Wikipedia article, or null."
+            }
+          },
+          "additionalProperties": false
+        },
+        "see_also": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Array of glossary entry ids for cross-reference chips. Broken ids are silently dropped at render time. Ruler-projected entries do not carry see_also."
+        },
+        "source": {
+          "type": "string",
+          "enum": ["authored", "rulers"],
+          "description": "'authored' for hand-written entries in the GLOSSARY array; 'rulers' for entries auto-projected from the RULERS dataset."
+        },
+        "ruler_id": {
+          "type": ["string", "null"],
+          "description": "For ruler-projected entries: the original ruler id from the rulers dataset (e.g. 'baldwin_i'). Null for hand-authored entries."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

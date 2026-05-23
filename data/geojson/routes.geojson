@@ -1,0 +1,630 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "Crusader Atlas Dataset",
+    "description": "Approximate medieval pilgrim and trade routes in the Latin East (12th–13th century)",
+    "source": "https://crusaderatlas.com",
+    "repository": "https://github.com/mintycake420/crusaderatlas",
+    "license": "CC-BY-4.0",
+    "version": "1.0.0",
+    "generated": "2026-05-23",
+    "record_count": 7,
+    "note": "Hand-traced from Roman road remnants, period itineraries (Theodericus c.1170, Burchard of Mount Sion c.1280, Ibn Jubayr c.1183), and modern reconstructions in Pringle's 'Pilgrimage to Jerusalem', the Tabula Imperii Romani Iudaea-Palaestina, and Riley-Smith's atlas of the Crusades. Vertices are approximate; routes shifted with seasons, banditry, and political control."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "acre-jerusalem",
+        "name": "Acre — Lydda — Ramla — Jerusalem (pilgrim road)",
+        "short_name": "Acre → Jerusalem",
+        "role": "pilgrim",
+        "style": {
+          "color": "#8a3a16",
+          "halo_color": "#d49a6e"
+        },
+        "note": "Approximate medieval route",
+        "summary": "The principal pilgrim road for travellers arriving at Acre after 1191, when the city became the capital of the rump Kingdom of Jerusalem.",
+        "description": [
+          "After Acre replaced Jerusalem as the political capital of the kingdom in 1191, this route became the spine of pilgrim traffic for travellers arriving from northern Europe, the Italian republics, and Constantinople. Most ships made landfall at Acre's sheltered harbour rather than risking the open beach at Jaffa. From the city the road ran south along the coastal plain, picking up the older Jaffa pilgrim road at Lydda and Ramla, then climbing into the Judean hills via Latrun and Abu Ghosh to reach Jerusalem.",
+          "The route passed close to a string of Crusader castles whose primary job was to protect it: Atlit and Caesarea on the coast, Latrun in the foothills, Belmont (Suba) above the Jerusalem corridor. Pilgrim chronicles such as Theodericus (c.1170) and the Holy Land guide of Wilbrand of Oldenburg (1211) describe the journey as a roughly five-day walk with established hostels along the way, many of them maintained by the Hospitallers.",
+          "The road's vulnerability to ambush — particularly in the wooded approaches to Jerusalem — was the founding pretext for the Knights Templar in 1118, who took their oath specifically to keep the pilgrim roads safe."
+        ],
+        "image": "Judaean_mountains.jpg"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            35.0694,
+            32.9208
+          ],
+          [
+            35.07,
+            32.8
+          ],
+          [
+            35.07,
+            32.68
+          ],
+          [
+            35.05,
+            32.505
+          ],
+          [
+            34.97,
+            32.35
+          ],
+          [
+            34.91,
+            32.22
+          ],
+          [
+            34.8689,
+            32.07
+          ],
+          [
+            34.895,
+            31.95
+          ],
+          [
+            34.8689,
+            31.9283
+          ],
+          [
+            34.9849,
+            31.8358
+          ],
+          [
+            35.0653,
+            31.8068
+          ],
+          [
+            35.1065,
+            31.8098
+          ],
+          [
+            35.203,
+            31.78
+          ],
+          [
+            35.2277,
+            31.778
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "jaffa-jerusalem",
+        "name": "Jaffa — Ramla — Jerusalem (pilgrim road)",
+        "short_name": "Jaffa → Jerusalem",
+        "role": "pilgrim",
+        "style": {
+          "color": "#7a1a2a",
+          "halo_color": "#c08090"
+        },
+        "note": "Approximate medieval route",
+        "summary": "The classic short pilgrim road, used since late antiquity, from the small port of Jaffa up through the Judean foothills to the Holy Sepulchre.",
+        "description": [
+          "The road from Jaffa to Jerusalem was the shortest and oldest pilgrim route to the Holy Sepulchre, in continuous use since Roman and Byzantine times. The road is roughly 60 km and was typically walked in two or three days. From Jaffa it ran inland to Lydda, where pilgrims venerated the tomb of Saint George; thence to Ramla, the Frankish administrative centre of the coastal plain; up the steep Bab al-Wad gorge past Latrun; through the village of Abu Ghosh, identified by the Crusaders as the New Testament Emmaus; and finally over the last ridge into Jerusalem.",
+          "Most pilgrims and crusading reinforcements arriving by sea before 1187 landed at Jaffa rather than at the better-fortified Acre — Jaffa was closer to Jerusalem and the harbour was small and easily controlled. The Crusader presence on the road was thick: a Templar tower at Latrun, the Hospitaller foundation at Aqua Bella, the fortified manor at Beit 'Itab, and the great Hospitaller castle of Belmont (Suba) all clustered within a day's march of one another along this corridor.",
+          "The road remained the principal pilgrim route into the city even after Saladin's reconquest, and was walked by the German pilgrim Theodericus (c.1170), the Spanish-Jewish traveller Benjamin of Tudela (c.1170), and the Russian abbot Daniel (1106), among many others whose itineraries survive."
+        ],
+        "image": "Jaffator_mit_dem_Davidsturm.JPG"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            34.7519,
+            32.0544
+          ],
+          [
+            34.82,
+            32
+          ],
+          [
+            34.8689,
+            31.9283
+          ],
+          [
+            34.93,
+            31.88
+          ],
+          [
+            34.9849,
+            31.8358
+          ],
+          [
+            35.0653,
+            31.8068
+          ],
+          [
+            35.1065,
+            31.8098
+          ],
+          [
+            35.203,
+            31.78
+          ],
+          [
+            35.2277,
+            31.778
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "damascus-jerusalem",
+        "name": "Damascus — Banias — Jordan crossing — Tiberias — Beit She'an — Nablus — Jerusalem (caravan road)",
+        "short_name": "Damascus → Jerusalem",
+        "role": "caravan",
+        "style": {
+          "color": "#4a6a3a",
+          "halo_color": "#92ae84"
+        },
+        "note": "Approximate medieval route",
+        "summary": "The principal Damascus–Jerusalem inland road, also used by Muslim and Jewish pilgrims; ran through the strategic bottleneck at Jacob's Ford and joined the King's Highway at points.",
+        "description": [
+          "Long predating the Crusades, this was one of the great inland routes between Damascus and southern Palestine, carrying caravans of textiles, spices, and grain in both directions. Crusader control of its western branch through Tiberias, Beit She'an, and Nablus was always partial: Frankish lords taxed it where they could, Muslim raiders harassed it where they could not, and the road's seasonal alignment shifted depending on which crossings of the Jordan were held by which side at any given time.",
+          "The road's single most contested point was Jacob's Ford (Vadum Iacob) on the Upper Jordan — the only year-round crossing between the Sea of Galilee and Lake Huleh. King Baldwin IV's attempt to fortify the ford with the Templar castle of Chastellet in 1178–79 was specifically intended to interdict this caravan road, and the destruction of that castle by Saladin in August 1179 reopened the route to the Ayyubid sultanate.",
+          "Muslim and Jewish pilgrims travelling from the eastern Mediterranean to Jerusalem also used this road, especially during the periods when the city was under Muslim rule (1187–1229, 1244 onwards). The medieval traveller Ibn Jubayr describes the Damascus–Jerusalem journey in detail in his 1183–85 itinerary."
+        ],
+        "image": "Damascus Gate.jpg"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            36.298,
+            33.5138
+          ],
+          [
+            36.05,
+            33.4
+          ],
+          [
+            35.82,
+            33.32
+          ],
+          [
+            35.6944,
+            33.2486
+          ],
+          [
+            35.68,
+            33.15
+          ],
+          [
+            35.675,
+            33.05
+          ],
+          [
+            35.6261,
+            33.0192
+          ],
+          [
+            35.55,
+            32.91
+          ],
+          [
+            35.5,
+            32.885
+          ],
+          [
+            35.49,
+            32.83
+          ],
+          [
+            35.505,
+            32.795
+          ],
+          [
+            35.5315,
+            32.7903
+          ],
+          [
+            35.49,
+            32.735
+          ],
+          [
+            35.5,
+            32.645
+          ],
+          [
+            35.5191,
+            32.5957
+          ],
+          [
+            35.5,
+            32.505
+          ],
+          [
+            35.45,
+            32.44
+          ],
+          [
+            35.37,
+            32.35
+          ],
+          [
+            35.2544,
+            32.2211
+          ],
+          [
+            35.24,
+            31.95
+          ],
+          [
+            35.2277,
+            31.778
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kings-highway",
+        "name": "Damascus — Bosra — Amman — Kerak — Shobak — Aqaba — Sinai — Cairo (King's Highway)",
+        "short_name": "King's Highway",
+        "role": "caravan",
+        "style": {
+          "color": "#9a6817",
+          "halo_color": "#d4b070"
+        },
+        "note": "Approximate medieval route — the Outrejourdain spine",
+        "summary": "The Tariq al-Sultani — the great inland caravan road from Damascus through the Lordship of Outrejourdain to Egypt, taxed by the Crusader fortresses of Kerak and Montréal.",
+        "description": [
+          "The King's Highway — Tariq al-Sultani in Arabic, Via Regia to the Latin chroniclers — was the great inland caravan road of the Levant, in continuous use since the Iron Age. From Damascus it ran south through Bosra and Adra'at into the basalt plateau of the Hauran, then down the western escarpment of the Transjordan plateau through Amman, Madaba, and the great Wadi al-Mujib gorge to Kerak. From Kerak the road continued via Shobak and the Petra basin to Aqaba at the head of the Red Sea, then crossed northern Sinai by the inland desert track to Suez and the Egyptian capital at Cairo.",
+          "The Kingdom of Jerusalem deliberately created the Lordship of Outrejourdain in 1115 to control and tax this caravan road. Baldwin I built Shobak (Mons Regalis / Montréal) on its conical hill in 1115 as the first Frankish stronghold east of the Jordan, and Pagan the Butler began the great fortress of Kerak (Crac des Moabites) in the 1140s. From these strongholds, the lords of Outrejourdain — most notoriously Raynald of Châtillon — could intercept caravans bound for Egypt or for the annual Hajj pilgrimage to Mecca. Raynald's repeated attacks on this traffic in violation of truce, including his 1183 raid into the Red Sea aimed at Mecca itself, were the immediate provocation for Saladin's 1187 invasion of the kingdom.",
+          "After Hattin and the fall of Kerak (1188) and Shobak (1189), Saladin reopened the road for the duration of the Ayyubid sultanate. The Mamluks formalised the route as the official Egypt–Damascus military road in the thirteenth century, fortifying it with khans (caravanserais) at one-day intervals; many of those Mamluk khans survive today as substantial archaeological sites along the modern Desert Highway in Jordan."
+        ],
+        "image": "Kings Caravan Route.jpg"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            36.298,
+            33.5138
+          ],
+          [
+            36.487,
+            32.518
+          ],
+          [
+            36.1058,
+            32.6189
+          ],
+          [
+            36.05,
+            32.3
+          ],
+          [
+            35.9333,
+            31.95
+          ],
+          [
+            35.7937,
+            31.7167
+          ],
+          [
+            35.73,
+            31.46
+          ],
+          [
+            35.7011,
+            31.1815
+          ],
+          [
+            35.5533,
+            30.5286
+          ],
+          [
+            35.417,
+            30.05
+          ],
+          [
+            35,
+            29.53
+          ],
+          [
+            34.855,
+            29.47
+          ],
+          [
+            34,
+            29.65
+          ],
+          [
+            33,
+            29.78
+          ],
+          [
+            32.55,
+            29.97
+          ],
+          [
+            31.75,
+            30.05
+          ],
+          [
+            31.2611,
+            30.0294
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coastal-road-to-egypt",
+        "name": "Ascalon — Gaza — Darum — al-Arish — Pelusium — Bilbeis — Cairo (Way of the Sea)",
+        "short_name": "Coastal road to Egypt",
+        "role": "caravan",
+        "style": {
+          "color": "#5a3618",
+          "halo_color": "#a0816a"
+        },
+        "note": "Approximate medieval route — the principal Crusader invasion road into Egypt",
+        "summary": "The Sinai coastal road — the biblical 'Way of the Land of the Philistines' — running from the southern coastal cities of the kingdom along the Mediterranean shore to the Egyptian Delta and Cairo.",
+        "description": [
+          "This was the ancient and most direct land route between Palestine and Egypt, in continuous use since the Bronze Age. From the southern coastal cities of the kingdom — Ascalon, Gaza, and the Templar fortress of Darum (Deir al-Balah) — the road ran south along the Mediterranean coast through Rafah and al-Arish, crossed the Sinai isthmus near ancient Pelusium, and climbed northwest through Bilbeis to the Egyptian capital of Fustat / Cairo.",
+          "The road was the principal axis of Crusader military operations against Egypt: King Baldwin I's Egyptian expeditions of 1117–18, which cost him his life; King Amalric I's five major campaigns of the 1160s, which came within a hair's breadth of installing a Frankish puppet on the throne of the Fatimid caliphate; the Crusader contribution to the Damietta crusade of 1218; and Louis IX's Seventh Crusade of 1248–50 all marched along this corridor, supplied by sea from Acre, Jaffa, and the Italian merchant fleets. The two southernmost Frankish castles — Darum and Pharaoh's Island in the Gulf of Aqaba — were built specifically to extend control along the Egyptian frontier.",
+          "After 1291 the Mamluks made this the principal courier and military road of their sultanate, with relay stations and pigeon-post towers every few hours' ride; Cairo could exchange messages with Damascus in less than three days. The modern Egyptian and Israeli highways through Sinai follow essentially the same alignment that Frankish armies marched a thousand years ago."
+        ],
+        "image": "Gustave_dore_crusades_the_syrian_army_by_a_sand_storm.jpg"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            34.5436,
+            31.6692
+          ],
+          [
+            34.4636,
+            31.5039
+          ],
+          [
+            34.3511,
+            31.4181
+          ],
+          [
+            34.246,
+            31.288
+          ],
+          [
+            33.795,
+            31.13
+          ],
+          [
+            33.55,
+            31.04
+          ],
+          [
+            33,
+            31.04
+          ],
+          [
+            32.55,
+            31.045
+          ],
+          [
+            32,
+            30.7
+          ],
+          [
+            31.564,
+            30.421
+          ],
+          [
+            31.2611,
+            30.0294
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "italy-cyprus-acre-sea",
+        "name": "Western Mediterranean — Cyprus — Acre (post-1191 pilgrim sea route)",
+        "short_name": "Italy / Cyprus → Acre (sea)",
+        "role": "maritime",
+        "style": {
+          "color": "#1f4658",
+          "halo_color": "#88a8b8"
+        },
+        "note": "Approximate medieval shipping lane",
+        "summary": "The principal sea route for pilgrims and crusaders to the Levant after 1191, with the Lusignan Kingdom of Cyprus as the indispensable staging point.",
+        "description": [
+          "After Acre replaced Jerusalem as the Crusader capital in 1191, the city's sheltered northern harbour became the main landing point for pilgrim and crusading traffic from western Europe. Italian merchant fleets — Venetian, Genoese, and Pisan — sailed in seasonal convoys (the spring 'passage' from March, the autumn 'passage' from August) from Venice, Genoa, Pisa, Marseille, and Barcelona across the southern Aegean and around Cyprus to Acre.",
+          "The Lusignan Kingdom of Cyprus, founded in 1192 from Richard I's conquest of the island during the Third Crusade, was the indispensable staging point. Ships took on fresh water, provisions, and Cypriot wine at Famagusta and Limassol, and travellers often spent days or weeks in the Cypriot ports waiting for favourable winds for the final 200km crossing to Acre. The complete journey from Venice took roughly four to six weeks depending on weather.",
+          "After the fall of Acre in 1291, this route shifted to the Lusignan ports of Cyprus, which remained the closest Christian stronghold to the Holy Land for the next two centuries. Pilgrims continued to sail this approximate course, but disembarked at Famagusta or Larnaca for boat trips to the now-Mamluk Levantine coast under safe-conducts."
+        ],
+        "image": "Pizani_harbour.jpg"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            12.34,
+            45.44
+          ],
+          [
+            13.8,
+            44.1
+          ],
+          [
+            15.5,
+            42.4
+          ],
+          [
+            18,
+            40.8
+          ],
+          [
+            18.7,
+            39.9
+          ],
+          [
+            20,
+            38.3
+          ],
+          [
+            21.2,
+            36.5
+          ],
+          [
+            22.4,
+            36.1
+          ],
+          [
+            23.8,
+            36
+          ],
+          [
+            25,
+            35.8
+          ],
+          [
+            27,
+            36
+          ],
+          [
+            29,
+            35.5
+          ],
+          [
+            31.5,
+            34.9
+          ],
+          [
+            32.8,
+            34.55
+          ],
+          [
+            33.6,
+            34.5
+          ],
+          [
+            34.2,
+            34.3
+          ],
+          [
+            34.7,
+            33.5
+          ],
+          [
+            35,
+            33.1
+          ],
+          [
+            35.0694,
+            32.9208
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "marseille-jaffa-sea",
+        "name": "Marseille — Sicily — Crete — Sinai coast — Jaffa (pre-1187 southern pilgrim sea route)",
+        "short_name": "Marseille → Jaffa (sea)",
+        "role": "maritime",
+        "style": {
+          "color": "#2c5870",
+          "halo_color": "#90b0c0"
+        },
+        "note": "Approximate medieval shipping lane — southern coastal route",
+        "summary": "Before 1187, most pilgrims aimed for Jaffa rather than Acre because it was closer to Jerusalem. Provençal, Catalan and Sicilian ships took the southern shipping lane, hugging the North African and Sinai coasts on their final approach.",
+        "description": [
+          "Before Saladin's reconquest in 1187, Jaffa rather than Acre was the principal pilgrim port of the kingdom, simply because it was closer to Jerusalem — a two-day walk via Lydda and Ramla, against a five-day march through harder country from Acre. As a result, most pilgrim ships from Provence (Marseille), Catalonia, southern Italy, and Norman Sicily aimed at Jaffa. The route shown here is the southern of the two principal medieval shipping lanes: from Marseille down past Corsica and Sardinia, around Sicily at Palermo or Messina, across the Ionian to a refit stop south of Crete, then along the North African coast and up the Sinai shore to Jaffa.",
+          "The southern route was longer than the deep-sea passage via Cyprus but offered two crucial advantages — fresh water and provisions could be taken on at coastal stops in Cyrenaica or the Egyptian Delta, and ships hugging land could navigate by landmark and run for shelter in storms. The northern route via the Aegean and Cyprus was preferred by the great Italian merchant fleets (Venetian, Genoese, Pisan); the western Mediterranean pilgrim traffic generally took this southern coastal lane.",
+          "The harbour at Jaffa itself was small, exposed, and undefended on its seaward side — there was no breakwater. Vessels typically anchored offshore in the open roadstead and lightered passengers and cargo to the beach in small boats, an operation that became impossible in winter storms and repeatedly led to ships being driven aground. The Russian abbot Daniel (1106), the German pilgrim Theodericus (c.1170), and the Spanish-Jewish traveller Benjamin of Tudela (c.1170) all describe their approach to Jaffa from the sea. After 1191 most pilgrim traffic shifted north to Acre's better harbour, but Jaffa remained an important secondary landing point throughout the thirteenth century."
+        ],
+        "image": "Crusaders-Disembarking.webp"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            5.37,
+            43.3
+          ],
+          [
+            7,
+            42.8
+          ],
+          [
+            7.8,
+            42
+          ],
+          [
+            7.8,
+            40.5
+          ],
+          [
+            8,
+            39
+          ],
+          [
+            10,
+            37.8
+          ],
+          [
+            12.5,
+            36.4
+          ],
+          [
+            15.5,
+            35.5
+          ],
+          [
+            19,
+            34.2
+          ],
+          [
+            23,
+            33.6
+          ],
+          [
+            27,
+            32.9
+          ],
+          [
+            30.5,
+            32
+          ],
+          [
+            31.5,
+            32.1
+          ],
+          [
+            32.5,
+            31.8
+          ],
+          [
+            33.5,
+            31.4
+          ],
+          [
+            34.4,
+            31.7
+          ],
+          [
+            34.7519,
+            32.0544
+          ]
+        ]
+      }
+    }
+  ]
+}

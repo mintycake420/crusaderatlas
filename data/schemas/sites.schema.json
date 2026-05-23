@@ -1,0 +1,176 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Crusader Atlas — Sites",
+  "description": "GeoJSON FeatureCollection of Crusader-era sites (castles, churches, fortified towns, battles, sieges) across the Latin East, 1099-1291. Each Feature is a Point with rich historical metadata.",
+  "type": "object",
+  "required": ["type", "features"],
+  "properties": {
+    "type": {
+      "const": "FeatureCollection"
+    },
+    "metadata": {
+      "$ref": "#/definitions/metadata"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/siteFeature"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "metadata": {
+      "type": "object",
+      "description": "Export metadata block common to all Crusader Atlas data files.",
+      "required": ["title", "description", "source", "repository", "license", "version", "generated", "record_count"],
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "source": { "type": "string" },
+        "repository": { "type": "string", "format": "uri" },
+        "license": { "type": "string" },
+        "version": { "type": "string" },
+        "generated": { "type": "string" },
+        "record_count": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "siteFeature": {
+      "type": "object",
+      "required": ["type", "geometry", "properties"],
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "geometry": {
+          "$ref": "#/definitions/pointGeometry"
+        },
+        "properties": {
+          "$ref": "#/definitions/siteProperties"
+        }
+      },
+      "additionalProperties": false
+    },
+    "pointGeometry": {
+      "type": "object",
+      "description": "GeoJSON Point geometry. Coordinates are [longitude, latitude] in WGS84 decimal degrees.",
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": {
+          "const": "Point"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": { "type": "number" },
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "[longitude, latitude] in WGS84 decimal degrees."
+        }
+      },
+      "additionalProperties": false
+    },
+    "siteProperties": {
+      "type": "object",
+      "required": ["id", "internal_key", "name", "category", "description"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$",
+          "description": "URL-safe kebab-case slug, matching the landing-page path and deep-link query parameter. Derived from canonical_name via slugify()."
+        },
+        "internal_key": {
+          "type": "string",
+          "description": "Original internal key from the source DATA[] array (_key field). Preserves the raw canonical_name casing for backward compatibility with the build pipeline."
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the site (canonical_name from the source gazetteer, with DISPLAY_NAMES overrides applied)."
+        },
+        "alternate_names": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Other names by which the site is known (Arabic, Hebrew, Frankish, modern)."
+        },
+        "category": {
+          "type": "string",
+          "enum": ["capital", "major_castle", "urban", "tower", "church", "battle", "siege"],
+          "description": "Site classification bucket."
+        },
+        "territory": {
+          "type": ["string", "null"],
+          "description": "Modern country or administrative region (e.g., 'Israel', 'Lebanon', 'Jordan', 'Syria', 'Egypt', 'West Bank', 'Gaza Strip', 'Golan Heights')."
+        },
+        "modern_location": {
+          "type": ["string", "null"],
+          "description": "Modern city and country string (e.g., 'Acre, Israel')."
+        },
+        "lordship": {
+          "type": ["string", "null"],
+          "description": "Medieval lordship this site fell within, computed via point-in-polygon against the lordship polygons. Null for sites outside the Kingdom of Jerusalem (e.g., Egypt, inland Syria). Cross-references lordships.geojson by name."
+        },
+        "coordinate_precision": {
+          "type": ["string", "null"],
+          "enum": ["exact", "approximate", null],
+          "description": "'exact' when coordinates are surveyed or GPS-verified; 'approximate' when placed from textual or cartographic evidence."
+        },
+        "description": {
+          "type": "string",
+          "description": "Curated prose summary of the site's history, construction, and significance. Author-verified; never AI-generated."
+        },
+        "fortification": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/definitions/fortification" }
+          ],
+          "description": "Fortification assessment. Null for battle and siege entries, where the concept does not apply."
+        },
+        "has_extended_narrative": {
+          "type": "boolean",
+          "description": "Present only on battle/siege sites. True if battles.json contains an extended narrative for this site."
+        },
+        "image": {
+          "type": ["string", "null"],
+          "description": "Photo filename (bare, no path prefix) referencing a file in fortress-pics/, or a remote https:// URL. Null if no image is available."
+        },
+        "wikipedia": {
+          "type": "object",
+          "description": "Wikipedia article links for this site.",
+          "properties": {
+            "en": {
+              "type": ["string", "null"],
+              "description": "URL of the English Wikipedia article, or null."
+            },
+            "he": {
+              "type": ["string", "null"],
+              "description": "URL of the Hebrew Wikipedia article, or null."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "fortification": {
+      "type": "object",
+      "description": "Fortification assessment for non-battle/siege sites.",
+      "properties": {
+        "status": {
+          "type": ["string", "null"],
+          "enum": ["definite", "probable", "uncertain", "no", null],
+          "description": "Confidence level that this site was fortified during the Crusader period."
+        },
+        "visible_remains": {
+          "type": ["string", "null"],
+          "enum": ["yes", "partial", "fragmentary", "unknown", "no", null],
+          "description": "Whether Crusader-period structural remains are visible at the site today."
+        },
+        "harbor": {
+          "type": "boolean",
+          "description": "Whether the site had or was associated with a medieval harbor."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

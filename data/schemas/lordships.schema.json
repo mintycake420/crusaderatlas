@@ -1,0 +1,169 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Crusader Atlas — Lordships",
+  "description": "GeoJSON FeatureCollection of lordships, fiefs, and sea zones of the Crusader states. Each Feature is a Polygon with administrative metadata, heraldry, and lists of historical lords.",
+  "type": "object",
+  "required": ["type", "features"],
+  "properties": {
+    "type": {
+      "const": "FeatureCollection"
+    },
+    "metadata": {
+      "$ref": "#/definitions/metadata"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/lordshipFeature"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "metadata": {
+      "type": "object",
+      "description": "Export metadata block common to all Crusader Atlas data files.",
+      "required": ["title", "description", "source", "repository", "license", "version", "generated", "record_count"],
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "source": { "type": "string" },
+        "repository": { "type": "string", "format": "uri" },
+        "license": { "type": "string" },
+        "version": { "type": "string" },
+        "generated": { "type": "string", "description": "Date the export was generated (YYYY-MM-DD)." },
+        "record_count": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "lordshipFeature": {
+      "type": "object",
+      "required": ["type", "geometry", "properties"],
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "geometry": {
+          "$ref": "#/definitions/polygonGeometry"
+        },
+        "properties": {
+          "$ref": "#/definitions/lordshipProperties"
+        }
+      },
+      "additionalProperties": false
+    },
+    "polygonGeometry": {
+      "type": "object",
+      "description": "GeoJSON Polygon geometry. Coordinates are arrays of linear rings; each ring is an array of [lon, lat] positions. The first and last position of each ring must be identical (closed ring).",
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": {
+          "const": "Polygon"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 4,
+            "description": "A linear ring of [lon, lat] positions. Must have at least 4 positions (3 vertices + closing duplicate)."
+          },
+          "minItems": 1,
+          "description": "Array of linear rings. The first is the exterior ring; subsequent rings are holes."
+        }
+      },
+      "additionalProperties": false
+    },
+    "lordshipProperties": {
+      "type": "object",
+      "required": ["id", "name", "kind"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Kebab-case slug derived from the lordship name. Cross-referenced by the lordship field in sites.geojson."
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the lordship, fief, or sea zone."
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["fief", "great_fief", "royal", "sub_fief", "crusader_state", "water", "external_polity"],
+          "description": "Administrative classification of the territory."
+        },
+        "capital": {
+          "type": ["string", "null"],
+          "description": "Name of the capital city or stronghold of this lordship, if applicable."
+        },
+        "parent": {
+          "type": ["string", "null"],
+          "description": "Name of the parent lordship or kingdom this territory belongs to."
+        },
+        "style": {
+          "type": "object",
+          "description": "Visual styling hints for rendering the polygon on the map.",
+          "properties": {
+            "fill": {
+              "type": ["string", "null"],
+              "description": "CSS color value for polygon fill (e.g. '#b3cde3')."
+            }
+          },
+          "additionalProperties": false
+        },
+        "coat_of_arms": {
+          "type": ["string", "null"],
+          "description": "Filename of the coat of arms image in coat-of-arms/, or null if none exists."
+        },
+        "photo": {
+          "type": ["string", "null"],
+          "description": "Filename of a representative photo in fortress-pics/, or a remote URL. Null if none available."
+        },
+        "description": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Prose paragraphs describing the lordship's history and significance. Each array element is one paragraph."
+        },
+        "lords": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/lord"
+          },
+          "description": "Chronological list of lords, rulers, or holders of this territory."
+        },
+        "lord_column_header": {
+          "type": ["string", "null"],
+          "description": "Custom column header for the lords table (e.g. 'King', 'Count', 'Lord'). Null uses a default."
+        },
+        "note": {
+          "type": ["string", "null"],
+          "description": "Editorial note or caveat about this lordship entry."
+        }
+      },
+      "additionalProperties": false
+    },
+    "lord": {
+      "type": "object",
+      "description": "A single lord or ruler entry in the chronological succession list.",
+      "properties": {
+        "name": {
+          "type": ["string", "null"],
+          "description": "Name of the lord or ruler. Null for gaps or unknown holders."
+        },
+        "reign": {
+          "type": ["string", "null"],
+          "description": "Reign or tenure period as a display string (e.g. '1110-1131')."
+        },
+        "wikipedia": {
+          "type": ["string", "null"],
+          "description": "URL of the English Wikipedia article for this lord, or null."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

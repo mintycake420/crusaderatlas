@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+title: "Crusader Atlas Dataset"
+message: "If you use this dataset, please cite it as below."
+type: dataset
+authors:
+  - name: "Crusader Atlas"
+    website: "https://crusaderatlas.com"
+url: "https://github.com/mintycake420/crusaderatlas"
+repository-code: "https://github.com/mintycake420/crusaderatlas"
+license: CC-BY-4.0
+version: "1.0.0"
+date-released: "2026-05-23"
+keywords:
+  - crusades
+  - medieval history
+  - historical GIS
+  - Kingdom of Jerusalem
+  - Latin East
+  - digital humanities
+  - geospatial data
+  - Levant
+  - Frankish lordships
+  - Crusader castles
+  - military orders
+references:
+  - type: book
+    title: "Secular Buildings in the Crusader Kingdom of Jerusalem: An Archaeological Gazetteer"
+    authors:
+      - family-names: Pringle
+        given-names: Denys
+    year: 1997
+    publisher:
+      name: "Cambridge University Press"
+  - type: book
+    title: "The Churches of the Crusader Kingdom of Jerusalem: A Corpus"
+    authors:
+      - family-names: Pringle
+        given-names: Denys
+    year: 1993
+    publisher:
+      name: "Cambridge University Press"

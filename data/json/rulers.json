@@ -1,0 +1,518 @@
+{
+  "metadata": {
+    "title": "Crusader Atlas Dataset",
+    "description": "Monarchs of the Kingdom of Jerusalem (1099–1291)",
+    "source": "https://crusaderatlas.com",
+    "repository": "https://github.com/mintycake420/crusaderatlas",
+    "license": "CC-BY-4.0",
+    "version": "1.0.0",
+    "generated": "2026-05-23",
+    "record_count": 24
+  },
+  "rulers": [
+    {
+      "id": "godfrey",
+      "name": "Godfrey of Bouillon",
+      "epithet": "Advocatus Sancti Sepulchri",
+      "dynasty": "House of Boulogne",
+      "regnal_title": "Advocate of the Holy Sepulchre",
+      "reign_start": 1099,
+      "reign_end": 1100,
+      "predecessor": null,
+      "successor": "Baldwin I",
+      "bio": [
+        "When the Crusader leaders met in Jerusalem in July 1099 to choose a head of state, Raymond IV of Toulouse — the wealthiest and most senior — was the obvious favourite, but his high-handedness had alienated the other barons. On 22 July they elected Godfrey of Bouillon, Duke of Lower Lorraine, the more pious and cooperative candidate. He refused the title of king and a crown of gold, unwilling to wear royal gold in the city where Jesus had worn a crown of thorns. He took instead the title Advocatus Sancti Sepulchri — Defender of the Holy Sepulchre — framing his rule as religious stewardship rather than monarchy.",
+        "Barely a month into his rule he led a pre-emptive strike against a massive Fatimid relief army advancing from Egypt. At the Battle of Ascalon on 12 August 1099 the Crusader charge broke the Egyptian line and ended the immediate threat of counter-conquest. He spent the remaining months of his life granting the first fiefs of the kingdom, opening the negotiations with Pisa and Venice that would eventually deliver the coastal ports in exchange for merchant quarters, and resisting the Patriarch Daimbert's attempts to subject the secular state to the Church.",
+        "He died in Jerusalem on 18 July 1100 — barely a year after the city's capture — and was buried in the Church of the Holy Sepulchre, where his tomb would be venerated for centuries. William of Tyre remembered him as “a man of deep religious character, devout and God-fearing… serious and steadfast in word,” chosen “by the unanimous voice of all.” He is the kingdom's foundational hero: the short reign that gave the conquest the moral legitimacy it needed to survive its first year, and opened the path for his more pragmatic brother to wear the crown he had refused."
+      ],
+      "image": "Godfrey_of_Bouillon_(cropped).jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Godfrey_of_Bouillon",
+        "he": "https://he.wikipedia.org/wiki/%D7%92%D7%95%D7%98%D7%A4%D7%A8%D7%99%D7%93_%D7%9E%D7%91%D7%95%D7%99%D7%95%D7%9F"
+      }
+    },
+    {
+      "id": "baldwin-i",
+      "name": "Baldwin I",
+      "epithet": "first King of Jerusalem",
+      "dynasty": "House of Boulogne",
+      "regnal_title": "King of Jerusalem",
+      "reign_start": 1100,
+      "reign_end": 1118,
+      "predecessor": "Godfrey of Bouillon",
+      "successor": "Baldwin II",
+      "bio": [
+        "When Godfrey of Bouillon died childless on 18 July 1100, his Lotharingian retainers barricaded themselves into the Tower of David to stop the Patriarch Daimbert from turning the new conquest into a theocracy, and sent north to summon Baldwin from Edessa. Unlike his brother — who had refused a crown of gold in the city where Christ had worn a crown of thorns — Baldwin had no qualms about the royal title. He was crowned the first King of Jerusalem on Christmas Day 1100, deliberately in Bethlehem rather than in Jerusalem itself, a discreet concession to that same scruple even as he cheerfully swept it aside.",
+        "Over the next eighteen years he welded a string of coastal conquests — Arsuf and Caesarea (1101), Acre (1104), Beirut (1110), Sidon (1111) — into an economic engine. The ports brought pilgrims, Italian naval squadrons, and the silver that paid his knights. In 1115 he pushed the kingdom's border south as far as the Gulf of Aqaba and planted the great fortress of Montreal (Krak de Montréal) directly across the Cairo–Damascus caravan road. His chaplain Fulcher of Chartres compared him to “a second Joshua”; his critics noted, less kindly, that he had married the Armenian princess Arda for alliance, then set her aside, then married Adelaide del Vasto of Sicily for her famous dowry, and set her aside too once the money was safely in the treasury.",
+        "He died in April 1118 on another raid into Egypt, fishing at the mouth of a Nile distributary when he was suddenly taken ill. His household, determined he should be buried beside his brother in the Church of the Holy Sepulchre, packed his body in salt and spices and carried him back across the Sinai. The shallow lagoon on the northern Sinai coast where he fell ill still bears his Arabised name — Bārdawīl, Baldwin's lake. Modern scholars consider him the real founder of the kingdom: the pragmatist who turned a garrison of pious enthusiasts into a working state, literate and shrewd enough to outlast its founders."
+      ],
+      "image": "Baldwin_1_of_Jerusalem.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Baldwin_I_of_Jerusalem",
+        "he": "https://he.wikipedia.org/wiki/%D7%91%D7%9C%D7%93%D7%95%D7%95%D7%99%D7%9F_%D7%94%D7%A8%D7%90%D7%A9%D7%95%D7%9F,_%D7%9E%D7%9C%D7%9A_%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+      }
+    },
+    {
+      "id": "baldwin-ii",
+      "name": "Baldwin II",
+      "epithet": "of Bourcq",
+      "dynasty": "House of Rethel",
+      "regnal_title": "King of Jerusalem",
+      "reign_start": 1118,
+      "reign_end": 1131,
+      "predecessor": "Baldwin I",
+      "successor": "Melisende & Fulk",
+      "bio": [
+        "Baldwin of Bourcq, a cousin of the childless Baldwin I and formerly Count of Edessa, arrived in Jerusalem in April 1118 just as his predecessor's funeral procession was reaching the city. Some chroniclers hint at a palace coup by the Lorrainer faction over the rival claims of Baldwin I's brother Eustace III of Boulogne; in practice, the presence of a seasoned crusader already in the East closed the debate. The High Court elected him on the spot.",
+        "His thirteen-year reign was defined by near-constant warfare — he spent about four of those years in Muslim captivity, mostly in the hands of the Artuqid emir Balak at Kharput — yet the kingdom's institutions grew around him. He convened the Council of Nablus in 1120 to establish the first major body of written law, addressing both secular governance and clerical discipline; he officially recognised the Knights Templar and granted them quarters on the Temple Mount, turning a small protective brotherhood into a permanent standing army. In 1124, while he was still a prisoner, his regency government and a massive Venetian fleet captured Tyre — the last great Muslim-held port on the coast.",
+        "Deeply pious — William of Tyre noted callouses on his hands and knees from constant prayer — Baldwin was also criticised for a “love of money,” the inevitable reflection of perpetual campaign costs. He was devoted to his Armenian wife Morphia and refused to set her aside even under baronial pressure to produce a male heir, dying in 1131 and leaving the kingdom to their eldest daughter Melisende and her husband Fulk of Anjou. Historians remember him as the monarch who consolidated the frontiers and institutionalised the Crusader States, bequeathing a kingdom legally and militarily stronger than the one he inherited."
+      ],
+      "image": "Coin_Baldwin2.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Baldwin_II_of_Jerusalem",
+        "he": "https://he.wikipedia.org/wiki/%D7%91%D7%9C%D7%93%D7%95%D7%95%D7%99%D7%9F_%D7%94%D7%A9%D7%A0%D7%99,_%D7%9E%D7%9C%D7%9A_%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+      }
+    },
+    {
+      "id": "melisende",
+      "name": "Melisende",
+      "epithet": "Queen regnant of Jerusalem",
+      "dynasty": "House of Rethel",
+      "regnal_title": "Queen of Jerusalem",
+      "reign_start": 1131,
+      "reign_end": 1152,
+      "predecessor": "Baldwin II",
+      "successor": "Baldwin III",
+      "bio": [
+        "Eldest daughter of Baldwin II and his Armenian wife Morphia, Melisende was designated heir by her father in the absence of sons and married to Fulk V of Anjou in 1129 to bring western military weight to the kingdom. The couple were crowned jointly at the Church of the Holy Sepulchre in 1131, but Fulk tried almost at once to exclude her from government, and the result was a political crisis.",
+        "In 1134 her cousin Hugh II of Jaffa rose in revolt against the king's autocracy. When an assassination attempt on Hugh was publicly blamed on Fulk, the queen's party used the outrage to force the king back to the bargaining table. William of Tyre preserved the settlement in a single sentence: “From that day forward, the king so changed that… he never attempted to take the initiative, even in trivial matters, without her consent.” From then on Melisende signed charters jointly with her husband and, after his death in 1143, ruled as regent for their thirteen-year-old son Baldwin III.",
+        "Her regency saw the County of Edessa fall to Zengi in 1144 — the disaster that summoned the Second Crusade — and she managed the fractious arrival of Conrad III of Germany and Louis VII of France at Acre, though their expedition against Damascus failed ignominiously. She commissioned the Melisende Psalter, among the masterpieces of Crusader art, and founded the convent of St Lazarus at Bethany for her sister Yvette. Even when Baldwin III finally drove her out of government in 1152, William of Tyre thought her a woman of “great wisdom” who “administered the government with such skillful care that she may be said to truly have equalled her ancestors.”"
+      ],
+      "image": "Coronation_of_Melisende.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Melisende%2C_Queen_of_Jerusalem",
+        "he": "https://he.wikipedia.org/wiki/%D7%9E%D7%9C%D7%99%D7%A1%D7%A0%D7%93%D7%94,_%D7%9E%D7%9C%D7%9B%D7%AA_%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+      }
+    },
+    {
+      "id": "fulk",
+      "name": "Fulk",
+      "epithet": "Fulk V of Anjou",
+      "dynasty": "House of Anjou",
+      "regnal_title": "King of Jerusalem",
+      "reign_start": 1131,
+      "reign_end": 1143,
+      "predecessor": "Baldwin II",
+      "successor": "Baldwin III",
+      "bio": [
+        "Count of Anjou, twice a crusader and already widowed with grown children in France, Fulk was chosen by Baldwin II as the western prince capable of holding Jerusalem after his death. He arrived in 1129 to marry Melisende and was crowned jointly with her in 1131. He was a skilful soldier but a political outsider — the native-born poulain barons resented his Angevin retinue, and his early attempt to rule without his wife triggered the 1134 revolt and the settlement that chastened him for the rest of his reign.",
+        "Militarily he remained formidable. To seal the southern frontier against Fatimid Ascalon he built a ring of royal castles — Beth Gibelin, Blanchegarde, Ibelin and the refortified Yibneh — that slowly strangled the port's raiding range. In the north he intervened in the succession of Antioch, and in 1137 he was trapped at Montferrand with Raymond II of Tripoli until Byzantine intervention forced Zengi to withdraw. The frontier he left behind was broader and better fortified than the one he inherited.",
+        "His end was abrupt and undignified. On 10 November 1143, hunting with Melisende on the plain near Acre, his horse stumbled chasing a hare; Fulk was thrown and his own saddle struck his head. He lingered three days and died without regaining consciousness. The kingdom passed to their son Baldwin III, then thirteen, under the regency of the queen whose authority Fulk had spent a decade learning not to challenge."
+      ],
+      "image": "Fulko_jeune.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Fulk%2C_King_of_Jerusalem",
+        "he": "https://he.wikipedia.org/wiki/%D7%A4%D7%95%D7%9C%D7%A7_%D7%9E%D7%90%D7%A0%D7%96%27%D7%95"
+      }
+    },
+    {
+      "id": "baldwin-iii",
+      "name": "Baldwin III",
+      "epithet": "the first poulain king",
+      "dynasty": "House of Anjou",
+      "regnal_title": "King of Jerusalem",
+      "reign_start": 1143,
+      "reign_end": 1163,
+      "predecessor": "Fulk & Melisende",
+      "successor": "Amalric I",
+      "bio": [
+        "The first King of Jerusalem born in the East, Baldwin III was a true poulain — a ruler who understood the subtle three-cornered diplomacy between Damascus, Byzantium and his own Latin nobility in a way his European-born predecessors never had. Crowned jointly with his mother Melisende at thirteen, he reached his majority in 1145 but found her unwilling to hand over the royal seal. The crisis festered for seven years. In 1152 Baldwin besieged her in the Tower of David; when she surrendered he let her retire to Nablus with her dignity intact, and the kingdom had its first sole king in twenty years.",
+        "In 1153, after a gruelling seven-month siege, his army captured Ascalon from the Fatimids — the last pocket of Egyptian territory on the Palestinian coast, and a fortress that had raided the outskirts of Jerusalem for half a century. He cemented his northern flank by marrying the thirteen-year-old Byzantine princess Theodora Komnene in 1158, recognising imperial suzerainty over Antioch in exchange for a hard Greek shield against the rising power of Nur ad-Din in Syria. He was well-read in the kingdom's customary law, an enthusiastic debater of theology and history, and by William of Tyre's account an exceptionally gifted public speaker.",
+        "He died in Beirut in February 1163, aged only thirty-three, perhaps poisoned by a Syrian physician's prescription. The procession that carried him from Beirut to the Holy Sepulchre took eight days, and even Muslim chroniclers paused their campaigning to mourn — Nur ad-Din was reported to have told his commanders that he would not raid Frankish territory while the dead king's people were in grief, because “the Franks have lost such a prince as the world will not see again.” Historians still call his reign the Indian Summer of the First Kingdom."
+      ],
+      "image": "Baudouin_III_apprenant_la_nouvelle_(cropped).jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Baldwin_III_of_Jerusalem",
+        "he": "https://he.wikipedia.org/wiki/%D7%91%D7%9C%D7%93%D7%95%D7%95%D7%99%D7%9F_%D7%94%D7%A9%D7%9C%D7%99%D7%A9%D7%99,_%D7%9E%D7%9C%D7%9A_%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+      }
+    },
+    {
+      "id": "amalric-i",
+      "name": "Amalric I",
+      "epithet": "the clerkly king",
+      "dynasty": "House of Anjou",
+      "regnal_title": "King of Jerusalem",
+      "reign_start": 1163,
+      "reign_end": 1174,
+      "predecessor": "Baldwin III",
+      "successor": "Baldwin IV",
+      "bio": [
+        "Younger brother of Baldwin III, Amalric inherited the throne in February 1163. The High Court made his coronation conditional on the annulment of his marriage to Agnes of Courtenay — officially on grounds of consanguinity, in practice because her Edessan family was politically toxic in Jerusalem — though the children Baldwin and Sibylla were declared legitimate and retained full claim to the succession. He complied, and was crowned alone.",
+        "His reign became a single strategic obsession: Egypt. Five times between 1163 and 1169 he marched an army into the Nile Delta, trying to seize control of the decaying Fatimid caliphate before Nur ad-Din's lieutenants could. Briefly, in 1169, he had Fatimid viziers paying him tribute and coordinated operations with the Byzantine fleet. But the expeditions unseated the old order and pushed its successor — a Kurdish general named Saladin — into the role of sultan of a united Egypt. Amalric's grand strategy, brilliant on paper, created exactly the enemy the kingdom had most feared. He also carried out the sharpest centralising reform of the twelfth century, the Assise sur la ligece, which forced every rear-vassal of every lord to swear fealty directly to the crown.",
+        "William of Tyre, who served as his chancellor and tutored his son, described him as a clerkly and studious king — slightly aloof, very well-read, a patient administrator rather than a popular figure. He was struck down by dysentery on returning from a minor raid in 1174 and died in Jerusalem at the age of thirty-eight, leaving the throne to a thirteen-year-old leper."
+      ],
+      "image": "Amalric_receives_a_message_(cropped).jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Amalric%2C_King_of_Jerusalem",
+        "he": null
+      }
+    },
+    {
+      "id": "baldwin-iv",
+      "name": "Baldwin IV",
+      "epithet": "the Leper King",
+      "dynasty": "House of Anjou",
+      "regnal_title": "King of Jerusalem",
+      "reign_start": 1174,
+      "reign_end": 1185,
+      "predecessor": "Amalric I",
+      "successor": "Baldwin V",
+      "bio": [
+        "William of Tyre discovered the condition by accident. Tutoring the young prince and his playmates in the royal palace, the chronicler noticed that the nine-year-old Baldwin felt nothing when the other boys scratched his arms in play. “It is impossible to refrain from tears while speaking of this great misfortune,” William wrote later. “Baldwin… endured it altogether too patiently, as if he felt nothing.” When his father Amalric I died in 1174, the thirteen-year-old leper inherited a kingdom already watching for Saladin. Because he could not marry or sire an heir, his whole reign was dominated by the search for husbands for his sisters Sibylla and Isabella — a question that would outlive him and, in the end, destroy his kingdom.",
+        "In November 1177, aged sixteen and already losing feeling in his hands, Baldwin rode out of Ascalon with roughly five hundred knights and the relic of the True Cross, and fell on a vastly larger Ayyubid army at Montgisard. The rout was so complete that Saladin himself reportedly escaped only on a pack-camel. Both Christian and Muslim chroniclers credited the victory to the king's personal courage — a miracle attributed to a teenage leper. The rest of his reign was consumed by faction: the Court Party around his mother Agnes of Courtenay and her protégé Guy of Lusignan clawed against the Noble Party of Raymond III of Tripoli and the Ibelins for control of the regency as the king's body failed around him.",
+        "By 1183 he had lost his sight and could no longer ride, yet when Saladin besieged the great castle of Kerak he had himself carried east on a litter to lift the siege — and did. He died in the spring of 1185, aged twenty-four, and was buried in the Church of the Holy Sepulchre beside the founding kings. Within two years Guy of Lusignan had led the kingdom's army into the waterless trap at the Horns of Hattin; within three months of that, Jerusalem itself had surrendered to Saladin. Historians still regard Baldwin as the monarch who held a fracturing state together through sheer force of character — and his death, not Hattin, as the moment the last brake against Saladin was released."
+      ],
+      "image": "King_Baldwin_IV.png",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Baldwin_IV_of_Jerusalem",
+        "he": "https://he.wikipedia.org/wiki/%D7%91%D7%9C%D7%93%D7%95%D7%95%D7%99%D7%9F_%D7%94%D7%A8%D7%91%D7%99%D7%A2%D7%99,_%D7%9E%D7%9C%D7%9A_%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+      }
+    },
+    {
+      "id": "baldwin-v",
+      "name": "Baldwin V",
+      "epithet": "the child king",
+      "dynasty": "Houses of Anjou & Montferrat",
+      "regnal_title": "King of Jerusalem",
+      "reign_start": 1185,
+      "reign_end": 1186,
+      "predecessor": "Baldwin IV",
+      "successor": "Sibylla & Guy",
+      "bio": [
+        "Born in 1177 to Sibylla of Jerusalem and her first husband William of Montferrat, the little Baldwin was crowned co-king in 1183 at the insistence of his dying uncle Baldwin IV, who was determined that the crown should not pass through his sister to her second husband Guy of Lusignan. When Baldwin IV died in the spring of 1185 the seven-year-old became sole king under the regency of Count Raymond III of Tripoli.",
+        "The regency did real work in a desperate hour. Raymond secured a four-year truce with Saladin that bought the kingdom breathing space, while custody of the sickly king was handed separately to Joscelin III of Courtenay — a deliberate split designed to ensure that the regent could not be blamed if the boy died in his care. At his earlier coronation, Balian of Ibelin had famously carried the six-year-old on his shoulders up the steps of the Holy Sepulchre, a piece of public theatre that declared the united support of the baronial party.",
+        "He died in Acre in August 1186, aged about eight, almost certainly of natural causes — no contemporary chronicler hints at poison, though later novelists have added it. His death was the catastrophe the regency had tried to plan against. The truce held for a few months more, but the succession crisis he left behind handed the crown to his mother Sibylla and, through her, to Guy of Lusignan."
+      ],
+      "image": "Baldwin_V_of_Jerusalem.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Baldwin_V_of_Jerusalem",
+        "he": "https://he.wikipedia.org/wiki/%D7%91%D7%9C%D7%93%D7%95%D7%95%D7%99%D7%9F_%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99,_%D7%9E%D7%9C%D7%9A_%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+      }
+    },
+    {
+      "id": "sibylla",
+      "name": "Sibylla",
+      "epithet": "Queen regnant of Jerusalem",
+      "dynasty": "House of Anjou",
+      "regnal_title": "Queen of Jerusalem",
+      "reign_start": 1186,
+      "reign_end": 1190,
+      "predecessor": "Baldwin V",
+      "successor": "Isabella I",
+      "bio": [
+        "Elder daughter of Amalric I and Agnes of Courtenay, Sibylla was the rightful heiress on the death of her son Baldwin V. The barons — led by Raymond of Tripoli — tried to block her coronation unless she divorced her deeply unpopular second husband Guy of Lusignan. She agreed, but only on condition she could choose her next husband herself. Once she was crowned in Jerusalem in late summer 1186, she immediately called Guy forward, set the royal crown on his own head, and declared him king. Her opponents stood stunned.",
+        "Within a year her husband's decisions had annihilated the kingdom. On 4 July 1187 Guy led the field army across a waterless basalt plateau toward the Sea of Galilee and into a trap Saladin had been setting for a decade; at the Horns of Hattin the True Cross was lost and the king, his brother and most of the nobility were captured. In October Jerusalem itself surrendered after a brief siege, and Sibylla — released to follow Guy — joined the remnant of the court at Tripoli and then at the Frankish siege camp before Acre.",
+        "She died of disease in that camp in the autumn of 1190, aged about thirty, together with her two small daughters by Guy. Her death was legally catastrophic as well: with Sibylla gone, Guy's only title to the throne was his marriage to her, and the nobility promptly turned to her younger half-sister Isabella as the new legitimate heir. Sibylla's reign was brief, personally brave, and politically ruinous — a queen who chose her husband and lost her kingdom to keep him."
+      ],
+      "image": "Queen_Sibyl_of_Jerusalem.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Sibylla%2C_Queen_of_Jerusalem",
+        "he": "https://he.wikipedia.org/wiki/%D7%A1%D7%99%D7%91%D7%99%D7%9C%D7%94,_%D7%9E%D7%9C%D7%9B%D7%AA_%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+      }
+    },
+    {
+      "id": "guy-of-lusignan",
+      "name": "Guy of Lusignan",
+      "epithet": "the king of the disaster",
+      "dynasty": "House of Lusignan",
+      "regnal_title": "King of Jerusalem",
+      "reign_start": 1186,
+      "reign_end": 1192,
+      "predecessor": "Baldwin V",
+      "successor": "Conrad of Montferrat",
+      "bio": [
+        "A minor Poitevin baron who had come east in the 1170s after being exiled from Aquitaine — tradition says for ambushing Richard the Lionheart's earl of Salisbury — Guy married the widowed princess Sibylla in 1180 and with her became count of Jaffa and Ascalon and, after her coronation in 1186, king. The poulain barons despised him: a foreigner with no Levantine experience, raised above them by a royal marriage they had opposed.",
+        "His reign ended a year later at Hattin on 4 July 1187. Against the furious advice of Raymond III of Tripoli, he marched the full field army — horse and foot, with the relic of the True Cross at its head — across a parched plateau in midsummer to relieve Tiberias. Saladin closed the trap at the twin-peaked Horns of Hattin, smashed the thirst-maddened Franks in a day, and captured the king. In the sultan's tent afterwards Saladin offered Guy a cup of iced rose-water; Guy passed it to Raynald of Châtillon beside him, which Saladin took as his cue to rise and execute Raynald personally, telling the terrified king: “It is not the wont of kings to kill kings, but this man has transgressed all bounds.”",
+        "Released in 1188 in exchange for the surrender of Ascalon, Guy reappeared before Acre in August 1189 with a tiny force and began the longest siege of the Crusades. Two years later the Third Crusade finished the work he had started. But Sibylla's death in 1190 had stripped him of his royal title, and Richard the Lionheart — arbitrating between the two claimants — gave the mainland throne to Conrad of Montferrat and bought Guy off with the island of Cyprus. The Lusignans would rule it for three hundred years. In Jerusalem he is remembered as the king of the disaster."
+      ],
+      "image": "Coin_issued_by_Guy_de_Lusignan_during_when_he_was_Lord_of_Cyprus_(Crop).png",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Guy_of_Lusignan",
+        "he": "https://he.wikipedia.org/wiki/%D7%92%D7%99_%D7%93%D7%94_%D7%9C%D7%99%D7%96%D7%99%D7%A0%D7%99%D7%90%D7%9F"
+      }
+    },
+    {
+      "id": "isabella-i",
+      "name": "Isabella I",
+      "epithet": "queen of four husbands",
+      "dynasty": "House of Anjou",
+      "regnal_title": "Queen of Jerusalem",
+      "reign_start": 1190,
+      "reign_end": 1205,
+      "predecessor": "Sibylla",
+      "successor": "Maria of Montferrat",
+      "bio": [
+        "Younger half-sister of Sibylla and only surviving child of Amalric I by his second wife Maria Komnene, Isabella was married at eleven to the politically insignificant Humphrey IV of Toron. On Sibylla's death in 1190 she became the sole legitimate heir of the Kingdom of Jerusalem — but the barons (and her determined mother) decided that Humphrey was not the king they needed. In November 1190 they annulled the marriage over her tearful protests so she could be given to Conrad of Montferrat instead. She was seventeen.",
+        "Her reign is a chronicle of four husbands and four funerals. Conrad was assassinated in April 1192, a week before his coronation. She was married at once to Henry II of Champagne, who refused the royal title but governed capably as “Lord of the Kingdom of Jerusalem” for five years until he fell from a palace window in Acre in 1197. Her fourth husband, Aimery of Lusignan — brother of Guy — briefly united the mainland kingdom with Cyprus and codified its laws in the Livre au Roi before dying of dysentery in 1205. Isabella followed him a few months later.",
+        "Contemporaries thought her beautiful and gentle. Modern historians often call her a pawn of her barons; others have argued more kindly that her willingness to accept each dynastic marriage was itself a form of statecraft, the only way to preserve the legal continuity of the kingdom through the wreckage of the Third Crusade. Her reign is remembered as the Age of Reconstruction — the decade when the capital was rebuilt at Acre and the kingdom, now a coastal strip, became a working Mediterranean power once more."
+      ],
+      "image": "Isabella_I_of_Jerusalem.jpeg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Isabella_I_of_Jerusalem",
+        "he": "https://he.wikipedia.org/wiki/%D7%90%D7%99%D7%96%D7%91%D7%9C_%D7%94%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%94,_%D7%9E%D7%9C%D7%9B%D7%AA_%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+      }
+    },
+    {
+      "id": "conrad-of-montferrat",
+      "name": "Conrad of Montferrat",
+      "epithet": "defender of Tyre",
+      "dynasty": "House of Montferrat",
+      "regnal_title": "King-elect of Jerusalem",
+      "reign_start": 1192,
+      "reign_end": 1192,
+      "predecessor": "Guy of Lusignan",
+      "successor": "Henry II of Champagne",
+      "bio": [
+        "A Montferrat prince already famous for defending Constantinople against a palace coup in 1187, Conrad sailed into Acre in July of that year just as Saladin was about to take the city, found the harbour chain already cut, and sailed straight on north to Tyre. He reached the great peninsular fortress days before Saladin's troops arrived, took charge of the demoralised defenders, and in a few weeks turned Tyre into the rock on which the entire Third Crusade would eventually land.",
+        "For the next four years he held Tyre as a de facto separate lordship while Guy of Lusignan was besieging Acre. In 1190, on Sibylla's death, the nobility annulled Isabella of Jerusalem's first marriage and gave her to Conrad instead — giving him the hereditary claim to the throne that Guy had lost. Richard the Lionheart reluctantly confirmed the transfer in April 1192, and a great council at Ascalon elected Conrad king.",
+        "He never reigned. On 28 April 1192, two men of the Order of Assassins — dressed as Christian monks and settled as converts in the household of the bishop of Tyre for weeks — killed him with daggers in a Tyre street as he returned from supper. Rashid ad-Din Sinan, the Old Man of the Mountain, had sent them. Contemporaries loudly speculated about Richard the Lionheart's complicity — a charge later exploited by the Austrians who imprisoned him on his way home — but modern historians generally acquit him. Conrad's widow Isabella, pregnant with their daughter, was married within a week to Henry of Champagne."
+      ],
+      "image": "IsabelaKOnrad.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Conrad_of_Montferrat",
+        "he": "https://he.wikipedia.org/wiki/%D7%A7%D7%95%D7%A0%D7%A8%D7%93_%D7%9E%D7%9E%D7%95%D7%A0%D7%A4%D7%A8%D7%90%D7%98%D7%95"
+      }
+    },
+    {
+      "id": "henry-ii-champagne",
+      "name": "Henry II of Champagne",
+      "epithet": "Lord of the Kingdom of Jerusalem",
+      "dynasty": "House of Blois-Champagne",
+      "regnal_title": "Lord of the Kingdom of Jerusalem",
+      "reign_start": 1192,
+      "reign_end": 1197,
+      "predecessor": "Conrad of Montferrat",
+      "successor": "Aimery of Lusignan",
+      "bio": [
+        "Nephew of both Richard the Lionheart and Philip II of France, Henry of Champagne arrived in the East in 1190 at the head of a powerful contingent and joined the siege of Acre as the leading prince of the crusading army. When Conrad of Montferrat was murdered in Tyre in April 1192, the barons descended on the twenty-six-year-old count and told him he was to marry the pregnant widow, Isabella, and take the throne. Henry was reluctant; the marriage was celebrated within the week.",
+        "He ruled for five years from Acre, refusing to be crowned — perhaps out of deference to Conrad's unborn child, perhaps because he felt the title unlucky — and styling himself only “Lord of the Kingdom of Jerusalem.” He was popular with both barons and Italians, negotiated a workable peace with Saladin's successors in Damascus and Egypt, and quietly rebuilt a coastal state that had nearly ceased to exist.",
+        "On 10 September 1197, leaning on the lattice of a palace window in Acre to review a parade of Pisan troops below, he toppled out of it and fell to his death. The chronicles differ politely on what happened — some say the railing gave way; others that his dwarf Scarlet was tumbling in front of him and Henry lunged to catch him, going over with him. He was thirty-one, and left three small daughters. His widow was remarried within weeks to Aimery of Lusignan."
+      ],
+      "image": "Henry_2_of_Champagne.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Henry_II%2C_Count_of_Champagne",
+        "he": "https://he.wikipedia.org/wiki/%D7%90%D7%A0%D7%A8%D7%99_%D7%94%D7%A9%D7%A0%D7%99,_%D7%A8%D7%95%D7%96%D7%9F_%D7%A9%D7%9E%D7%A4%D7%90%D7%9F"
+      }
+    },
+    {
+      "id": "aimery",
+      "name": "Aimery of Lusignan",
+      "epithet": "king of two crowns",
+      "dynasty": "House of Lusignan",
+      "regnal_title": "King of Jerusalem & Cyprus",
+      "reign_start": 1197,
+      "reign_end": 1205,
+      "predecessor": "Henry II of Champagne",
+      "successor": "Maria of Montferrat",
+      "bio": [
+        "Older brother of Guy of Lusignan, Aimery had come east with him in the 1170s and built a separate reputation as a capable constable of Jerusalem. After Hattin he followed Guy to Cyprus, inherited the island on his brother's death in 1194, and in 1197 — on the sudden death of Henry of Champagne — was brought back to the mainland to marry Isabella and add the Kingdom of Jerusalem to his Cypriot crown. He wore both for the next eight years.",
+        "A methodical administrator where Guy had been chaotic, he secured a series of truces with Saladin's nephew al-Adil that preserved the coastal strip from Jaffa to Beirut, and commissioned the Livre au Roi around the year 1200 — a royalist legal treatise that tried, as far as was still possible, to define the monarch's rights over an increasingly independent nobility. He was the first ruler in a decade to give the Second Kingdom a quiet year.",
+        "He died in Acre on 1 April 1205, by one continuator of William of Tyre's chronicle “of a surfeit of white mullet” — a bout of acute food poisoning that turned to dysentery. The two crowns separated at once: Cyprus passed to his son Hugh I, Jerusalem to his stepdaughter Maria of Montferrat, who was thirteen."
+      ],
+      "image": "Aimery_II_de_Lusignan.png",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Aimery_of_Cyprus",
+        "he": "https://he.wikipedia.org/wiki/%D7%90%D7%9E%D7%9C%D7%A8%D7%99%D7%9A_%D7%94%D7%A9%D7%A0%D7%99,_%D7%9E%D7%9C%D7%9A_%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+      }
+    },
+    {
+      "id": "maria-of-montferrat",
+      "name": "Maria of Montferrat",
+      "epithet": "la Marquise",
+      "dynasty": "House of Montferrat",
+      "regnal_title": "Queen of Jerusalem",
+      "reign_start": 1205,
+      "reign_end": 1212,
+      "predecessor": "Isabella I",
+      "successor": "Isabella II",
+      "bio": [
+        "Only child of Isabella I and Conrad of Montferrat, Maria — called la Marquise for her father's title — was born months after Conrad's assassination and acceded to the throne at thirteen on her mother's death in 1205. She was placed under the regency of her uncle John of Ibelin, the “Old Lord of Beirut,” who governed with quiet competence for five years.",
+        "In 1210 she was married to the elderly but battle-hardened French champion John of Brienne, chosen by Philip II of France at the barons' request. Her coronation in the cathedral of Tyre on 3 October 1210 was marked by an awkward coincidence: while the ceremony was under way inside, al-Adil's troops were probing the walls of Acre twenty miles down the coast, and the news of the raid reached the altar before the couple had left it.",
+        "She died in the autumn of 1212, aged twenty, a few days after giving birth to her only child, the infant Isabella II. Maria left little personal trace in the chronicles beyond the title on her seal — Mater regni — and the succession she had secured. She is remembered as the transitional queen whose brief reign cemented the Ibelin family as the effective rulers of the Second Kingdom."
+      ],
+      "image": "Marie_de_Montferrat.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Maria_of_Montferrat",
+        "he": "https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%99%D7%94_%D7%9E%D7%9E%D7%95%D7%A0%D7%A4%D7%A8%D7%90%D7%98%D7%95"
+      }
+    },
+    {
+      "id": "john-of-brienne",
+      "name": "John of Brienne",
+      "epithet": "the soldier-king",
+      "dynasty": "House of Brienne",
+      "regnal_title": "King of Jerusalem",
+      "reign_start": 1210,
+      "reign_end": 1225,
+      "predecessor": "Maria of Montferrat",
+      "successor": "Frederick II",
+      "bio": [
+        "A landless younger son of the Champagne nobility whose reputation was made entirely on the tournament circuit and the battlefields of the Fourth Crusade, John of Brienne was sixty when Philip II of France sent him east to marry the thirteen-year-old Maria of Montferrat and inherit her kingdom. His contemporaries were surprised; his choice proved sound. He arrived in Acre in 1210 and held the throne, first as king-consort and after 1212 as regent for his infant daughter, for fifteen years.",
+        "In the Fifth Crusade (1217–1221) he commanded the Frankish and papal field armies in Egypt and captured Damietta in 1219 after a year-long siege. Sultan al-Kamil twice offered to swap the city for Jerusalem; the papal legate Pelagius refused both times over John's furious objection, and the crusade disintegrated in the Nile floods of 1221. John was the first King of Jerusalem to tour Europe in search of aid, visiting Rome, Paris, London and the court of Alfonso IX of León between 1222 and 1225.",
+        "In San Germano in August 1225 he married his daughter Isabella II to the Emperor Frederick II on papal assurances that his own title would be respected. Frederick immediately claimed the Kingdom of Jerusalem as his own and exiled his father-in-law. John went on to an improbable second career as Latin Emperor of Constantinople, dying in 1237 after a successful defence of the capital against the Bulgarians. Historians treat him as the last capable crusader king of Jerusalem — and the last to lose his throne to a son-in-law's signature on a marriage contract."
+      ],
+      "image": "Jean_de_Brienne.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/John_of_Brienne",
+        "he": "https://he.wikipedia.org/wiki/%D7%96%27%D7%90%D7%9F_%D7%93%D7%94_%D7%91%D7%A8%D7%99%D7%99%D7%9F"
+      }
+    },
+    {
+      "id": "isabella-ii",
+      "name": "Isabella II",
+      "epithet": "Yolande of Jerusalem",
+      "dynasty": "House of Brienne",
+      "regnal_title": "Queen of Jerusalem",
+      "reign_start": 1212,
+      "reign_end": 1228,
+      "predecessor": "Maria of Montferrat",
+      "successor": "Conrad II",
+      "bio": [
+        "Daughter of Maria of Montferrat and John of Brienne, Isabella II — also called Yolande in the West — inherited the throne as an infant in 1212 and spent her first thirteen years at the Ibelin court in Acre under her father's regency. Her marriage was the single political instrument her kingdom still possessed, and in 1225 Pope Honorius III and the barons handed it to the Emperor Frederick II in exchange for his promise of a crusade.",
+        "She was married to Frederick by proxy at Acre on 9 August 1225 and sailed for Italy, aged thirteen. Frederick, twenty years her senior, met her at Brindisi on 9 November, married her a second time in person, and on the wedding night — according to her outraged father — slipped away to sleep with her cousin Annaïs. The next morning he declared himself King of Jerusalem jure uxoris, stripped John of Brienne of his title, and confined Isabella in the Hohenstaufen harem at Palermo with the rest of his household women.",
+        "She never saw Outremer again. In May 1228, eight days after giving birth to a son — the future Conrad II — she died in childbed at Andria in Apulia, aged sixteen. She was buried in Andria cathedral. Her short, stifled life closed the line of the native queens of Jerusalem; her son and grandson would inherit the kingdom as absentee Hohenstaufen princes, and never see it."
+      ],
+      "image": "Yolande_of_Jerusalem.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Isabella_II_of_Jerusalem",
+        "he": "https://he.wikipedia.org/wiki/%D7%90%D7%99%D7%96%D7%91%D7%9C_%D7%94%D7%A9%D7%A0%D7%99%D7%99%D7%94,_%D7%9E%D7%9C%D7%9B%D7%AA_%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+      }
+    },
+    {
+      "id": "frederick-ii",
+      "name": "Frederick II",
+      "epithet": "Stupor Mundi",
+      "dynasty": "House of Hohenstaufen",
+      "regnal_title": "King of Jerusalem & Holy Roman Emperor",
+      "reign_start": 1225,
+      "reign_end": 1228,
+      "predecessor": "John of Brienne",
+      "successor": "Conrad II",
+      "bio": [
+        "Stupor Mundi — the Wonder of the World — was the most powerful individual ever to wear the crown of Jerusalem. Grandson of Barbarossa, King of Sicily from infancy, Holy Roman Emperor from 1220, fluent in six languages including Arabic, polymath, naturalist and devoted hawker, Frederick II claimed the Jerusalem throne in 1225 through his marriage to Isabella II and treated the kingdom as another province of his Mediterranean empire. Pope Gregory IX, losing patience with the endless postponements of the crusade Frederick had sworn to lead, excommunicated him in 1227.",
+        "Excommunicated or not, he sailed in 1228 and achieved what no Crusader army had managed since Hattin. By the Treaty of Jaffa of February 1229 he negotiated the Ayyubid sultan al-Kamil — an old correspondent with whom he had been exchanging scholarly letters for years — into returning Jerusalem, Bethlehem, Nazareth and a corridor of pilgrim villages to Christian rule without a drop of blood being shed. Because no bishop in the Holy Land would crown an excommunicate, Frederick walked unescorted into the Church of the Holy Sepulchre on 18 March 1229, lifted the crown from the altar himself, and placed it on his own head while Hermann of Salza read the imperial declaration for him.",
+        "His local legacy was disaster. His attempt to impose imperial bailiffs — the “Lombards” — on the kingdom on his departure provoked the War of the Lombards (1229–1243), a fifteen-year civil war won in Acre and Cyprus by the Ibelin-led baronial party and producing the most fully articulated feudal constitution of the Middle Ages, the Assises de Jérusalem. Frederick never returned. His son Conrad II succeeded on paper; the kingdom was run from the High Court."
+      ],
+      "image": "Frederick_II_and_eagle.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Frederick_II%2C_Holy_Roman_Emperor",
+        "he": "https://he.wikipedia.org/wiki/%D7%A4%D7%A8%D7%99%D7%93%D7%A8%D7%99%D7%9A_%D7%94%D7%A9%D7%A0%D7%99,_%D7%A7%D7%99%D7%A1%D7%A8_%D7%94%D7%90%D7%99%D7%9E%D7%A4%D7%A8%D7%99%D7%94_%D7%94%D7%A8%D7%95%D7%9E%D7%99%D7%AA_%D7%94%D7%A7%D7%93%D7%95%D7%A9%D7%94"
+      }
+    },
+    {
+      "id": "conrad-ii",
+      "name": "Conrad II",
+      "epithet": "Conrad IV of Germany",
+      "dynasty": "House of Hohenstaufen",
+      "regnal_title": "King of Jerusalem",
+      "reign_start": 1228,
+      "reign_end": 1254,
+      "predecessor": "Frederick II",
+      "successor": "Conradin",
+      "bio": [
+        "Son of Frederick II and Isabella II, Conrad — known in German history as Conrad IV, in Jerusalem as Conrad II — became King of Jerusalem at eight days old, on his mother's death in childbirth in May 1228. He never set foot in Outremer. The kingdom was run in his name by a succession of regents and, after 1243, by the barons of the High Court themselves.",
+        "In 1243, on the grounds that the king had come of age but had failed to appear in person to receive the homage of his vassals, the High Court formally ended the regency of Frederick's representatives and elected Alice of Champagne — the long-exiled senior dowager — as regent in her own right. The kingdom was from that moment a feudal republic in all but name. The following year, in the weakest hour of this arrangement, the Khwarazmian horsemen hired by the Egyptian sultan as-Salih Ayyub sacked Jerusalem for good; the Holy City was never again in Frankish hands.",
+        "Conrad spent the 1240s and early 1250s fighting to hold his father's shattered inheritance in Germany and Italy. He died of fever at Lavello in southern Italy in May 1254, aged twenty-six, leaving a two-year-old son — Conradin — and a kingdom that, by now, he had never seen and never would."
+      ],
+      "image": "Conrad_4_of_Germany.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Conrad_IV_of_Germany",
+        "he": "https://he.wikipedia.org/wiki/%D7%A7%D7%95%D7%A0%D7%A8%D7%90%D7%93_%D7%94%D7%A8%D7%91%D7%99%D7%A2%D7%99,_%D7%9E%D7%9C%D7%9A_%D7%92%D7%A8%D7%9E%D7%A0%D7%99%D7%94"
+      }
+    },
+    {
+      "id": "conradin",
+      "name": "Conradin",
+      "epithet": "the last Hohenstaufen",
+      "dynasty": "House of Hohenstaufen",
+      "regnal_title": "King of Jerusalem",
+      "reign_start": 1254,
+      "reign_end": 1268,
+      "predecessor": "Conrad II",
+      "successor": "Hugh I",
+      "bio": [
+        "Conradin — Conrad the Younger, last of the Hohenstaufen — was two years old when his father's death made him King of Jerusalem. He lived his short life in Italy and Bavaria and, like his father before him, never came east. The kingdom in his name was governed entirely through the baronial High Court and a series of regents drawn from the Lusignan kings of Cyprus.",
+        "This absence produced the one thing Outremer did best in the thirteenth century: law. Deprived of a resident king, jurists like Philip of Novara, John of Ibelin of Jaffa and James of Ibelin spent decades codifying the customs of the High Court into the most detailed feudal constitution of the Middle Ages — the Assises de Jérusalem — which would still be quoted by Venetian lawyers in the sixteenth century. The kingdom's territory continued to shrink under the Mamluk sultans Baybars and Qalawun, but its legal culture flourished.",
+        "Conradin's end was operatic. In 1268, sixteen years old, he led a German expedition into southern Italy to recover his Hohenstaufen patrimony from Charles of Anjou. Charles defeated him at Tagliacozzo, captured him days later, and beheaded him in the main square of Naples on 29 October 1268. With his execution the Hohenstaufen line ended, and the Jerusalem throne passed, by the ruling of the High Court, to his cousin Hugh III of Cyprus."
+      ],
+      "image": "Konradin.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Conradin",
+        "he": "https://he.wikipedia.org/wiki/%D7%A7%D7%95%D7%A0%D7%A8%D7%90%D7%93_%D7%94%D7%A9%D7%9C%D7%99%D7%A9%D7%99,_%D7%9E%D7%9C%D7%9A_%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+      }
+    },
+    {
+      "id": "hugh-i",
+      "name": "Hugh I",
+      "epithet": "Hugh III of Cyprus, “the Great”",
+      "dynasty": "House of Lusignan",
+      "regnal_title": "King of Jerusalem & Cyprus",
+      "reign_start": 1268,
+      "reign_end": 1284,
+      "predecessor": "Conradin",
+      "successor": "John II",
+      "bio": [
+        "Already King of Cyprus since 1267 and grandson of Hugh I of Cyprus through the female line, Hugh of the Poitiers-Lusignan house was chosen by the High Court of Acre on Conradin's execution in 1268, against the rival claim of his cousin Hugh of Brienne. He was the first resident King of Jerusalem in forty years — a genuine attempt to reassemble a functioning monarchy in the kingdom's final hour. In Jerusalem he reigned as Hugh I.",
+        "He spent the next sixteen years trying to rule two kingdoms and two sets of vassals separated by a hundred miles of sea. His Cypriot knights routinely refused to serve on the mainland, on the grounds that their feudal obligation was to defend the island. His mainland authority was undermined from 1277, when Maria of Antioch sold her parallel dynastic claim to Charles of Anjou, the Angevin king of Sicily; Angevin troops seized Acre and compelled Hugh to retreat to Tyre and then Cyprus. His brief cooperation with Prince Edward of England during the Lord Edward's Crusade of 1271 managed a ten-year truce with Sultan Baybars but no permanent recovery.",
+        "Contemporaries called him handsome and charming and noted, with some understatement, that he had a temper. He was a patron of French romance literature, founded Cistercian houses in Cyprus, and was the dedicatee of Philip of Novara's political memoirs. Historians judge him an able ruler who arrived too late — the Templar–Hospitaller and Venetian–Genoese feuds inside the surviving kingdom made unity impossible, and the Mamluk Sultanate was by now overwhelmingly stronger than the coastal enclave he was trying to save."
+      ],
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/2b/HugoIIIdenario.jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Hugh_III_of_Cyprus",
+        "he": "https://he.wikipedia.org/wiki/%D7%94%D7%95%D7%92%D7%95_%D7%94%D7%A9%D7%9C%D7%99%D7%A9%D7%99,_%D7%9E%D7%9C%D7%9A_%D7%A7%D7%A4%D7%A8%D7%99%D7%A1%D7%99%D7%9F"
+      }
+    },
+    {
+      "id": "john-ii",
+      "name": "John II",
+      "epithet": "John I of Cyprus",
+      "dynasty": "House of Lusignan",
+      "regnal_title": "King of Jerusalem & Cyprus",
+      "reign_start": 1284,
+      "reign_end": 1285,
+      "predecessor": "Hugh I",
+      "successor": "Henry II",
+      "bio": [
+        "Eldest surviving son of Hugh I, John succeeded his father in both kingdoms in 1284. He was crowned in Tyre as John II of Jerusalem — his Cypriot numbering counts him as John I — and immediately faced the same structural problem his father had never solved: mainland barons who resented him, Cypriot vassals who resented being taxed for the mainland, and a Mamluk sultan (Qalawun) who was methodically picking off Frankish strongholds.",
+        "He survived the throne for less than a year. In May 1285 he died suddenly in Nicosia, aged about seventeen, amid the kind of poisoning rumours that attend any quick royal death in a faction-ridden court. No contemporary chronicler committed himself on the question. His younger brother Henry succeeded him.",
+        "His reign is a historical footnote — too brief for policy, too contested for legacy — but his death mattered, because Henry II inherited a kingdom down to its last six years on the mainland."
+      ],
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Armoiries_Chypre_J%C3%A9rusalem.svg/960px-Armoiries_Chypre_J%C3%A9rusalem.svg.png",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/John_I_of_Cyprus",
+        "he": "https://he.wikipedia.org/wiki/%D7%96%27%D7%90%D7%9F_%D7%94%D7%A9%D7%A0%D7%99,_%D7%9E%D7%9C%D7%9A_%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+      }
+    },
+    {
+      "id": "henry-ii",
+      "name": "Henry II",
+      "epithet": "the last crowned king",
+      "dynasty": "House of Lusignan",
+      "regnal_title": "King of Jerusalem & Cyprus",
+      "reign_start": 1285,
+      "reign_end": 1291,
+      "predecessor": "John II",
+      "successor": null,
+      "bio": [
+        "Henry II was the last crowned King of Jerusalem to rule on the mainland. He succeeded his brother John II in 1285, forced the Angevin garrison out of Acre in 1286, and on 15 August of that year was crowned in the cathedral of Tyre — the last coronation a King of Jerusalem would celebrate on Levantine soil. He was fourteen. He suffered from epilepsy throughout his reign.",
+        "When the Mamluk sultan al-Ashraf Khalil moved against Acre in April 1291 with the largest siege army the Crusades had seen, Henry sailed from Cyprus with two hundred knights and a few thousand foot to join the defence. For six weeks, with the Templars, Hospitallers, Teutonic Knights and the remnants of his own household, he held the walls. When the Accursed Tower fell on 18 May and the city dissolved into street fighting, Henry was evacuated by galley to Cyprus — the act that, legally, ended the Kingdom of Jerusalem on the mainland.",
+        "From Cyprus he went on reigning as King of Jerusalem in title for thirty-three more years, petitioning Pope Clement V for a new crusade, attempting to impose a papal trade embargo on the Mamluks, and drafting careful plans for the reconquest that no one in Europe seriously intended to carry out. He died in Nicosia in 1324. He is the tragic figure of crusader historiography — the king who held the end."
+      ],
+      "image": "Silver_coin_of_King_Henry_II_of_Jerusalem_(1310-1324).jpg",
+      "wikipedia": {
+        "en": "https://en.wikipedia.org/wiki/Henry_II_of_Cyprus",
+        "he": null
+      }
+    }
+  ]
+}

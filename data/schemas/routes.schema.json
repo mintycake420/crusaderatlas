@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Crusader Atlas — Routes",
+  "description": "GeoJSON FeatureCollection of historical routes (pilgrim roads, caravan trails, maritime lanes) across the Latin East during the Crusader period.",
+  "type": "object",
+  "required": ["type", "features"],
+  "properties": {
+    "type": {
+      "const": "FeatureCollection"
+    },
+    "metadata": {
+      "$ref": "#/definitions/metadata"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/routeFeature"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "metadata": {
+      "type": "object",
+      "description": "Export metadata block common to all Crusader Atlas data files.",
+      "required": ["title", "description", "source", "repository", "license", "version", "generated", "record_count"],
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "source": { "type": "string" },
+        "repository": { "type": "string", "format": "uri" },
+        "license": { "type": "string" },
+        "version": { "type": "string" },
+        "generated": { "type": "string", "description": "Date the export was generated (YYYY-MM-DD)." },
+        "record_count": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "routeFeature": {
+      "type": "object",
+      "required": ["type", "geometry", "properties"],
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "geometry": {
+          "$ref": "#/definitions/lineStringGeometry"
+        },
+        "properties": {
+          "$ref": "#/definitions/routeProperties"
+        }
+      },
+      "additionalProperties": false
+    },
+    "lineStringGeometry": {
+      "type": "object",
+      "description": "GeoJSON LineString geometry. Coordinates are an array of [lon, lat] positions tracing the route.",
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": {
+          "const": "LineString"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 2,
+          "description": "Array of [longitude, latitude] positions. At least two positions required to form a line."
+        }
+      },
+      "additionalProperties": false
+    },
+    "routeProperties": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Kebab-case slug derived from the short name or full route name."
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the route."
+        },
+        "short_name": {
+          "type": ["string", "null"],
+          "description": "Abbreviated name for compact display contexts (legend, tooltips)."
+        },
+        "role": {
+          "type": ["string", "null"],
+          "enum": ["pilgrim", "caravan", "maritime", null],
+          "description": "Functional classification of the route."
+        },
+        "style": {
+          "type": "object",
+          "description": "Visual styling hints for rendering the route line on the map.",
+          "properties": {
+            "color": {
+              "type": ["string", "null"],
+              "description": "CSS color value for the route line (e.g. '#8b4513')."
+            },
+            "halo_color": {
+              "type": ["string", "null"],
+              "description": "CSS color value for the outline/halo around the route line."
+            }
+          },
+          "additionalProperties": false
+        },
+        "note": {
+          "type": ["string", "null"],
+          "description": "Brief editorial note about the route."
+        },
+        "summary": {
+          "type": ["string", "null"],
+          "description": "One-line summary of the route's historical role, shown in tooltips or compact views."
+        },
+        "description": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Prose paragraphs describing the route's history and significance. Each array element is one paragraph."
+        },
+        "image": {
+          "type": ["string", "null"],
+          "description": "Photo filename (bare, no path prefix) in fortress-pics/, or a remote https:// URL. Null if no image is available."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

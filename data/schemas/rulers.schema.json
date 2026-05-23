@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Crusader Atlas — Rulers",
+  "description": "Monarchs of the Kingdom of Jerusalem and other Crusader states. Each ruler carries biographical data, reign dates, dynastic links, and Wikipedia references. Rulers are projected into the glossary at runtime as the 'monarchs' category.",
+  "type": "object",
+  "required": ["metadata", "rulers"],
+  "properties": {
+    "metadata": {
+      "$ref": "#/definitions/metadata"
+    },
+    "rulers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ruler"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "metadata": {
+      "type": "object",
+      "description": "Export metadata block common to all Crusader Atlas data files.",
+      "required": ["title", "description", "source", "repository", "license", "version", "generated", "record_count"],
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "source": { "type": "string" },
+        "repository": { "type": "string", "format": "uri" },
+        "license": { "type": "string" },
+        "version": { "type": "string" },
+        "generated": { "type": "string", "description": "Date the export was generated (YYYY-MM-DD)." },
+        "record_count": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "ruler": {
+      "type": "object",
+      "required": ["id", "name", "reign_start", "reign_end"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique kebab-case identifier for this ruler (e.g. 'baldwin-i'). Matches the ruler_id field in glossary.json entries."
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the ruler (e.g. 'Baldwin I')."
+        },
+        "epithet": {
+          "type": ["string", "null"],
+          "description": "Epithet or byname (e.g. 'the Leper', 'of Brienne')."
+        },
+        "dynasty": {
+          "type": ["string", "null"],
+          "description": "Royal house or dynasty (e.g. 'House of Boulogne', 'House of Anjou')."
+        },
+        "regnal_title": {
+          "type": ["string", "null"],
+          "description": "Formal title held (e.g. 'King of Jerusalem', 'Regent of Jerusalem')."
+        },
+        "reign_start": {
+          "type": "integer",
+          "description": "Year the reign began (CE). Used for chronological sorting in the glossary."
+        },
+        "reign_end": {
+          "type": "integer",
+          "description": "Year the reign ended (CE)."
+        },
+        "predecessor": {
+          "type": ["string", "null"],
+          "description": "Display name of the preceding ruler, or null if this is the first in the line."
+        },
+        "successor": {
+          "type": ["string", "null"],
+          "description": "Display name of the succeeding ruler, or null if this is the last in the line."
+        },
+        "bio": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Biographical prose paragraphs. Each array element is one paragraph. Author-verified; never AI-generated."
+        },
+        "image": {
+          "type": ["string", "null"],
+          "description": "Portrait or depiction filename (bare, no path prefix) in fortress-pics/, or a remote https:// URL. Null if no image is available."
+        },
+        "wikipedia": {
+          "type": "object",
+          "description": "Wikipedia article links for this ruler.",
+          "properties": {
+            "en": {
+              "type": ["string", "null"],
+              "description": "URL of the English Wikipedia article, or null."
+            },
+            "he": {
+              "type": ["string", "null"],
+              "description": "URL of the Hebrew Wikipedia article, or null."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

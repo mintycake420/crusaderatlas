@@ -6423,6 +6423,48 @@
         syncScrim();
       });
     }
+    // Mobile native Back button: when any overlay/panel is open, Back closes
+    // it instead of leaving the site or stepping through history. A single
+    // history "trap" entry is pushed when an overlay opens and removed when it
+    // closes. Gated to mobile widths so desktop browser-Back is unaffected, and
+    // it never changes the URL, so deep links (?site=/?fief=/?entry=) are safe.
+    (function mobileBackClosesOverlay() {
+      const OVERLAY_CLASSES = ["detail-open", "filters-open", "glossary-open", "layers-open", "cartouche-open"];
+      const mq = window.matchMedia("(max-width: 820px)");
+      let trapActive = false;
+      let selfPop = false;
+      const anyOverlayOpen = () =>
+        OVERLAY_CLASSES.some((c) => document.body.classList.contains(c));
+
+      function syncHistoryTrap() {
+        const open = anyOverlayOpen();
+        if (open && mq.matches && !trapActive) {
+          trapActive = true;
+          history.pushState({ atlasOverlay: true }, "");
+        } else if (!open && trapActive) {
+          // Overlay closed via UI (scrim, close button, ESC): remove the trap
+          // entry without navigating the user away from the page.
+          trapActive = false;
+          selfPop = true;
+          history.back();
+        }
+      }
+
+      new MutationObserver(syncHistoryTrap).observe(document.body, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+
+      window.addEventListener("popstate", () => {
+        if (selfPop) { selfPop = false; return; } // our own trap-cleanup back()
+        if (!trapActive) return;                   // nothing trapped: navigate normally
+        // Native Back while an overlay is open: the trap entry was just popped,
+        // so close the overlay(s) and keep the user on the page.
+        trapActive = false;
+        if (anyOverlayOpen()) closeAllMobileOverlays();
+      });
+    })();
+
     (function trackTopbarHeight() {
       const tb = document.querySelector(".topbar");
       if (!tb) return;

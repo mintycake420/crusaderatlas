@@ -974,6 +974,12 @@
     </image:image>
   </url>
   <url>
+    <loc>https://crusaderatlas.com/sites/house-of-arches-lod-lydda/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/136169_lod_house_of_arches_PikiWiki_Israel.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://crusaderatlas.com/glossary/godfrey/</loc>
     <image:image>
       <image:loc>https://crusaderatlas.com/fortress-pics/Godfrey_of_Bouillon_(cropped).jpg</image:loc>

@@ -956,6 +956,12 @@
     </image:image>
   </url>
   <url>
+    <loc>https://crusaderatlas.com/sites/st-cleophas-church-al-qubeiba/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Church-of-St-Cleophas.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://crusaderatlas.com/glossary/godfrey/</loc>
     <image:image>
       <image:loc>https://crusaderatlas.com/fortress-pics/Godfrey_of_Bouillon_(cropped).jpg</image:loc>

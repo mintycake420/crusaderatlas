@@ -2233,6 +2233,42 @@
       .search input { width: 100%; }
     }
 
+    /* Collapsible header on phones: a corner chevron toggles .topbar.collapsed,
+       which hides the controls + search rows, leaving just the brand to free up
+       map space. The topbar's ResizeObserver keeps --topbar-h in sync. */
+    .topbar-toggle { display: none; }
+    @media (max-width: 720px) {
+      .topbar-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 6px;
+        right: 8px;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        background: var(--vellum-light);
+        border: 1px solid var(--muted-line);
+        border-radius: 4px;
+        color: var(--ink-soft);
+        cursor: pointer;
+        z-index: 3;
+      }
+      .topbar-chevron {
+        display: inline-block;
+        font-size: 12px;
+        line-height: 1;
+        transition: transform 180ms ease;
+        transform: rotate(180deg);
+      }
+      .topbar.collapsed .topbar-chevron { transform: rotate(0deg); }
+      /* keep the centred brand text clear of the corner toggle */
+      .topbar .brand { padding-left: 36px; padding-right: 36px; }
+      .topbar.collapsed .controls,
+      .topbar.collapsed .search { display: none; }
+    }
+
     /* ---------- Small phones (≤ 420 px) ---------- */
     @media (max-width: 420px) {
       .brand .title { font-size: 11.5px; letter-spacing: 0.06em; }
@@ -2354,6 +2390,9 @@
   <div class="sheet-scrim" id="sheet-scrim" aria-hidden="true"></div>
 
   <header class="topbar">
+    <button class="topbar-toggle" id="topbar-toggle" type="button" aria-label="Collapse header" aria-expanded="true" title="Collapse header">
+      <span class="topbar-chevron" aria-hidden="true">▾</span>
+    </button>
     <div class="brand">
       <img class="brand-cross" src="fortress-pics/jerusalem_cross.png" width="38" height="38" alt="" aria-hidden="true" />
       <div class="brand-text">
@@ -6565,6 +6604,23 @@
       if (typeof ResizeObserver !== "undefined") {
         new ResizeObserver(apply).observe(tb);
       }
+    })();
+
+    (function topbarCollapse() {
+      const tb = document.querySelector(".topbar");
+      const btn = document.getElementById("topbar-toggle");
+      if (!tb || !btn) return;
+      const setState = (collapsed) => {
+        tb.classList.toggle("collapsed", collapsed);
+        btn.setAttribute("aria-expanded", collapsed ? "false" : "true");
+        btn.setAttribute("aria-label", collapsed ? "Expand header" : "Collapse header");
+      };
+      try { if (localStorage.getItem("ff_topbar_collapsed") === "1") setState(true); } catch (_) {}
+      btn.addEventListener("click", () => {
+        const collapsed = !tb.classList.contains("collapsed");
+        setState(collapsed);
+        try { localStorage.setItem("ff_topbar_collapsed", collapsed ? "1" : "0"); } catch (_) {}
+      });
     })();
     if (cartoucheToggleEl && cartoucheEl) {
       if (localStorage.getItem("ff_cartouche_collapsed") === "1") {

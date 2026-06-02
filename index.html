@@ -1652,6 +1652,7 @@
       color: var(--ink-soft);
       margin: 0;
     }
+    .cartouche-caption + .cartouche-caption { margin-top: 9px; }
     .cartouche.collapsed .cartouche-body { display: none; }
     .cartouche.collapsed { padding-bottom: 12px; }
     .cartouche-btn { display: none; }
@@ -2077,11 +2078,16 @@
         max-width: none;
         max-height: calc(100vh - var(--topbar-h, 72px) - 24px);
         overflow: auto;
-        padding-top: 36px;
+        padding: 14px 14px 16px;
         display: none;
         z-index: 1100;
       }
       .cartouche.open { display: block; }
+      /* Eyebrow + title sit beside the 44px close button; give them room to
+         clear it (button occupies the rightmost ~52px of the panel). */
+      .cartouche-eyebrow { margin-bottom: 4px; padding-right: 52px; }
+      .cartouche-title { padding-right: 52px; }
+      .cartouche-body { margin-top: 8px; padding-top: 8px; }
       .cartouche-toggle { display: none; }
       .cartouche.collapsed .cartouche-body { display: block; }
       .cartouche-btn { display: inline-flex; align-items: center; justify-content: center; }
@@ -2451,7 +2457,8 @@
     <div class="cartouche-eyebrow">c. 1165</div>
     <h2 class="cartouche-title">The Kingdom of Jerusalem at Its Greatest Territorial &amp; Feudal Reach</h2>
     <div class="cartouche-body" id="cartouche-body">
-      <p class="cartouche-caption">This view represents the Kingdom of Jerusalem at its widest practical reach in the mid-12th century, including royal domains, major lordships, dependent or vassal territories, and contested frontier zones. Boundaries are approximate and reflect spheres of rule, homage, fortification, and influence rather than modern borders.</p>
+      <p class="cartouche-caption">This view shows the Kingdom of Jerusalem at its widest practical territorial and feudal reach in the mid-12th century, around c. 1165 — not a permanent border held throughout the Crusader period. The boundaries are approximate and represent royal domains, major lordships, dependent or vassal territories, fortified zones, and contested frontiers, reflecting spheres of rule, homage, and military influence rather than fixed modern borders.</p>
+      <p class="cartouche-caption">The site markers, however, are broader in scope. They include surviving Crusader fortresses, churches, towers, and related remains from across the history of the kingdom, from 1099 to 1291. Some were founded earlier or later, changed hands, were rebuilt, or fell out of use over time. The map therefore combines a peak-territorial snapshot with a wider archaeological and historical catalogue of extant Crusader-period remains — not a record of every site as simultaneously active in one exact moment.</p>
     </div>
   </aside>
 

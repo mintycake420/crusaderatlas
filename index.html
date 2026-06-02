@@ -1854,6 +1854,10 @@
       position: relative;
       max-width: 640px;
       width: 100%;
+      max-height: calc(100vh - 48px);
+      max-height: calc(100dvh - 48px);
+      overflow-y: auto;
+      overflow-x: hidden;
       background: var(--vellum-light);
       border: 1px solid var(--muted-line);
       box-shadow: 0 40px 100px -40px rgba(42, 26, 11, 0.7);

@@ -319,6 +319,22 @@
       white-space: nowrap;
     }
     .intro-download a:hover { opacity: 0.75; }
+    .intro-contact {
+      font-family: "Spectral", serif;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      text-align: center;
+      margin: -6px 0 14px;
+      opacity: 0.9;
+    }
+    .intro-contact a {
+      color: var(--red-oxide);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--red-oxide);
+      transition: opacity 120ms ease;
+    }
+    .intro-contact a:hover { opacity: 0.75; }
 
     .leaflet-top.leaflet-left { top: 82px; }
     .leaflet-control-zoom {
@@ -2620,6 +2636,10 @@
         ⤓ Download the open dataset:
         <a href="/data/csv/crusader_atlas_dataset.csv" download>CSV</a> ·
         <a href="/data/json/crusader_atlas_dataset.json" download>JSON</a>
+      </p>
+      <p class="intro-contact">
+        ✉ Contact: <a href="mailto:yotamkatz2000@gmail.com">yotamkatz2000@gmail.com</a> ·
+        <a href="https://www.linkedin.com/in/yotam-katz-ab6a44394" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </p>
       <div class="intro-actions">
         <a id="intro-dismiss-forever">Don't show again</a>

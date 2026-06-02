@@ -55,7 +55,9 @@ The SPA recognises those query params at startup and routes to the relevant deta
 
 ## Open dataset
 
-The atlas data is published as structured GeoJSON, JSON, and CSV files under [`data/`](data/):
+**Quick download — everything in one file:** [`crusader_atlas_dataset.csv`](data/csv/crusader_atlas_dataset.csv) · [`crusader_atlas_dataset.json`](data/json/crusader_atlas_dataset.json) — all 204 place records (175 sites, 22 lordships, 7 routes) in a single flat table: names, coordinates and accuracy, modern country/region, derived lordship & crusader-state, Wikipedia/Wikidata links, sources, and uncertainty notes. Opens directly in Excel, pandas, or any CSV/JSON tool. Field-by-field documentation: [`data/README.md`](data/README.md#combined-single-file-dataset).
+
+The same data is also published as structured, per-entity GeoJSON, JSON, and CSV files under [`data/`](data/):
 
 - **[`sites.geojson`](data/geojson/sites.geojson)** — 170 Crusader sites with coordinates, descriptions, images, and Wikipedia links
 - **[`lordships.geojson`](data/geojson/lordships.geojson)** — 27 feudal lordship polygons with succession tables and heraldry

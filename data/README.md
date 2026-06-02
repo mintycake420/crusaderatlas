@@ -23,6 +23,39 @@ All geographic files render as interactive maps on GitHub. Click any `.geojson` 
 
 Formal JSON Schemas are in [`schemas/`](schemas/).
 
+## Combined single-file dataset
+
+If you just want everything in one place, [`csv/crusader_atlas_dataset.csv`](csv/crusader_atlas_dataset.csv) and [`json/crusader_atlas_dataset.json`](json/crusader_atlas_dataset.json) provide a single, flat, denormalised table covering **all 204 place records** — 175 sites, 22 lordships, and 7 routes — under one consistent, researcher-oriented schema. The JSON wraps the rows in a `{ "metadata": …, "records": [ … ] }` object; the CSV is UTF-8 (with BOM, so it opens cleanly in Excel) and joins list-valued fields with a pipe (` | `) separator. This file is a superset view designed for analysis, scraping, and citation — the per-entity GeoJSON/JSON files above remain the best choice for mapping and typed, structured access.
+
+| Field | Notes |
+|-------|-------|
+| `id` | Stable unique id, `"<record_type>/<slug>"` (e.g. `site/acre`) |
+| `record_type` | `site`, `lordship`, or `route` |
+| `primary_name` | Canonical display name |
+| `alternative_names` | Other names and historical spellings (pipe-joined in CSV) |
+| `medieval_names`, `modern_names` | Empty by design — the source does not classify names by era, so all variants live in `alternative_names` |
+| `site_type` | Capital city / Major castle / Walled town / Tower / Church / Battle / Siege / Lordship / route role |
+| `historical_category` | Settlement, Fortification, Religious site, Military engagement, Territorial lordship, or Communication route |
+| `title_or_designation` | Lordship rank (Royal domain / County / Principality / …); blank for sites |
+| `description` | Curated narrative |
+| `historical_significance` | Empty by design (significance is integrated into `description`) |
+| `modern_location` | Modern place and country (sites); capital (lordships) |
+| `latitude`, `longitude` | WGS84 decimal degrees; reproduce the live map markers exactly, unrounded |
+| `coordinate_accuracy` | `verified` / `exact` / `approximate` for sites; polygon-centroid or route note otherwise |
+| `modern_country`, `modern_region` | Mapped from the source territory; contested regions are flagged in `uncertainty_notes` |
+| `crusader_state_or_polity`, `lordship_or_fief` | **Derived** by point-in-polygon against the approximate lordship boundaries; blank where no polygon matches; flagged in `source_notes` |
+| `accessibility` | Empty by design (public-access is not recorded) |
+| `wikipedia_url`, `wikipedia_he_url` | English / Hebrew Wikipedia where a real article exists |
+| `wikidata_id` | Resolved from the Wikipedia link via the MediaWiki API; blank where none |
+| `primary_sources` | Empty by design (per-site primary sources are not recorded) |
+| `secondary_sources` | D. Pringle gazetteer page reference(s) where recorded |
+| `source_notes`, `uncertainty_notes` | Provenance and reliability flags |
+| `fortified_status`, `visible_remains`, `has_harbor` | Site attributes from the source |
+| `image_filename` | Bare image filename, relative to `/fortress-pics/` |
+| `crusaderatlas_url`, `landing_page_url` | Deep link into the live map / the entity's landing page |
+
+Nothing is fabricated: fields not present in the source are left empty rather than guessed, and approximate or derived values are flagged. Regenerate with `python archive/tools/build_public_dataset.py` from the project root.
+
 ## Data dictionary
 
 ### Sites (`sites.geojson`)

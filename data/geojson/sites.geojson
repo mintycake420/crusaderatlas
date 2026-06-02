@@ -7,8 +7,8 @@
     "repository": "https://github.com/mintycake420/crusaderatlas",
     "license": "CC-BY-4.0",
     "version": "1.0.0",
-    "generated": "2026-05-23",
-    "record_count": 170
+    "generated": "2026-06-02",
+    "record_count": 175
   },
   "features": [
     {
@@ -2359,8 +2359,8 @@
         },
         "image": "St_Mary_of_the_Germans_Jerusalem.jpg",
         "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/Church_of_St._Mary_of_the_Germans,_Jerusalem",
-          "he": null
+          "en": "https://en.wikipedia.org/wiki/Church_of_Saint_Mary_of_the_Germans",
+          "he": "https://he.wikipedia.org/wiki/%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%AA_%D7%9E%D7%A8%D7%99%D7%9D_%D7%A9%D7%9C_%D7%94%D7%92%D7%A8%D7%9E%D7%A0%D7%99%D7%9D"
         }
       },
       "geometry": {
@@ -3938,7 +3938,7 @@
         },
         "image": "An-Nasr_Mosque3 (1).jpg",
         "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/An-Nasr_Mosque,_Nablus",
+          "en": "https://en.wikipedia.org/wiki/An-Nasr_Mosque",
           "he": null
         }
       },
@@ -5424,7 +5424,7 @@
         },
         "image": "St_John_Cathedral_Byblos.jpg",
         "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/St._John-Mark_Cathedral_(Byblos)",
+          "en": "https://en.wikipedia.org/wiki/St._John%27s_Cathedral,_Byblos",
           "he": null
         }
       },
@@ -5627,8 +5627,8 @@
         },
         "image": "Sahyun Castle.jpg",
         "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/Saladin_Castle",
-          "he": "https://he.wikipedia.org/wiki/%D7%9E%D7%91%D7%A6%D7%A8_%D7%A6%D7%9C%D7%90%D7%97_%D7%90%D7%9C-%D7%93%D7%99%D7%9F"
+          "en": "https://en.wikipedia.org/wiki/Sahyun_Castle",
+          "he": "https://he.wikipedia.org/wiki/%D7%9E%D7%A6%D7%95%D7%93%D7%AA_%D7%A6%D7%9C%D7%90%D7%97_%D7%90-%D7%93%D7%99%D7%9F"
         }
       },
       "geometry": {
@@ -5973,6 +5973,196 @@
         "coordinates": [
           34.9006,
           31.597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "akeldama-chaudemar-crusader-charnel-house",
+        "internal_key": "Akeldama / Chaudemar — Crusader Charnel House",
+        "name": "Akeldama / Chaudemar — Crusader Charnel House",
+        "alternate_names": [
+          "Akeldama",
+          "Hakeldama",
+          "Aceldama",
+          "Haceldama",
+          "Chaudemar",
+          "Field of Blood",
+          "Hakl ed-Damm"
+        ],
+        "category": "church",
+        "territory": "Israel",
+        "modern_location": "Southern slope of the Valley of Hinnom, Jerusalem",
+        "lordship": "Royal Domain - Jerusalem",
+        "coordinate_precision": "exact",
+        "description": "South of Jerusalem, on the slope of the Valley of Hinnom, lies Akeldama, the \"Field of Blood\" traditionally linked to Judas Iscariot and the potter's field. In the 12th century, the Crusaders built here a large vaulted charnel house known as Chaudemar, where the bones of dead pilgrims, knights, and patients from the Hospitaller hospital near the Holy Sepulchre were gathered. The site combined biblical memory, burial practice, and Crusader devotion: to be buried in the holy soil of Jerusalem, close to the city of resurrection and judgment, gave this grim ruin powerful spiritual meaning.",
+        "fortification": {
+          "status": "no",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "Akeldama-Chaudemar-Charnel-House.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Akeldama",
+          "he": "https://he.wikipedia.org/wiki/%D7%97%D7%A7%D7%9C_%D7%93%D7%9E%D7%90"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2328,
+          31.7694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "st-cleophas-church-al-qubeiba",
+        "internal_key": "St. Cleophas Church, Al-Qubeiba",
+        "name": "St. Cleophas Church, Al-Qubeiba",
+        "alternate_names": [
+          "Al-Qubeiba Church",
+          "Sanctuary of Emmaus, El Qubeibeh",
+          "Parva Mahomeria",
+          "Cleopas' House",
+          "Castellum Emmaus"
+        ],
+        "category": "church",
+        "territory": "Israel",
+        "modern_location": "Al-Qubeiba, ~11 km northwest of Jerusalem, West Bank",
+        "lordship": "Royal Domain - Jerusalem",
+        "coordinate_precision": "exact",
+        "description": "St. Cleophas Church stands at Al-Qubeiba, a village about 11 km northwest of Jerusalem along an old Roman road. In the 12th century the Crusaders established a Frankish settlement here called Parva Mahomeria (\"the little dome,\" the same meaning as the Arabic name); the village is mentioned in a 1159 charter defining its borders with Beit 'Anan. Excavations beneath and around the present church have uncovered the remains of a Crusader basilica — traditionally identified with the \"house of Cleopas\" — together with a row of medieval village houses lining the old road. The Franciscan Custody of the Holy Land acquired the ruins in 1861 (donated by the Marquise Pauline de Nicolay) and rebuilt the present sanctuary in 1902 with the permission of Sultan Abdul Hamid II, incorporating the exposed 12th-century foundations. Al-Qubeiba is one of the three main candidates traditionally identified with the New Testament Emmaus; the Franciscans adopted it as such from the 14th century. The visible church above ground is the 1902 reconstruction, but the Crusader-era basilica foundations and adjoining village houses excavated at the site are genuine.",
+        "fortification": {
+          "status": "no",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": "Church-of-St-Cleophas.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/St._Cleophas_Church",
+          "he": "https://he.wikipedia.org/wiki/%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%AA_%D7%90%D7%9C-%D7%A7%D7%95%D7%91%D7%99%D7%99%D7%91%D7%94"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.1352,
+          31.8404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "jifna-crusader-site-of-jifna",
+        "internal_key": "Jifna / Crusader Site of Jifna",
+        "name": "Jifna / Crusader Site of Jifna",
+        "alternate_names": [
+          "Jifna",
+          "Jafenia",
+          "Jafenie",
+          "Jifneh",
+          "Gophna"
+        ],
+        "category": "tower",
+        "territory": "Israel",
+        "modern_location": "Jifna, ~23 km north of Jerusalem, West Bank",
+        "lordship": "Lordship of Nablus",
+        "coordinate_precision": "exact",
+        "description": "Jifna sits about 23 km north of Jerusalem on the old road to Nablus. The Crusaders held it from 1099 onward as the small lordship of Jafenia (the form \"Raymundus de Jafenia\" appears in a 1182 charter). At its centre they built a fortified courtyard manor with a monumental gate guarded by a portcullis, a large vaulted hall, and thick walls of well-cut masonry — substantial remains of which still stand in the village core. They also partially rebuilt the older church of St. George with salvaged Byzantine masonry; it fell into ruin again after Saladin's victory in 1187. Later massive walls in the centre of the village are in an Arab post-Crusader style and should not be conflated with the twelfth-century work. Jifna is one of the better-preserved examples of a Frankish rural manor in the Latin Kingdom.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "Jifna-Crusader-Manor.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Jifna",
+          "he": "https://he.wikipedia.org/wiki/%D7%92%27%D7%99%D7%A4%D7%A0%D7%94"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2156,
+          31.9619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "khan-as-sawiya-khirbet-berkit",
+        "internal_key": "Khan as-Sawiya (Khirbet Berkit)",
+        "name": "Khan as-Sawiya (Khirbet Berkit)",
+        "alternate_names": [
+          "Khan as-Sawiya",
+          "Khan as-Sawiyah",
+          "Khirbet Berkit",
+          "Khirbet Berqit",
+          "As-Sawiya khan",
+          "Borceos"
+        ],
+        "category": "tower",
+        "territory": "Israel",
+        "modern_location": "Edge of As-Sawiya village, ~15–18 km south of Nablus, West Bank",
+        "lordship": "Lordship of Nablus",
+        "coordinate_precision": "approximate",
+        "description": "Khan as-Sawiya, also called Khirbet Berkit, is a small square ruined caravanserai on the edge of the village of As-Sawiya, roughly 15–18 km south of Nablus on the old road to Jerusalem. Its walls still stand to some height and the corners are built with drafted ashlars — a masonry style strongly associated with Frankish secular building in the twelfth century, though the technique was reused by later builders as well. Pottery sherds of Crusader and Ayyubid date have been recovered from the site and the village itself is recorded as Muslim-inhabited during the twelfth and thirteenth centuries. The Khan is included in Pringle's catalogue of secular buildings in the Latin Kingdom, but no medieval document directly names it; its Crusader-period attribution rests on its architecture and surface finds rather than on written evidence. The 19th-century explorer C. W. Wilson tentatively identified the ruin with Borceos, a town mentioned by Josephus on the border between Samaria and Judea.",
+        "fortification": {
+          "status": "possible",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "Khan-as-Sawiya.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/As-Sawiya",
+          "he": "https://he.wikipedia.org/wiki/%D7%90-%D7%A1%D7%90%D7%95%D7%95%D7%99%D7%94"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2578,
+          32.0847
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "house-of-arches-lod-lydda",
+        "internal_key": "House of Arches (Lod / Lydda)",
+        "name": "House of Arches (Lod / Lydda)",
+        "alternate_names": [
+          "בית הקשתות",
+          "Beit HaKashtot"
+        ],
+        "category": "tower",
+        "territory": "Israel",
+        "modern_location": "Old City of Lod (Lydda), Israel",
+        "lordship": "County of Jaffa and Ascalon",
+        "coordinate_precision": "exact",
+        "description": "The House of Arches (Beit HaKashtot) is a large kurkar-sandstone building in the Old City of Lod — the town the Crusaders knew as Lydda, seat of a Latin bishop and the centre of the cult of Saint George. It is built as three successive ranges of broad arches carrying cross-vaults roofed with shallow domes, each range raised in a different era, so a single structure preserves several centuries of building. Its documented life is industrial: through the Ottoman period and the British Mandate, down to 1948, it worked as an olive-oil press (a bet bad), one of many in Lod, and the stone crushing basins still stand inside. The Crusader link is suggested rather than proven. Local heritage accounts attribute the monumental arches of the northern range to the Crusader period — possibly the substructure of a hall or grand public building — and the smaller central arches to the Mamluk period, with the simpler southern range Ottoman. The published archaeological surveys, however, describe only the oil-press phase and do not confirm a twelfth-century date, so the Crusader attribution is best treated as a local tradition awaiting excavation rather than an established fact. The building survives in sound structural condition and is earmarked for conservation within the regeneration of Lod's Old City.",
+        "fortification": {
+          "status": "no",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "136169_lod_house_of_arches_PikiWiki_Israel.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Lod",
+          "he": "https://he.wikipedia.org/wiki/%D7%9C%D7%95%D7%93"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.90115,
+          31.95296
         ]
       }
     }

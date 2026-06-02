@@ -2,7 +2,7 @@
 
 A structured, machine-readable dataset of Crusader-era sites, lordships, routes, rulers, and encyclopedic entries in the Latin East (c. 1099--1291), extracted from the live [Crusader Atlas](https://crusaderatlas.com).
 
-**170 sites** | **27 lordships** | **24 monarchs** | **129 glossary entries** | **11 battle narratives** | **7 routes**
+**175 sites** | **27 lordships** | **24 monarchs** | **129 glossary entries** | **11 battle narratives** | **7 routes**
 
 All geographic files render as interactive maps on GitHub. Click any `.geojson` file to preview.
 
@@ -10,14 +10,14 @@ All geographic files render as interactive maps on GitHub. Click any `.geojson` 
 
 | File | Format | Records | Description |
 |------|--------|---------|-------------|
-| [`geojson/sites.geojson`](geojson/sites.geojson) | GeoJSON | 170 | Castles, churches, towers, fortified towns, battles, and sieges |
+| [`geojson/sites.geojson`](geojson/sites.geojson) | GeoJSON | 175 | Castles, churches, towers, fortified towns, battles, and sieges |
 | [`geojson/lordships.geojson`](geojson/lordships.geojson) | GeoJSON | 27 | Feudal lordship polygons with succession tables and heraldry |
 | [`geojson/routes.geojson`](geojson/routes.geojson) | GeoJSON | 7 | Pilgrim and trade routes |
 | [`geojson/borders.geojson`](geojson/borders.geojson) | GeoJSON | 7 | Modern country borders (reference layer) |
 | [`json/rulers.json`](json/rulers.json) | JSON | 24 | Monarchs of the Kingdom of Jerusalem |
 | [`json/glossary.json`](json/glossary.json) | JSON | 129 | Encyclopedic entries on people, events, orders, and institutions |
 | [`json/battles.json`](json/battles.json) | JSON | 11 | Extended narratives for major battles and sieges |
-| [`csv/sites.csv`](csv/sites.csv) | CSV | 170 | Flat export of sites for spreadsheet users |
+| [`csv/sites.csv`](csv/sites.csv) | CSV | 175 | Flat export of sites for spreadsheet users |
 | [`csv/rulers.csv`](csv/rulers.csv) | CSV | 24 | Flat export of rulers |
 | [`csv/glossary.csv`](csv/glossary.csv) | CSV | 129 | Flat export of glossary entries |
 
@@ -75,7 +75,7 @@ Each feature is a GeoJSON Point with the following properties:
 | `coordinate_precision` | string | `"exact"` or `"approximate"` |
 | `description` | string | Narrative description with historical context |
 | `fortification` | object or null | **Null for battle/siege entries** (concept does not apply). For all other categories, an object with the fields below. |
-| `fortification.status` | string | `"definite"`, `"probable"`, `"uncertain"`, or `"no"` |
+| `fortification.status` | string | `"definite"`, `"probable"`, `"possible"`, `"uncertain"`, or `"no"` |
 | `fortification.visible_remains` | string | `"yes"`, `"partial"`, `"fragmentary"`, `"unknown"`, or `"no"` |
 | `fortification.harbor` | boolean | Whether the site had a medieval harbor |
 | `has_extended_narrative` | boolean | Present only on battle/siege sites. True if `battles.json` contains an extended narrative for this site. |
@@ -92,8 +92,8 @@ Coordinates are WGS84, `[longitude, latitude]` per GeoJSON RFC 7946.
 | `capital` | Capital city | 3 |
 | `major_castle` | Major castle / fortress | 52 |
 | `urban` | Walled town / citadel | 15 |
-| `tower` | Tower or smaller fortified site | 41 |
-| `church` | Church or religious site | 29 |
+| `tower` | Tower or smaller fortified site | 44 |
+| `church` | Church or religious site | 31 |
 | `battle` | Battle (open-field engagement) | 20 |
 | `siege` | Siege | 10 |
 

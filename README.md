@@ -4,13 +4,16 @@ An interactive, hand-curated historical atlas of the medieval Kingdom of Jerusal
 
 **Live:** [crusaderatlas.com](https://crusaderatlas.com/)
 
-167 verified sites — castles, fortified churches, towers, fortified towns, battles, and sieges — plotted on an interactive Leaflet map with photographs, primary sources, and Wikipedia links in English and Hebrew. The 25 Frankish lordships are drawn as actual polygon borders rather than dots, and a glossary of ~70 entries covers the kings, the orders, internal conflicts, and first-hand accounts by Christian, Jewish, and Muslim travellers who passed through the kingdom while it existed.
+175 verified sites — castles, fortified churches, towers, fortified towns, battles, and sieges — plotted on an interactive Leaflet map with photographs, primary sources, and Wikipedia links in English and Hebrew. The 22 Frankish lordships and royal domains are drawn as actual polygon borders rather than dots, and a glossary of over 110 entries (including the 24 monarchs of Jerusalem) covers the kings, the orders, internal conflicts, and first-hand accounts by Christian, Jewish, and Muslim travellers who passed through the kingdom while it existed.
+
+The full dataset is **downloadable in one click** — see [Open dataset](#open-dataset) below, or use the **Download dataset** links built into the live map (the map-context ⓘ panel, the legend, the About panel, and the desktop footer).
 
 ## What's on the map
 
-- **167 verified sites** — from famous fortifications (Krak des Chevaliers, Montfort, Belvoir, Atlit, the Hospitaller Compound in Acre) to obscure standing remains most visitors have walked past without recognising (the Francheville tower in Romema, Haifa; Castellare Rogerii Longobardi outside Netanya; Cave de Tyron in southern Lebanon; and dozens more).
-- **25 Frankish lordships** drawn as polygons with labelled borders, capitals, and parents — Tyre, Sidon, Galilee, Toron, Caesarea, Beirut, Oultrejourdain, and the rest.
-- **~70 glossary entries** — kings and queens of Jerusalem with reign dates and dynasties; the military and religious orders (Templars, Hospitallers, Teutonic Knights, Lazarites); internal conflicts of the kingdom; and first-hand accounts by Christian, Jewish, and Muslim travellers (Benjamin of Tudela, Ibn Jubayr, William of Tyre, John of Würzburg, and others).
+- **175 verified sites** — from famous fortifications (Krak des Chevaliers, Montfort, Belvoir, Atlit, the Hospitaller Compound in Acre) to obscure standing remains most visitors have walked past without recognising (the Francheville tower in Romema, Haifa; Castellare Rogerii Longobardi outside Netanya; Cave de Tyron in southern Lebanon; and dozens more).
+- **22 Frankish lordships and royal domains** drawn as polygons with labelled borders, capitals, and parents — Tyre, Sidon, Galilee, Toron, Caesarea, Beirut, Oultrejourdain, and the rest.
+- **Over 110 glossary entries** (including the 24 monarchs of Jerusalem) — kings and queens with reign dates and dynasties; the military and religious orders (Templars, Hospitallers, Teutonic Knights, Lazarites); internal conflicts of the kingdom; and first-hand accounts by Christian, Jewish, and Muslim travellers (Benjamin of Tudela, Ibn Jubayr, William of Tyre, John of Würzburg, and others).
+- **7 pilgrim and trade routes** drawn as polylines (the Acre–Jerusalem and Jaffa–Jerusalem pilgrim roads, the Damascus and King's Highway caravan routes, and the post-1187 sea routes).
 - **Photographs** of standing remains where they exist, with primary photo + WebP fallback + 400-px thumbnail variants for fast loading.
 - **Cited sources** — Denys Pringle's *Churches of the Crusader Kingdom of Jerusalem* and *Secular Buildings in the Crusader Kingdom of Jerusalem*, contemporary chronicles, and named secondary sources, with a precision flag (exact coordinates vs. approximate location) on every entry.
 
@@ -40,14 +43,16 @@ og-image.png            social-card image (1200×630)
 lordships-{top,bottom}.{png,webp}   externalised lordship-overlay rasters
 fortress-pics/          site photographs (JPG + WebP + -400 thumbnail siblings)
 coat-of-arms/           heraldic crests for fiefs
-sites/<slug>/           SEO landing page per site (167)
-glossary/<slug>/        SEO landing page per glossary entry (~70)
-lordships/<slug>/       SEO landing page per lordship (25)
+sites/<slug>/           SEO landing page per site (175)
+glossary/<slug>/        SEO landing page per glossary entry (117)
+lordships/<slug>/       SEO landing page per fief and sea (31)
+regions/<slug>/         regional & thematic aggregator pages (14)
+data/                   open dataset — GeoJSON, JSON, CSV, schemas, README, CITATION
 ```
 
 ## Two-tier SEO architecture
 
-The live experience at `/` is a single-page app — great for users, opaque to search engines that don't reliably execute JavaScript. To make every entity discoverable, the site also ships ~280 static landing pages (one per site, lordship, and glossary entry) generated from the same source-of-truth data as the SPA.
+The live experience at `/` is a single-page app — great for users, opaque to search engines that don't reliably execute JavaScript. To make every entity discoverable, the site also ships more than 320 static landing pages (one per site, lordship, glossary entry, plus regional and thematic aggregators) generated from the same source-of-truth data as the SPA.
 
 Each landing page is 8–15 KB: parchment-palette inline CSS, real `<h1>`/`<p>` content, `<picture>` with WebP fallback, JSON-LD (`Place` / `Article` / `Person` + `BreadcrumbList`), eight cross-links, and a "View on the live atlas" CTA that deep-links back via `?site=<slug>`, `?entry=<slug>`, or `?fief=<slug>`.
 
@@ -59,14 +64,16 @@ The SPA recognises those query params at startup and routes to the relevant deta
 
 The same data is also published as structured, per-entity GeoJSON, JSON, and CSV files under [`data/`](data/):
 
-- **[`sites.geojson`](data/geojson/sites.geojson)** — 170 Crusader sites with coordinates, descriptions, images, and Wikipedia links
-- **[`lordships.geojson`](data/geojson/lordships.geojson)** — 27 feudal lordship polygons with succession tables and heraldry
+- **[`sites.geojson`](data/geojson/sites.geojson)** — 175 Crusader sites with coordinates, descriptions, images, and Wikipedia links
+- **[`lordships.geojson`](data/geojson/lordships.geojson)** — 27 polygons (22 Frankish lordships and royal domains, plus the seas and the Fatimid frontier as context) with succession tables and heraldry
 - **[`routes.geojson`](data/geojson/routes.geojson)** — 7 pilgrim and trade routes as polylines
 - **[`rulers.json`](data/json/rulers.json)** — 24 monarchs of Jerusalem with biographies
 - **[`glossary.json`](data/json/glossary.json)** — 129 encyclopedic entries on crusades, orders, people, and institutions
 - **[`battles.json`](data/json/battles.json)** — 11 extended battle and siege narratives
 
 All geographic files render as interactive maps on GitHub. Data is also available as flat CSV exports in [`data/csv/`](data/csv/). See [`data/README.md`](data/README.md) for the full data dictionary, example queries in Python / JavaScript / R / QGIS, and schema documentation.
+
+The dataset can also be downloaded **directly from the live site** — CSV/JSON links are built into the map-context (ⓘ) panel, the legend, the About panel, and the desktop footer (served from `/data/` with permissive CORS headers for scraping and reuse).
 
 The dataset is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). For citation, see [`data/CITATION.cff`](data/CITATION.cff).
 
@@ -84,10 +91,12 @@ Then open http://localhost:8767. No build step, no install, no environment varia
 
 ## Mobile
 
-- Two-row topbar that collapses to a floating action-button cluster below 720 px.
+- Two-row topbar that collapses to a floating action-button cluster below 720 px, plus a **collapsible header** — a chevron shrinks the topbar to just the brand strip to free up map space, with the state remembered between visits.
 - Bottom-sheet detail panel with three states (closed / peek / expanded), drag-to-expand, focus trap, and a shared scrim across the four overlay drawers (detail, filters, glossary, layers).
 - `overscroll-behavior: none` to disable Android pull-to-refresh inside the sheet.
 - All four drawers close cleanly via `closeAllMobileOverlays()` and a single shared `<div class="sheet-scrim">` element — no orphaned dimming layers.
+- Map-context (ⓘ) panel explaining the methodology — that the borders are an approximate *c.* 1165 peak-reach snapshot while the site markers span the kingdom's full 1099–1291 history — with dataset download and contact links.
+- Tightened detail-sheet typography: coordinates render as plain text (no chip box) with copy + Google Maps actions that sit flush beside the numbers.
 
 ## Performance
 
@@ -107,6 +116,14 @@ This is a single-maintainer project, but **corrections, missing sites, and sourc
 - **Hebrew Wikipedia links** — bilingual coverage is a work in progress; pointers to better Hebrew Wikipedia targets for existing entries are useful.
 
 For larger discussions (new buckets, new glossary categories, methodology questions), open an issue before submitting a PR.
+
+## Contact
+
+Maintained by Yotam Katz. Corrections, source pointers, dataset questions, and reuse enquiries are welcome:
+
+- **Email** — [yotamkatz2000@gmail.com](mailto:yotamkatz2000@gmail.com)
+- **LinkedIn** — [yotam-katz](https://www.linkedin.com/in/yotam-katz-ab6a44394)
+- **Support** — [ko-fi.com/yotamkatz](https://ko-fi.com/yotamkatz)
 
 ## Credits
 

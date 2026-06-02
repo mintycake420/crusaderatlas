@@ -157,7 +157,7 @@
       "properties": {
         "status": {
           "type": ["string", "null"],
-          "enum": ["definite", "probable", "uncertain", "no", null],
+          "enum": ["definite", "probable", "possible", "uncertain", "no", null],
           "description": "Confidence level that this site was fortified during the Crusader period."
         },
         "visible_remains": {

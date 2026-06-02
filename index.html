@@ -1653,6 +1653,22 @@
       margin: 0;
     }
     .cartouche-caption + .cartouche-caption { margin-top: 9px; }
+    .cartouche-dl {
+      margin: 12px 0 0;
+      padding-top: 10px;
+      border-top: 1px solid var(--muted-line-soft);
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.02em;
+      color: var(--ink-soft);
+    }
+    .cartouche-dl a {
+      color: var(--sepia);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px dotted currentColor;
+    }
+    .cartouche-dl a:hover { color: var(--red-oxide); }
     .cartouche.collapsed .cartouche-body { display: none; }
     .cartouche.collapsed { padding-bottom: 12px; }
     .cartouche-btn { display: none; }
@@ -2454,11 +2470,14 @@
     <button class="cartouche-toggle" id="cartouche-toggle" type="button" aria-expanded="true" aria-controls="cartouche-body" aria-label="Toggle map context">
       <span class="cartouche-chevron" aria-hidden="true">▾</span>
     </button>
-    <div class="cartouche-eyebrow">c. 1165</div>
-    <h2 class="cartouche-title">The Kingdom of Jerusalem at Its Greatest Territorial &amp; Feudal Reach</h2>
+    <h2 class="cartouche-title">The Kingdom of Jerusalem at Its Greatest Territorial &amp; Feudal Reach, c. 1165</h2>
     <div class="cartouche-body" id="cartouche-body">
       <p class="cartouche-caption">This view shows the Kingdom of Jerusalem at its widest practical territorial and feudal reach in the mid-12th century, around c. 1165 — not a permanent border held throughout the Crusader period. The boundaries are approximate and represent royal domains, major lordships, dependent or vassal territories, fortified zones, and contested frontiers, reflecting spheres of rule, homage, and military influence rather than fixed modern borders.</p>
       <p class="cartouche-caption">The site markers, however, are broader in scope. They include surviving Crusader fortresses, churches, towers, and related remains from across the history of the kingdom, from 1099 to 1291. Some were founded earlier or later, changed hands, were rebuilt, or fell out of use over time. The map therefore combines a peak-territorial snapshot with a wider archaeological and historical catalogue of extant Crusader-period remains — not a record of every site as simultaneously active in one exact moment.</p>
+      <p class="cartouche-dl">⤓ Download the open dataset:
+        <a href="/data/csv/crusader_atlas_dataset.csv" download>CSV</a> ·
+        <a href="/data/json/crusader_atlas_dataset.json" download>JSON</a>
+      </p>
     </div>
   </aside>
 

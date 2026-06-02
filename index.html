@@ -1548,12 +1548,19 @@
     .coord-map:hover { color: var(--red-oxide); }
 
     /* On mobile the coords sit directly on the parchment sheet — drop the white
-       chip background/border so they read as plain text, not a highlighted box. */
+       chip background/border so they read as plain text, not a highlighted box.
+       Keep the coords on one line at their natural width (no shrinking) so the
+       copy / Google Maps controls sit right after them instead of after a
+       phantom gap left by a shrunk, internally-wrapped code box; let the line
+       wrap as a whole if there isn't room. */
     @media (max-width: 820px) {
+      .coord-line { flex-wrap: wrap; row-gap: 4px; }
       .coord-line code {
         background: transparent;
         border: none;
         padding: 0;
+        white-space: nowrap;
+        flex: 0 0 auto;
       }
     }
 

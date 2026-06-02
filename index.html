@@ -280,6 +280,46 @@
       .dataset-dl { display: none; }
     }
 
+    /* Mobile entry point: a dataset download row inside the legend body, shown
+       only at <=720px (where the floating .dataset-dl link is hidden). */
+    .legend-dl { display: none; }
+    @media (max-width: 720px) {
+      .legend-dl {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 12px;
+        padding-top: 10px;
+        border-top: 1px solid var(--muted-line);
+        font-family: "Inter", sans-serif;
+        font-size: 11px;
+        color: var(--ink-soft);
+      }
+      .legend-dl .legend-dl-label { font-weight: 600; }
+      .legend-dl a { color: var(--sepia); text-decoration: none; font-weight: 600; }
+      .legend-dl a:hover, .legend-dl a:focus { text-decoration: underline; }
+    }
+
+    /* Universal entry point: a download line in the About / intro panel. */
+    .intro-download {
+      font-family: "Spectral", serif;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      text-align: center;
+      margin: -6px 0 14px;
+      opacity: 0.9;
+    }
+    .intro-download a {
+      color: var(--red-oxide);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--red-oxide);
+      transition: opacity 120ms ease;
+      white-space: nowrap;
+    }
+    .intro-download a:hover { opacity: 0.75; }
+
     .leaflet-top.leaflet-left { top: 82px; }
     .leaflet-control-zoom {
       border: 1px solid var(--muted-line) !important;
@@ -2416,6 +2456,13 @@
       <div class="legend-note">
         A dashed halo around a marker means the coordinate is approximate. A small gold tick marks sites where substantial remains still survive above ground.
       </div>
+
+      <div class="legend-dl">
+        <span class="legend-dl-label">⤓ Open dataset:</span>
+        <a href="/data/csv/crusader_atlas_dataset.csv" download aria-label="Download the full Crusader Atlas dataset as CSV">CSV</a>
+        <span class="dataset-dl-sep" aria-hidden="true">·</span>
+        <a href="/data/json/crusader_atlas_dataset.json" download aria-label="Download the full Crusader Atlas dataset as JSON">JSON</a>
+      </div>
     </div>
   </div>
 
@@ -2474,6 +2521,11 @@
       </p>
       <p class="intro-support">
         CrusaderAtlas is free and ad-free. If it's been useful to you, you can support its upkeep at <a href="https://ko-fi.com/yotamkatz" target="_blank" rel="noopener noreferrer">☕ ko-fi.com/yotamkatz</a>.
+      </p>
+      <p class="intro-download">
+        ⤓ Download the open dataset:
+        <a href="/data/csv/crusader_atlas_dataset.csv" download>CSV</a> ·
+        <a href="/data/json/crusader_atlas_dataset.json" download>JSON</a>
       </p>
       <div class="intro-actions">
         <a id="intro-dismiss-forever">Don't show again</a>

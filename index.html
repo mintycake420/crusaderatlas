@@ -1531,6 +1531,16 @@
     }
     .coord-map:hover { color: var(--red-oxide); }
 
+    /* On mobile the coords sit directly on the parchment sheet — drop the white
+       chip background/border so they read as plain text, not a highlighted box. */
+    @media (max-width: 820px) {
+      .coord-line code {
+        background: transparent;
+        border: none;
+        padding: 0;
+      }
+    }
+
     .wiki-row {
       display: flex;
       flex-wrap: wrap;

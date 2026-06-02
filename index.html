@@ -244,6 +244,42 @@
     .leaflet-control-attribution a { color: var(--sepia); }
     .leaflet-attribution-flag { display: none !important; }
 
+    /* Discreet "download the open dataset" link, bottom-left, styled to match
+       the Leaflet attribution. Sits below the topbar (500), scrim (599) and
+       bottom sheet (600) so mobile overlays cover it cleanly. */
+    .dataset-dl {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 460;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      background: rgba(247, 239, 217, 0.88);
+      border: 1px solid var(--muted-line);
+      border-left: none;
+      border-bottom: none;
+      border-top-right-radius: 7px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      box-shadow: 0 -1px 6px rgba(42, 26, 11, 0.08);
+    }
+    .dataset-dl .dataset-dl-label { font-weight: 600; letter-spacing: 0.01em; }
+    .dataset-dl .dataset-dl-sep { opacity: 0.45; }
+    .dataset-dl a { color: var(--sepia); text-decoration: none; font-weight: 600; }
+    .dataset-dl a:hover, .dataset-dl a:focus { text-decoration: underline; }
+    @media (max-width: 720px) {
+      /* The mobile bottom edge is fully occupied: the legend collapses to a
+         bottom-left tab, the attribution becomes a full-width strip, and the
+         music/sound FAB sits bottom-right. Hide the floating download link
+         here to avoid collisions — it remains in the crawlable footer, and
+         visible on tablet/desktop where the bottom strip has room. */
+      .dataset-dl { display: none; }
+    }
+
     .leaflet-top.leaflet-left { top: 82px; }
     .leaflet-control-zoom {
       border: 1px solid var(--muted-line) !important;
@@ -6871,6 +6907,12 @@
       }
     })();
   </script>
+  <div class="dataset-dl">
+    <span class="dataset-dl-label">⤓ Open dataset:</span>
+    <a href="/data/csv/crusader_atlas_dataset.csv" download aria-label="Download the full Crusader Atlas dataset as CSV">CSV</a>
+    <span class="dataset-dl-sep" aria-hidden="true">·</span>
+    <a href="/data/json/crusader_atlas_dataset.json" download aria-label="Download the full Crusader Atlas dataset as JSON">JSON</a>
+  </div>
   <footer class="site-footer sr-only" aria-label="About this atlas">
     <p>Crusader Atlas — an independent, hand-curated historical project documenting the Crusader Kingdom of Jerusalem and the wider Latin East, 1099–1291. Browse the full atlas:
       <a href="/sites/">All sites</a>,
@@ -6902,6 +6944,10 @@
       <a href="/glossary/saladin/">Saladin</a>,
       <a href="/sites/battle-of-hattin-1187/">Battle of Hattin</a>,
       <a href="/lordships/principality-of-galilee/">Principality of Galilee</a>.
+    </p>
+    <p>Download the full open dataset:
+      <a href="/data/csv/crusader_atlas_dataset.csv" download>CSV</a>,
+      <a href="/data/json/crusader_atlas_dataset.json" download>JSON</a>.
     </p>
   </footer>
   <script>

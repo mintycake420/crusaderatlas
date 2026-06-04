@@ -7,8 +7,8 @@
     "repository": "https://github.com/mintycake420/crusaderatlas",
     "license": "CC-BY-4.0",
     "version": "1.0.0",
-    "generated": "2026-06-02",
-    "record_count": 175
+    "generated": "2026-06-04",
+    "record_count": 176
   },
   "features": [
     {
@@ -6163,6 +6163,44 @@
         "coordinates": [
           34.90115,
           31.95296
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lifta-clepsta",
+        "internal_key": "Lifta (Clepsta)",
+        "name": "Lifta (Clepsta)",
+        "alternate_names": [
+          "Clepsta",
+          "Nephtho",
+          "Mei Neftoah",
+          "Mey Naftoah",
+          "ליפתא"
+        ],
+        "category": "tower",
+        "territory": "Israel",
+        "modern_location": "Lifta, Jerusalem, Israel",
+        "lordship": "Royal Domain - Jerusalem",
+        "coordinate_precision": "approximate",
+        "description": "Lifta — the Clepsta of the Crusaders, and the Nephtho of Roman and Byzantine writers — clings to the steep northwestern edge of Jerusalem above a perennial spring, on the old descent toward the coastal plain. At the centre of the village stand the remains of a Crusader-period courtyard building, recorded by Denys Pringle in his gazetteer of the kingdom's secular buildings (p. 66); the place is traditionally identified with the biblical spring of Nephtoah (Mei Neftoah). Lifta's far more conspicuous ruins are the domed stone houses of the Ottoman-era Arab village, depopulated in 1948 and never resettled — which, with the spring, the pool, and the terraced hillside, have made it one of the best-preserved historic villages around Jerusalem and a candidate for heritage protection.",
+        "fortification": {
+          "status": "uncertain",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "lifta.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Lifta",
+          "he": "https://he.wikipedia.org/wiki/%D7%9C%D7%99%D7%A4%D7%AA%D7%90"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.19667,
+          31.79444
         ]
       }
     }

@@ -980,6 +980,12 @@
     </image:image>
   </url>
   <url>
+    <loc>https://crusaderatlas.com/sites/lifta-clepsta/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/lifta.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://crusaderatlas.com/glossary/godfrey/</loc>
     <image:image>
       <image:loc>https://crusaderatlas.com/fortress-pics/Godfrey_of_Bouillon_(cropped).jpg</image:loc>

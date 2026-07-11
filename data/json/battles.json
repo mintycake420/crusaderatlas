@@ -7,7 +7,7 @@
     "license": "CC-BY-4.0",
     "version": "1.0.0",
     "generated": "2026-07-11",
-    "record_count": 14
+    "record_count": 19
   },
   "battles": [
     {
@@ -148,6 +148,56 @@
         "A century after Saladin, the Principality of Antioch had long since shrunk to the city and its immediate district, and its prince, Bohemond VI, resided at Tripoli. In May 1268 the Mamluk sultan Baibars — who had spent the decade dismantling the Frankish strongholds of Syria one by one — appeared before Antioch with his field army. With the prince absent, the defence of the immense wall circuit fell to the constable, Simon Mansel.",
         "The assault came quickly: the walls were stormed on 18 May 1268 and the citadel surrendered two days later. What followed was among the worst atrocities of the crusading era. The chroniclers' figures — some 17,000 slain and about 100,000 carried off into slavery — describe what one modern historian has called the single greatest massacre of the entire crusading period, and the churches of St Paul and St Peter were destroyed in the sack.",
         "Baibars afterwards sent Bohemond VI a letter describing the destruction of his own capital in mocking detail — the prince, the sultan wrote, had been spared the sight only by his absence. Antioch, held by the Franks for a hundred and seventy years, never recovered its former size. The fall broke the Frankish north: the Templars abandoned Baghras at once, Cursat capitulated in 1275, and the principality was extinguished, though recovered Latakia held out as its last fragment until 1287."
+      ]
+    },
+    {
+      "id": "battle-of-harran-1104",
+      "name": "Battle of Harran (1104)",
+      "site_id": "battle-of-harran-1104",
+      "paragraphs": [
+        "In the spring of 1104 Baldwin of Bourcq, count of Edessa, and Joscelin of Courtenay joined Bohemond and Tancred of Antioch in an attack on Harran. Possession of the city would have opened the road into the Jazira and protected Edessa from the south, but the Frankish leaders quarrelled over which state would receive the prize.",
+        "On 7 May the Seljuk commanders Jikirmish of Mosul and Sokman of Mardin drew the Franks away from Harran with a feigned retreat. The Edessan wing pursued and lost formation before the Seljuks turned on it. Baldwin and Joscelin were captured; Bohemond and Tancred escaped with much of the Antiochene force.",
+        "Harran was the first major field defeat suffered by the new Crusader states. It ended their eastward expansion, cost Edessa its count for four years, and encouraged attacks along the whole northern frontier. Tancred governed during Baldwin's captivity, creating a bitter dispute when the restored count returned in 1108."
+      ]
+    },
+    {
+      "id": "siege-of-edessa-1144",
+      "name": "Siege of Edessa (1144)",
+      "site_id": "siege-of-edessa-1144",
+      "paragraphs": [
+        "Zengi, atabeg of Mosul and Aleppo, moved against Edessa while Joscelin II was west of the Euphrates at Turbessel. His army arrived on 28 November 1144. The city had no resident Frankish field army, and Archbishop Hugh became the leading figure in its defence.",
+        "Zengid engineers mined beneath the walls through December. On 24 December a section collapsed and the attackers stormed the breach. Contemporary accounts describe severe loss of life in the crush and fighting; the citadel surrendered on 26 December. Zengi spared many eastern Christians while Latin clergy and officials bore the brunt of the conquest.",
+        "The fall destroyed the county's eastern core and was the first loss of a principal Crusader state. News reached western Europe through Antioch and Jerusalem, and Pope Eugenius III issued Quantum praedecessores on 1 December 1145. The resulting Second Crusade never attempted a serious recovery of Edessa."
+      ]
+    },
+    {
+      "id": "siege-of-edessa-1146",
+      "name": "Siege of Edessa (1146)",
+      "site_id": "siege-of-edessa-1146",
+      "paragraphs": [
+        "Zengi's assassination in September 1146 gave Joscelin II one last chance to recover his capital. With Baldwin of Marash and Armenian supporters, he marched from Dülük and entered Edessa on 27 October. The Christian population opened the gates, but the Zengid garrison held the citadel.",
+        "Joscelin lacked siege engines and could not reduce the citadel before Nur ad-Din arrived from Aleppo around the beginning of November. The Franks abandoned Edessa and attempted to break westward to the Euphrates. Zengid troops caught the column in the open, killing Baldwin of Marash and scattering the survivors.",
+        "Nur ad-Din's recapture was more destructive than his father's conquest. Much of the Christian population was killed, enslaved, or expelled, and the fortifications were demolished so the city could not again become a Frankish base. The county thereafter survived only as the western remnant governed from Turbessel."
+      ]
+    },
+    {
+      "id": "battle-of-saruj-1122",
+      "name": "Battle of Saruj (1122)",
+      "site_id": "battle-of-saruj-1122",
+      "paragraphs": [
+        "In September 1122 Joscelin I learned that Belek Ghazi was moving near the southern Edessan town of Saruj. The count rode to intercept him with roughly one hundred knights and supporting cavalry, hoping to catch the Artuqid force before it could raid deeper into the county.",
+        "Belek selected marshy low ground beside a river and drew the Frankish cavalry into it on 13 September. Their armoured horses foundered in the mud under sustained arrow fire. Joscelin and between twenty-five and sixty of his men surrendered and were taken to the fortress of Harput.",
+        "Joscelin refused Belek's demand that he surrender Edessa in return for freedom. King Baldwin II intervened in the north but was captured by Belek in April 1123, leaving two of the leading Frankish rulers prisoners at once. Joscelin escaped from Harput later that year with Armenian assistance."
+      ]
+    },
+    {
+      "id": "battle-of-aintab-1150",
+      "name": "Battle of Aintab (1150)",
+      "site_id": "battle-of-aintab-1150",
+      "paragraphs": [
+        "After Joscelin II was captured in May 1150, Beatrice of Saone could no longer defend the county's western fortresses. She sold them to Emperor Manuel I. Baldwin III of Jerusalem marched north to escort the Latin and eastern Christian population out before the isolated Byzantine garrisons took possession.",
+        "Nur ad-Din attacked the refugee column between Dülük and Aintab in August. Baldwin organised the knights as a moving screen around the civilians and baggage, repeatedly driving off Zengid cavalry while keeping the march toward Antioch intact. The exact field is unknown, and the marker is placed at Aintab.",
+        "The refugees reached Antioch, making the action a tactical Frankish success, but the county itself was abandoned. Masud of Rum, the Artuqids, and Nur ad-Din divided the surrendered towns during 1150–1151. Turbessel fell in July 1151, ending organised Frankish rule in the former County of Edessa."
       ]
     }
   ]

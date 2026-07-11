@@ -8,7 +8,7 @@
     "license": "CC-BY-4.0",
     "version": "1.0.0",
     "generated": "2026-07-11",
-    "record_count": 193
+    "record_count": 208
   },
   "features": [
     {
@@ -5911,7 +5911,7 @@
         "category": "major_castle",
         "territory": "Syria",
         "modern_location": "Qalaat al-Madiq, Hama Governorate, Syria",
-        "lordship": null,
+        "lordship": "Principality of Antioch",
         "coordinate_precision": "exact",
         "description": "The medieval fortress of Afamiyya, crowning the acropolis mound above the ruins of classical Apamea on the edge of the Ghab plain. The Nizari Ismailis briefly bought the citadel in 1106, only for Tancred of Antioch to oust them within months — likely the first military clash between the Assassins and the Franks — and Frankish Apamea then anchored the principality's farthest south-eastern frontier for four decades, enduring the raids of Usama ibn Munqidh's kinsmen from neighbouring Shaizar. It returned to Muslim control in 1149, in the aftermath of Nur ad-Din's victory at Inab, and the present fortress walls are largely Nur ad-Din's work. The walled hilltop remains an inhabited village today.",
         "fortification": {
@@ -6019,7 +6019,7 @@
         "category": "major_castle",
         "territory": "Syria",
         "modern_location": "Harim (Harem), Idlib Governorate, Syria",
-        "lordship": null,
+        "lordship": "Principality of Antioch",
         "coordinate_precision": "approximate",
         "description": "The fortress town of Harenc, guarding the eastern approaches to Antioch beyond the Orontes. Fortified by the Byzantines after 959 and taken by the crusaders in 1097, it served the principality as its chief eastern outpost for half a century. Nur ad-Din took it in 1149 after his victory at Inab; Baldwin III recovered it in 1158, and it was lost for good on 12 August 1164, when Nur ad-Din crushed the combined relief army at the Battle of Harim and led Prince Bohemond III, Raymond III of Tripoli, Hugh VIII of Lusignan, and Joscelin III into captivity. Rebuilt under the Ayyubid al-Zahir Ghazi, the town and castle were largely destroyed by the Mongols under Hulagu in 1260; the surviving fabric on the citadel mound dates mainly from the era of the Muslim–Crusader wars.",
         "fortification": {
@@ -6309,7 +6309,7 @@
         "category": "battle",
         "territory": "Syria",
         "modern_location": "Azaz, Aleppo Governorate, Syria",
-        "lordship": null,
+        "lordship": "County of Edessa",
         "coordinate_precision": "approximate",
         "description": "Following the catastrophic Frankish defeat at the Field of Blood in 1119, the Principality of Antioch was hanging by a thread, and Baldwin II of Jerusalem assumed the regency of the northern Crusader states to prevent their collapse. On 11 June 1125, near the small town of Azaz north of Aleppo, Baldwin assembled a coalition of 1,100 knights and 2,000 infantry drawn from Jerusalem, Antioch, Edessa, and Tripoli. They faced a Seljuk-Artuqid army of perhaps 15,000 under Aq-Sunqur il-Bursuqi and Toghtekin. Using disciplined feigned retreats to draw the Turkish horsemen out of formation, the Crusaders shattered the coalition for the loss of only 20 of their own — 5 of them knights — against between 1,000 and 5,000 Muslim casualties. The victory bought the northern states a decade of breathing room and demonstrated that European massed heavy cavalry could decisively beat Turkish horse-archer tactics when properly supported by infantry.",
         "fortification": null,
@@ -6340,7 +6340,7 @@
         "category": "battle",
         "territory": "Syria",
         "modern_location": "Harem, Idlib Governorate, Syria",
-        "lordship": null,
+        "lordship": "Principality of Antioch",
         "coordinate_precision": "approximate",
         "description": "On 12 August 1164, Nur ad-Din invested the strategic Frankish fortress of Harim (Harenc), which guarded the eastern approaches to Antioch. A combined relief army from the County of Tripoli, the Principality of Antioch, the Byzantine Empire, and Cilician Armenia marched to break the siege but was lured into a trap and annihilated. The casualties read like a roll-call of the Frankish north: Bohemond III of Antioch, Raymond III of Tripoli, Hugh VIII of Lusignan, and the Byzantine governor Constantine Coloman were all captured and held for ransom — Raymond III for almost ten years — while the Armenian prince Thoros II escaped the rout. The defeat at Harim was so catastrophic for the leadership of the entire northern Latin East that it permanently shifted the balance of power in Syria toward Nur ad-Din and made the eventual unification of Egypt and Syria under Saladin politically and militarily inevitable.",
         "fortification": null,
@@ -6372,7 +6372,7 @@
         "category": "battle",
         "territory": "Syria",
         "modern_location": "Inab, Idlib Governorate, Syria",
-        "lordship": null,
+        "lordship": "County of Edessa",
         "coordinate_precision": "approximate",
         "description": "On 29 June 1149, Nur ad-Din — the Zengid atabeg whose career would re-unite Muslim Syria — destroyed the field army of the Principality of Antioch at Inab, near the village of Ard al-Hatim. Prince Raymond of Poitiers had ridden out with 4,000 cavalry and 1,000 infantry, accompanied by Ali ibn Wafa and a contingent of Nizari Assassins. Nur ad-Din encircled them with 6,000 men and wiped the army out almost to the last man; Raymond and Ali ibn Wafa were both killed and Raymond's skull was sent in a silver box to the caliph in Baghdad. The Principality of Antioch was permanently reduced in size, losing its eastern frontier, and the Crusader north would never again field an independent army capable of major offensive operations.",
         "fortification": null,
@@ -6405,7 +6405,7 @@
         "category": "battle",
         "territory": "Syria",
         "modern_location": "near Sarmada, Idlib Governorate, Syria",
-        "lordship": null,
+        "lordship": "Principality of Antioch",
         "coordinate_precision": "approximate",
         "description": "On 28 June 1119 the Artuqid ruler Ilghazi of Mardin caught the field army of the Principality of Antioch in camp near Sarmada, at a place afterwards known as the Ager Sanguinis — the Field of Blood. Roger of Salerno, regent of Antioch, was killed and his army annihilated; some seventy knights and five hundred soldiers were led into captivity. The eastern marches — al-Atharib, Zardana, Sarmin, Ma'arrat al-Nu'man, Kafr Tab — fell to Ilghazi in the aftermath, and though Baldwin II of Jerusalem checked him at Hab that August and assumed the regency of Antioch, the principality's power east of the Orontes never fully recovered. Sources differ on the exact battlefield; the marker follows the placement at Balat, south of Sarmada.",
         "fortification": null,
@@ -6805,6 +6805,537 @@
         "coordinates": [
           36.15,
           36.2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edessa",
+        "internal_key": "Edessa",
+        "name": "Edessa",
+        "alternate_names": [
+          "Urhai",
+          "Urfa",
+          "Şanlıurfa",
+          "al-Ruha",
+          "Comitatus Edessanus"
+        ],
+        "category": "capital",
+        "territory": "Turkey",
+        "modern_location": "Şanlıurfa Castle, Şanlıurfa Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Capital of the first Crusader state. Baldwin of Boulogne entered the Armenian-Christian city in February 1098, was adopted by its ruler Thoros, and assumed power after Thoros was killed in March. Baldwin left for Jerusalem in 1100, but the inland county survived under Baldwin of Bourcq and the Courtenay counts. Zengi stormed Edessa in December 1144 while Joscelin II was at Turbessel, and Nur ad-Din crushed Joscelin's failed recovery in November 1146. The high citadel above modern Şanlıurfa preserves the city's fortified setting, although much of its standing fabric predates or postdates the Frankish occupation.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sanliurfa%20Castle.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Edessa",
+          "he": "https://he.wikipedia.org/wiki/%D7%90%D7%95%D7%A8%D7%A4%D7%94"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.784,
+          37.1454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fortress-of-kaysun",
+        "internal_key": "Fortress of Kaysun",
+        "name": "Fortress of Kaysun",
+        "alternate_names": [
+          "K'esun",
+          "Kaysum",
+          "Keysun",
+          "Keysun Kalesi"
+        ],
+        "category": "major_castle",
+        "territory": "Turkey",
+        "modern_location": "near Çakırhüyük, Adıyaman Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Kaysun was an Armenian frontier stronghold associated with the northern County of Edessa and the subordinate Lordship of Marash. Baldwin II forced Vasil Dgha to surrender the fortress and its neighbouring domains in 1116. In 1131 the dying Count Joscelin I had himself carried on a litter at the head of a relief force; the Danishmendid emir Ghazi abandoned the siege on hearing of his approach. Masud I of Rum captured Kaysun during the collapse of the northern Edessan frontier in 1150.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": null,
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Fortress_of_Kaysun",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.85,
+          37.567
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ravendel-castle",
+        "internal_key": "Ravendel Castle",
+        "name": "Ravendel Castle",
+        "alternate_names": [
+          "Ravanda Kalesi",
+          "Ravendan",
+          "Rawandan",
+          "Ravenel"
+        ],
+        "category": "major_castle",
+        "territory": "Turkey",
+        "modern_location": "Belenözü, Kilis Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Ravendel guarded the western road between Antioch and Edessa from a steep conical hill east of the Afrin River. Baldwin of Boulogne seized the largely Armenian-held fortress in late 1097 on his march toward Edessa, and it became one of the county's principal western strongholds. It formed part of the territory transferred to Byzantium after Joscelin II's capture and fell during the collapse of the remnant county in 1151. Angular and semicircular towers, cisterns, and part of the enceinte survive at the summit.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": null,
+        "wikipedia": {
+          "en": "https://it.wikipedia.org/wiki/Castello_di_Ravendel",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.0539,
+          36.873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "rumkale-hromgla",
+        "internal_key": "Rumkale (Hromgla)",
+        "name": "Rumkale (Hromgla)",
+        "alternate_names": [
+          "Hromgla",
+          "Qal'at al-Rum",
+          "Ranculat",
+          "Rum Kale"
+        ],
+        "category": "major_castle",
+        "territory": "Turkey",
+        "modern_location": "Yavuzeli district, Gaziantep Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Hromgla occupies a sheer promontory above the Euphrates and the Merzimen stream. It belonged to the Armenian lord Kogh Vasil before Baldwin II forced Vasil Dgha to relinquish the surrounding domains in 1116, after which it was associated with the northern Edessan and Marash frontier. Refugees reached the fortress after Edessa fell in 1144. Around 1150 Beatrice transferred Hromgla to the Armenian catholicos Gregory III, and it became the seat of the Armenian Catholicosate rather than sharing the fate of the county's other surrendered fortresses.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "https://upload.wikimedia.org/wikipedia/commons/a/a3/The_Euphrates_River_in_Turkey%2C_Rumkale_%2852031477798%29.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Rumkale",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8381,
+          37.2719
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "turbessel-castle",
+        "internal_key": "Turbessel Castle",
+        "name": "Turbessel Castle",
+        "alternate_names": [
+          "Tell Bashir",
+          "Tilbeşar",
+          "Turbessel",
+          "Tell Bâchir"
+        ],
+        "category": "major_castle",
+        "territory": "Turkey",
+        "modern_location": "Tilbeşar, near Gündoğan, Gaziantep Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Turbessel was the western stronghold of the County of Edessa and the centre of Joscelin of Courtenay's lordship from 1101. Its position in the Sajur valley controlled the route between Upper Mesopotamia and northern Syria. After Zengi captured Edessa in 1144, Joscelin II governed the surviving county from Turbessel. His wife Beatrice transferred the remaining fortresses to the Byzantine emperor Manuel I in 1150; Nur ad-Din's forces took Turbessel in 1151. The tell still preserves stretches of the medieval enceinte and gates.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": null,
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Turbessel",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5456,
+          36.8789
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "aintab-gaziantep-castle",
+        "internal_key": "Aintab (Gaziantep Castle)",
+        "name": "Aintab (Gaziantep Castle)",
+        "alternate_names": [
+          "Hantab",
+          "Hamtab",
+          "Antep",
+          "Gaziantep Kalesi"
+        ],
+        "category": "urban",
+        "territory": "Turkey",
+        "modern_location": "Gaziantep Castle, Gaziantep Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Aintab was a fortified western centre of the County of Edessa, administered through the neighbouring Lordship of Marash after the First Crusade. Its ancient hilltop fort had been enlarged by the Romans and Byzantines before entering Frankish territory in 1098. Near Aintab in August 1150, Baldwin III protected the evacuation of the county's Christian population from Nur ad-Din. The town passed briefly to Byzantium and was taken by the Seljuk sultan Masud in 1151. The circular citadel still dominates the modern city, though it was badly damaged by the 2023 earthquake.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "https://upload.wikimedia.org/wikipedia/commons/9/99/AntepKale2_%28cropped%29.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Gaziantep",
+          "he": "https://he.wikipedia.org/wiki/%D7%98%D7%99%D7%A8%D7%AA_%D7%92%D7%96%D7%99%D7%90%D7%A0%D7%98%D7%A4"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3833,
+          37.0664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "birecik-castle-bira",
+        "internal_key": "Birecik Castle (Bira)",
+        "name": "Birecik Castle (Bira)",
+        "alternate_names": [
+          "Bira",
+          "al-Bira",
+          "Birtha",
+          "Birecik Kalesi"
+        ],
+        "category": "urban",
+        "territory": "Turkey",
+        "modern_location": "Birecik Castle, Şanlıurfa Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Bira controlled the principal medieval crossing of the Euphrates between northern Syria and Edessa. An Armenian lord held it when the First Crusade reached the region, and it became a strongly fortified minor lordship within the County of Edessa. Zengi besieged Bira after the fall of Edessa in January 1145, but the western fortress remained with Joscelin II until the remnants were ceded to Byzantium in 1150. Artuqid forces captured it in spring 1151. Parts of the white limestone citadel survive above the east bank of the river.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Birecik%20Beyaz%20Kale%209270.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Birecik",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9794,
+          37.0318
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "duluk-doliche",
+        "internal_key": "Dülük (Doliche)",
+        "name": "Dülük (Doliche)",
+        "alternate_names": [
+          "Tulupa",
+          "Doliche",
+          "Dolikhe",
+          "Duluk"
+        ],
+        "category": "urban",
+        "territory": "Turkey",
+        "modern_location": "Dülük, Gaziantep Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "Medieval Tulupa was one of the County of Edessa's main western centres, paired with nearby Aintab on the approaches from the Taurus to the Euphrates. Byzantine forces had recovered the old city of Doliche in 962, and it passed into the county during the early Crusader period. In August 1150 the evacuated Edessan population and Baldwin III's army moved through the country between Dülük and Aintab under attack by Nur ad-Din. The site fell during the final partition of the county in 1151.",
+        "fortification": {
+          "status": "probable",
+          "visible_remains": "fragmentary",
+          "harbor": false
+        },
+        "image": null,
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Doliche_(Commagene)",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.367,
+          37.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "samosata-samsat",
+        "internal_key": "Samosata (Samsat)",
+        "name": "Samosata (Samsat)",
+        "alternate_names": [
+          "Samosata",
+          "Sumaysat",
+          "Shamshat",
+          "Samsat"
+        ],
+        "category": "urban",
+        "territory": "Turkey",
+        "modern_location": "Old Samsat, Adıyaman Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "The ancient fortress-city of Samosata commanded an upper Euphrates crossing north-west of Edessa. Baldwin of Boulogne attacked it during his February 1098 expedition and later bought the city from its Turkish ruler Balduk, adding it to the new county. Samosata remained one of Edessa's principal Euphrates strongholds until Artuqid forces captured it during the collapse of the remnant county in 1151. The historic settlement was evacuated in 1988 and submerged beneath the Atatürk Reservoir in 1989, so the marker identifies the lost locality.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "no",
+          "harbor": false
+        },
+        "image": null,
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Samsat",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4814,
+          37.5794
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "saruj-suruc",
+        "internal_key": "Saruj (Suruç)",
+        "name": "Saruj (Suruç)",
+        "alternate_names": [
+          "Saruj",
+          "Saroug",
+          "Serugh",
+          "Batnae",
+          "Suruç"
+        ],
+        "category": "urban",
+        "territory": "Turkey",
+        "modern_location": "Suruç, Şanlıurfa Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "Saruj was the county's southern town between the Euphrates and Edessa. Baldwin I captured it from an Artuqid ruler in 1101, and it remained an Edessan frontier centre for more than forty years. Near the town on 13 September 1122, Belek Ghazi defeated Joscelin I and captured the count after drawing his heavy cavalry into marshy ground. Saruj remained within the county at the c. 1135 snapshot but was taken by Zengi in January 1145, soon after the fall of Edessa.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "unknown",
+          "harbor": false
+        },
+        "image": null,
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Suru%C3%A7",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4244,
+          36.975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "battle-of-aintab-1150",
+        "internal_key": "Battle of Aintab (1150)",
+        "name": "Battle of Aintab (1150)",
+        "alternate_names": [
+          "Evacuation of the County of Edessa"
+        ],
+        "category": "battle",
+        "territory": "Turkey",
+        "modern_location": "near Gaziantep, Gaziantep Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "In August 1150 Baldwin III of Jerusalem escorted the Christian population of the surrendered Edessan fortresses toward Antioch. Nur ad-Din attacked the column between Dülük and Aintab, pressing it against the northern Syrian hills. Baldwin kept the refugees moving under a disciplined cavalry screen and beat off the Zengid attacks, winning a tactical success while abandoning the county strategically. The survivors reached Antioch, but the transferred fortresses fell to Muslim rulers within the following year.",
+        "fortification": null,
+        "has_extended_narrative": true,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/4/43/Coronation_of_Baldwin_III.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Battle_of_Aintab",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3781,
+          37.0658
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "battle-of-harran-1104",
+        "internal_key": "Battle of Harran (1104)",
+        "name": "Battle of Harran (1104)",
+        "alternate_names": [
+          "Battle of Balikh",
+          "Battle near Raqqa"
+        ],
+        "category": "battle",
+        "territory": "Turkey",
+        "modern_location": "plain south of Harran, Şanlıurfa Province, Turkey",
+        "lordship": null,
+        "coordinate_precision": "approximate",
+        "description": "On 7 May 1104 the combined forces of Edessa and Antioch met the Seljuk commanders Jikirmish of Mosul and Sokman of Mardin in the plain south of Harran. A feigned retreat broke the Frankish line: Baldwin of Bourcq and Joscelin of Courtenay were captured while Bohemond and Tancred escaped with the Antiochene wing. The defeat ended the Crusader states' attempt to extend across the Jazira and left Edessa exposed, beginning years of regency and captivity. The marker follows the article's approximate battlefield coordinate.",
+        "fortification": null,
+        "has_extended_narrative": true,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Harranruins2.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Battle_of_Harran",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.0333,
+          36.8667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "battle-of-saruj-1122",
+        "internal_key": "Battle of Saruj (1122)",
+        "name": "Battle of Saruj (1122)",
+        "alternate_names": [
+          "Battle near Suruç",
+          "Capture of Joscelin I"
+        ],
+        "category": "battle",
+        "territory": "Turkey",
+        "modern_location": "near Suruç, Şanlıurfa Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "On 13 September 1122 Count Joscelin I rode out with about one hundred knights to intercept Belek Ghazi near Saruj. Belek drew the armoured cavalry into marshy low ground beside a river, where their horses foundered under Turkish arrow fire. Joscelin and dozens of his men surrendered and were taken to Harput. His capture forced Baldwin II of Jerusalem to intervene in the north; Baldwin was himself captured by Belek the following year. The exact field is unknown, so the marker is placed at Suruç.",
+        "fortification": null,
+        "has_extended_narrative": true,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/0/06/Joscelin_of_Courtenay.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Battle_of_Saruj",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4244,
+          36.975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "siege-of-edessa-1144",
+        "internal_key": "Siege of Edessa (1144)",
+        "name": "Siege of Edessa (1144)",
+        "alternate_names": [
+          "Fall of Edessa",
+          "Zengi's siege of Edessa"
+        ],
+        "category": "siege",
+        "territory": "Turkey",
+        "modern_location": "Şanlıurfa, Şanlıurfa Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "Zengi invested Edessa on 28 November 1144 while Joscelin II was across the Euphrates at Turbessel. With no Frankish field army inside, Archbishop Hugh led the defence until Zengid miners collapsed part of the wall on 24 December. The city was stormed and the citadel surrendered on 26 December. The loss destroyed the eastern half of the county and shocked Latin Christendom; Pope Eugenius III answered with Quantum praedecessores in 1145, the call that launched the Second Crusade.",
+        "fortification": null,
+        "has_extended_narrative": true,
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sanliurfa%20Castle.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Siege_of_Edessa_(1144)",
+          "he": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%A6%D7%95%D7%A8_%D7%A2%D7%9C_%D7%90%D7%93%D7%A1%D7%94_(1144)"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8,
+          37.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "siege-of-edessa-1146",
+        "internal_key": "Siege of Edessa (1146)",
+        "name": "Siege of Edessa (1146)",
+        "alternate_names": [
+          "Joscelin II's recovery of Edessa",
+          "Second siege of Edessa"
+        ],
+        "category": "siege",
+        "territory": "Turkey",
+        "modern_location": "Şanlıurfa, Şanlıurfa Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "After Zengi was assassinated in September 1146, Joscelin II and the Armenian commander Baldwin of Marash attempted to recover Edessa. They entered the city on 27 October but could not take the citadel before Nur ad-Din arrived from Aleppo. The Franks abandoned the city in early November and their retreat toward the Euphrates became a massacre. Nur ad-Din then destroyed much of Edessa's defences and expelled or enslaved much of its remaining Christian population, ending any realistic prospect of restoration.",
+        "fortification": null,
+        "has_extended_narrative": true,
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sanliurfa%20Castle.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Siege_of_Edessa_(1146)",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8,
+          37.15
         ]
       }
     }

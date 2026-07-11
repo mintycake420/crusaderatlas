@@ -143,15 +143,21 @@
       --muted: #8a7553;
       /* Marker fills — kept on the parchment/sepia/red-oxide/ochre palette.
          Also consumed from JS via getPropertyValue so colors live in one place. */
-      --mk-capital: #6b1a10;
-      --mk-castle:  #9b2d1f;
-      --mk-urban:   #c58d2c;
-      --mk-tower:   #6b6545;
-      --mk-church:  #5c6b4d;
-      --mk-battle:  #9b2d1f;
-      --mk-siege:   #7a3a14;
+      --mk-capital: #672018;
+      --mk-castle:  #91392c;
+      --mk-urban:   #aa7f38;
+      --mk-tower:   #66624d;
+      --mk-church:  #596a55;
+      --mk-battle:  #8d342a;
+      --mk-siege:   #77502d;
       --muted-line: rgba(42, 26, 11, 0.18);
       --muted-line-soft: rgba(42, 26, 11, 0.08);
+      /* Museum-atlas rendering controls. These tune the modern context and
+         print treatment without changing any geographic data or layer logic. */
+      --atlas-basemap-filter: sepia(0.38) saturate(0.58) hue-rotate(-4deg) brightness(1.035) contrast(0.89);
+      --atlas-modern-label-filter: grayscale(0.35) sepia(0.48) saturate(0.46) brightness(1.01) contrast(0.84);
+      --atlas-label-halo: rgba(246, 235, 207, 0.92);
+      --atlas-marker-shadow: drop-shadow(0 1px 0 rgba(247, 239, 217, 0.94)) drop-shadow(0 1px 1.4px rgba(42, 26, 11, 0.30));
       --panel-shadow: 0 24px 60px -30px rgba(42, 26, 11, 0.35),
                       0 2px 6px rgba(42, 26, 11, 0.08);
     }
@@ -217,9 +223,9 @@
       background: var(--vellum);
     }
 
-    .leaflet-tile-pane {
-      filter: sepia(0.55) saturate(0.7) hue-rotate(-5deg) brightness(1.01) contrast(0.95);
-    }
+    .leaflet-tile-pane { filter: none; }
+    .atlas-basemap-layer { filter: var(--atlas-basemap-filter); }
+    .atlas-modern-context-layer { filter: var(--atlas-modern-label-filter); }
     .leaflet-container {
       background: var(--vellum);
       font-family: "Spectral", Georgia, serif;
@@ -382,17 +388,19 @@
       width: 100%;
       font-family: "Cinzel", serif;
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 500;
       line-height: 1.15;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
-      color: rgba(42, 26, 11, 0.76);
-      text-shadow: 0 0 3px rgba(249, 241, 211, 0.96), 0 0 7px rgba(249, 241, 211, 0.86);
+      color: rgba(48, 31, 18, 0.79);
+      text-shadow: 0 0 2px var(--atlas-label-halo), 0 0 5px var(--atlas-label-halo);
     }
     .lordship-map-label--realm span {
-      font-size: 15px;
-      letter-spacing: 0.18em;
-      color: rgba(30, 18, 8, 0.78);
+      font-family: "IM Fell DW Pica SC", "Cinzel", serif;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.13em;
+      color: rgba(40, 25, 14, 0.82);
     }
     .lordship-map-label--major span { font-size: 11px; }
     .lordship-map-label--minor span {
@@ -423,7 +431,7 @@
       line-height: 1;
       letter-spacing: 0.06em;
       color: rgba(36, 92, 122, 0.76);
-      text-shadow: 0 0 3px rgba(249, 241, 211, 0.94), 0 0 6px rgba(249, 241, 211, 0.82);
+      text-shadow: 0 0 2px var(--atlas-label-halo), 0 0 5px var(--atlas-label-halo);
       transform-origin: center;
     }
     .relief-map-label span {
@@ -434,18 +442,31 @@
       font-style: italic;
       letter-spacing: 0.06em;
       color: rgba(73, 62, 39, 0.58);
-      text-shadow: 0 0 3px rgba(249, 241, 211, 0.92), 0 0 6px rgba(249, 241, 211, 0.78);
+      text-shadow: 0 0 2px var(--atlas-label-halo), 0 0 5px var(--atlas-label-halo);
+    }
+    .atlas-parchment-field {
+      mix-blend-mode: multiply;
+      shape-rendering: geometricPrecision;
     }
     .historical-territory-wash {
       mix-blend-mode: multiply;
+      shape-rendering: geometricPrecision;
     }
     .historical-territory-edge {
-      filter: blur(1.5px);
+      filter: blur(1.25px);
       mix-blend-mode: multiply;
+      shape-rendering: geometricPrecision;
     }
     .historical-state-underpaint {
-      filter: blur(0.35px);
+      filter: blur(0.55px);
       mix-blend-mode: multiply;
+      shape-rendering: geometricPrecision;
+    }
+    .historical-boundary-casing,
+    .historical-boundary-ink,
+    .historical-state-border-casing,
+    .historical-state-border-ink {
+      shape-rendering: geometricPrecision;
     }
     .sea-label {
       font-family: "Cinzel", serif;
@@ -1871,29 +1892,33 @@
       pointer-events: auto;
     }
     .marker-capital { z-index: 500 !important; }
-    .marker svg { display: block; overflow: visible; }
+    .marker svg {
+      display: block;
+      overflow: visible;
+      filter: var(--atlas-marker-shadow);
+    }
     .marker.selected { z-index: 1000 !important; }
     .marker.selected svg .glyph {
-      filter: drop-shadow(0 0 6px rgba(155, 45, 31, 0.7));
+      filter: drop-shadow(0 0 3px rgba(145, 51, 37, 0.68));
     }
     .marker.selected svg .sel-ring { opacity: 1; }
     .marker.dimmed { opacity: 0.25; }
 
-    /* Cluster bubble (parchment coin with inner count). */
+    /* Cluster bubble: a restrained printed parchment counter. */
     .marker-cluster {
       background: transparent !important;
       width: 40px !important;
       height: 40px !important;
     }
     .marker-cluster div {
-      background: var(--vellum-light) !important;
+      background: rgba(246, 237, 214, 0.94) !important;
       color: var(--ink) !important;
       font-family: "Cinzel", serif !important;
-      font-weight: 700 !important;
+      font-weight: 600 !important;
       font-size: 13px !important;
-      border: 1.5px solid var(--ink) !important;
+      border: 1.2px solid rgba(50, 32, 18, 0.78) !important;
       border-radius: 50% !important;
-      box-shadow: 0 0 0 2px var(--vellum), 0 2px 6px rgba(42, 26, 11, 0.35) !important;
+      box-shadow: 0 0 0 1px rgba(247, 239, 217, 0.84), 0 1px 4px rgba(42, 26, 11, 0.28) !important;
       width: 34px !important;
       height: 34px !important;
       margin-left: 3px !important;
@@ -2319,7 +2344,7 @@
       }
 
       /* Markers lift off the warm tile texture with a subtle ink shadow. */
-      .marker svg { filter: drop-shadow(0 1px 2px rgba(42, 26, 11, 0.4)); }
+      .marker svg { filter: var(--atlas-marker-shadow); }
 
       /* Hit-area inflation: visual marker stays 26/34px; tap box is 44×44.
          Negative margin re-centres so cluster math is unaffected. */
@@ -5024,13 +5049,13 @@
       const css = getComputedStyle(document.documentElement);
       const read = (name, fallback) => (css.getPropertyValue(name).trim() || fallback);
       return {
-        capital:      read("--mk-capital", "#6b1a10"),
-        major_castle: read("--mk-castle",  "#9b2d1f"),
-        urban:        read("--mk-urban",   "#c58d2c"),
-        tower:        read("--mk-tower",   "#6b6545"),
-        church:       read("--mk-church",  "#5c6b4d"),
-        battle:       read("--mk-battle",  "#9b2d1f"),
-        siege:        read("--mk-siege",   "#7a3a14"),
+        capital:      read("--mk-capital", "#672018"),
+        major_castle: read("--mk-castle",  "#91392c"),
+        urban:        read("--mk-urban",   "#aa7f38"),
+        tower:        read("--mk-tower",   "#66624d"),
+        church:       read("--mk-church",  "#596a55"),
+        battle:       read("--mk-battle",  "#8d342a"),
+        siege:        read("--mk-siege",   "#77502d"),
       };
     })();
 
@@ -5140,18 +5165,32 @@
     // require a small pan south.
     map.setView([32.7, 35.4], 7);
 
+    map.createPane("modernContextPane");
+    map.getPane("modernContextPane").style.zIndex = 361;
+    map.getPane("modernContextPane").style.pointerEvents = "none";
+
     L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png", {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · © <a href="https://carto.com/attributions">CARTO</a> · Data: D. Pringle <em>Secular Buildings</em> + Wikipedia',
       subdomains: "abcd",
       maxZoom: 19,
+      opacity: 0.94,
+      className: "atlas-basemap-layer",
     }).addTo(map);
 
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png", {
+    const modernContextLayer = L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png", {
       subdomains: "abcd",
       maxZoom: 19,
-      opacity: 0.5,
-      pane: "shadowPane",
+      opacity: 0.18,
+      pane: "modernContextPane",
+      className: "atlas-modern-context-layer",
     }).addTo(map);
+
+    function updateModernContextOpacity() {
+      const zoom = map.getZoom();
+      modernContextLayer.setOpacity(zoom <= 7 ? 0.18 : zoom <= 9 ? 0.24 : 0.30);
+    }
+    map.on("zoomend", updateModernContextOpacity);
+    updateModernContextOpacity();
 
     map.attributionControl.addAttribution(
       '<a href="https://ko-fi.com/yotamkatz" target="_blank" rel="noopener noreferrer" title="Support CrusaderAtlas on Ko-fi">♥ Support</a>'
@@ -5285,8 +5324,28 @@
     });
 
     // ----- Vector lordships cartography -----------------------------------
-    // Separate panes preserve the atlas hierarchy: a continuous state wash,
-    // textured districts, rivers, shared fief lines, hit targets, state borders, labels.
+    // Visual tuning is kept together so pigment, linework, and depth can be
+    // adjusted without touching any historical geometry or interaction code.
+    const ATLAS_CARTOGRAPHY_TUNING = Object.freeze({
+      territoryOpacity: Object.freeze({
+        water: 0.52,
+        crusaderState: 0.64,
+        externalPolity: 0.50,
+        majorFief: 0.63,
+        fief: 0.60,
+      }),
+      hoverLift: 0.07,
+      hoverMaximum: 0.70,
+      stateUnderpaint: Object.freeze({ kingdom: 0.24, neighbouringState: 0.16 }),
+      edgeWash: Object.freeze({ waterWeight: 2.4, landWeight: 3.6, waterOpacity: 0.09, landOpacity: 0.11 }),
+      river: Object.freeze({ major: 1.10, regional: 0.92, tributary: 0.76, wadi: 0.62 }),
+    });
+
+    // Separate panes preserve the atlas hierarchy: parchment and modern
+    // context, continuous state wash, pigment, geography, boundaries, labels.
+    map.createPane("parchmentPane");
+    map.getPane("parchmentPane").style.zIndex = 205;
+    map.getPane("parchmentPane").style.pointerEvents = "none";
     map.createPane("lordshipsUnderpaintPane");
     map.getPane("lordshipsUnderpaintPane").style.zIndex = 359;
     map.getPane("lordshipsUnderpaintPane").style.pointerEvents = "none";
@@ -5314,16 +5373,16 @@
     };
 
     const HISTORICAL_TERRITORY_TEXTURES = {
-      "#d9bd42": { id: "ochre", gradient: ["#c29d2f", "#f4df72", "#dfc545", "#9d7620"], edgeColor: "#76591b", seeds: [1100, 1187, 1244, 1135] },
-      "#c98553": { id: "terracotta", gradient: ["#c87447", "#efbd91", "#df9566", "#995232"], edgeColor: "#70412d", seeds: [1099, 1177, 1291, 1153] },
-      "#7fa66a": { id: "sage", gradient: ["#6f9a5c", "#c6dea9", "#99c37d", "#4d6f42"], edgeColor: "#435d39", seeds: [1118, 1187, 1229, 1165] },
-      "#d694b8": { id: "rose", gradient: ["#c9789d", "#efc4d6", "#df9fbb", "#92506e"], edgeColor: "#74445e", seeds: [1124, 1192, 1266, 1140] },
-      "#f3b56a": { id: "apricot", gradient: ["#dc9952", "#f7d3a4", "#efb376", "#ad6f37"], edgeColor: "#80532d", seeds: [1110, 1189, 1253, 1170] },
-      "#f4b7c9": { id: "tripoli", gradient: ["#cf86a5", "#f5d4e1", "#e8acc4", "#965b76"], edgeColor: "#75465a", seeds: [1102, 1289, 1142, 1135] },
-      "#c8a875": { id: "fatimid", gradient: ["#ae8955", "#e7d0a5", "#c9aa76", "#76552e"], edgeColor: "#654d2d", seeds: [1098, 1171, 1153, 1118] },
-      "#cbd0ec": { id: "antioch", gradient: ["#8998c8", "#d7ddf0", "#b8c3e2", "#586b9f"], edgeColor: "#4f5f90", seeds: [1098, 1268, 1119, 1135] },
-      "#f3e88b": { id: "edessa", gradient: ["#d1b94f", "#f7eca4", "#e7d778", "#8d7832"], edgeColor: "#796a31", seeds: [1135, 1291, 1098, 1144] },
-      "#7bb0d8": { id: "water", gradient: ["#6c9fc0", "#b9d9e8", "#8abbd5", "#3f718e"], edgeColor: "#3d718f", seeds: [1100, 1187, 1291, 1135] },
+      "#d9bd42": { id: "ochre", gradient: ["#b49a55", "#e1d38a", "#c9b668", "#846e3b"], edgeColor: "#6e5b2f", seeds: [1100, 1187, 1244, 1135] },
+      "#c98553": { id: "terracotta", gradient: ["#ad7357", "#d9ad8d", "#c48c6d", "#80503e"], edgeColor: "#684438", seeds: [1099, 1177, 1291, 1153] },
+      "#7fa66a": { id: "sage", gradient: ["#728b69", "#bdc9ad", "#94a889", "#50664e"], edgeColor: "#435742", seeds: [1118, 1187, 1229, 1165] },
+      "#d694b8": { id: "rose", gradient: ["#ad7b8d", "#d9b6c0", "#c491a2", "#76515f"], edgeColor: "#684652", seeds: [1124, 1192, 1266, 1140] },
+      "#f3b56a": { id: "apricot", gradient: ["#be8d62", "#e5c09a", "#d1a077", "#885f43"], edgeColor: "#745039", seeds: [1110, 1189, 1253, 1170] },
+      "#f4b7c9": { id: "tripoli", gradient: ["#aa7a8c", "#d9b6c0", "#c18f9f", "#744f5d"], edgeColor: "#674650", seeds: [1102, 1289, 1142, 1135] },
+      "#c8a875": { id: "fatimid", gradient: ["#9d8965", "#d2c29f", "#b5a37f", "#6f6046"], edgeColor: "#62543b", seeds: [1098, 1171, 1153, 1118] },
+      "#cbd0ec": { id: "antioch", gradient: ["#73829b", "#b9c1ce", "#97a4b7", "#505d71"], edgeColor: "#465267", seeds: [1098, 1268, 1119, 1135] },
+      "#f3e88b": { id: "edessa", gradient: ["#b2a15e", "#dfd394", "#c7b872", "#776a40"], edgeColor: "#695d36", seeds: [1135, 1291, 1098, 1144] },
+      "#7bb0d8": { id: "water", gradient: ["#7398a8", "#b4cbd0", "#91aeb8", "#506f7a"], edgeColor: "#476773", seeds: [1100, 1187, 1291, 1135] },
     };
 
     function textureForProperties(properties) {
@@ -5332,11 +5391,12 @@
     }
 
     function territoryOpacity(properties) {
-      if (properties.kind === "water") return 0.58;
-      if (properties.kind === "crusader_state") return 0.70;
-      if (properties.kind === "external_polity") return 0.56;
-      if (properties.kind === "royal" || properties.kind === "great_fief") return 0.68;
-      return 0.64;
+      const opacity = ATLAS_CARTOGRAPHY_TUNING.territoryOpacity;
+      if (properties.kind === "water") return opacity.water;
+      if (properties.kind === "crusader_state") return opacity.crusaderState;
+      if (properties.kind === "external_polity") return opacity.externalPolity;
+      if (properties.kind === "royal" || properties.kind === "great_fief") return opacity.majorFief;
+      return opacity.fief;
     }
 
     function applyHistoricalTerritoryTexture(layer, texture) {
@@ -5353,15 +5413,15 @@
       if (!defs.querySelector("#" + gradientId)) {
         const gradient = document.createElementNS("http://www.w3.org/2000/svg", "radialGradient");
         gradient.setAttribute("id", gradientId);
-        gradient.setAttribute("cx", "46%");
-        gradient.setAttribute("cy", "43%");
-        gradient.setAttribute("r", "74%");
-        gradient.setAttribute("fx", "42%");
-        gradient.setAttribute("fy", "38%");
+        gradient.setAttribute("cx", "43%");
+        gradient.setAttribute("cy", "38%");
+        gradient.setAttribute("r", "92%");
+        gradient.setAttribute("fx", "37%");
+        gradient.setAttribute("fy", "30%");
         gradient.innerHTML =
           '<stop offset="0%" stop-color="' + texture.gradient[1] + '" />' +
-          '<stop offset="48%" stop-color="' + texture.gradient[2] + '" />' +
-          '<stop offset="82%" stop-color="' + texture.gradient[0] + '" />' +
+          '<stop offset="54%" stop-color="' + texture.gradient[2] + '" />' +
+          '<stop offset="86%" stop-color="' + texture.gradient[0] + '" />' +
           '<stop offset="100%" stop-color="' + texture.gradient[3] + '" />';
         defs.appendChild(gradient);
       }
@@ -5374,29 +5434,35 @@
         filter.setAttribute("height", "116%");
         filter.setAttribute("color-interpolation-filters", "sRGB");
         filter.innerHTML =
-          '<feTurbulence type="fractalNoise" baseFrequency="0.018 0.028" numOctaves="2" seed="' + texture.seeds[0] + '" result="washNoise" />' +
+          '<feTurbulence type="fractalNoise" baseFrequency="0.012 0.019" numOctaves="3" seed="' + texture.seeds[0] + '" result="washNoise" />' +
           '<feColorMatrix in="washNoise" type="saturate" values="0" result="washGray" />' +
-          '<feComponentTransfer in="washGray" result="wash"><feFuncA type="table" tableValues="0.02 0.12" /></feComponentTransfer>' +
-          '<feTurbulence type="fractalNoise" baseFrequency="0.64" numOctaves="2" seed="' + texture.seeds[1] + '" result="grainNoise" />' +
+          '<feGaussianBlur in="washGray" stdDeviation="1.2" result="washSoft" />' +
+          '<feComponentTransfer in="washSoft" result="wash"><feFuncA type="table" tableValues="0.015 0.09" /></feComponentTransfer>' +
+          '<feTurbulence type="fractalNoise" baseFrequency="0.48" numOctaves="3" seed="' + texture.seeds[1] + '" result="grainNoise" />' +
           '<feColorMatrix in="grainNoise" type="saturate" values="0" result="grainGray" />' +
-          '<feComponentTransfer in="grainGray" result="grain"><feFuncA type="table" tableValues="0 0.075" /></feComponentTransfer>' +
-          '<feTurbulence type="fractalNoise" baseFrequency="0.035 0.34" numOctaves="1" seed="' + texture.seeds[2] + '" result="fiberNoise" />' +
+          '<feComponentTransfer in="grainGray" result="grain"><feFuncA type="table" tableValues="0 0.085" /></feComponentTransfer>' +
+          '<feTurbulence type="fractalNoise" baseFrequency="0.022 0.31" numOctaves="1" seed="' + texture.seeds[2] + '" result="fiberNoise" />' +
           '<feColorMatrix in="fiberNoise" type="saturate" values="0" result="fiberGray" />' +
-          '<feComponentTransfer in="fiberGray" result="fibers"><feFuncA type="table" tableValues="0 0.045" /></feComponentTransfer>' +
-          '<feTurbulence type="fractalNoise" baseFrequency="0.09 0.13" numOctaves="2" seed="' + texture.seeds[3] + '" result="granulationNoise" />' +
+          '<feComponentTransfer in="fiberGray" result="fibers"><feFuncA type="table" tableValues="0 0.025" /></feComponentTransfer>' +
+          '<feTurbulence type="fractalNoise" baseFrequency="0.075 0.11" numOctaves="2" seed="' + texture.seeds[3] + '" result="granulationNoise" />' +
           '<feColorMatrix in="granulationNoise" type="saturate" values="0" result="granulationGray" />' +
-          '<feComponentTransfer in="granulationGray" result="granulation"><feFuncA type="table" tableValues="0.01 0.08" /></feComponentTransfer>' +
+          '<feComponentTransfer in="granulationGray" result="granulation"><feFuncA type="table" tableValues="0.005 0.065" /></feComponentTransfer>' +
           '<feBlend in="SourceGraphic" in2="wash" mode="multiply" result="washed" />' +
           '<feBlend in="washed" in2="grain" mode="multiply" result="grained" />' +
           '<feBlend in="grained" in2="granulation" mode="multiply" result="granulated" />' +
-          '<feDisplacementMap in="granulated" in2="washNoise" scale="0.7" xChannelSelector="R" yChannelSelector="G" result="softEdge" />' +
-          '<feBlend in="softEdge" in2="fibers" mode="screen" result="fibrous" />' +
-          '<feMorphology in="SourceAlpha" operator="erode" radius="1.2" result="erodedAlpha" />' +
-          '<feGaussianBlur in="erodedAlpha" stdDeviation="2.1" result="softInnerAlpha" />' +
-          '<feComposite in="SourceAlpha" in2="softInnerAlpha" operator="out" result="innerEdge" />' +
-          '<feFlood flood-color="' + texture.edgeColor + '" flood-opacity="0.22" result="edgeInk" />' +
-          '<feComposite in="edgeInk" in2="innerEdge" operator="in" result="edgeShade" />' +
-          '<feBlend in="fibrous" in2="edgeShade" mode="multiply" result="edged" />' +
+          '<feBlend in="granulated" in2="fibers" mode="screen" result="fibrous" />' +
+          '<feMorphology in="SourceAlpha" operator="erode" radius="2.4" result="wideErodedAlpha" />' +
+          '<feGaussianBlur in="wideErodedAlpha" stdDeviation="2.8" result="wideSoftAlpha" />' +
+          '<feComposite in="SourceAlpha" in2="wideSoftAlpha" operator="out" result="ambientInnerEdge" />' +
+          '<feFlood flood-color="' + texture.edgeColor + '" flood-opacity="0.07" result="ambientInk" />' +
+          '<feComposite in="ambientInk" in2="ambientInnerEdge" operator="in" result="ambientShade" />' +
+          '<feBlend in="fibrous" in2="ambientShade" mode="multiply" result="ambientEdged" />' +
+          '<feMorphology in="SourceAlpha" operator="erode" radius="0.85" result="fineErodedAlpha" />' +
+          '<feGaussianBlur in="fineErodedAlpha" stdDeviation="0.75" result="fineSoftAlpha" />' +
+          '<feComposite in="SourceAlpha" in2="fineSoftAlpha" operator="out" result="fineInnerEdge" />' +
+          '<feFlood flood-color="' + texture.edgeColor + '" flood-opacity="0.16" result="edgeInk" />' +
+          '<feComposite in="edgeInk" in2="fineInnerEdge" operator="in" result="edgeShade" />' +
+          '<feBlend in="ambientEdged" in2="edgeShade" mode="multiply" result="edged" />' +
           '<feComposite in="edged" in2="SourceAlpha" operator="in" />';
         defs.appendChild(filter);
       }
@@ -5405,6 +5471,50 @@
       path.setAttribute("filter", "url(#" + filterId + ")");
     }
 
+    function applyAtlasParchmentTexture(layer) {
+      const path = layer.getElement && layer.getElement();
+      if (!path || !path.ownerSVGElement) return;
+      const svg = path.ownerSVGElement;
+      const filterId = "atlas-parchment-filter";
+      let defs = svg.querySelector("defs");
+      if (!defs) {
+        defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+        svg.insertBefore(defs, svg.firstChild);
+      }
+      if (!defs.querySelector("#" + filterId)) {
+        const filter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
+        filter.setAttribute("id", filterId);
+        filter.setAttribute("x", "-3%");
+        filter.setAttribute("y", "-3%");
+        filter.setAttribute("width", "106%");
+        filter.setAttribute("height", "106%");
+        filter.setAttribute("color-interpolation-filters", "sRGB");
+        filter.innerHTML =
+          '<feTurbulence type="fractalNoise" baseFrequency="0.0045 0.0075" numOctaves="4" seed="1165" stitchTiles="stitch" result="paperMottle" />' +
+          '<feGaussianBlur in="paperMottle" stdDeviation="0.45" result="softMottle" />' +
+          '<feColorMatrix in="softMottle" type="matrix" values="0 0 0 0 0.48 0 0 0 0 0.37 0 0 0 0 0.22 0 0 0 0.10 0" result="mottleTint" />' +
+          '<feTurbulence type="fractalNoise" baseFrequency="0.42 0.61" numOctaves="2" seed="1291" stitchTiles="stitch" result="paperGrain" />' +
+          '<feColorMatrix in="paperGrain" type="matrix" values="0 0 0 0 0.42 0 0 0 0 0.32 0 0 0 0 0.20 0 0 0 0.035 0" result="grainTint" />' +
+          '<feBlend in="SourceGraphic" in2="mottleTint" mode="multiply" result="mottledPaper" />' +
+          '<feBlend in="mottledPaper" in2="grainTint" mode="multiply" />';
+        defs.appendChild(filter);
+      }
+      path.classList.add("atlas-parchment-field");
+      path.setAttribute("filter", "url(#" + filterId + ")");
+    }
+
+    const atlasParchmentLayer = L.rectangle([[-80, -179], [80, 179]], {
+      pane: "parchmentPane",
+      interactive: false,
+      stroke: false,
+      fill: true,
+      fillColor: "#d2bc8f",
+      fillOpacity: 0.10,
+      className: "atlas-parchment-field",
+    }).addTo(map);
+    atlasParchmentLayer.on("add", () => requestAnimationFrame(() => applyAtlasParchmentTexture(atlasParchmentLayer)));
+    requestAnimationFrame(() => applyAtlasParchmentTexture(atlasParchmentLayer));
+
     const stateUnderpaintingLayer = L.geoJSON(LATIN_STATE_BOUNDARIES, {
       pane: "lordshipsUnderpaintPane",
       interactive: false,
@@ -5412,7 +5522,9 @@
       style: (feature) => ({
         fill: true,
         fillColor: feature.properties.fill,
-        fillOpacity: feature.properties.name === "Kingdom of Jerusalem" ? 0.30 : 0.20,
+        fillOpacity: feature.properties.name === "Kingdom of Jerusalem"
+          ? ATLAS_CARTOGRAPHY_TUNING.stateUnderpaint.kingdom
+          : ATLAS_CARTOGRAPHY_TUNING.stateUnderpaint.neighbouringState,
         color: "transparent",
         weight: 0,
         className: "historical-state-underpaint",
@@ -5445,8 +5557,12 @@
         return {
           fill: false,
           color: texture.edgeColor,
-          weight: feature.properties.kind === "water" ? 3.0 : 4.4,
-          opacity: feature.properties.kind === "water" ? 0.12 : 0.16,
+          weight: feature.properties.kind === "water"
+            ? ATLAS_CARTOGRAPHY_TUNING.edgeWash.waterWeight
+            : ATLAS_CARTOGRAPHY_TUNING.edgeWash.landWeight,
+          opacity: feature.properties.kind === "water"
+            ? ATLAS_CARTOGRAPHY_TUNING.edgeWash.waterOpacity
+            : ATLAS_CARTOGRAPHY_TUNING.edgeWash.landOpacity,
           lineCap: "round",
           lineJoin: "round",
           className: "historical-territory-edge",
@@ -5464,11 +5580,38 @@
       return { color: "rgba(51,33,18,0.56)", weight: 0.95, opacity: 0.72 };
     }
 
+    function internalBoundaryCasingStyle(feature) {
+      const ink = internalBoundaryStyle(feature);
+      return {
+        color: feature.properties.rank === "water" ? "rgba(225,235,228,0.26)" : "rgba(240,224,191,0.28)",
+        weight: ink.weight + 1.15,
+        opacity: 1,
+        dashArray: ink.dashArray || null,
+      };
+    }
+
+    const lordshipsBoundaryCasingLayer = L.geoJSON(LATIN_STATE_BOUNDARIES, {
+      pane: "lordshipsBoundaryPane",
+      interactive: false,
+      filter: (feature) => feature.properties.kind === "internal_lordship_boundary",
+      style: (feature) => Object.assign({
+        fill: false,
+        lineCap: "round",
+        lineJoin: "round",
+        className: "historical-boundary-casing",
+      }, internalBoundaryCasingStyle(feature)),
+    });
+
     const lordshipsBoundaryLayer = L.geoJSON(LATIN_STATE_BOUNDARIES, {
       pane: "lordshipsBoundaryPane",
       interactive: false,
       filter: (feature) => feature.properties.kind === "internal_lordship_boundary",
-      style: (feature) => Object.assign({ fill: false, lineCap: "round", lineJoin: "round" }, internalBoundaryStyle(feature)),
+      style: (feature) => Object.assign({
+        fill: false,
+        lineCap: "round",
+        lineJoin: "round",
+        className: "historical-boundary-ink",
+      }, internalBoundaryStyle(feature)),
     });
 
     const lordshipsClickLayer = L.geoJSON(LORDSHIPS_RENDER, {
@@ -5484,7 +5627,12 @@
         });
         layer.on("mouseover", () => {
           if (fillLayer) {
-            fillLayer.setStyle({ fillOpacity: Math.min(0.72, baseOpacity + 0.10) });
+            fillLayer.setStyle({
+              fillOpacity: Math.min(
+                ATLAS_CARTOGRAPHY_TUNING.hoverMaximum,
+                baseOpacity + ATLAS_CARTOGRAPHY_TUNING.hoverLift
+              ),
+            });
             applyHistoricalTerritoryTexture(fillLayer, texture);
           }
           if (layer.getElement()) layer.getElement().style.cursor = "pointer";
@@ -5498,17 +5646,19 @@
       },
     });
 
-    const stateBorderShadeLayer = L.geoJSON(LATIN_STATE_BOUNDARIES, {
+    const stateBorderCasingLayer = L.geoJSON(LATIN_STATE_BOUNDARIES, {
       pane: "stateBorderPane",
       interactive: false,
       filter: (feature) => ["latin_states", "external_polity"].includes(feature.properties.kind),
       style: (feature) => ({
         fill: false,
-        color: feature.properties.kind === "latin_states" ? "rgba(92,66,34,0.10)" : "rgba(112,79,42,0.08)",
-        weight: feature.properties.kind === "latin_states" ? 4.5 : 3.0,
+        color: feature.properties.kind === "latin_states" ? "rgba(241,225,193,0.42)" : "rgba(239,222,190,0.32)",
+        weight: feature.properties.kind === "latin_states" ? 3.25 : 2.35,
         opacity: 1,
+        dashArray: feature.properties.kind === "latin_states" ? null : "5 4",
         lineCap: "round",
         lineJoin: "round",
+        className: "historical-state-border-casing",
       }),
     });
     const stateBorderLayer = L.geoJSON(LATIN_STATE_BOUNDARIES, {
@@ -5517,12 +5667,13 @@
       filter: (feature) => ["latin_states", "external_polity"].includes(feature.properties.kind),
       style: (feature) => ({
         fill: false,
-        color: feature.properties.kind === "latin_states" ? "rgba(45,29,16,0.58)" : "rgba(103,69,37,0.58)",
-        weight: feature.properties.kind === "latin_states" ? 1.25 : 0.95,
-        opacity: 0.82,
+        color: feature.properties.kind === "latin_states" ? "rgba(50,33,20,0.72)" : "rgba(98,67,39,0.64)",
+        weight: feature.properties.kind === "latin_states" ? 1.20 : 0.92,
+        opacity: 0.86,
         dashArray: feature.properties.kind === "latin_states" ? null : "5 4",
         lineCap: "round",
         lineJoin: "round",
+        className: "historical-state-border-ink",
       }),
     });
 
@@ -5532,18 +5683,19 @@
 
     function geographyWeight(feature, halo) {
       const kind = feature.properties.kind;
-      if (kind === "river_major") return halo ? 3.4 : 1.15;
-      if (kind === "river_regional") return halo ? 3.0 : 0.95;
-      if (kind === "river_tributary") return halo ? 2.4 : 0.80;
-      return halo ? 2.0 : 0.65;
+      const river = ATLAS_CARTOGRAPHY_TUNING.river;
+      if (kind === "river_major") return halo ? 3.25 : river.major;
+      if (kind === "river_regional") return halo ? 2.85 : river.regional;
+      if (kind === "river_tributary") return halo ? 2.3 : river.tributary;
+      return halo ? 1.9 : river.wadi;
     }
 
     function geographyStyle(feature, halo) {
       const kind = feature.properties.kind;
       return {
-        color: halo ? "rgba(249,241,211,0.68)" : (kind === "river_major" ? "#467f98" : "#5b8ea3"),
+        color: halo ? "rgba(244,232,203,0.62)" : (kind === "river_major" ? "#4d7f91" : "#638c99"),
         weight: geographyWeight(feature, halo),
-        opacity: halo ? 0.68 : (kind === "river_major" ? 0.76 : 0.64),
+        opacity: halo ? 0.62 : (kind === "river_major" ? 0.76 : 0.62),
         dashArray: kind === "wadi_major" ? "4 3" : null,
         lineCap: "round",
         lineJoin: "round",
@@ -5573,8 +5725,9 @@
       lordshipsEdgeWashLayer,
       geographyMajorHaloLayer,
       geographyMajorLineLayer,
+      lordshipsBoundaryCasingLayer,
       lordshipsBoundaryLayer,
-      stateBorderShadeLayer,
+      stateBorderCasingLayer,
       stateBorderLayer,
     ]);
 

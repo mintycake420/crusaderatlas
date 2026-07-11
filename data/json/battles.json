@@ -6,8 +6,8 @@
     "repository": "https://github.com/mintycake420/crusaderatlas",
     "license": "CC-BY-4.0",
     "version": "1.0.0",
-    "generated": "2026-06-04",
-    "record_count": 11
+    "generated": "2026-07-11",
+    "record_count": 14
   },
   "battles": [
     {
@@ -118,6 +118,36 @@
         "Acre had been the de-facto capital of the Crusader Kingdom of Jerusalem since the fall of the Holy City to Saladin in 1187. By 1291 it was effectively all that remained of the kingdom on the mainland — a single fortified peninsula city of perhaps forty thousand inhabitants, packed with the headquarters of the Templars, Hospitallers, and Teutonic Knights, the quarters of the Italian merchant republics, and the household of the absentee king of Jerusalem. The Mamluk sultan Qalawun had vowed to destroy Acre after Italian crusaders murdered Muslim merchants in the city in 1290; he died before he could execute the plan, and the task fell to his son al-Ashraf Khalil.",
         "Khalil arrived before Acre on 5 April 1291 with what contemporary chronicles describe as the largest siege army the medieval Levant had ever seen — a hundred and twenty thousand men by some estimates, with dozens of trebuchets including two enormous machines named Mansura ('The Victorious') and al-Ghadiba ('The Furious'). The defenders, perhaps fifteen thousand under the Templar grand master William of Beaujeu and King Henry II of Cyprus, defended the double walls section by section. Six weeks of bombardment, mining, and repeated night sorties wore down both sides, but the Mamluk numbers told. On 18 May the walls were breached at the Accursed Tower; William of Beaujeu was killed leading the counter-attack at the breach.",
         "The remaining defenders fell back to the harbour, where the Italian galleys evacuated as many civilians as the wind and the panic would allow. The Templar quarter at the southern point of the peninsula held out for another ten days, but on 28 May Mamluk sappers undermined the walls of the Templar tower and the structure collapsed onto attackers and defenders alike, killing thousands at a stroke. With Acre lost, the surviving Crusader ports of Tyre, Sidon, Beirut, and finally Atlit were evacuated within weeks; by mid-August 1291 there were no Frankish-held towns left on the Levantine mainland. The Crusader presence in the Holy Land, which had begun on 15 July 1099 with the Frankish breach of Jerusalem's walls, ended at Acre after almost exactly 192 years."
+      ]
+    },
+    {
+      "id": "siege-of-antioch-1097-1098",
+      "name": "Siege of Antioch (1097–1098)",
+      "site_id": "siege-of-antioch-1097-1098",
+      "paragraphs": [
+        "The First Crusade arrived before Antioch on 20 October 1097 and settled into a blockade of the immense fortress-city, whose Seljuk governor Yaghi-Siyan sent appeals to every Muslim power in Syria. Through the terrible winter of 1097–98 the besiegers starved outside walls they could not carry by assault — famine killed perhaps one crusader in seven — while the princes beat off the relief army of Duqaq of Damascus on 31 December 1097 and that of Ridwan of Aleppo on 9 February 1098.",
+        "On the night of 2–3 June 1098 Bohemond of Taranto played the card he had been holding in secret: Firouz, an Armenian commander of a stretch of the wall at the Tower of the Two Sisters, let Bohemond's men climb up by rope, and by morning the city was in crusader hands. The timing was desperate — within days the great relief army of Kerbogha, atabeg of Mosul, arrived and penned the exhausted crusaders inside the city they had just taken, the besiegers now besieged and starving in earnest.",
+        "The army was rallied by the discovery of the Holy Lance, dug from the floor of the cathedral of St Peter between 10 and 15 June after the visions of Peter Bartholomew — a relic of contested authenticity but electrifying effect. On 28 June 1098 the crusaders marched out and routed Kerbogha's quarrelsome coalition in open battle. Bohemond then kept Antioch for himself in defiance of the leaders' oath to restore imperial lands to Byzantium, and the Principality of Antioch that he founded would stand for a hundred and seventy years."
+      ]
+    },
+    {
+      "id": "battle-of-the-field-of-blood-1119",
+      "name": "Battle of the Field of Blood (1119)",
+      "site_id": "battle-of-the-field-of-blood-1119",
+      "paragraphs": [
+        "In the early summer of 1119 Ilghazi, the Artuqid lord of Mardin, crossed into Syria with a large Turkoman army and struck at the eastern marches of the Principality of Antioch. Roger of Salerno — regent of the principality since 1112, and victor of past frontier wars — marched out to meet him and camped near Sarmada, on the road between Antioch and Aleppo, without waiting for the forces of Jerusalem and Tripoli to join him.",
+        "On 28 June 1119 the Turkoman army enveloped the Antiochene host at Balat, near Sarmada. The battle was a massacre: Roger was killed and the field army of Antioch was annihilated where it stood. Seventy knights and five hundred soldiers were led into captivity, and around thirty prisoners who could not raise ransoms were later executed. Latin chroniclers named the place the Ager Sanguinis — the Field of Blood.",
+        "The principality lay open, and al-Atharib, Zardana, Sarmin, Ma'arrat al-Nu'man, and Kafr Tab fell to Ilghazi in the aftermath. Baldwin II of Jerusalem marched north, checked Ilghazi at the Battle of Hab on 14 August 1119, and took up the regency of Antioch for the child heir Bohemond II — an arrangement that bound the northern principality to Jerusalem for the next seven years. Parts of the frontier were later recovered, but the Field of Blood marked the end of Antiochene expansion toward Aleppo, and the principality's knighthood never fully replaced its losses."
+      ]
+    },
+    {
+      "id": "siege-of-antioch-1268",
+      "name": "Siege of Antioch (1268)",
+      "site_id": "siege-of-antioch-1268",
+      "paragraphs": [
+        "A century after Saladin, the Principality of Antioch had long since shrunk to the city and its immediate district, and its prince, Bohemond VI, resided at Tripoli. In May 1268 the Mamluk sultan Baibars — who had spent the decade dismantling the Frankish strongholds of Syria one by one — appeared before Antioch with his field army. With the prince absent, the defence of the immense wall circuit fell to the constable, Simon Mansel.",
+        "The assault came quickly: the walls were stormed on 18 May 1268 and the citadel surrendered two days later. What followed was among the worst atrocities of the crusading era. The chroniclers' figures — some 17,000 slain and about 100,000 carried off into slavery — describe what one modern historian has called the single greatest massacre of the entire crusading period, and the churches of St Paul and St Peter were destroyed in the sack.",
+        "Baibars afterwards sent Bohemond VI a letter describing the destruction of his own capital in mocking detail — the prince, the sultan wrote, had been spared the sight only by his absence. Antioch, held by the Franks for a hundred and seventy years, never recovered its former size. The fall broke the Frankish north: the Templars abandoned Baghras at once, Cursat capitulated in 1275, and the principality was extinguished, though recovered Latakia held out as its last fragment until 1287."
       ]
     }
   ]

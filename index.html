@@ -448,24 +448,13 @@
       mix-blend-mode: multiply;
       shape-rendering: geometricPrecision;
     }
-    .historical-territory-wash {
-      mix-blend-mode: multiply;
-      shape-rendering: geometricPrecision;
-    }
-    .historical-territory-edge {
-      filter: blur(1.25px);
-      mix-blend-mode: multiply;
-      shape-rendering: geometricPrecision;
+    .atlas-cartography-canvas {
+      position: absolute;
+      pointer-events: none;
     }
     .historical-state-underpaint {
       filter: blur(0.55px);
       mix-blend-mode: multiply;
-      shape-rendering: geometricPrecision;
-    }
-    .historical-boundary-casing,
-    .historical-boundary-ink,
-    .historical-state-border-casing,
-    .historical-state-border-ink {
       shape-rendering: geometricPrecision;
     }
     .sea-label {
@@ -5328,16 +5317,22 @@
     // adjusted without touching any historical geometry or interaction code.
     const ATLAS_CARTOGRAPHY_TUNING = Object.freeze({
       territoryOpacity: Object.freeze({
-        water: 0.52,
-        crusaderState: 0.64,
-        externalPolity: 0.50,
-        majorFief: 0.63,
-        fief: 0.60,
+        water: 0.58,
+        crusaderState: 0.72,
+        externalPolity: 0.58,
+        majorFief: 0.70,
+        fief: 0.68,
       }),
       hoverLift: 0.07,
-      hoverMaximum: 0.70,
-      stateUnderpaint: Object.freeze({ kingdom: 0.24, neighbouringState: 0.16 }),
-      edgeWash: Object.freeze({ waterWeight: 2.4, landWeight: 3.6, waterOpacity: 0.09, landOpacity: 0.11 }),
+      hoverMaximum: 0.78,
+      renderScale: Object.freeze({ minimum: 1.25, maximum: 2 }),
+      cornerSoftening: 0.10,
+      curveTension: 0.55,
+      fillBleed: 1.8,
+      mottleCount: 8,
+      grainOpacity: 0.62,
+      innerShade: Object.freeze({ broadWeight: 10, broadOpacity: 0.075, fineWeight: 2.2, fineOpacity: 0.15 }),
+      stateUnderpaint: Object.freeze({ kingdom: 0.32, neighbouringState: 0.24 }),
       river: Object.freeze({ major: 1.10, regional: 0.92, tributary: 0.76, wadi: 0.62 }),
     });
 
@@ -5399,76 +5394,290 @@
       return opacity.fief;
     }
 
-    function applyHistoricalTerritoryTexture(layer, texture) {
-      const path = layer.getElement && layer.getElement();
-      if (!path || !path.ownerSVGElement) return;
-      const svg = path.ownerSVGElement;
-      const gradientId = texture.id + "-wash-gradient";
-      const filterId = texture.id + "-pigment-filter";
-      let defs = svg.querySelector("defs");
-      if (!defs) {
-        defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-        svg.insertBefore(defs, svg.firstChild);
+    function colorWithAlpha(hex, alpha) {
+      let value = String(hex || "#000000").replace("#", "");
+      if (value.length === 3) value = value.split("").map((char) => char + char).join("");
+      const parsed = parseInt(value, 16);
+      const red = (parsed >> 16) & 255;
+      const green = (parsed >> 8) & 255;
+      const blue = parsed & 255;
+      return "rgba(" + red + "," + green + "," + blue + "," + alpha + ")";
+    }
+
+    function atlasStringSeed(value) {
+      let hash = 2166136261;
+      const text = String(value || "atlas");
+      for (let index = 0; index < text.length; index += 1) {
+        hash ^= text.charCodeAt(index);
+        hash = Math.imul(hash, 16777619);
       }
-      if (!defs.querySelector("#" + gradientId)) {
-        const gradient = document.createElementNS("http://www.w3.org/2000/svg", "radialGradient");
-        gradient.setAttribute("id", gradientId);
-        gradient.setAttribute("cx", "43%");
-        gradient.setAttribute("cy", "38%");
-        gradient.setAttribute("r", "92%");
-        gradient.setAttribute("fx", "37%");
-        gradient.setAttribute("fy", "30%");
-        gradient.innerHTML =
-          '<stop offset="0%" stop-color="' + texture.gradient[1] + '" />' +
-          '<stop offset="54%" stop-color="' + texture.gradient[2] + '" />' +
-          '<stop offset="86%" stop-color="' + texture.gradient[0] + '" />' +
-          '<stop offset="100%" stop-color="' + texture.gradient[3] + '" />';
-        defs.appendChild(gradient);
+      return hash >>> 0;
+    }
+
+    function atlasSeededRandom(seed) {
+      let state = seed >>> 0;
+      return function () {
+        state += 0x6d2b79f5;
+        let value = state;
+        value = Math.imul(value ^ (value >>> 15), value | 1);
+        value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+        return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+
+    function createAtlasGrainTexture() {
+      const size = 768;
+      const grain = document.createElement("canvas");
+      grain.width = size;
+      grain.height = size;
+      const grainContext = grain.getContext("2d");
+      const image = grainContext.createImageData(size, size);
+      let state = 1135;
+      for (let offset = 0; offset < image.data.length; offset += 4) {
+        state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+        const value = state >>> 24;
+        const strength = Math.abs(value - 128) / 128;
+        image.data[offset] = 74 + Math.round(value * 0.16);
+        image.data[offset + 1] = 57 + Math.round(value * 0.13);
+        image.data[offset + 2] = 38 + Math.round(value * 0.10);
+        image.data[offset + 3] = Math.round(1 + strength * 12);
       }
-      if (!defs.querySelector("#" + filterId)) {
-        const filter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
-        filter.setAttribute("id", filterId);
-        filter.setAttribute("x", "-8%");
-        filter.setAttribute("y", "-8%");
-        filter.setAttribute("width", "116%");
-        filter.setAttribute("height", "116%");
-        filter.setAttribute("color-interpolation-filters", "sRGB");
-        filter.innerHTML =
-          '<feTurbulence type="fractalNoise" baseFrequency="0.012 0.019" numOctaves="3" seed="' + texture.seeds[0] + '" result="washNoise" />' +
-          '<feColorMatrix in="washNoise" type="saturate" values="0" result="washGray" />' +
-          '<feGaussianBlur in="washGray" stdDeviation="1.2" result="washSoft" />' +
-          '<feComponentTransfer in="washSoft" result="wash"><feFuncA type="table" tableValues="0.015 0.09" /></feComponentTransfer>' +
-          '<feTurbulence type="fractalNoise" baseFrequency="0.48" numOctaves="3" seed="' + texture.seeds[1] + '" result="grainNoise" />' +
-          '<feColorMatrix in="grainNoise" type="saturate" values="0" result="grainGray" />' +
-          '<feComponentTransfer in="grainGray" result="grain"><feFuncA type="table" tableValues="0 0.085" /></feComponentTransfer>' +
-          '<feTurbulence type="fractalNoise" baseFrequency="0.022 0.31" numOctaves="1" seed="' + texture.seeds[2] + '" result="fiberNoise" />' +
-          '<feColorMatrix in="fiberNoise" type="saturate" values="0" result="fiberGray" />' +
-          '<feComponentTransfer in="fiberGray" result="fibers"><feFuncA type="table" tableValues="0 0.025" /></feComponentTransfer>' +
-          '<feTurbulence type="fractalNoise" baseFrequency="0.075 0.11" numOctaves="2" seed="' + texture.seeds[3] + '" result="granulationNoise" />' +
-          '<feColorMatrix in="granulationNoise" type="saturate" values="0" result="granulationGray" />' +
-          '<feComponentTransfer in="granulationGray" result="granulation"><feFuncA type="table" tableValues="0.005 0.065" /></feComponentTransfer>' +
-          '<feBlend in="SourceGraphic" in2="wash" mode="multiply" result="washed" />' +
-          '<feBlend in="washed" in2="grain" mode="multiply" result="grained" />' +
-          '<feBlend in="grained" in2="granulation" mode="multiply" result="granulated" />' +
-          '<feBlend in="granulated" in2="fibers" mode="screen" result="fibrous" />' +
-          '<feMorphology in="SourceAlpha" operator="erode" radius="2.4" result="wideErodedAlpha" />' +
-          '<feGaussianBlur in="wideErodedAlpha" stdDeviation="2.8" result="wideSoftAlpha" />' +
-          '<feComposite in="SourceAlpha" in2="wideSoftAlpha" operator="out" result="ambientInnerEdge" />' +
-          '<feFlood flood-color="' + texture.edgeColor + '" flood-opacity="0.07" result="ambientInk" />' +
-          '<feComposite in="ambientInk" in2="ambientInnerEdge" operator="in" result="ambientShade" />' +
-          '<feBlend in="fibrous" in2="ambientShade" mode="multiply" result="ambientEdged" />' +
-          '<feMorphology in="SourceAlpha" operator="erode" radius="0.85" result="fineErodedAlpha" />' +
-          '<feGaussianBlur in="fineErodedAlpha" stdDeviation="0.75" result="fineSoftAlpha" />' +
-          '<feComposite in="SourceAlpha" in2="fineSoftAlpha" operator="out" result="fineInnerEdge" />' +
-          '<feFlood flood-color="' + texture.edgeColor + '" flood-opacity="0.16" result="edgeInk" />' +
-          '<feComposite in="edgeInk" in2="fineInnerEdge" operator="in" result="edgeShade" />' +
-          '<feBlend in="ambientEdged" in2="edgeShade" mode="multiply" result="edged" />' +
-          '<feComposite in="edged" in2="SourceAlpha" operator="in" />';
-        defs.appendChild(filter);
+      grainContext.putImageData(image, 0, 0);
+      [48, 96].forEach((resolution, layerIndex) => {
+        const cloud = document.createElement("canvas");
+        cloud.width = resolution;
+        cloud.height = resolution;
+        const cloudContext = cloud.getContext("2d");
+        const cloudImage = cloudContext.createImageData(resolution, resolution);
+        for (let offset = 0; offset < cloudImage.data.length; offset += 4) {
+          state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+          const value = state >>> 24;
+          cloudImage.data[offset] = 86;
+          cloudImage.data[offset + 1] = 66;
+          cloudImage.data[offset + 2] = 43;
+          cloudImage.data[offset + 3] = Math.round((value / 255) * (layerIndex === 0 ? 20 : 12));
+        }
+        cloudContext.putImageData(cloudImage, 0, 0);
+        grainContext.save();
+        grainContext.globalAlpha = layerIndex === 0 ? 0.52 : 0.40;
+        grainContext.imageSmoothingEnabled = true;
+        grainContext.imageSmoothingQuality = "high";
+        grainContext.drawImage(cloud, 0, 0, size, size);
+        grainContext.restore();
+      });
+      const random = atlasSeededRandom(1291);
+      grainContext.strokeStyle = "rgba(82,62,39,0.035)";
+      grainContext.lineWidth = 0.55;
+      for (let index = 0; index < 28; index += 1) {
+        const startX = random() * size;
+        const startY = random() * size;
+        grainContext.beginPath();
+        grainContext.moveTo(startX, startY);
+        grainContext.lineTo(startX + 70 + random() * 180, startY + (random() - 0.5) * 16);
+        grainContext.stroke();
       }
-      path.classList.add("historical-territory-wash");
-      path.setAttribute("fill", "url(#" + gradientId + ")");
-      path.setAttribute("filter", "url(#" + filterId + ")");
+      return grain;
+    }
+
+    const ATLAS_GRAIN_TEXTURE = createAtlasGrainTexture();
+
+    const AtlasCanvasLayer = L.Layer.extend({
+      initialize: function (drawFrame, options) {
+        L.setOptions(this, options);
+        this._drawFrame = drawFrame;
+        this._resetFrame = null;
+      },
+
+      onAdd: function (leafletMap) {
+        this._map = leafletMap;
+        this._canvas = L.DomUtil.create("canvas", "leaflet-layer " + (this.options.className || "atlas-cartography-canvas"));
+        this._canvas.setAttribute("aria-hidden", "true");
+        this._canvas.style.pointerEvents = "none";
+        this.getPane().appendChild(this._canvas);
+        if (leafletMap.options.zoomAnimation && L.Browser.any3d) {
+          L.DomUtil.addClass(this._canvas, "leaflet-zoom-animated");
+          leafletMap.on("zoomanim", this._animateZoom, this);
+        } else {
+          L.DomUtil.addClass(this._canvas, "leaflet-zoom-hide");
+        }
+        leafletMap.on({
+          moveend: this._scheduleReset,
+          zoomend: this._scheduleReset,
+          resize: this._scheduleReset,
+        }, this);
+        this._reset();
+      },
+
+      onRemove: function (leafletMap) {
+        if (this._resetFrame) cancelAnimationFrame(this._resetFrame);
+        leafletMap.off({
+          moveend: this._scheduleReset,
+          zoomend: this._scheduleReset,
+          resize: this._scheduleReset,
+        }, this);
+        leafletMap.off("zoomanim", this._animateZoom, this);
+        if (this._canvas) this._canvas.remove();
+        this._canvas = null;
+        this._map = null;
+      },
+
+      redraw: function () {
+        this._scheduleReset();
+        return this;
+      },
+
+      _scheduleReset: function () {
+        if (!this._map || this._resetFrame) return;
+        this._resetFrame = requestAnimationFrame(() => {
+          this._resetFrame = null;
+          if (this._map) this._reset();
+        });
+      },
+
+      _reset: function () {
+        const leafletMap = this._map;
+        const viewport = leafletMap.getSize();
+        const defaultMargin = (window.devicePixelRatio || 1) > 1.5 ? 0.14 : 0.20;
+        const marginRatio = this.options.paddingRatio == null ? defaultMargin : this.options.paddingRatio;
+        const marginX = Math.ceil(viewport.x * marginRatio);
+        const marginY = Math.ceil(viewport.y * marginRatio);
+        const canvasWidth = viewport.x + marginX * 2;
+        const canvasHeight = viewport.y + marginY * 2;
+        const topLeft = leafletMap.containerPointToLayerPoint([-marginX, -marginY]);
+        const tuning = ATLAS_CARTOGRAPHY_TUNING.renderScale;
+        const pixelRatio = Math.min(tuning.maximum, Math.max(tuning.minimum, window.devicePixelRatio || 1));
+
+        this._bounds = L.latLngBounds(
+          leafletMap.containerPointToLatLng([-marginX, -marginY]),
+          leafletMap.containerPointToLatLng([viewport.x + marginX, viewport.y + marginY])
+        );
+        L.DomUtil.setPosition(this._canvas, topLeft);
+        this._canvas.style.width = canvasWidth + "px";
+        this._canvas.style.height = canvasHeight + "px";
+        const targetWidth = Math.max(1, Math.round(canvasWidth * pixelRatio));
+        const targetHeight = Math.max(1, Math.round(canvasHeight * pixelRatio));
+        if (this._canvas.width !== targetWidth) this._canvas.width = targetWidth;
+        if (this._canvas.height !== targetHeight) this._canvas.height = targetHeight;
+
+        const context = this._canvas.getContext("2d", { alpha: true });
+        context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+        context.clearRect(0, 0, canvasWidth, canvasHeight);
+        context.translate(marginX, marginY);
+        context.imageSmoothingEnabled = true;
+        context.imageSmoothingQuality = "high";
+        this._drawFrame(context, leafletMap, viewport, this);
+      },
+
+      _animateZoom: function (event) {
+        if (!this._bounds || !this._canvas) return;
+        const scale = this._map.getZoomScale(event.zoom);
+        const offset = this._map._latLngBoundsToNewLayerBounds(this._bounds, event.zoom, event.center).min;
+        L.DomUtil.setTransform(this._canvas, offset, scale);
+      },
+    });
+
+    function clampCanvasControl(value, start, end, padding) {
+      return Math.max(Math.min(start, end) - padding, Math.min(Math.max(start, end) + padding, value));
+    }
+
+    function softenAtlasCanvasPoints(points, closed) {
+      if (points.length < 3) return points;
+      const ratio = ATLAS_CARTOGRAPHY_TUNING.cornerSoftening;
+      const softened = [];
+      if (!closed) softened.push(points[0]);
+      const segmentCount = closed ? points.length : points.length - 1;
+      for (let index = 0; index < segmentCount; index += 1) {
+        const start = points[index];
+        const end = points[(index + 1) % points.length];
+        softened.push({
+          x: start.x + (end.x - start.x) * ratio,
+          y: start.y + (end.y - start.y) * ratio,
+        });
+        softened.push({
+          x: start.x + (end.x - start.x) * (1 - ratio),
+          y: start.y + (end.y - start.y) * (1 - ratio),
+        });
+      }
+      if (!closed) softened.push(points[points.length - 1]);
+      return softened;
+    }
+
+    function traceAtlasCanvasPath(path, sourcePoints, closed) {
+      let points = sourcePoints.slice();
+      if (closed && points.length > 1) {
+        const first = points[0];
+        const last = points[points.length - 1];
+        if (Math.abs(first.x - last.x) < 0.01 && Math.abs(first.y - last.y) < 0.01) points.pop();
+      }
+      if (points.length < 2) return;
+      points = softenAtlasCanvasPoints(points, closed);
+      path.moveTo(points[0].x, points[0].y);
+      const segmentCount = closed ? points.length : points.length - 1;
+      for (let index = 0; index < segmentCount; index += 1) {
+        const start = points[index];
+        const end = points[(index + 1) % points.length];
+        const previous = closed ? points[(index - 1 + points.length) % points.length] : (points[index - 1] || start);
+        const next = closed ? points[(index + 2) % points.length] : (points[index + 2] || end);
+        const distance = Math.hypot(end.x - start.x, end.y - start.y);
+        const padding = Math.min(3.5, distance * 0.12);
+        const factor = ATLAS_CARTOGRAPHY_TUNING.curveTension / 6;
+        const control1X = clampCanvasControl(start.x + (end.x - previous.x) * factor, start.x, end.x, padding);
+        const control1Y = clampCanvasControl(start.y + (end.y - previous.y) * factor, start.y, end.y, padding);
+        const control2X = clampCanvasControl(end.x - (next.x - start.x) * factor, start.x, end.x, padding);
+        const control2Y = clampCanvasControl(end.y - (next.y - start.y) * factor, start.y, end.y, padding);
+        path.bezierCurveTo(control1X, control1Y, control2X, control2Y, end.x, end.y);
+      }
+      if (closed) path.closePath();
+    }
+
+    function atlasFeatureCanvasPath(feature, leafletMap) {
+      const path = new Path2D();
+      const geometry = feature.geometry || {};
+      const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : (geometry.coordinates || []);
+      const bounds = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
+      polygons.forEach((polygon) => {
+        polygon.forEach((ring) => {
+          const points = ring.map((coordinate) => {
+            const point = leafletMap.latLngToContainerPoint([coordinate[1], coordinate[0]]);
+            bounds.minX = Math.min(bounds.minX, point.x);
+            bounds.minY = Math.min(bounds.minY, point.y);
+            bounds.maxX = Math.max(bounds.maxX, point.x);
+            bounds.maxY = Math.max(bounds.maxY, point.y);
+            return point;
+          });
+          traceAtlasCanvasPath(path, points, true);
+        });
+      });
+      return { path, bounds };
+    }
+
+    function atlasLineCanvasPath(feature, leafletMap) {
+      const path = new Path2D();
+      const geometry = feature.geometry || {};
+      const lines = geometry.type === "LineString" ? [geometry.coordinates] : (geometry.coordinates || []);
+      lines.forEach((line) => {
+        const points = line.map((coordinate) => leafletMap.latLngToContainerPoint([coordinate[1], coordinate[0]]));
+        traceAtlasCanvasPath(path, points, false);
+      });
+      return path;
+    }
+
+    function atlasBoundsVisible(bounds, viewport) {
+      const padding = 36;
+      return bounds.maxX >= -padding && bounds.maxY >= -padding &&
+        bounds.minX <= viewport.x + padding && bounds.minY <= viewport.y + padding;
+    }
+
+    function drawAtlasStyledPath(context, path, style) {
+      context.save();
+      context.globalAlpha = style.opacity == null ? 1 : style.opacity;
+      context.strokeStyle = style.color;
+      context.lineWidth = style.weight;
+      context.lineCap = "round";
+      context.lineJoin = "round";
+      context.setLineDash(style.dashArray ? String(style.dashArray).split(/\s+/).map(Number) : []);
+      context.stroke(path);
+      context.restore();
     }
 
     function applyAtlasParchmentTexture(layer) {
@@ -5531,44 +5740,111 @@
       }),
     });
 
-    const lordshipFillLayersByName = new Map();
-    const lordshipsFillLayer = L.geoJSON(LORDSHIPS_RENDER, {
-      pane: "lordshipsPane",
-      interactive: false,
-      style: (feature) => ({
-        fill: true,
-        fillColor: feature.properties.fill || "#c8a875",
-        fillOpacity: territoryOpacity(feature.properties),
-        color: "transparent",
-        weight: 0,
-      }),
-      onEachFeature: (feature, layer) => {
-        lordshipFillLayersByName.set(feature.properties.name, layer);
-        const texture = textureForProperties(feature.properties);
-        layer.on("add", () => requestAnimationFrame(() => applyHistoricalTerritoryTexture(layer, texture)));
-      },
-    });
+    function drawAtlasTerritory(context, leafletMap, viewport, feature, hoveredName, grainPattern, grainPhase) {
+      const rendered = atlasFeatureCanvasPath(feature, leafletMap);
+      if (!atlasBoundsVisible(rendered.bounds, viewport)) return;
+      const properties = feature.properties;
+      const texture = textureForProperties(properties);
+      const width = Math.max(8, rendered.bounds.maxX - rendered.bounds.minX);
+      const height = Math.max(8, rendered.bounds.maxY - rendered.bounds.minY);
+      const centerX = rendered.bounds.minX + width * 0.40;
+      const centerY = rendered.bounds.minY + height * 0.34;
+      const radius = Math.max(width, height) * 0.90;
+      const baseGradient = context.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
+      baseGradient.addColorStop(0, texture.gradient[1]);
+      baseGradient.addColorStop(0.52, texture.gradient[2]);
+      baseGradient.addColorStop(0.84, texture.gradient[0]);
+      baseGradient.addColorStop(1, texture.gradient[3]);
 
-    const lordshipsEdgeWashLayer = L.geoJSON(LORDSHIPS_RENDER, {
+      const hovered = properties.name === hoveredName;
+      const opacity = Math.min(
+        ATLAS_CARTOGRAPHY_TUNING.hoverMaximum,
+        territoryOpacity(properties) + (hovered ? ATLAS_CARTOGRAPHY_TUNING.hoverLift : 0)
+      );
+
+      context.save();
+      context.globalAlpha = opacity;
+      context.fillStyle = baseGradient;
+      context.strokeStyle = baseGradient;
+      context.lineWidth = ATLAS_CARTOGRAPHY_TUNING.fillBleed;
+      context.lineCap = "round";
+      context.lineJoin = "round";
+      context.stroke(rendered.path);
+      context.fill(rendered.path, "evenodd");
+      context.restore();
+
+      context.save();
+      context.clip(rendered.path, "evenodd");
+      const random = atlasSeededRandom(atlasStringSeed(properties.name) ^ texture.seeds[0]);
+      for (let index = 0; index < ATLAS_CARTOGRAPHY_TUNING.mottleCount; index += 1) {
+        const spotX = rendered.bounds.minX + random() * width;
+        const spotY = rendered.bounds.minY + random() * height;
+        const spotRadius = Math.max(22, Math.max(width, height) * (0.10 + random() * 0.22));
+        const isHighlight = index % 3 === 0;
+        const spotColor = isHighlight ? texture.gradient[1] : texture.gradient[3];
+        const spotAlpha = isHighlight ? 0.075 : 0.085;
+        const spotGradient = context.createRadialGradient(spotX, spotY, 0, spotX, spotY, spotRadius);
+        spotGradient.addColorStop(0, colorWithAlpha(spotColor, spotAlpha));
+        spotGradient.addColorStop(0.62, colorWithAlpha(spotColor, spotAlpha * 0.42));
+        spotGradient.addColorStop(1, colorWithAlpha(spotColor, 0));
+        context.globalCompositeOperation = isHighlight ? "screen" : "multiply";
+        context.fillStyle = spotGradient;
+        context.fillRect(spotX - spotRadius, spotY - spotRadius, spotRadius * 2, spotRadius * 2);
+      }
+
+      if (grainPattern) {
+        context.save();
+        context.globalCompositeOperation = "multiply";
+        context.globalAlpha = ATLAS_CARTOGRAPHY_TUNING.grainOpacity;
+        context.translate(grainPhase.x, grainPhase.y);
+        context.fillStyle = grainPattern;
+        context.fillRect(
+          rendered.bounds.minX - grainPhase.x - 12,
+          rendered.bounds.minY - grainPhase.y - 12,
+          width + 24,
+          height + 24
+        );
+        context.restore();
+      }
+
+      const shade = ATLAS_CARTOGRAPHY_TUNING.innerShade;
+      context.globalCompositeOperation = "multiply";
+      context.lineCap = "round";
+      context.lineJoin = "round";
+      context.strokeStyle = colorWithAlpha(texture.edgeColor, shade.broadOpacity);
+      context.lineWidth = shade.broadWeight;
+      context.stroke(rendered.path);
+      context.strokeStyle = colorWithAlpha(texture.edgeColor, shade.fineOpacity);
+      context.lineWidth = shade.fineWeight;
+      context.stroke(rendered.path);
+      context.restore();
+    }
+
+    function drawAtlasTerritories(context, leafletMap, viewport, canvasLayer) {
+      const grainPattern = context.createPattern(ATLAS_GRAIN_TEXTURE, "repeat");
+      const pixelBounds = leafletMap.getPixelBounds();
+      const textureSize = ATLAS_GRAIN_TEXTURE.width;
+      const grainPhase = {
+        x: -(((pixelBounds.min.x % textureSize) + textureSize) % textureSize),
+        y: -(((pixelBounds.min.y % textureSize) + textureSize) % textureSize),
+      };
+      LORDSHIPS_RENDER.features.forEach((feature) => {
+        drawAtlasTerritory(context, leafletMap, viewport, feature, canvasLayer._hoveredName, grainPattern, grainPhase);
+      });
+    }
+
+    const lordshipsFillLayer = new AtlasCanvasLayer(drawAtlasTerritories, {
       pane: "lordshipsPane",
-      interactive: false,
-      style: (feature) => {
-        const texture = textureForProperties(feature.properties);
-        return {
-          fill: false,
-          color: texture.edgeColor,
-          weight: feature.properties.kind === "water"
-            ? ATLAS_CARTOGRAPHY_TUNING.edgeWash.waterWeight
-            : ATLAS_CARTOGRAPHY_TUNING.edgeWash.landWeight,
-          opacity: feature.properties.kind === "water"
-            ? ATLAS_CARTOGRAPHY_TUNING.edgeWash.waterOpacity
-            : ATLAS_CARTOGRAPHY_TUNING.edgeWash.landOpacity,
-          lineCap: "round",
-          lineJoin: "round",
-          className: "historical-territory-edge",
-        };
-      },
+      className: "atlas-cartography-canvas atlas-territory-canvas",
+      paddingRatio: 0.24,
     });
+    lordshipsFillLayer._hoveredName = null;
+    lordshipsFillLayer.setHovered = function (name) {
+      const nextName = name || null;
+      if (this._hoveredName === nextName) return;
+      this._hoveredName = nextName;
+      this.redraw();
+    };
 
     function internalBoundaryStyle(feature) {
       const rank = feature.properties.rank;
@@ -5583,98 +5859,88 @@
     function internalBoundaryCasingStyle(feature) {
       const ink = internalBoundaryStyle(feature);
       return {
-        color: feature.properties.rank === "water" ? "rgba(225,235,228,0.26)" : "rgba(240,224,191,0.28)",
-        weight: ink.weight + 1.15,
+        color: feature.properties.rank === "water" ? "rgba(220,232,226,0.22)" : "rgba(235,216,179,0.22)",
+        weight: ink.weight + 1.25,
         opacity: 1,
         dashArray: ink.dashArray || null,
       };
     }
 
-    const lordshipsBoundaryCasingLayer = L.geoJSON(LATIN_STATE_BOUNDARIES, {
-      pane: "lordshipsBoundaryPane",
-      interactive: false,
-      filter: (feature) => feature.properties.kind === "internal_lordship_boundary",
-      style: (feature) => Object.assign({
-        fill: false,
-        lineCap: "round",
-        lineJoin: "round",
-        className: "historical-boundary-casing",
-      }, internalBoundaryCasingStyle(feature)),
-    });
-
-    const lordshipsBoundaryLayer = L.geoJSON(LATIN_STATE_BOUNDARIES, {
-      pane: "lordshipsBoundaryPane",
-      interactive: false,
-      filter: (feature) => feature.properties.kind === "internal_lordship_boundary",
-      style: (feature) => Object.assign({
-        fill: false,
-        lineCap: "round",
-        lineJoin: "round",
-        className: "historical-boundary-ink",
-      }, internalBoundaryStyle(feature)),
-    });
+    function drawInternalLordshipBoundaries(context, leafletMap) {
+      const features = LATIN_STATE_BOUNDARIES.features.filter(
+        (feature) => feature.properties.kind === "internal_lordship_boundary"
+      );
+      const rendered = features.map((feature) => ({
+        feature,
+        path: atlasLineCanvasPath(feature, leafletMap),
+      }));
+      rendered.forEach((row) => drawAtlasStyledPath(
+        context, row.path, internalBoundaryCasingStyle(row.feature)
+      ));
+      rendered.forEach((row) => drawAtlasStyledPath(
+        context, row.path, internalBoundaryStyle(row.feature)
+      ));
+    }
 
     const lordshipsClickLayer = L.geoJSON(LORDSHIPS_RENDER, {
       pane: "lordshipsClickPane",
       style: { fill: true, fillColor: "#fff", fillOpacity: 0.001, color: "transparent", weight: 0 },
       onEachFeature: (feature, layer) => {
-        const fillLayer = lordshipFillLayersByName.get(feature.properties.name);
-        const texture = textureForProperties(feature.properties);
-        const baseOpacity = territoryOpacity(feature.properties);
         layer.on("click", (event) => {
           L.DomEvent.stopPropagation(event);
           openFiefDetail(feature.properties);
         });
         layer.on("mouseover", () => {
-          if (fillLayer) {
-            fillLayer.setStyle({
-              fillOpacity: Math.min(
-                ATLAS_CARTOGRAPHY_TUNING.hoverMaximum,
-                baseOpacity + ATLAS_CARTOGRAPHY_TUNING.hoverLift
-              ),
-            });
-            applyHistoricalTerritoryTexture(fillLayer, texture);
-          }
+          lordshipsFillLayer.setHovered(feature.properties.name);
           if (layer.getElement()) layer.getElement().style.cursor = "pointer";
         });
-        layer.on("mouseout", () => {
-          if (fillLayer) {
-            fillLayer.setStyle({ fillOpacity: baseOpacity });
-            applyHistoricalTerritoryTexture(fillLayer, texture);
-          }
-        });
+        layer.on("mouseout", () => lordshipsFillLayer.setHovered(null));
       },
     });
 
-    const stateBorderCasingLayer = L.geoJSON(LATIN_STATE_BOUNDARIES, {
-      pane: "stateBorderPane",
-      interactive: false,
-      filter: (feature) => ["latin_states", "external_polity"].includes(feature.properties.kind),
-      style: (feature) => ({
-        fill: false,
-        color: feature.properties.kind === "latin_states" ? "rgba(241,225,193,0.42)" : "rgba(239,222,190,0.32)",
-        weight: feature.properties.kind === "latin_states" ? 3.25 : 2.35,
+    function stateBorderCasingStyle(feature) {
+      return {
+        color: feature.properties.kind === "latin_states" ? "rgba(238,220,184,0.30)" : "rgba(235,217,181,0.24)",
+        weight: feature.properties.kind === "latin_states" ? 3.35 : 2.45,
         opacity: 1,
         dashArray: feature.properties.kind === "latin_states" ? null : "5 4",
-        lineCap: "round",
-        lineJoin: "round",
-        className: "historical-state-border-casing",
-      }),
-    });
-    const stateBorderLayer = L.geoJSON(LATIN_STATE_BOUNDARIES, {
-      pane: "stateBorderPane",
-      interactive: false,
-      filter: (feature) => ["latin_states", "external_polity"].includes(feature.properties.kind),
-      style: (feature) => ({
-        fill: false,
-        color: feature.properties.kind === "latin_states" ? "rgba(50,33,20,0.72)" : "rgba(98,67,39,0.64)",
-        weight: feature.properties.kind === "latin_states" ? 1.20 : 0.92,
-        opacity: 0.86,
+      };
+    }
+
+    function stateBorderInkStyle(feature) {
+      return {
+        color: feature.properties.kind === "latin_states" ? "rgba(48,31,19,0.76)" : "rgba(94,63,36,0.68)",
+        weight: feature.properties.kind === "latin_states" ? 1.18 : 0.90,
+        opacity: 0.88,
         dashArray: feature.properties.kind === "latin_states" ? null : "5 4",
-        lineCap: "round",
-        lineJoin: "round",
-        className: "historical-state-border-ink",
-      }),
+      };
+    }
+
+    function drawStateBorders(context, leafletMap) {
+      const features = LATIN_STATE_BOUNDARIES.features.filter(
+        (feature) => ["latin_states", "external_polity"].includes(feature.properties.kind)
+      );
+      const rendered = features.map((feature) => ({
+        feature,
+        path: atlasLineCanvasPath(feature, leafletMap),
+      }));
+      rendered.forEach((row) => drawAtlasStyledPath(
+        context, row.path, stateBorderCasingStyle(row.feature)
+      ));
+      rendered.forEach((row) => drawAtlasStyledPath(
+        context, row.path, stateBorderInkStyle(row.feature)
+      ));
+    }
+
+    function drawAtlasBorders(context, leafletMap) {
+      drawInternalLordshipBoundaries(context, leafletMap);
+      drawStateBorders(context, leafletMap);
+    }
+
+    const lordshipsBoundaryLayer = new AtlasCanvasLayer(drawAtlasBorders, {
+      pane: "stateBorderPane",
+      className: "atlas-cartography-canvas atlas-boundary-canvas atlas-state-border-canvas",
+      paddingRatio: 0.18,
     });
 
     function isMajorGeography(feature) {
@@ -5722,13 +5988,9 @@
     const lordshipsLayer = L.layerGroup([
       stateUnderpaintingLayer,
       lordshipsFillLayer,
-      lordshipsEdgeWashLayer,
       geographyMajorHaloLayer,
       geographyMajorLineLayer,
-      lordshipsBoundaryCasingLayer,
       lordshipsBoundaryLayer,
-      stateBorderCasingLayer,
-      stateBorderLayer,
     ]);
 
     function addCartographyLabel(group, row) {

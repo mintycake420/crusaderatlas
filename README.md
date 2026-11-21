@@ -4,13 +4,13 @@ An interactive, hand-curated historical atlas of the medieval Kingdom of Jerusal
 
 **Live:** [crusaderatlas.com](https://crusaderatlas.com/)
 
-175 verified sites — castles, fortified churches, towers, fortified towns, battles, and sieges — plotted on an interactive Leaflet map with photographs, primary sources, and Wikipedia links in English and Hebrew. The 22 Frankish lordships and royal domains are drawn as actual polygon borders rather than dots, and a glossary of over 110 entries (including the 24 monarchs of Jerusalem) covers the kings, the orders, internal conflicts, and first-hand accounts by Christian, Jewish, and Muslim travellers who passed through the kingdom while it existed.
+176 verified sites — castles, fortified churches, towers, fortified towns, battles, and sieges — plotted on an interactive Leaflet map with photographs, primary sources, and Wikipedia links in English and Hebrew. The 22 Frankish lordships and royal domains are drawn as actual polygon borders rather than dots, and a glossary of over 110 entries (including the 24 monarchs of Jerusalem) covers the kings, the orders, internal conflicts, and first-hand accounts by Christian, Jewish, and Muslim travellers who passed through the kingdom while it existed.
 
 The full dataset is **downloadable in one click** — see [Open dataset](#open-dataset) below, or use the **Download dataset** links built into the live map (the map-context ⓘ panel, the legend, the About panel, and the desktop footer).
 
 ## What's on the map
 
-- **175 verified sites** — from famous fortifications (Krak des Chevaliers, Montfort, Belvoir, Atlit, the Hospitaller Compound in Acre) to obscure standing remains most visitors have walked past without recognising (the Francheville tower in Romema, Haifa; Castellare Rogerii Longobardi outside Netanya; Cave de Tyron in southern Lebanon; and dozens more).
+- **176 verified sites** — from famous fortifications (Krak des Chevaliers, Montfort, Belvoir, Atlit, the Hospitaller Compound in Acre) to obscure standing remains most visitors have walked past without recognising (the Francheville tower in Romema, Haifa; Castellare Rogerii Longobardi outside Netanya; Cave de Tyron in southern Lebanon; and dozens more).
 - **22 Frankish lordships and royal domains** drawn as polygons with labelled borders, capitals, and parents — Tyre, Sidon, Galilee, Toron, Caesarea, Beirut, Oultrejourdain, and the rest.
 - **Over 110 glossary entries** (including the 24 monarchs of Jerusalem) — kings and queens with reign dates and dynasties; the military and religious orders (Templars, Hospitallers, Teutonic Knights, Lazarites); internal conflicts of the kingdom; and first-hand accounts by Christian, Jewish, and Muslim travellers (Benjamin of Tudela, Ibn Jubayr, William of Tyre, John of Würzburg, and others).
 - **7 pilgrim and trade routes** drawn as polylines (the Acre–Jerusalem and Jaffa–Jerusalem pilgrim roads, the Damascus and King's Highway caravan routes, and the post-1187 sea routes).
@@ -23,11 +23,12 @@ A single-page app built deliberately without a framework or backend.
 
 - **Vanilla JavaScript** — no React, Vue, Svelte, jQuery, or TypeScript. ES2017+, 2-space indent.
 - **[Leaflet 1.9.4](https://leafletjs.com/)** for the map, plus **[Leaflet.markercluster 1.5.3](https://github.com/Leaflet/Leaflet.markercluster)** for cluster behaviour at low zoom.
-- **[CARTO Voyager](https://carto.com/)** raster basemap tiles over OpenStreetMap data, with a separate label overlay so labels sit cleanly on top of the lordship polygons.
-- **No bundler, no `npm install` to run the site.** Everything (data arrays, SVG glyphs, panel markup, CSS) is inlined into a single `index.html`. The two large lordship-overlay rasters (`lordships-top.png`, `lordships-bottom.png`) are externalised so the HTML stays under ~1 MB; everything else ships in the page.
+- **[CARTO Voyager](https://carto.com/)** raster basemap tiles over OpenStreetMap data, with a separate label overlay so labels sit cleanly on top of the lordship polygons. CARTO requires an API key (passed as `?key=` on the tile URLs in `index.html`) — see [Running locally](#running-locally).
+- **No bundler, no `npm install` to run the site.** Everything (data arrays, SVG glyphs, panel markup, CSS) is inlined into a single `index.html` (~1.2 MB). The two large lordship-overlay rasters are externalised and served as WebP (`lordships-top.webp`, `lordships-bottom.webp`), with PNG fallbacks; everything else ships in the page.
 - **Service worker** (`sw.js`) — stale-while-revalidate for HTML, cache-first for assets, with a versioned cache key so content updates flush cleanly.
 - **PWA manifest** (`manifest.json`) — installable on Android and iOS home screens.
-- **Cloudflare Pages** hosting; cache rules in `_headers` mark `/fortress-pics/*`, `/coat-of-arms/*`, and `/*.png` as `immutable`, while `/index.html` and the per-entity SEO landing pages stay `must-revalidate`.
+- **Cloudflare Pages** hosting; cache rules in `_headers` mark `/fortress-pics/*`, `/coat-of-arms/*`, and `/*.png` as `immutable`, while `/index.html` and the per-entity SEO landing pages stay `must-revalidate`. `_headers` also sets an enforcing Content-Security-Policy, HSTS, and other security headers.
+- **Analytics** — cookieless Cloudflare Web Analytics; no Google Analytics, no tracking cookies.
 
 ## Repository layout
 
@@ -35,15 +36,16 @@ A single-page app built deliberately without a framework or backend.
 index.html              single-page app (Leaflet, all data inlined)
 sw.js                   service worker
 manifest.json           PWA manifest
-_headers                Cloudflare Pages cache rules
-robots.txt              + sitemap.xml
+_headers                Cloudflare Pages cache rules + security headers (CSP)
+robots.txt              + sitemap.xml, sitemap-images.xml
+LICENSE                 CC BY 4.0
 favicon.png             + multi-resolution Jerusalem-cross favicons
 apple-touch-icon.png    home-screen icon
 og-image.png            social-card image (1200×630)
 lordships-{top,bottom}.{png,webp}   externalised lordship-overlay rasters
 fortress-pics/          site photographs (JPG + WebP + -400 thumbnail siblings)
 coat-of-arms/           heraldic crests for fiefs
-sites/<slug>/           SEO landing page per site (175)
+sites/<slug>/           SEO landing page per site (176)
 glossary/<slug>/        SEO landing page per glossary entry (117)
 lordships/<slug>/       SEO landing page per fief and sea (31)
 regions/<slug>/         regional & thematic aggregator pages (14)
@@ -61,6 +63,8 @@ The SPA recognises those query params at startup and routes to the relevant deta
 ## Open dataset
 
 **Quick download — everything in one file:** [`crusader_atlas_dataset.csv`](data/csv/crusader_atlas_dataset.csv) · [`crusader_atlas_dataset.json`](data/json/crusader_atlas_dataset.json) — all 204 place records (175 sites, 22 lordships, 7 routes) in a single flat table: names, coordinates and accuracy, modern country/region, derived lordship & crusader-state, Wikipedia/Wikidata links, sources, and uncertainty notes. Opens directly in Excel, pandas, or any CSV/JSON tool. Field-by-field documentation: [`data/README.md`](data/README.md#combined-single-file-dataset).
+
+The dataset is a snapshot and currently covers 175 of the map's 176 sites — it predates the most recent addition (Lifta).
 
 The same data is also published as structured, per-entity GeoJSON, JSON, and CSV files under [`data/`](data/):
 
@@ -89,18 +93,21 @@ python -m http.server 8767
 
 Then open http://localhost:8767. No build step, no install, no environment variables.
 
+**Basemap on localhost:** the CARTO key in `index.html` is restricted to the production domain, so a local copy shows grey "API KEY REQUIRED" placeholder tiles instead of the map. Everything else (markers, lordships, panels) works. For a real local basemap, request a free key restricted to `localhost` at [carto.com/basemaps/apikey](https://carto.com/basemaps/apikey) and swap it into the two tile URLs locally — don't commit it. The `_headers` CSP is also only applied by Cloudflare, not by a local server.
+
 ## Mobile
 
 - Two-row topbar that collapses to a floating action-button cluster below 720 px, plus a **collapsible header** — a chevron shrinks the topbar to just the brand strip to free up map space, with the state remembered between visits.
-- Bottom-sheet detail panel with three states (closed / peek / expanded), drag-to-expand, focus trap, and a shared scrim across the four overlay drawers (detail, filters, glossary, layers).
+- Bottom-sheet detail panel with three states (closed / peek / expanded), drag-to-expand, focus trap, and a shared scrim across the overlays (detail, filters, glossary, layers, map-context).
 - `overscroll-behavior: none` to disable Android pull-to-refresh inside the sheet.
-- All four drawers close cleanly via `closeAllMobileOverlays()` and a single shared `<div class="sheet-scrim">` element — no orphaned dimming layers.
+- All overlays close cleanly via `closeAllMobileOverlays()` and a single shared `<div class="sheet-scrim">` element — no orphaned dimming layers. The phone's native Back button closes the open overlay instead of leaving the site.
 - Map-context (ⓘ) panel explaining the methodology — that the borders are an approximate *c.* 1165 peak-reach snapshot while the site markers span the kingdom's full 1099–1291 history — with dataset download and contact links.
 - Tightened detail-sheet typography: coordinates render as plain text (no chip box) with copy + Google Maps actions that sit flush beside the numbers.
 
 ## Performance
 
-- ~880 KB initial HTML payload (down from ~2.8 MB before the lordship overlays were externalised).
+- ~1.2 MB initial HTML payload with all data inlined (down from ~2.8 MB before the lordship overlays were externalised).
+- Lordship overlay served as WebP (~0.5 MB combined, vs ~5.5 MB as PNG).
 - All `<img>` tags use `loading="lazy"` and `decoding="async"`.
 - WebP fast path with JPG fallback via `<picture>`; the primary `<img src>` is the 400-px thumbnail variant, with the full-size image only in the `1200w` `srcset` candidate.
 - Procedural Web Audio SFX — no audio files served at runtime.

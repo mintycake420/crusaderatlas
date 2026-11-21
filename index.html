@@ -5158,7 +5158,7 @@
     map.getPane("modernContextPane").style.zIndex = 361;
     map.getPane("modernContextPane").style.pointerEvents = "none";
 
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png", {
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png?key=cb1_5dfb_1_37c79e9e7010c2a9fd6b6a71", {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · © <a href="https://carto.com/attributions">CARTO</a> · Data: D. Pringle <em>Secular Buildings</em> + Wikipedia',
       subdomains: "abcd",
       maxZoom: 19,
@@ -5166,7 +5166,7 @@
       className: "atlas-basemap-layer",
     }).addTo(map);
 
-    const modernContextLayer = L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png", {
+    const modernContextLayer = L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png?key=cb1_5dfb_1_37c79e9e7010c2a9fd6b6a71", {
       subdomains: "abcd",
       maxZoom: 19,
       opacity: 0.18,

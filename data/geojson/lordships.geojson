@@ -7,8 +7,8 @@
     "repository": "https://github.com/mintycake420/crusaderatlas",
     "license": "CC-BY-4.0",
     "version": "1.0.0",
-    "generated": "2026-06-04",
-    "record_count": 27
+    "generated": "2026-07-11",
+    "record_count": 29
   },
   "features": [
     {
@@ -3143,56 +3143,12 @@
               34.977971
             ],
             [
-              36.149826,
-              35.086765
+              35.995,
+              34.978
             ],
             [
-              36.146393,
-              35.109798
-            ],
-            [
-              36.1203,
-              35.133387
-            ],
-            [
-              36.116867,
-              35.209161
-            ],
-            [
-              36.102104,
-              35.236646
-            ],
-            [
-              36.087341,
-              35.248143
-            ],
-            [
-              36.068459,
-              35.258236
-            ],
-            [
-              36.031036,
-              35.248703
-            ],
-            [
-              35.988121,
-              35.216173
-            ],
-            [
-              35.928383,
-              35.162021
-            ],
-            [
-              35.893021,
-              35.113169
-            ],
-            [
-              35.871048,
-              35.062601
-            ],
-            [
-              35.880661,
-              35.013127
+              35.873546,
+              34.978827
             ],
             [
               35.871735,
@@ -4021,6 +3977,753 @@
             [
               34.285583,
               30.7076
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "principality-of-antioch",
+        "name": "Principality of Antioch",
+        "kind": "crusader_state",
+        "capital": "Antioch (Antiochia)",
+        "parent": null,
+        "style": {
+          "fill": "#cbd0ec"
+        },
+        "coat_of_arms": "Antioch.png",
+        "photo": null,
+        "description": [
+          "The Principality of Antioch was founded in 1098, during the First Crusade, after the great siege in which Bohemond of Taranto arranged the entry of his men through a tower held by the Armenian guard Firouz. Bohemond kept the city in defiance of the crusaders' oath to the Byzantine emperor, and the Norman house he founded — descended from Robert Guiscard of Apulia — ruled in Antioch for a hundred and seventy years. At its height in the first half of the twelfth century the principality stretched from the Amanus mountains and the gulf of Alexandretta down the Syrian coast past Latakia and Jabala to Valania, and inland across the Orontes to Harim and Apamea.",
+          "Antioch's history was shaped by two pressures no other Crusader state felt so strongly: the claims of Byzantium and the power of Aleppo. The Treaty of Devol (1108) would have made the principality an imperial fief, and though Tancred repudiated it, John II Komnenos twice appeared before the walls in force (1137, 1142) and Manuel I held the principality as a Byzantine protectorate from 1158 until his death in 1180. On the eastern frontier, the catastrophe of the Field of Blood (1119) cost Antioch its regent and its field army; Zengi stripped away the marches beyond the Orontes in the 1130s; and Nur ad-Din's victory at Inab in 1149, where Prince Raymond of Poitiers fell, ended Antiochene power east of the river. Saladin's campaign of 1188 then reduced the principality to little more than Antioch itself and its port of Saint Symeon, with the Hospitaller fortress of Margat and the patriarch's castle at Cursat holding out as islands.",
+          "In its final century the principality was ruled in union with the County of Tripoli by Bohemond IV and his heirs; backed by the commune of Antioch, the military orders, and the Italian merchants, Bohemond won the long War of the Antiochene Succession (1201–1219) against his Armenian-backed nephew Raymond-Roupen. The city fell to the Mamluk sultan Baibars on 18 May 1268 in one of the most terrible sacks of the age, and the principality was extinguished: Baghras was abandoned at once, Cursat capitulated in 1275, and recovered Latakia — the last fragment of the old principality — held out until 1287."
+        ],
+        "lords": [
+          {
+            "name": "Bohemond I",
+            "reign": "1098–1111",
+            "wikipedia": "https://en.wikipedia.org/wiki/Bohemond_I_of_Antioch"
+          },
+          {
+            "name": "Tancred (regent)",
+            "reign": "1101–1103, 1104–1112",
+            "wikipedia": "https://en.wikipedia.org/wiki/Tancred,_Prince_of_Galilee"
+          },
+          {
+            "name": "Roger of Salerno (regent)",
+            "reign": "1112–1119",
+            "wikipedia": "https://en.wikipedia.org/wiki/Roger_of_Salerno"
+          },
+          {
+            "name": "Baldwin II of Jerusalem (regent)",
+            "reign": "1119–1126",
+            "wikipedia": "https://en.wikipedia.org/wiki/Baldwin_II_of_Jerusalem"
+          },
+          {
+            "name": "Bohemond II",
+            "reign": "1126–1130",
+            "wikipedia": "https://en.wikipedia.org/wiki/Bohemond_II_of_Antioch"
+          },
+          {
+            "name": "Constance",
+            "reign": "1130–1163",
+            "wikipedia": "https://en.wikipedia.org/wiki/Constance_of_Antioch"
+          },
+          {
+            "name": "Raymond of Poitiers",
+            "reign": "1136–1149",
+            "wikipedia": "https://en.wikipedia.org/wiki/Raymond_of_Poitiers"
+          },
+          {
+            "name": "Raynald of Châtillon",
+            "reign": "1153–1160/61",
+            "wikipedia": "https://en.wikipedia.org/wiki/Raynald_of_Ch%C3%A2tillon"
+          },
+          {
+            "name": "Bohemond III",
+            "reign": "1163–1201",
+            "wikipedia": "https://en.wikipedia.org/wiki/Bohemond_III_of_Antioch"
+          },
+          {
+            "name": "Bohemond IV",
+            "reign": "1201–1216, 1219–1233",
+            "wikipedia": "https://en.wikipedia.org/wiki/Bohemond_IV_of_Antioch"
+          },
+          {
+            "name": "Raymond-Roupen",
+            "reign": "1216–1219",
+            "wikipedia": "https://en.wikipedia.org/wiki/Raymond-Roupen"
+          },
+          {
+            "name": "Bohemond V",
+            "reign": "1233–1252",
+            "wikipedia": "https://en.wikipedia.org/wiki/Bohemond_V_of_Antioch"
+          },
+          {
+            "name": "Bohemond VI",
+            "reign": "1252–1268",
+            "wikipedia": "https://en.wikipedia.org/wiki/Bohemond_VI_of_Antioch"
+          }
+        ],
+        "lord_column_header": "Prince of Antioch",
+        "note": "Borders are shown at the principality's greatest extent in the early twelfth century — the reach depicted on the standard 'Crusader states, 1135' map — when Antioch held the Amanus march and an eastern frontier that pushed across the Summaq plateau (Harim, Artah, al-Atharib, Ma'arrat an-Nu'man) and down the Orontes to Apamea, almost to the walls of Aleppo and well east of the County of Tripoli. This maximal extent was eroded after Zengi took the eastern marches (al-Atharib and Kafartab by 1135) and the Battle of Inab (1149) cost Harim and Apamea; by the thirteenth century the principality had shrunk to Antioch, its port, and the coast. The Margat–Valania coastal march is shown with Antioch, whose Mazoir lords held it until its sale to the Hospitallers in 1186; the border with the County of Tripoli runs just north of Maraclea. Antioch fell to Baibars on 18 May 1268."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              36.202485,
+              36.769192
+            ],
+            [
+              36.202485,
+              36.699368
+            ],
+            [
+              36.215587,
+              36.670478
+            ],
+            [
+              36.216156,
+              36.657782
+            ],
+            [
+              36.201182,
+              36.621975
+            ],
+            [
+              36.189138,
+              36.60399
+            ],
+            [
+              36.178722,
+              36.59634
+            ],
+            [
+              36.162934,
+              36.593411
+            ],
+            [
+              36.055431,
+              36.538275
+            ],
+            [
+              36.044932,
+              36.537665
+            ],
+            [
+              35.990245,
+              36.479641
+            ],
+            [
+              35.942393,
+              36.464342
+            ],
+            [
+              35.918712,
+              36.448188
+            ],
+            [
+              35.908458,
+              36.418158
+            ],
+            [
+              35.873546,
+              36.397691
+            ],
+            [
+              35.861827,
+              36.373521
+            ],
+            [
+              35.856781,
+              36.369778
+            ],
+            [
+              35.834239,
+              36.366278
+            ],
+            [
+              35.824474,
+              36.36107
+            ],
+            [
+              35.788748,
+              36.320258
+            ],
+            [
+              35.787364,
+              36.304267
+            ],
+            [
+              35.798595,
+              36.281684
+            ],
+            [
+              35.840994,
+              36.244534
+            ],
+            [
+              35.852224,
+              36.213528
+            ],
+            [
+              35.948416,
+              36.087836
+            ],
+            [
+              35.975434,
+              36.0185
+            ],
+            [
+              35.976736,
+              36.000963
+            ],
+            [
+              35.966075,
+              35.993638
+            ],
+            [
+              35.922699,
+              35.931586
+            ],
+            [
+              35.885265,
+              35.885972
+            ],
+            [
+              35.881033,
+              35.866685
+            ],
+            [
+              35.87086,
+              35.851793
+            ],
+            [
+              35.846853,
+              35.847235
+            ],
+            [
+              35.798595,
+              35.849677
+            ],
+            [
+              35.81186,
+              35.835395
+            ],
+            [
+              35.835948,
+              35.789984
+            ],
+            [
+              35.840099,
+              35.770819
+            ],
+            [
+              35.840343,
+              35.747463
+            ],
+            [
+              35.800059,
+              35.681464
+            ],
+            [
+              35.776622,
+              35.675116
+            ],
+            [
+              35.771169,
+              35.667792
+            ],
+            [
+              35.773204,
+              35.655463
+            ],
+            [
+              35.782074,
+              35.64175
+            ],
+            [
+              35.784353,
+              35.630561
+            ],
+            [
+              35.778494,
+              35.612738
+            ],
+            [
+              35.763357,
+              35.598293
+            ],
+            [
+              35.743419,
+              35.587958
+            ],
+            [
+              35.723399,
+              35.582099
+            ],
+            [
+              35.723399,
+              35.575914
+            ],
+            [
+              35.743337,
+              35.582099
+            ],
+            [
+              35.737071,
+              35.561672
+            ],
+            [
+              35.778087,
+              35.541164
+            ],
+            [
+              35.770518,
+              35.504218
+            ],
+            [
+              35.781261,
+              35.499579
+            ],
+            [
+              35.81837,
+              35.508938
+            ],
+            [
+              35.825857,
+              35.503323
+            ],
+            [
+              35.830089,
+              35.493476
+            ],
+            [
+              35.860606,
+              35.479071
+            ],
+            [
+              35.918956,
+              35.41767
+            ],
+            [
+              35.916677,
+              35.403306
+            ],
+            [
+              35.9205,
+              35.338528
+            ],
+            [
+              35.928966,
+              35.321479
+            ],
+            [
+              35.915294,
+              35.287909
+            ],
+            [
+              35.953298,
+              35.224799
+            ],
+            [
+              35.962413,
+              35.197943
+            ],
+            [
+              35.9345,
+              35.180569
+            ],
+            [
+              35.894216,
+              35.12108
+            ],
+            [
+              35.887869,
+              35.109198
+            ],
+            [
+              35.887869,
+              35.061347
+            ],
+            [
+              35.900564,
+              35.021918
+            ],
+            [
+              35.895356,
+              35.006781
+            ],
+            [
+              35.881602,
+              34.992865
+            ],
+            [
+              35.873546,
+              34.978827
+            ],
+            [
+              35.995,
+              34.978
+            ],
+            [
+              36.115494,
+              34.977971
+            ],
+            [
+              36.149826,
+              35.086765
+            ],
+            [
+              36.146393,
+              35.109798
+            ],
+            [
+              36.1203,
+              35.133387
+            ],
+            [
+              36.116867,
+              35.209161
+            ],
+            [
+              36.102104,
+              35.236646
+            ],
+            [
+              36.087341,
+              35.248143
+            ],
+            [
+              36.35,
+              35.33
+            ],
+            [
+              36.52,
+              35.45
+            ],
+            [
+              36.68,
+              35.58
+            ],
+            [
+              36.82,
+              35.72
+            ],
+            [
+              36.9,
+              35.88
+            ],
+            [
+              36.96,
+              36.02
+            ],
+            [
+              37,
+              36.15
+            ],
+            [
+              37.02,
+              36.25
+            ],
+            [
+              36.92,
+              36.38
+            ],
+            [
+              36.82,
+              36.48
+            ],
+            [
+              36.75,
+              36.58
+            ],
+            [
+              36.68,
+              36.66
+            ],
+            [
+              36.55,
+              36.7
+            ],
+            [
+              36.4,
+              36.72
+            ],
+            [
+              36.32,
+              36.735
+            ],
+            [
+              36.202485,
+              36.769192
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "county-of-edessa",
+        "name": "County of Edessa",
+        "kind": "crusader_state",
+        "capital": "Edessa (Urfa)",
+        "parent": null,
+        "style": {
+          "fill": "#f3e88b"
+        },
+        "coat_of_arms": null,
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/1/18/Banner_of_the_County_of_Edessa.png",
+        "description": [
+          "The County of Edessa was the first Crusader state. Baldwin of Boulogne entered the Armenian-Christian city in February 1098 and was adopted as heir by its ruler Thoros. After Thoros was killed during an uprising in March, Baldwin assumed power and built a Latin county whose population remained predominantly Armenian and Syriac Christian. When Baldwin left to become king of Jerusalem in 1100, his cousin Baldwin of Bourcq succeeded him.",
+          "Edessa was the only landlocked principal Crusader state and the most exposed. It straddled the Euphrates: Edessa anchored its eastern core, while Turbessel controlled the richer western territories and the road toward Antioch. Ravendel, Dülük, Aintab, Bira, Samosata, Kaysun, and a chain of Armenian-held fortresses made the county a frontier network rather than a compact realm. The defeat at Harran in 1104 ended hopes of expansion into the Jazira and left its counts dependent on alliances with Jerusalem, Antioch, and local Armenian lords.",
+          "Zengi captured Edessa in December 1144 while Joscelin II remained at Turbessel, and the shock prompted the Second Crusade. Joscelin's attempt to recover the city in 1146 ended in defeat and the destruction of its defences. The western remnant survived until Joscelin was captured on 4 May 1150. His wife Beatrice then transferred Turbessel, Aintab, Ravendel, Bira, and Samosata to the Byzantine emperor Manuel I, but Muslim rulers conquered most of those positions in 1151."
+        ],
+        "lords": [
+          {
+            "name": "Baldwin of Boulogne",
+            "reign": "1098–1100",
+            "wikipedia": "https://en.wikipedia.org/wiki/Baldwin_I_of_Jerusalem"
+          },
+          {
+            "name": "Baldwin of Bourcq",
+            "reign": "1100–1118",
+            "wikipedia": "https://en.wikipedia.org/wiki/Baldwin_II_of_Jerusalem"
+          },
+          {
+            "name": "Tancred (regent)",
+            "reign": "1104–1108",
+            "wikipedia": "https://en.wikipedia.org/wiki/Tancred,_Prince_of_Galilee"
+          },
+          {
+            "name": "Richard of Salerno (governor)",
+            "reign": "1104–1108",
+            "wikipedia": "https://en.wikipedia.org/wiki/Richard_of_Salerno"
+          },
+          {
+            "name": "Waleran of Le Puiset (regent)",
+            "reign": "1118–1119",
+            "wikipedia": "https://en.wikipedia.org/wiki/Waleran_of_Le_Puiset"
+          },
+          {
+            "name": "Joscelin I",
+            "reign": "1119–1131",
+            "wikipedia": "https://en.wikipedia.org/wiki/Joscelin_I,_Count_of_Edessa"
+          },
+          {
+            "name": "Joscelin II",
+            "reign": "1131–1150",
+            "wikipedia": "https://en.wikipedia.org/wiki/Joscelin_II,_Count_of_Edessa"
+          },
+          {
+            "name": "Beatrice of Saone (regent)",
+            "reign": "May–August 1150",
+            "wikipedia": "https://en.wikipedia.org/wiki/Beatrice_of_Saone"
+          }
+        ],
+        "lord_column_header": "Count or Regent of Edessa",
+        "note": "Borders show the County of Edessa at its broad early-twelfth-century extent, approximately c. 1135, following the Jotischky-based 'Crusader States in 1135' reconstruction. This was a shifting network of cities, fortresses, and tributary Armenian lordships rather than a surveyed boundary. Edessa fell in 1144; the lands west of the Euphrates survived from Turbessel until their transfer to Byzantium in 1150."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              39.48781,
+              38.7053
+            ],
+            [
+              39.2449,
+              38.76085
+            ],
+            [
+              39.17978,
+              38.81423
+            ],
+            [
+              38.80009,
+              38.82645
+            ],
+            [
+              38.66084,
+              38.79218
+            ],
+            [
+              38.69798,
+              38.7094
+            ],
+            [
+              38.66549,
+              38.68164
+            ],
+            [
+              38.32322,
+              38.5957
+            ],
+            [
+              38.45238,
+              38.51729
+            ],
+            [
+              37.94799,
+              38.45183
+            ],
+            [
+              37.74399,
+              38.37882
+            ],
+            [
+              37.5941,
+              38.08363
+            ],
+            [
+              37.64095,
+              37.88716
+            ],
+            [
+              37.60554,
+              37.70403
+            ],
+            [
+              37.36848,
+              37.6631
+            ],
+            [
+              37.01123,
+              37.51375
+            ],
+            [
+              36.80393,
+              37.50576
+            ],
+            [
+              36.57648,
+              36.92525
+            ],
+            [
+              36.68,
+              36.66
+            ],
+            [
+              36.75,
+              36.58
+            ],
+            [
+              36.82,
+              36.48
+            ],
+            [
+              36.92,
+              36.38
+            ],
+            [
+              37.02,
+              36.25
+            ],
+            [
+              37.08855,
+              36.34801
+            ],
+            [
+              37.26011,
+              36.29653
+            ],
+            [
+              37.54056,
+              36.3698
+            ],
+            [
+              37.59729,
+              36.35093
+            ],
+            [
+              37.80978,
+              36.51903
+            ],
+            [
+              38.19652,
+              36.55993
+            ],
+            [
+              38.39275,
+              36.62123
+            ],
+            [
+              38.44557,
+              36.74748
+            ],
+            [
+              38.59307,
+              36.92181
+            ],
+            [
+              39.18796,
+              37.06169
+            ],
+            [
+              39.54063,
+              37.2093
+            ],
+            [
+              39.83463,
+              37.14879
+            ],
+            [
+              40.05041,
+              37.18585
+            ],
+            [
+              40.5363,
+              37.41929
+            ],
+            [
+              40.57465,
+              37.47839
+            ],
+            [
+              40.49751,
+              37.71206
+            ],
+            [
+              40.50497,
+              37.95502
+            ],
+            [
+              40.34797,
+              37.92962
+            ],
+            [
+              40.12346,
+              37.9545
+            ],
+            [
+              40.09344,
+              38.05004
+            ],
+            [
+              40.12727,
+              38.14566
+            ],
+            [
+              40.0508,
+              38.21398
+            ],
+            [
+              40.05106,
+              38.35032
+            ],
+            [
+              39.68231,
+              38.46642
+            ],
+            [
+              39.48781,
+              38.7053
             ]
           ]
         ]

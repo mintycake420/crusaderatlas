@@ -248,9 +248,27 @@
     </image:image>
   </url>
   <url>
+    <loc>https://crusaderatlas.com/sites/house-of-arches-lod-lydda/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/136169_lod_house_of_arches_PikiWiki_Israel.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://crusaderatlas.com/sites/jifna-crusader-site-of-jifna/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Jifna-Crusader-Manor.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://crusaderatlas.com/sites/kafr-lam-habonim/</loc>
     <image:image>
       <image:loc>https://crusaderatlas.com/fortress-pics/Cafarlet_panorama.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://crusaderatlas.com/sites/khan-as-sawiya-khirbet-berkit/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Khan-as-Sawiya.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -275,6 +293,12 @@
     <loc>https://crusaderatlas.com/sites/le-destroit/</loc>
     <image:image>
       <image:loc>https://crusaderatlas.com/fortress-pics/Atlit-57-Le-Destroit-ne.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://crusaderatlas.com/sites/lifta-clepsta/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/lifta.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -344,6 +368,12 @@
     </image:image>
   </url>
   <url>
+    <loc>https://crusaderatlas.com/sites/akeldama-chaudemar-crusader-charnel-house/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Akeldama-Chaudemar-Charnel-House.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://crusaderatlas.com/sites/basilica-of-the-annunciation-nazareth/</loc>
     <image:image>
       <image:loc>https://crusaderatlas.com/fortress-pics/Nazareth_Verk%C3%BCndigungbasilika_Church_of_Annunciation_(34257296024).jpg</image:loc>
@@ -380,6 +410,18 @@
     </image:image>
   </url>
   <url>
+    <loc>https://crusaderatlas.com/sites/church-of-st-anne-khirbet-sandhanna/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Church%20of%20St%20anne%20Beit%20Guvrin.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://crusaderatlas.com/sites/church-of-st-george-deir-al-asad/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/129452_the_town_of_deir_al-assad_PikiWiki_Israel.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://crusaderatlas.com/sites/church-of-the-holy-sepulchre/</loc>
     <image:image>
       <image:loc>https://crusaderatlas.com/fortress-pics/Jerusalem_Holy_Sepulchre_BW_19.JPG</image:loc>
@@ -413,6 +455,12 @@
     <loc>https://crusaderatlas.com/sites/st-annes-church-jerusalem/</loc>
     <image:image>
       <image:loc>https://crusaderatlas.com/fortress-pics/JerStAnna.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://crusaderatlas.com/sites/st-cleophas-church-al-qubeiba/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Church-of-St-Cleophas.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -692,6 +740,12 @@
     </image:image>
   </url>
   <url>
+    <loc>https://crusaderatlas.com/sites/aqaba-fortress/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/aqaba_fortress.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://crusaderatlas.com/sites/kerak-castle/</loc>
     <image:image>
       <image:loc>https://crusaderatlas.com/fortress-pics/Kerak%20Castle.JPG</image:loc>
@@ -737,6 +791,12 @@
     <loc>https://crusaderatlas.com/sites/battle-of-mansurah-1250/</loc>
     <image:image>
       <image:loc>https://crusaderatlas.com/fortress-pics/Mansura.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://crusaderatlas.com/sites/siege-of-damietta-1218-1219/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Capturing_Damiate.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -878,6 +938,30 @@
     </image:image>
   </url>
   <url>
+    <loc>https://crusaderatlas.com/sites/apamea-qalat-al-madiq/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Qalat_el-Mudiq.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://crusaderatlas.com/sites/bourzey-castle/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Bourzey3.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://crusaderatlas.com/sites/citadel-of-tartus/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Citadel%20of%20Tartus.JPG</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://crusaderatlas.com/sites/harim-castle/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Harim_Ifpo_aerial.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://crusaderatlas.com/sites/krak-des-chevaliers/</loc>
     <image:image>
       <image:loc>https://crusaderatlas.com/fortress-pics/KRAK_DES_CHEVALIERS_-_GAR_-_6-00.jpg</image:loc>
@@ -896,15 +980,27 @@
     </image:image>
   </url>
   <url>
-    <loc>https://crusaderatlas.com/sites/cathedral-of-our-lady-of-tortosa/</loc>
+    <loc>https://crusaderatlas.com/sites/jabala/</loc>
     <image:image>
-      <image:loc>https://crusaderatlas.com/fortress-pics/Notre_dame_de_tortosa.jpg</image:loc>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Jableh_Collage.jpg</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://crusaderatlas.com/sites/citadel-of-tartus/</loc>
+    <loc>https://crusaderatlas.com/sites/latakia/</loc>
     <image:image>
-      <image:loc>https://crusaderatlas.com/fortress-pics/Citadel%20of%20Tartus.JPG</image:loc>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Latakia_downtown_view.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://crusaderatlas.com/sites/valania-baniyas/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Baniyas-1.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://crusaderatlas.com/sites/cathedral-of-our-lady-of-tortosa/</loc>
+    <image:image>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Notre_dame_de_tortosa.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -926,63 +1022,57 @@
     </image:image>
   </url>
   <url>
-    <loc>https://crusaderatlas.com/sites/church-of-st-george-deir-al-asad/</loc>
+    <loc>https://crusaderatlas.com/sites/battle-of-the-field-of-blood-1119/</loc>
     <image:image>
-      <image:loc>https://crusaderatlas.com/fortress-pics/129452_the_town_of_deir_al-assad_PikiWiki_Israel.jpg</image:loc>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Battle-of-Ager-Sanguinis.jpg</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://crusaderatlas.com/sites/siege-of-damietta-1218-1219/</loc>
+    <loc>https://crusaderatlas.com/sites/antioch/</loc>
     <image:image>
-      <image:loc>https://crusaderatlas.com/fortress-pics/Capturing_Damiate.jpg</image:loc>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Antakya_Views_1990s.jpg</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://crusaderatlas.com/sites/aqaba-fortress/</loc>
+    <loc>https://crusaderatlas.com/sites/baghras-castle/</loc>
     <image:image>
-      <image:loc>https://crusaderatlas.com/fortress-pics/aqaba_fortress.jpg</image:loc>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Baghras2.jpg</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://crusaderatlas.com/sites/church-of-st-anne-khirbet-sandhanna/</loc>
+    <loc>https://crusaderatlas.com/sites/cursat-castle/</loc>
     <image:image>
-      <image:loc>https://crusaderatlas.com/fortress-pics/Church%20of%20St%20anne%20Beit%20Guvrin.jpg</image:loc>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Kozkalesi.jpg</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://crusaderatlas.com/sites/akeldama-chaudemar-crusader-charnel-house/</loc>
+    <loc>https://crusaderatlas.com/sites/trapessac/</loc>
     <image:image>
-      <image:loc>https://crusaderatlas.com/fortress-pics/Akeldama-Chaudemar-Charnel-House.jpg</image:loc>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Trapesac.jpg</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://crusaderatlas.com/sites/st-cleophas-church-al-qubeiba/</loc>
+    <loc>https://crusaderatlas.com/sites/alexandretta-iskenderun/</loc>
     <image:image>
-      <image:loc>https://crusaderatlas.com/fortress-pics/Church-of-St-Cleophas.jpg</image:loc>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Iskenderun_Shoreline_2012.jpg</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://crusaderatlas.com/sites/jifna-crusader-site-of-jifna/</loc>
+    <loc>https://crusaderatlas.com/sites/cave-church-of-saint-peter-antioch/</loc>
     <image:image>
-      <image:loc>https://crusaderatlas.com/fortress-pics/Jifna-Crusader-Manor.jpg</image:loc>
+      <image:loc>https://crusaderatlas.com/fortress-pics/ChurchSaintPeterAntakya.jpg</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://crusaderatlas.com/sites/khan-as-sawiya-khirbet-berkit/</loc>
+    <loc>https://crusaderatlas.com/sites/monastery-of-saint-simeon-stylites-the-younger/</loc>
     <image:image>
-      <image:loc>https://crusaderatlas.com/fortress-pics/Khan-as-Sawiya.jpg</image:loc>
+      <image:loc>https://crusaderatlas.com/fortress-pics/Monastery_St_Simeon_Younger.jpg</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://crusaderatlas.com/sites/house-of-arches-lod-lydda/</loc>
+    <loc>https://crusaderatlas.com/sites/siege-of-antioch-1097-1098/</loc>
     <image:image>
-      <image:loc>https://crusaderatlas.com/fortress-pics/136169_lod_house_of_arches_PikiWiki_Israel.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://crusaderatlas.com/sites/lifta-clepsta/</loc>
-    <image:image>
-      <image:loc>https://crusaderatlas.com/fortress-pics/lifta.jpg</image:loc>
+      <image:loc>https://crusaderatlas.com/fortress-pics/SiegeofAntioch.jpeg</image:loc>
     </image:image>
   </url>
   <url>

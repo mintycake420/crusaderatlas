@@ -7,8 +7,8 @@
     "repository": "https://github.com/mintycake420/crusaderatlas",
     "license": "CC-BY-4.0",
     "version": "1.0.0",
-    "generated": "2026-06-04",
-    "record_count": 176
+    "generated": "2026-07-11",
+    "record_count": 208
   },
   "features": [
     {
@@ -1307,7 +1307,7 @@
         "territory": "Israel",
         "modern_location": "Beit Safafa, Jerusalem",
         "lordship": "Royal Domain - Jerusalem",
-        "coordinate_precision": "exact",
+        "coordinate_precision": "approximate",
         "description": "A massive twelfth-century tower once stood beside the old Jerusalem road at Beit Safafa, today a neighbourhood in southern Jerusalem. Its barrel-vaulted basement, cistern, internal stair, and upper floors housed a small Frankish garrison whose job was to keep the road to the capital safe. Only fragmentary remains survive.",
         "fortification": {
           "status": "definite",
@@ -1342,7 +1342,7 @@
         "territory": "Israel",
         "modern_location": "Beit She'an, Israel",
         "lordship": "Lordship of Bethsan",
-        "coordinate_precision": "exact",
+        "coordinate_precision": "approximate",
         "description": "Beit She'an, one of the oldest continuously inhabited sites in the region, was a Frankish administrative centre in the twelfth century. A massive square tower some 17 metres across, built partly of reused Roman ashlar blocks, stood a few hundred metres from the great Roman theatre. It was incorporated into the later Ottoman 'Old Serail' and its Crusader core can still be traced in the old town.",
         "fortification": {
           "status": "definite",
@@ -1515,6 +1515,79 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "house-of-arches-lod-lydda",
+        "internal_key": "House of Arches (Lod / Lydda)",
+        "name": "House of Arches (Lod / Lydda)",
+        "alternate_names": [
+          "בית הקשתות",
+          "Beit HaKashtot"
+        ],
+        "category": "tower",
+        "territory": "Israel",
+        "modern_location": "Old City of Lod (Lydda), Israel",
+        "lordship": "County of Jaffa and Ascalon",
+        "coordinate_precision": "exact",
+        "description": "The House of Arches (Beit HaKashtot) is a large kurkar-sandstone building in the Old City of Lod — the town the Crusaders knew as Lydda, seat of a Latin bishop and the centre of the cult of Saint George. It is built as three successive ranges of broad arches carrying cross-vaults roofed with shallow domes, each range raised in a different era, so a single structure preserves several centuries of building. Its documented life is industrial: through the Ottoman period and the British Mandate, down to 1948, it worked as an olive-oil press (a bet bad), one of many in Lod, and the stone crushing basins still stand inside. The Crusader link is suggested rather than proven. Local heritage accounts attribute the monumental arches of the northern range to the Crusader period — possibly the substructure of a hall or grand public building — and the smaller central arches to the Mamluk period, with the simpler southern range Ottoman. The published archaeological surveys, however, describe only the oil-press phase and do not confirm a twelfth-century date, so the Crusader attribution is best treated as a local tradition awaiting excavation rather than an established fact. The building survives in sound structural condition and is earmarked for conservation within the regeneration of Lod's Old City.",
+        "fortification": {
+          "status": "no",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "136169_lod_house_of_arches_PikiWiki_Israel.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Lod",
+          "he": "https://he.wikipedia.org/wiki/%D7%9C%D7%95%D7%93"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.90115,
+          31.95296
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "jifna-crusader-site-of-jifna",
+        "internal_key": "Jifna / Crusader Site of Jifna",
+        "name": "Jifna / Crusader Site of Jifna",
+        "alternate_names": [
+          "Jifna",
+          "Jafenia",
+          "Jafenie",
+          "Jifneh",
+          "Gophna"
+        ],
+        "category": "tower",
+        "territory": "Israel",
+        "modern_location": "Jifna, ~23 km north of Jerusalem, West Bank",
+        "lordship": "Lordship of Nablus",
+        "coordinate_precision": "exact",
+        "description": "Jifna sits about 23 km north of Jerusalem on the old road to Nablus. The Crusaders held it from 1099 onward as the small lordship of Jafenia (the form \"Raymundus de Jafenia\" appears in a 1182 charter). At its centre they built a fortified courtyard manor with a monumental gate guarded by a portcullis, a large vaulted hall, and thick walls of well-cut masonry — substantial remains of which still stand in the village core. They also partially rebuilt the older church of St. George with salvaged Byzantine masonry; it fell into ruin again after Saladin's victory in 1187. Later massive walls in the centre of the village are in an Arab post-Crusader style and should not be conflated with the twelfth-century work. Jifna is one of the better-preserved examples of a Frankish rural manor in the Latin Kingdom.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "Jifna-Crusader-Manor.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Jifna",
+          "he": "https://he.wikipedia.org/wiki/%D7%92%27%D7%99%D7%A4%D7%A0%D7%94"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2156,
+          31.9619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "kafr-lam-habonim",
         "internal_key": "KAFR LAM",
         "name": "Kafr Lam (Habonim)",
@@ -1544,6 +1617,45 @@
         "coordinates": [
           34.9344,
           32.6353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "khan-as-sawiya-khirbet-berkit",
+        "internal_key": "Khan as-Sawiya (Khirbet Berkit)",
+        "name": "Khan as-Sawiya (Khirbet Berkit)",
+        "alternate_names": [
+          "Khan as-Sawiya",
+          "Khan as-Sawiyah",
+          "Khirbet Berkit",
+          "Khirbet Berqit",
+          "As-Sawiya khan",
+          "Borceos"
+        ],
+        "category": "tower",
+        "territory": "Israel",
+        "modern_location": "Edge of As-Sawiya village, ~15–18 km south of Nablus, West Bank",
+        "lordship": "Lordship of Nablus",
+        "coordinate_precision": "approximate",
+        "description": "Khan as-Sawiya, also called Khirbet Berkit, is a small square ruined caravanserai on the edge of the village of As-Sawiya, roughly 15–18 km south of Nablus on the old road to Jerusalem. Its walls still stand to some height and the corners are built with drafted ashlars — a masonry style strongly associated with Frankish secular building in the twelfth century, though the technique was reused by later builders as well. Pottery sherds of Crusader and Ayyubid date have been recovered from the site and the village itself is recorded as Muslim-inhabited during the twelfth and thirteenth centuries. The Khan is included in Pringle's catalogue of secular buildings in the Latin Kingdom, but no medieval document directly names it; its Crusader-period attribution rests on its architecture and surface finds rather than on written evidence. The 19th-century explorer C. W. Wilson tentatively identified the ruin with Borceos, a town mentioned by Josephus on the border between Samaria and Judea.",
+        "fortification": {
+          "status": "possible",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "Khan-as-Sawiya.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/As-Sawiya",
+          "he": "https://he.wikipedia.org/wiki/%D7%90-%D7%A1%D7%90%D7%95%D7%95%D7%99%D7%94"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2578,
+          32.0847
         ]
       }
     },
@@ -1735,6 +1847,44 @@
         "coordinates": [
           34.941,
           32.7047
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lifta-clepsta",
+        "internal_key": "Lifta (Clepsta)",
+        "name": "Lifta (Clepsta)",
+        "alternate_names": [
+          "Clepsta",
+          "Nephtho",
+          "Mei Neftoah",
+          "Mey Naftoah",
+          "ליפתא"
+        ],
+        "category": "tower",
+        "territory": "Israel",
+        "modern_location": "Lifta, Jerusalem, Israel",
+        "lordship": "Royal Domain - Jerusalem",
+        "coordinate_precision": "approximate",
+        "description": "Lifta — the Clepsta of the Crusaders, and the Nephtho of Roman and Byzantine writers — clings to the steep northwestern edge of Jerusalem above a perennial spring, on the old descent toward the coastal plain. At the centre of the village stand the remains of a Crusader-period courtyard building, recorded by Denys Pringle in his gazetteer of the kingdom's secular buildings (p. 66); the place is traditionally identified with the biblical spring of Nephtoah (Mei Neftoah). Lifta's far more conspicuous ruins are the domed stone houses of the Ottoman-era Arab village, depopulated in 1948 and never resettled — which, with the spring, the pool, and the terraced hillside, have made it one of the best-preserved historic villages around Jerusalem and a candidate for heritage protection.",
+        "fortification": {
+          "status": "uncertain",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "lifta.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Lifta",
+          "he": "https://he.wikipedia.org/wiki/%D7%9C%D7%99%D7%A4%D7%AA%D7%90"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.19667,
+          31.79444
         ]
       }
     },
@@ -2137,6 +2287,46 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "akeldama-chaudemar-crusader-charnel-house",
+        "internal_key": "Akeldama / Chaudemar — Crusader Charnel House",
+        "name": "Akeldama / Chaudemar — Crusader Charnel House",
+        "alternate_names": [
+          "Akeldama",
+          "Hakeldama",
+          "Aceldama",
+          "Haceldama",
+          "Chaudemar",
+          "Field of Blood",
+          "Hakl ed-Damm"
+        ],
+        "category": "church",
+        "territory": "Israel",
+        "modern_location": "Southern slope of the Valley of Hinnom, Jerusalem",
+        "lordship": "Royal Domain - Jerusalem",
+        "coordinate_precision": "exact",
+        "description": "South of Jerusalem, on the slope of the Valley of Hinnom, lies Akeldama, the \"Field of Blood\" traditionally linked to Judas Iscariot and the potter's field. In the 12th century, the Crusaders built here a large vaulted charnel house known as Chaudemar, where the bones of dead pilgrims, knights, and patients from the Hospitaller hospital near the Holy Sepulchre were gathered. The site combined biblical memory, burial practice, and Crusader devotion: to be buried in the holy soil of Jerusalem, close to the city of resurrection and judgment, gave this grim ruin powerful spiritual meaning.",
+        "fortification": {
+          "status": "no",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "Akeldama-Chaudemar-Charnel-House.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Akeldama",
+          "he": "https://he.wikipedia.org/wiki/%D7%97%D7%A7%D7%9C_%D7%93%D7%9E%D7%90"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2328,
+          31.7694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "basilica-of-the-annunciation-nazareth",
         "internal_key": "Basilica of the Annunciation, Nazareth",
         "name": "Basilica of the Annunciation, Nazareth",
@@ -2251,7 +2441,7 @@
         "territory": "Israel",
         "modern_location": "Chapel of the Ascension (Jerusalem)",
         "lordship": "Royal Domain - Jerusalem",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "Rebuilt by the Crusaders around 1150 on the summit of the Mount of Olives at the traditional site of Christ's ascension. Saladin's armies took the hill in 1187 and converted the complex into a mosque, but the Crusader-built octagonal shrine (the edicule) survives intact — it still houses the 'Ascension Rock' and today serves as an Islamic shrine shared for Christian pilgrimage.",
         "fortification": {
           "status": "definite",
@@ -2283,7 +2473,7 @@
         "territory": "Israel",
         "modern_location": "Church of Saint George (Lod / Lydda)",
         "lordship": "County of Jaffa and Ascalon",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "Grand 12th-century Crusader church over the symbolic tomb of Saint George at Lydda, a major pilgrimage site and the seat of the Bishop of Lydda. Razed by Saladin's armies in 1191; a Mamluk mosque was raised over the ruins in 1268, and a Greek Orthodox church was rebuilt on the eastern end of the Crusader nave and northern aisle in the 19th century, sharing the site with the mosque.",
         "fortification": {
           "status": "definite",
@@ -2350,7 +2540,7 @@
         "territory": "Israel",
         "modern_location": "Church of Saint Mary of the Germans (Jerusalem)",
         "lordship": "Royal Domain - Jerusalem",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "Romanesque church built in 1128 in the Jewish Quarter of Crusader Jerusalem as part of a larger German pilgrimage complex that included a hospital and hostel for German-speaking pilgrims. Partly destroyed in the 13th century during the Ayyubid recapture of Jerusalem; its ruins were rediscovered in 1968 during post-1967 archaeological work and are now preserved as an open-air monument.",
         "fortification": {
           "status": "definite",
@@ -2368,6 +2558,78 @@
         "coordinates": [
           35.2336,
           31.7759
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "church-of-st-anne-khirbet-sandhanna",
+        "internal_key": "Church of St. Anne (Khirbet Sandhanna)",
+        "name": "Church of St. Anne (Khirbet Sandhanna)",
+        "alternate_names": [
+          "Khirbet Sandahanna",
+          "Sandhanna church",
+          "Sandahanna",
+          "St. Anne, Maresha"
+        ],
+        "category": "church",
+        "territory": "Israel",
+        "modern_location": "Beit Guvrin-Maresha National Park, Israel",
+        "lordship": "Royal Domain - Jerusalem",
+        "coordinate_precision": "approximate",
+        "description": "A Crusader-era basilica rebuilt over a Byzantine predecessor on the southern edge of the Lordship of Bethgibelin, at the site of ancient Maresha. The Arabic toponym Khirbet Sandahanna — \"the ruin of Saint Anne\" — preserves the medieval dedication. The freestanding eastern apse with its half-dome vault is the most intact surviving element; the church was abandoned after Saladin's reconquest in 1187 and never restored. Today the ruins lie within Beit Guvrin-Maresha National Park.",
+        "fortification": {
+          "status": "no",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": "Church of St anne Beit Guvrin.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Beit_Guvrin-Maresha_National_Park",
+          "he": "https://he.wikipedia.org/wiki/%D7%97%D7%95%D7%A8%D7%91%D7%AA_%D7%A1%D7%A0%D7%93%D7%97%D7%A0%D7%94"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9006,
+          31.597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "church-of-st-george-deir-al-asad",
+        "internal_key": "Church of St. George, Deir al-Asad",
+        "name": "Church of St. George, Deir al-Asad",
+        "alternate_names": [
+          "Saint Jorge Labane",
+          "Abbey Church of St George (Labeyne)"
+        ],
+        "category": "church",
+        "territory": "Israel",
+        "modern_location": "Deir al-Asad / Bi'ina, Western Galilee",
+        "lordship": "St George of Labeyne",
+        "coordinate_precision": "approximate",
+        "description": "The remains of a 12th-century Crusader church stand in the shared centre of the twin villages of Deir al-Asad and Bi'ina, the medieval caput of the fief of St George de la Beyne. Denys Pringle identified the building as an abbey church of St George, and Victor Guérin, visiting in 1875, recorded that it had three naves and three apses pierced by narrow windows, consistent with a Carthusian plan. The village took its modern Arabic name — \"the lion's monastery\" — from the conspicuous Frankish ruins at its heart.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "129452_the_town_of_deir_al-assad_PikiWiki_Israel.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Deir_al-Asad",
+          "he": "https://he.wikipedia.org/wiki/%D7%93%D7%99%D7%A8_%D7%90%D7%9C-%D7%90%D7%A1%D7%93"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.27194,
+          32.91972
         ]
       }
     },
@@ -2418,7 +2680,7 @@
         "territory": "Israel",
         "modern_location": "Crusader Church of Caesarea Maritima",
         "lordship": "Lordship of Caesarea",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "Three-apsed Romanesque church built in twelfth-century Crusader Caesarea. Louis IX of France, who spent four years in the Holy Land after his defeat in Egypt, heavily refortified the town's walls in 1251–1252. In 1265 the town and church fell to the Mamluk sultan Baibars, who razed the city so thoroughly — tearing down its harbour, walls and churches — that no Frankish re-occupation would ever be possible. The church's apsidal foundations, partly excavated, still stand within the Israeli national park.",
         "fortification": {
           "status": "definite",
@@ -2580,6 +2842,44 @@
         "coordinates": [
           35.2354,
           31.781
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "st-cleophas-church-al-qubeiba",
+        "internal_key": "St. Cleophas Church, Al-Qubeiba",
+        "name": "St. Cleophas Church, Al-Qubeiba",
+        "alternate_names": [
+          "Al-Qubeiba Church",
+          "Sanctuary of Emmaus, El Qubeibeh",
+          "Parva Mahomeria",
+          "Cleopas' House",
+          "Castellum Emmaus"
+        ],
+        "category": "church",
+        "territory": "Israel",
+        "modern_location": "Al-Qubeiba, ~11 km northwest of Jerusalem, West Bank",
+        "lordship": "Royal Domain - Jerusalem",
+        "coordinate_precision": "exact",
+        "description": "St. Cleophas Church stands at Al-Qubeiba, a village about 11 km northwest of Jerusalem along an old Roman road. In the 12th century the Crusaders established a Frankish settlement here called Parva Mahomeria (\"the little dome,\" the same meaning as the Arabic name); the village is mentioned in a 1159 charter defining its borders with Beit 'Anan. Excavations beneath and around the present church have uncovered the remains of a Crusader basilica — traditionally identified with the \"house of Cleopas\" — together with a row of medieval village houses lining the old road. The Franciscan Custody of the Holy Land acquired the ruins in 1861 (donated by the Marquise Pauline de Nicolay) and rebuilt the present sanctuary in 1902 with the permission of Sultan Abdul Hamid II, incorporating the exposed 12th-century foundations. Al-Qubeiba is one of the three main candidates traditionally identified with the New Testament Emmaus; the Franciscans adopted it as such from the 14th century. The visible church above ground is the 1902 reconstruction, but the Crusader-era basilica foundations and adjoining village houses excavated at the site are genuine.",
+        "fortification": {
+          "status": "no",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": "Church-of-St-Cleophas.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/St._Cleophas_Church",
+          "he": "https://he.wikipedia.org/wiki/%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%AA_%D7%90%D7%9C-%D7%A7%D7%95%D7%91%D7%99%D7%99%D7%91%D7%94"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.1352,
+          31.8404
         ]
       }
     },
@@ -3431,7 +3731,7 @@
         "territory": "West Bank",
         "modern_location": "Nablus, West Bank",
         "lordship": "Lordship of Nablus",
-        "coordinate_precision": "exact",
+        "coordinate_precision": "approximate",
         "description": "Nablus — Neapolis to the Romans, Naples to the Crusaders — was a major royal town in the heart of Samaria. The battered base of a large tower, presumed to be part of the town's castle, still stands in the old city alongside other medieval fragments. Crusader Nablus was the scene of a 1120 ecclesiastical council which issued a set of influential legal canons.",
         "fortification": {
           "status": "definite",
@@ -3544,7 +3844,7 @@
         "territory": "West Bank",
         "modern_location": "Al-Bireh, West Bank",
         "lordship": "Royal Domain - Jerusalem",
-        "coordinate_precision": "exact",
+        "coordinate_precision": "approximate",
         "description": "Al-Bira, next to Ramallah, was the Crusader 'new town' of Magna Mahumeria, a planned Frankish settlement attached to the Church of the Holy Sepulchre. At its lower end stood a small castle or tower with a barrel-vaulted basement. The parish church of Magna Mahumeria is still partially visible beneath later buildings in al-Bira.",
         "fortification": {
           "status": "definite",
@@ -3997,7 +4297,7 @@
         "territory": "West Bank",
         "modern_location": "Church of the Nativity (Bethlehem)",
         "lordship": "Royal Domain - Jerusalem",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "The core of the building is a 4th- and 6th-century Byzantine basilica over the grotto venerated as Christ's birthplace, but the Crusaders restored, decorated and embellished it extensively during their 12th-century rule. Between 1165 and 1169, wealthy pilgrims and the imperial dynasties of Byzantium and the Latin Kingdom jointly funded the addition of lavish wall mosaics and column paintings of saints; much of this Comnenian and Frankish decoration survives and was restored in the 2010s.",
         "fortification": {
           "status": "definite",
@@ -4218,7 +4518,7 @@
         "territory": "Gaza Strip",
         "modern_location": "Deir al-Balah, Gaza Strip",
         "lordship": "Lordship of Darum",
-        "coordinate_precision": "exact",
+        "coordinate_precision": "approximate",
         "description": "Deir al-Balah — 'the monastery of the date palms' — is the site of the twelfth-century Crusader castle of Darum, built by King Amalric around 1170 on the desert road into Egypt. A four-tower quadrangular castle, it was besieged and rebuilt several times before Saladin finally destroyed it after Hattin. Almost nothing of the castle is visible today in the modern Gaza Strip town.",
         "fortification": {
           "status": "definite",
@@ -4250,7 +4550,7 @@
         "territory": "Gaza Strip",
         "modern_location": "Great Mosque of Gaza (Crusader Church)",
         "lordship": "County of Jaffa and Ascalon",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "Originally a Byzantine church of St John converted to a mosque in early Islamic times and re-converted to a Crusader church in 1150 under the Templars. After Saladin's victory in 1187 the building reverted to a mosque — the Great Mosque of Gaza — but the Templars' Romanesque nave, pointed arches and handsome western portal remained intact and are still clearly visible today as an architectural palimpsest at the heart of the old city.",
         "fortification": {
           "status": "definite",
@@ -4335,6 +4635,42 @@
         "coordinates": [
           35.7275,
           32.3236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "aqaba-fortress",
+        "internal_key": "Aqaba Fortress",
+        "name": "Aqaba Fortress",
+        "alternate_names": [
+          "Aqaba Castle",
+          "Mamluk Castle of Aqaba",
+          "Qasr al-Aqaba"
+        ],
+        "category": "major_castle",
+        "territory": "Jordan",
+        "modern_location": "Aqaba, Jordan",
+        "lordship": null,
+        "coordinate_precision": "exact",
+        "description": "The Aqaba Fortress — Qasr al-Aqaba, also called the Mamluk Castle — is a fortified caravanserai on the northern beach of the Gulf of Aqaba. Its present fabric dates mainly to the early sixteenth century, when the Mamluk sultan Qansuh al-Ghuri rebuilt earlier fortifications on the site to guard the hajj road running south from Cairo to Mecca and Medina.\n\nThe Crusaders had briefly dominated this corner of the Red Sea. From about 1116, Baldwin I's island castle of Île de Graye on Pharaoh's Island, a few kilometres off the Aqaba shore, taxed pilgrim shipping and caravans passing between Egypt and the Hejaz until Saladin's forces recovered it in 1170. The Mamluk and later Ottoman fortress reoccupied the same strategic choke-point three centuries later, policing the same pilgrim traffic that the Frankish garrison had once preyed on.\n\nIn the century before the First World War the Ottomans used the caravanserai increasingly as a military stronghold. It was taken by the Arab Revolt forces of Sharif Hussein, Auda abu Tayi and T. E. Lawrence on 6 July 1917 in the famous overland assault from Wadi Rum that opened the southern flank of the Hejaz campaign.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "aqaba_fortress.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Aqaba_Fortress",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.002,
+          29.5218
         ]
       }
     },
@@ -4494,7 +4830,7 @@
         "territory": "Jordan",
         "modern_location": "Church of St. Mary (Kerak Castle)",
         "lordship": "Lordship of Oultrejordain",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "Consecrated in 1118 inside the courts of Kerak Castle, this is the largest surviving Crusader church in modern Jordan. Its architecture shows a striking collaboration between Latin architects and local Arab builders: Frankish ribbed vaults and pointed arches sit over locally-dressed ashlar walls, producing a distinctive hybrid of Occitan and Moabite masonry.",
         "fortification": {
           "status": "definite",
@@ -4535,7 +4871,7 @@
         "territory": "Egypt",
         "modern_location": "Pharaoh's Island (Jazirat Fara'un), Gulf of Aqaba, Egypt",
         "lordship": null,
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "A small granite island at the northern head of the Gulf of Aqaba carries the southernmost outwork associated with the Kingdom of Jerusalem. Tradition — preserved by William of Tyre — credits King Baldwin I with building a fortress here around 1116 to tax and threaten the Red Sea pilgrim traffic; modern scholarship is cautious, since documented Frankish garrison records are thin. In 1170 Saladin's engineers seized the island and dramatically enlarged the defences, giving the castle its modern Arabic name 'Qal'at Salah al-Din'. Raynald of Châtillon used the anchorage in 1182–83 to launch his infamous Red Sea raid, having dismantled prefabricated galleys at Kerak and hauled them across Oultrejordain on camel-back. Today the islet — Jazirat Fara'un — is an Egyptian antiquities park with a curtain wall, archer towers, bath, kitchens and dovecotes surviving above the coral-fringed shore.",
         "fortification": {
           "status": "definite",
@@ -4627,6 +4963,38 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "siege-of-damietta-1218-1219",
+        "internal_key": "Siege of Damietta (1218–1219)",
+        "name": "Siege of Damietta (1218–1219)",
+        "alternate_names": [
+          "Fifth Crusade siege of Damietta",
+          "Siege of Dumyat"
+        ],
+        "category": "siege",
+        "territory": "Egypt",
+        "modern_location": "Damietta (Dumyat), Egypt",
+        "lordship": null,
+        "coordinate_precision": "exact",
+        "description": "In May 1218 the vanguard of the Fifth Crusade sailed into the eastern mouth of the Nile and dropped anchor opposite Damietta — the Ayyubid port that controlled the approach to Cairo. The city was protected by a great chain-tower standing in midstream and a second iron chain anchored to the eastern bank. Frisian pilgrims and John of Brienne's knights spent three months building a floating siege engine — two round ships lashed together into a castle designed by the German chronicler Oliver of Paderborn — and on 24 August 1218 used it to scale and capture the chain-tower. Sultan al-Adil reportedly died of shock on hearing the news; his son al-Kamil inherited the war.\n\nThe siege that followed lasted fifteen more months. Al-Kamil twice offered to return Jerusalem, Bethlehem and the whole Christian coast as far as the Jordan in exchange for a Crusader withdrawal. The papal legate Pelagius Galvani refused both offers over John of Brienne's furious objection, insisting on total victory. Disease, famine and a Nile flood that drowned the Christian camp thinned the besieging army through the winter; another famous visitor, a small Italian friar named Francis of Assisi, crossed the lines in September 1219 and spent several days unmolested in al-Kamil's tent attempting to convert him. On 5 November 1219 the garrison — reduced, by the crusaders' own count, from perhaps seventy thousand to around three thousand starving survivors — opened the gates, and the Franks found the streets lined with the unburied dead.\n\nThe Fifth Crusade held the port for less than two years. An advance on Cairo in the summer of 1221 ended in catastrophe at al-Mansurah when al-Kamil opened the Nile sluices and trapped the Frankish army between the branches of the river; Damietta was surrendered back on 8 September 1221 as the price of Pelagius's release. The siege is remembered in the chronicles as the hinge of the Fifth Crusade — a year of engineering brilliance, two refused peace offers that would have restored Jerusalem without a blow, and the first recorded diplomatic encounter between a sitting sultan of Egypt and a Christian saint.",
+        "fortification": null,
+        "has_extended_narrative": false,
+        "image": "Capturing_Damiate.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Siege_of_Damietta_(1218%E2%80%931219)",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.8133,
+          31.4166
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "tyre",
         "internal_key": "Tyre",
         "name": "Tyre",
@@ -4678,7 +5046,7 @@
         "territory": "Lebanon",
         "modern_location": "Arnoun, Nabatieh Governorate, Lebanon",
         "lordship": "Lordship of Sidon",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "One of the most striking examples of Crusader military architecture in the Levant, perched on a sheer rock over the Litani. Fulk of Jerusalem captured the site in 1139; the Franks built a roughly triangular fortress (150 × 100 m) in two wards with a 12 × 12 m keep — notable for its Syrian-style ground-floor entrance rather than the usual European first-floor door. Saladin took it after a long siege in 1189–90, during which the Frankish lord Reynald of Sidon famously stalled surrender negotiations by pretending to be converting to Islam, buying months of time for relief while feigning theological study — a stratagem recorded with grudging admiration by Saladin's secretaries. The Franks recovered Beaufort fifty years later; Baibars captured it for the Mamluks in 1268. Its strategic value was so great that Beaufort was still an active military post during the 1982 Lebanon War.",
         "fortification": {
           "status": "definite",
@@ -4713,7 +5081,7 @@
         "territory": "Lebanon",
         "modern_location": "Byblos (Jbail), Mount Lebanon Governorate",
         "lordship": "County of Tripoli",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "Seat of the Genoese Embriaco family, who ruled Gibelet as naval magnates from 1100 until the late thirteenth century. A hybrid castrum–turris plan: roughly square curtain walls with four corner towers enclosing a massive central donjon, surrounded by a moat and faced with reused Roman columns. Saladin took it in 1188 after Hattin and partially dismantled it in 1190; the Franks recovered Byblos in 1197 and rebuilt the defences, which repulsed a Cypriot naval assault as late as 1369.",
         "fortification": {
           "status": "definite",
@@ -4928,7 +5296,7 @@
         "territory": "Lebanon",
         "modern_location": "Sidon (Saida), South Governorate, Lebanon",
         "lordship": "Lordship of Sidon",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "Marvel of maritime engineering built in 1228 by the Knights Hospitaller on a small rocky island connected to Sidon's port by an 80-metre causeway. The Crusaders deliberately chose an islet that had housed an ancient Phoenician temple to Melqart, reusing the submerged foundations. The lower phase of the east tower is Frankish; the Mamluks partially destroyed and then rebuilt the upper tower and extended the causeway after taking Sidon.",
         "fortification": {
           "status": "definite",
@@ -5140,7 +5508,7 @@
         "territory": "Lebanon",
         "modern_location": "Sidon (Saida), South Governorate, Lebanon",
         "lordship": "Lordship of Sidon",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "Landward counterpart to the Sidon Sea Castle, perched on Sidon's ancient acropolis over a tenth-century Fatimid citadel, itself built on demolished classical structures. The site was devastated by an Ayyubid attack in 1249, and completely reconstructed in 1254 by French Crusaders during Louis IX's occupation of the city. Together with the Sea Castle it made Sidon one of the most imposing Frankish strongholds on the coast until it was sacked by the Mongols under Kitbuqa in 1260.",
         "fortification": {
           "status": "definite",
@@ -5351,7 +5719,7 @@
         "territory": "Lebanon",
         "modern_location": "Cathedral of the Holy Cross (Tyre)",
         "lordship": "Seigneury of Tyre",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "Founded in 1129 as the metropolitan cathedral of Tyre, this was one of the largest and most prestigious churches of the Latin Kingdom of Jerusalem. After the loss of Jerusalem in 1187 it became the principal coronation site of the kings of the 'Second Kingdom', and hosted a number of royal marriages. Tradition — contested among the chronicles — holds that the bones of Holy Roman Emperor Frederick Barbarossa, who drowned in the River Saleph on his way to the Third Crusade, were interred here in 1190. Destroyed by the Mamluks in 1291 when they took Tyre; substantial ruins of the nave and apse survive on the Phoenician causeway.",
         "fortification": {
           "status": "definite",
@@ -5383,7 +5751,7 @@
         "territory": "Lebanon",
         "modern_location": "Our Lady of the Wind / Saydet el-Rih (Anfeh)",
         "lordship": "County of Tripoli",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "Small church on the rocky Anfeh peninsula, originally a Byzantine chapel that the Crusaders rebuilt and expanded by adding a western narthex and a northern chamber. It is one of the very few churches in Lebanon to retain medieval frescoes from the Crusader era, depicting saints, angels and biblical scenes including the sacrifice of Isaac.",
         "fortification": {
           "status": "definite",
@@ -5415,7 +5783,7 @@
         "territory": "Lebanon",
         "modern_location": "St. John's Cathedral (Byblos)",
         "lordship": "County of Tripoli",
-        "coordinate_precision": "approximate",
+        "coordinate_precision": "exact",
         "description": "Cathedral of Saint John the Baptist built by the Crusaders in 1115 in the Romanesque style just inside the walls of Gibelet (modern Byblos). Its most distinctive feature is an open-air domed baptistery on the north side dating to the original 12th-century construction. Earthquakes reduced it to disrepair in later centuries; in 1764 the building was granted to the Lebanese Maronite Order and rededicated to St Jean-Marc.",
         "fortification": {
           "status": "definite",
@@ -5532,6 +5900,150 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "apamea-qalat-al-madiq",
+        "internal_key": "Apamea (Qal'at al-Madiq)",
+        "name": "Apamea (Qal'at al-Madiq)",
+        "alternate_names": [
+          "Afamiyya",
+          "Famiyyah",
+          "Qal'at al-Mudiq"
+        ],
+        "category": "major_castle",
+        "territory": "Syria",
+        "modern_location": "Qalaat al-Madiq, Hama Governorate, Syria",
+        "lordship": "Principality of Antioch",
+        "coordinate_precision": "exact",
+        "description": "The medieval fortress of Afamiyya, crowning the acropolis mound above the ruins of classical Apamea on the edge of the Ghab plain. The Nizari Ismailis briefly bought the citadel in 1106, only for Tancred of Antioch to oust them within months — likely the first military clash between the Assassins and the Franks — and Frankish Apamea then anchored the principality's farthest south-eastern frontier for four decades, enduring the raids of Usama ibn Munqidh's kinsmen from neighbouring Shaizar. It returned to Muslim control in 1149, in the aftermath of Nur ad-Din's victory at Inab, and the present fortress walls are largely Nur ad-Din's work. The walled hilltop remains an inhabited village today.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "Qalat_el-Mudiq.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Qalaat_al-Madiq",
+          "he": "https://he.wikipedia.org/wiki/%D7%90%D7%A4%D7%90%D7%9E%D7%99%D7%94"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.3921,
+          35.42
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bourzey-castle",
+        "internal_key": "Bourzey Castle",
+        "name": "Bourzey Castle",
+        "alternate_names": [
+          "Qal'at Mirza",
+          "Barzuya",
+          "Rochefort",
+          "Lysias"
+        ],
+        "category": "major_castle",
+        "territory": "Syria",
+        "modern_location": "near Shathah, overlooking the Ghab valley, Syria",
+        "lordship": "Principality of Antioch",
+        "coordinate_precision": "exact",
+        "description": "Frankish Rochefort, the ancient Lysias — a Byzantine castle on a 450-metre spur commanding the Ghab depression of the middle Orontes, on the route between Latakia and Apamea. Recovered for Byzantium by John I Tzimiskes in 975 and held by the Principality of Antioch from about 1103, it screened the principality's south-eastern flank toward the Muslim interior. Saladin took it on 23 August 1188 after a three-day siege, in the campaign that dismembered the principality, and Ayyubid and Mamluk garrisons refortified it afterwards. The ruins preserve twenty-one towers, a small church, underground chambers, and water reservoirs.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": "Bourzey3.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Bourzey_castle",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.2608,
+          35.6581
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "citadel-of-tartus",
+        "internal_key": "Citadel of Tartus",
+        "name": "Citadel of Tartus",
+        "alternate_names": [
+          "Tortosa Citadel",
+          "Crusader Castle of Tartus"
+        ],
+        "category": "major_castle",
+        "territory": "Syria",
+        "modern_location": "Tartus, Syrian coast",
+        "lordship": "County of Tripoli",
+        "coordinate_precision": "exact",
+        "description": "The largest and most heavily fortified of the County of Tripoli's coastal strongholds. Crusaders first besieged the city in 1099 but lost it shortly after; Raymond IV of Toulouse retook it in February 1102 after a fortnight's siege. Around 1165 the Knights Templar assumed guardianship and rebuilt the castle on a grand scale, with two concentric defensive walls, eleven towers, a lancet-windowed chapel, and a postern gate that allowed the harbour to resupply the garrison directly. The citadel withstood Saladin's assault in July 1188 and Mamluk sieges by Baibars in 1267 and 1271. After the fall of Acre in May 1291, the Templars held on for another three months and finally evacuated to nearby Arwad island on 3 August — the last mainland Crusader garrison to leave the Levant. Today only foundation masonry and fragments of the inner enceinte remain, embedded in the modern town.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "Citadel of Tartus.JPG",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Citadel_of_Tartus",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.8848,
+          34.8936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "harim-castle",
+        "internal_key": "Harim Castle",
+        "name": "Harim Castle",
+        "alternate_names": [
+          "Harenc",
+          "Harim",
+          "Harem"
+        ],
+        "category": "major_castle",
+        "territory": "Syria",
+        "modern_location": "Harim (Harem), Idlib Governorate, Syria",
+        "lordship": "Principality of Antioch",
+        "coordinate_precision": "approximate",
+        "description": "The fortress town of Harenc, guarding the eastern approaches to Antioch beyond the Orontes. Fortified by the Byzantines after 959 and taken by the crusaders in 1097, it served the principality as its chief eastern outpost for half a century. Nur ad-Din took it in 1149 after his victory at Inab; Baldwin III recovered it in 1158, and it was lost for good on 12 August 1164, when Nur ad-Din crushed the combined relief army at the Battle of Harim and led Prince Bohemond III, Raymond III of Tripoli, Hugh VIII of Lusignan, and Joscelin III into captivity. Rebuilt under the Ayyubid al-Zahir Ghazi, the town and castle were largely destroyed by the Mongols under Hulagu in 1260; the surviving fabric on the citadel mound dates mainly from the era of the Muslim–Crusader wars.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": "Harim_Ifpo_aerial.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Harem,_Syria",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.5192,
+          36.2076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "krak-des-chevaliers",
         "internal_key": "Krak des Chevaliers",
         "name": "Krak des Chevaliers",
@@ -5580,7 +6092,7 @@
         "category": "major_castle",
         "territory": "Syria",
         "modern_location": "Banias, Tartus Governorate, Syria",
-        "lordship": "County of Tripoli",
+        "lordship": "Principality of Antioch",
         "coordinate_precision": "exact",
         "description": "Margat — 'the watchtower' — is the second great Hospitaller castle of the Syrian coast, built of black basalt on a 360-metre volcanic spur overlooking the sea between Latakia and Tartus. The Mazoir family fortified the site in 1117 and sold it to the Hospitallers in 1186, who rebuilt it on a vast scale: a massive double curtain wall, a circular keep, a Gothic chapel, and barracks for a thousand-strong garrison with provisions enough for a five-year siege. After the fall of Krak in 1271 it became the chief Hospitaller seat in Syria. Sultan Qalawun finally took it in May 1285 after his sappers brought down one of the great corner towers; the defenders were granted safe passage to Tripoli. Most of the Crusader fabric still stands, and the chapel preserves remarkable thirteenth-century frescoes.",
         "fortification": {
@@ -5617,7 +6129,7 @@
         "category": "major_castle",
         "territory": "Syria",
         "modern_location": "Latakia Governorate, Syria",
-        "lordship": null,
+        "lordship": "Principality of Antioch",
         "coordinate_precision": "exact",
         "description": "Saone occupies a long mountain ridge between two deep ravines about thirty kilometres east of Latakia, in territory belonging to the Principality of Antioch. The Crusaders refortified an earlier Byzantine site in the early twelfth century, cutting a spectacular rock-hewn ditch 28 metres deep through the saddle of the spur and leaving a single needle of living rock to support the drawbridge — one of the most dramatic engineering feats of the medieval Mediterranean. Saladin captured the castle in July 1188 after a three-day siege and it remained in Muslim hands thereafter; the Syrian government renamed it Qal'at Salah ad-Din in 1957. The Frankish keep, the chapel, and the Byzantine inner citadel all still stand, and the rock-cut needle remains the most photographed feature of any Crusader castle in Syria.",
         "fortification": {
@@ -5636,6 +6148,116 @@
         "coordinates": [
           36.0578,
           35.5972
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "jabala",
+        "internal_key": "Jabala",
+        "name": "Jabala",
+        "alternate_names": [
+          "Gibellum",
+          "Gabala",
+          "Jableh"
+        ],
+        "category": "urban",
+        "territory": "Syria",
+        "modern_location": "Jableh, Latakia Governorate, Syria",
+        "lordship": "Principality of Antioch",
+        "coordinate_precision": "exact",
+        "description": "The ancient Gabala — Frankish Gibellum — a harbour town on the coast road between Latakia and the Tripoli frontier. Tancred took it with Genoese naval help on 23 July 1109 and it passed into the Principality of Antioch, forming part of Princess Alice's dowry with Latakia in 1126. A Latin bishopric was seated in the town, which fell to Saladin in the coastal campaign of 1188. A Roman theatre seating some seven thousand spectators still stands in the town centre, alongside the tomb-mosque of the Sufi saint Ibrahim ibn Adham.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "partial",
+          "harbor": true
+        },
+        "image": "Jableh_Collage.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Jableh",
+          "he": "https://he.wikipedia.org/wiki/%D7%92%27%D7%91%D7%9C%D7%94"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.9214,
+          35.3597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "latakia",
+        "internal_key": "Latakia",
+        "name": "Latakia",
+        "alternate_names": [
+          "Laodicea",
+          "Laodicea ad Mare",
+          "La Liche",
+          "al-Ladhiqiyya"
+        ],
+        "category": "urban",
+        "territory": "Syria",
+        "modern_location": "Latakia, Latakia Governorate, Syria",
+        "lordship": "Principality of Antioch",
+        "coordinate_precision": "exact",
+        "description": "Ancient Laodicea-on-the-Sea — La Liche to the Franks — the principal port of the Syrian coast south of Antioch. Raided by crusader fleets in 1097 and long contested between the principality and Byzantium, it was taken by Tancred in 1103, briefly reoccupied by the Greeks after the crusader disaster at Harran, and thereafter held by Antioch despite the promises of the Treaty of Devol. With Jabala it formed the dowry of Princess Alice in 1126, and the Knights Hospitaller kept a base in the town. Saladin captured it on 23 July 1188; the Franks recovered it around 1260, and it outlived the principality itself as the last Frankish possession in the region until Qalawun took it on 20 April 1287. A Roman triumphal arch and colonnade survive; of the Frankish port city almost nothing stands above ground.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "fragmentary",
+          "harbor": true
+        },
+        "image": "Latakia_downtown_view.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Latakia",
+          "he": "https://he.wikipedia.org/wiki/%D7%9C%D7%98%D7%A7%D7%99%D7%94"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.7781,
+          35.52
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "valania-baniyas",
+        "internal_key": "Valania (Baniyas)",
+        "name": "Valania (Baniyas)",
+        "alternate_names": [
+          "Valenia",
+          "Balanea",
+          "Balaneais",
+          "Baniyas"
+        ],
+        "category": "urban",
+        "territory": "Syria",
+        "modern_location": "Baniyas, Tartus Governorate, Syria",
+        "lordship": "Principality of Antioch",
+        "coordinate_precision": "exact",
+        "description": "Medieval Valania, the ancient Balanea — the southernmost coastal town of the Principality of Antioch, a short ride north of the County of Tripoli's border at Maraclea. A Latin bishopric was established here during the crusades, but the see was so exposed that its bishops resided for security within the walls of Margat, the great Hospitaller fortress on the basalt hill above the town; the archbishops of Apamea intervened in the see's affairs as late as 1198 and 1215.",
+        "fortification": {
+          "status": "probable",
+          "visible_remains": "unknown",
+          "harbor": true
+        },
+        "image": "Baniyas-1.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Baniyas",
+          "he": "https://he.wikipedia.org/wiki/%D7%91%D7%A0%D7%99%D7%90%D7%A1_(%D7%A1%D7%95%D7%A8%D7%99%D7%94)"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.9403,
+          35.1822
         ]
       }
     },
@@ -5678,41 +6300,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "citadel-of-tartus",
-        "internal_key": "Citadel of Tartus",
-        "name": "Citadel of Tartus",
-        "alternate_names": [
-          "Tortosa Citadel",
-          "Crusader Castle of Tartus"
-        ],
-        "category": "major_castle",
-        "territory": "Syria",
-        "modern_location": "Tartus, Syrian coast",
-        "lordship": "County of Tripoli",
-        "coordinate_precision": "exact",
-        "description": "The largest and most heavily fortified of the County of Tripoli's coastal strongholds. Crusaders first besieged the city in 1099 but lost it shortly after; Raymond IV of Toulouse retook it in February 1102 after a fortnight's siege. Around 1165 the Knights Templar assumed guardianship and rebuilt the castle on a grand scale, with two concentric defensive walls, eleven towers, a lancet-windowed chapel, and a postern gate that allowed the harbour to resupply the garrison directly. The citadel withstood Saladin's assault in July 1188 and Mamluk sieges by Baibars in 1267 and 1271. After the fall of Acre in May 1291, the Templars held on for another three months and finally evacuated to nearby Arwad island on 3 August — the last mainland Crusader garrison to leave the Levant. Today only foundation masonry and fragments of the inner enceinte remain, embedded in the modern town.",
-        "fortification": {
-          "status": "definite",
-          "visible_remains": "yes",
-          "harbor": false
-        },
-        "image": "Citadel of Tartus.JPG",
-        "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/Citadel_of_Tartus",
-          "he": null
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          35.8848,
-          34.8936
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "battle-of-azaz-1125",
         "internal_key": "Battle of Azaz (1125)",
         "name": "Battle of Azaz (1125)",
@@ -5722,7 +6309,7 @@
         "category": "battle",
         "territory": "Syria",
         "modern_location": "Azaz, Aleppo Governorate, Syria",
-        "lordship": null,
+        "lordship": "County of Edessa",
         "coordinate_precision": "approximate",
         "description": "Following the catastrophic Frankish defeat at the Field of Blood in 1119, the Principality of Antioch was hanging by a thread, and Baldwin II of Jerusalem assumed the regency of the northern Crusader states to prevent their collapse. On 11 June 1125, near the small town of Azaz north of Aleppo, Baldwin assembled a coalition of 1,100 knights and 2,000 infantry drawn from Jerusalem, Antioch, Edessa, and Tripoli. They faced a Seljuk-Artuqid army of perhaps 15,000 under Aq-Sunqur il-Bursuqi and Toghtekin. Using disciplined feigned retreats to draw the Turkish horsemen out of formation, the Crusaders shattered the coalition for the loss of only 20 of their own — 5 of them knights — against between 1,000 and 5,000 Muslim casualties. The victory bought the northern states a decade of breathing room and demonstrated that European massed heavy cavalry could decisively beat Turkish horse-archer tactics when properly supported by infantry.",
         "fortification": null,
@@ -5753,7 +6340,7 @@
         "category": "battle",
         "territory": "Syria",
         "modern_location": "Harem, Idlib Governorate, Syria",
-        "lordship": null,
+        "lordship": "Principality of Antioch",
         "coordinate_precision": "approximate",
         "description": "On 12 August 1164, Nur ad-Din invested the strategic Frankish fortress of Harim (Harenc), which guarded the eastern approaches to Antioch. A combined relief army from the County of Tripoli, the Principality of Antioch, the Byzantine Empire, and Cilician Armenia marched to break the siege but was lured into a trap and annihilated. The casualties read like a roll-call of the Frankish north: Bohemond III of Antioch, Raymond III of Tripoli, Hugh VIII of Lusignan, and the Byzantine governor Constantine Coloman were all captured and held for ransom — Raymond III for almost ten years — while the Armenian prince Thoros II escaped the rout. The defeat at Harim was so catastrophic for the leadership of the entire northern Latin East that it permanently shifted the balance of power in Syria toward Nur ad-Din and made the eventual unification of Egypt and Syria under Saladin politically and militarily inevitable.",
         "fortification": null,
@@ -5785,7 +6372,7 @@
         "category": "battle",
         "territory": "Syria",
         "modern_location": "Inab, Idlib Governorate, Syria",
-        "lordship": null,
+        "lordship": "County of Edessa",
         "coordinate_precision": "approximate",
         "description": "On 29 June 1149, Nur ad-Din — the Zengid atabeg whose career would re-unite Muslim Syria — destroyed the field army of the Principality of Antioch at Inab, near the village of Ard al-Hatim. Prince Raymond of Poitiers had ridden out with 4,000 cavalry and 1,000 infantry, accompanied by Ali ibn Wafa and a contingent of Nizari Assassins. Nur ad-Din encircled them with 6,000 men and wiped the army out almost to the last man; Raymond and Ali ibn Wafa were both killed and Raymond's skull was sent in a silver box to the caliph in Baghdad. The Principality of Antioch was permanently reduced in size, losing its eastern frontier, and the Crusader north would never again field an independent army capable of major offensive operations.",
         "fortification": null,
@@ -5801,6 +6388,39 @@
         "coordinates": [
           36.954,
           36.518
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "battle-of-the-field-of-blood-1119",
+        "internal_key": "Battle of the Field of Blood (1119)",
+        "name": "Battle of the Field of Blood (1119)",
+        "alternate_names": [
+          "Ager Sanguinis",
+          "Battle of Sarmada",
+          "Battle of Balat"
+        ],
+        "category": "battle",
+        "territory": "Syria",
+        "modern_location": "near Sarmada, Idlib Governorate, Syria",
+        "lordship": "Principality of Antioch",
+        "coordinate_precision": "approximate",
+        "description": "On 28 June 1119 the Artuqid ruler Ilghazi of Mardin caught the field army of the Principality of Antioch in camp near Sarmada, at a place afterwards known as the Ager Sanguinis — the Field of Blood. Roger of Salerno, regent of Antioch, was killed and his army annihilated; some seventy knights and five hundred soldiers were led into captivity. The eastern marches — al-Atharib, Zardana, Sarmin, Ma'arrat al-Nu'man, Kafr Tab — fell to Ilghazi in the aftermath, and though Baldwin II of Jerusalem checked him at Hab that August and assumed the regency of Antioch, the principality's power east of the Orontes never fully recovered. Sources differ on the exact battlefield; the marker follows the placement at Balat, south of Sarmada.",
+        "fortification": null,
+        "has_extended_narrative": true,
+        "image": "Battle-of-Ager-Sanguinis.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Battle_of_the_Field_of_Blood",
+          "he": "https://he.wikipedia.org/wiki/%D7%A7%D7%A8%D7%91_%D7%90%D7%92%D7%A8_%D7%A1%D7%90%D7%A0%D7%92%D7%95%D7%95%D7%99%D7%A0%D7%99%D7%A1"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.7194,
+          36.1789
         ]
       }
     },
@@ -5839,368 +6459,883 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "church-of-st-george-deir-al-asad",
-        "internal_key": "Church of St. George, Deir al-Asad",
-        "name": "Church of St. George, Deir al-Asad",
+        "id": "antioch",
+        "internal_key": "Antioch",
+        "name": "Antioch",
         "alternate_names": [
-          "Saint Jorge Labane",
-          "Abbey Church of St George (Labeyne)"
+          "Antiochia ad Orontem",
+          "Antioch on the Orontes",
+          "Theopolis",
+          "Antakya"
         ],
-        "category": "church",
-        "territory": "Israel",
-        "modern_location": "Deir al-Asad / Bi'ina, Western Galilee",
-        "lordship": "St George of Labeyne",
-        "coordinate_precision": "approximate",
-        "description": "The remains of a 12th-century Crusader church stand in the shared centre of the twin villages of Deir al-Asad and Bi'ina, the medieval caput of the fief of St George de la Beyne. Denys Pringle identified the building as an abbey church of St George, and Victor Guérin, visiting in 1875, recorded that it had three naves and three apses pierced by narrow windows, consistent with a Carthusian plan. The village took its modern Arabic name — \"the lion's monastery\" — from the conspicuous Frankish ruins at its heart.",
+        "category": "capital",
+        "territory": "Turkey",
+        "modern_location": "Antakya, Hatay Province, Turkey",
+        "lordship": "Principality of Antioch",
+        "coordinate_precision": "exact",
+        "description": "Capital of the Principality of Antioch and one of the great cities of the medieval Mediterranean. The First Crusade took the city on 3 June 1098 after an eight-month siege, and Bohemond of Taranto — who had arranged the entry of his men through a tower held by the Armenian guard Firouz — kept it for himself, founding the principality that ruled northern Syria for 170 years. Antioch fell to the Mamluk sultan Baibars on 18 May 1268 in one of the most destructive sacks of the era, and the city never recovered: by the fifteenth century only a few hundred inhabited houses stood within the walls. Stretches of the fortification walls climbing the mountains east of the city, several aqueducts, and the Cave Church of St Peter survive; most of the ancient city lies buried beneath Orontes river sediment.",
         "fortification": {
           "status": "definite",
-          "visible_remains": "yes",
+          "visible_remains": "partial",
           "harbor": false
         },
-        "image": "129452_the_town_of_deir_al-assad_PikiWiki_Israel.jpg",
+        "image": "Antakya_Views_1990s.jpg",
         "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/Deir_al-Asad",
-          "he": "https://he.wikipedia.org/wiki/%D7%93%D7%99%D7%A8_%D7%90%D7%9C-%D7%90%D7%A1%D7%93"
+          "en": "https://en.wikipedia.org/wiki/Antioch",
+          "he": "https://he.wikipedia.org/wiki/%D7%90%D7%A0%D7%98%D7%99%D7%95%D7%9B%D7%99%D7%94"
         }
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          35.27194,
-          32.91972
+          36.1817,
+          36.2047
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": "siege-of-damietta-1218-1219",
-        "internal_key": "Siege of Damietta (1218–1219)",
-        "name": "Siege of Damietta (1218–1219)",
+        "id": "baghras-castle",
+        "internal_key": "Baghras Castle",
+        "name": "Baghras Castle",
         "alternate_names": [
-          "Fifth Crusade siege of Damietta",
-          "Siege of Dumyat"
-        ],
-        "category": "siege",
-        "territory": "Egypt",
-        "modern_location": "Damietta (Dumyat), Egypt",
-        "lordship": null,
-        "coordinate_precision": "exact",
-        "description": "In May 1218 the vanguard of the Fifth Crusade sailed into the eastern mouth of the Nile and dropped anchor opposite Damietta — the Ayyubid port that controlled the approach to Cairo. The city was protected by a great chain-tower standing in midstream and a second iron chain anchored to the eastern bank. Frisian pilgrims and John of Brienne's knights spent three months building a floating siege engine — two round ships lashed together into a castle designed by the German chronicler Oliver of Paderborn — and on 24 August 1218 used it to scale and capture the chain-tower. Sultan al-Adil reportedly died of shock on hearing the news; his son al-Kamil inherited the war.\n\nThe siege that followed lasted fifteen more months. Al-Kamil twice offered to return Jerusalem, Bethlehem and the whole Christian coast as far as the Jordan in exchange for a Crusader withdrawal. The papal legate Pelagius Galvani refused both offers over John of Brienne's furious objection, insisting on total victory. Disease, famine and a Nile flood that drowned the Christian camp thinned the besieging army through the winter; another famous visitor, a small Italian friar named Francis of Assisi, crossed the lines in September 1219 and spent several days unmolested in al-Kamil's tent attempting to convert him. On 5 November 1219 the garrison — reduced, by the crusaders' own count, from perhaps seventy thousand to around three thousand starving survivors — opened the gates, and the Franks found the streets lined with the unburied dead.\n\nThe Fifth Crusade held the port for less than two years. An advance on Cairo in the summer of 1221 ended in catastrophe at al-Mansurah when al-Kamil opened the Nile sluices and trapped the Frankish army between the branches of the river; Damietta was surrendered back on 8 September 1221 as the price of Pelagius's release. The siege is remembered in the chronicles as the hinge of the Fifth Crusade — a year of engineering brilliance, two refused peace offers that would have restored Jerusalem without a blow, and the first recorded diplomatic encounter between a sitting sultan of Egypt and a Christian saint.",
-        "fortification": null,
-        "has_extended_narrative": false,
-        "image": "Capturing_Damiate.jpg",
-        "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/Siege_of_Damietta_(1218%E2%80%931219)",
-          "he": null
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          31.8133,
-          31.4166
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "aqaba-fortress",
-        "internal_key": "Aqaba Fortress",
-        "name": "Aqaba Fortress",
-        "alternate_names": [
-          "Aqaba Castle",
-          "Mamluk Castle of Aqaba",
-          "Qasr al-Aqaba"
+          "Bagras",
+          "Gaston",
+          "Gastun",
+          "Pagrae"
         ],
         "category": "major_castle",
-        "territory": "Jordan",
-        "modern_location": "Aqaba, Jordan",
-        "lordship": null,
+        "territory": "Turkey",
+        "modern_location": "İskenderun district, Hatay Province, Turkey",
+        "lordship": "Principality of Antioch",
         "coordinate_precision": "exact",
-        "description": "The Aqaba Fortress — Qasr al-Aqaba, also called the Mamluk Castle — is a fortified caravanserai on the northern beach of the Gulf of Aqaba. Its present fabric dates mainly to the early sixteenth century, when the Mamluk sultan Qansuh al-Ghuri rebuilt earlier fortifications on the site to guard the hajj road running south from Cairo to Mecca and Medina.\n\nThe Crusaders had briefly dominated this corner of the Red Sea. From about 1116, Baldwin I's island castle of Île de Graye on Pharaoh's Island, a few kilometres off the Aqaba shore, taxed pilgrim shipping and caravans passing between Egypt and the Hejaz until Saladin's forces recovered it in 1170. The Mamluk and later Ottoman fortress reoccupied the same strategic choke-point three centuries later, policing the same pilgrim traffic that the Frankish garrison had once preyed on.\n\nIn the century before the First World War the Ottomans used the caravanserai increasingly as a military stronghold. It was taken by the Arab Revolt forces of Sharif Hussein, Auda abu Tayi and T. E. Lawrence on 6 July 1917 in the famous overland assault from Wadi Rum that opened the southern flank of the Hejaz campaign.",
+        "description": "The great pass-castle of the Amanus — ancient Pagrae, Frankish Gaston — watching the Syrian Gates (Belen Pass) between Cilicia and the plain of Antioch. Fortified by the Byzantines under Nikephoros II Phokas in 968 and rebuilt from about 1153 by the Knights Templar as the head of their Amanus march. It capitulated to Saladin in the campaign that followed Hattin; Leo II of Armenia seized it in 1191 and held it until 1215, when it returned to the Templars — a running sore in Antiochene–Armenian relations. The garrison abandoned it to Baibars when Antioch fell in 1268. The ruin preserves more than thirty chambers on three levels, with Byzantine, Frankish, and Armenian masonry all visible.",
         "fortification": {
           "status": "definite",
-          "visible_remains": "yes",
+          "visible_remains": "partial",
           "harbor": false
         },
-        "image": "aqaba_fortress.jpg",
+        "image": "Baghras2.jpg",
         "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/Aqaba_Fortress",
+          "en": "https://en.wikipedia.org/wiki/Bagras",
+          "he": "https://he.wikipedia.org/wiki/%D7%9E%D7%A6%D7%95%D7%93%D7%AA_%D7%91%D7%92%D7%A8%D7%90%D7%A1"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.225,
+          36.4269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cursat-castle",
+        "internal_key": "Cursat Castle",
+        "name": "Cursat Castle",
+        "alternate_names": [
+          "Koz Kalesi",
+          "Castrum Patriarchae",
+          "Kürşat Castle"
+        ],
+        "category": "major_castle",
+        "territory": "Turkey",
+        "modern_location": "Altınözü district, Hatay Province, Turkey",
+        "lordship": "Principality of Antioch",
+        "coordinate_precision": "exact",
+        "description": "Castle of the Latin Patriarchs of Antioch — the Castrum Patriarchae — on a ridge south of the city. First recorded in 1133, when it was taken by King Fulk of Jerusalem, it became from 1155 the fortified residence and treasury of Patriarch Aimery of Limoges, who withstood a siege by his own prince, Bohemond III, in 1180, and bought off Saladin's forces in 1188. Its defences were strengthened around 1256 with papal funding, and it held out against Baibars in 1268 even after Antioch itself had fallen. The garrison finally surrendered to the Mamluks on 14 November 1275, among the last Frankish holdouts of the old principality. Several bastions of the partly demolished circuit still stand.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": "Kozkalesi.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Koz_Castle",
           "he": null
         }
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          35.002,
-          29.5218
+          36.1928,
+          36.1039
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": "church-of-st-anne-khirbet-sandhanna",
-        "internal_key": "Church of St. Anne (Sandhanna)",
-        "name": "Church of St. Anne (Khirbet Sandhanna)",
+        "id": "trapessac",
+        "internal_key": "Trapessac",
+        "name": "Trapessac",
         "alternate_names": [
-          "Khirbet Sandahanna",
-          "Sandhanna church",
-          "Sandahanna",
-          "St. Anne, Maresha"
+          "Darbsak",
+          "Darbsaq",
+          "Trapesac",
+          "Darbı Sak Kalesi"
         ],
-        "category": "church",
-        "territory": "Israel",
-        "modern_location": "Beit Guvrin-Maresha National Park, Israel",
-        "lordship": "Royal Domain - Jerusalem",
+        "category": "major_castle",
+        "territory": "Turkey",
+        "modern_location": "4 km north of Kırıkhan, Hatay Province, Turkey",
+        "lordship": "Principality of Antioch",
+        "coordinate_precision": "exact",
+        "description": "Templar castle at the north-eastern approach to the Syrian Gates, twin to Baghras in the Amanus march of the Principality of Antioch. Built by the order in the twelfth century, it fell to Saladin in 1188 after a bitterly fought two-week siege and was never recovered by the Franks: an Armenian attempt on it failed in 1205, and a Templar expedition sent to retake it in 1237 was ambushed and destroyed. King Hetoum I of Armenia reoccupied it after the Mongol conquests of 1261, surrendered it to the Mamluks in 1266 to ransom his son, and Baibars absorbed it after the fall of Antioch. Fragments of the enclosure and towers survive above the town of Kırıkhan.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": "Trapesac.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Trapessac",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.3642,
+          36.5314
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "alexandretta-iskenderun",
+        "internal_key": "Alexandretta (İskenderun)",
+        "name": "Alexandretta (İskenderun)",
+        "alternate_names": [
+          "Alexandretta",
+          "Scanderoon",
+          "Alexandria ad Issum"
+        ],
+        "category": "urban",
+        "territory": "Turkey",
+        "modern_location": "İskenderun, Hatay Province, Turkey",
+        "lordship": "Principality of Antioch",
+        "coordinate_precision": "exact",
+        "description": "Harbour town at the head of the gulf that bears its name, associated since antiquity with Alexander's victory at nearby Issus and known to medieval Western pilgrims by the Greek diminutive Alexandretta. In the crusader period it belonged to the Principality of Antioch, whose Templar castle at Baghras watched the Belen Pass — the Syrian Gates — in the Amanus mountains directly above the town. No crusader-era remains survive in the modern city of İskenderun.",
+        "fortification": {
+          "status": "probable",
+          "visible_remains": "no",
+          "harbor": true
+        },
+        "image": "Iskenderun_Shoreline_2012.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/%C4%B0skenderun",
+          "he": "https://he.wikipedia.org/wiki/%D7%90%D7%99%D7%A1%D7%9B%D7%A0%D7%93%D7%A8%D7%95%D7%9F"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.165,
+          36.5817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "port-saint-symeon",
+        "internal_key": "Port Saint Symeon",
+        "name": "Port Saint Symeon",
+        "alternate_names": [
+          "St Symeon",
+          "al-Mina",
+          "Suadiye"
+        ],
+        "category": "urban",
+        "territory": "Turkey",
+        "modern_location": "near Samandağ, Hatay Province, Turkey",
+        "lordship": "Principality of Antioch",
         "coordinate_precision": "approximate",
-        "description": "A Crusader-era basilica rebuilt over a Byzantine predecessor on the southern edge of the Lordship of Bethgibelin, at the site of ancient Maresha. The Arabic toponym 'Khirbet Sandahanna' — the ruin of Saint Anne — preserves the dedication. The freestanding eastern apse with its half-dome vault is the most intact surviving element; the church was abandoned after Saladin's reconquest in 1187 and never restored. Today the ruins lie within Beit Guvrin-Maresha National Park.",
+        "description": "The seaport of Antioch at the mouth of the Orontes. Genoese ships put in here in November 1097, and the fleet that landed on 4 March 1098 brought the materials and craftsmen that let the First Crusade close its blockade of Antioch. Through the twelfth and thirteenth centuries it flourished as the principality's Mediterranean gateway — a terminus of trade routes reaching toward Iraq and the Far East — and gave its name to 'Port St Symeon ware', the distinctive glazed pottery of the Crusader Levant. Baibars' army took the port in 1268 on its way to destroy Antioch, and it never recovered; the medieval harbour has long since silted.",
         "fortification": {
-          "status": "no",
-          "visible_remains": "partial",
-          "harbor": false
+          "status": "probable",
+          "visible_remains": "unknown",
+          "harbor": true
         },
-        "image": "Church of St anne Beit Guvrin.jpg",
+        "image": null,
         "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/Beit_Guvrin-Maresha_National_Park",
-          "he": "https://he.wikipedia.org/wiki/%D7%97%D7%95%D7%A8%D7%91%D7%AA_%D7%A1%D7%A0%D7%93%D7%97%D7%A0%D7%94"
+          "en": "https://en.wikipedia.org/wiki/Port_Saint_Symeon",
+          "he": null
         }
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          34.9006,
-          31.597
+          35.9669,
+          36.0904
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": "akeldama-chaudemar-crusader-charnel-house",
-        "internal_key": "Akeldama / Chaudemar — Crusader Charnel House",
-        "name": "Akeldama / Chaudemar — Crusader Charnel House",
+        "id": "cave-church-of-saint-peter-antioch",
+        "internal_key": "Cave Church of Saint Peter (Antioch)",
+        "name": "Cave Church of Saint Peter (Antioch)",
         "alternate_names": [
-          "Akeldama",
-          "Hakeldama",
-          "Aceldama",
-          "Haceldama",
-          "Chaudemar",
-          "Field of Blood",
-          "Hakl ed-Damm"
+          "St. Peter's Cave Church",
+          "Aziz Petrus Kilisesi",
+          "Church of Saint Peter"
         ],
         "category": "church",
-        "territory": "Israel",
-        "modern_location": "Southern slope of the Valley of Hinnom, Jerusalem",
-        "lordship": "Royal Domain - Jerusalem",
+        "territory": "Turkey",
+        "modern_location": "Antakya, Hatay Province, Turkey",
+        "lordship": "Principality of Antioch",
         "coordinate_precision": "exact",
-        "description": "South of Jerusalem, on the slope of the Valley of Hinnom, lies Akeldama, the \"Field of Blood\" traditionally linked to Judas Iscariot and the potter's field. In the 12th century, the Crusaders built here a large vaulted charnel house known as Chaudemar, where the bones of dead pilgrims, knights, and patients from the Hospitaller hospital near the Holy Sepulchre were gathered. The site combined biblical memory, burial practice, and Crusader devotion: to be buried in the holy soil of Jerusalem, close to the city of resurrection and judgment, gave this grim ruin powerful spiritual meaning.",
-        "fortification": {
-          "status": "no",
-          "visible_remains": "yes",
-          "harbor": false
-        },
-        "image": "Akeldama-Chaudemar-Charnel-House.jpg",
-        "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/Akeldama",
-          "he": "https://he.wikipedia.org/wiki/%D7%97%D7%A7%D7%9C_%D7%93%D7%9E%D7%90"
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          35.2328,
-          31.7694
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "st-cleophas-church-al-qubeiba",
-        "internal_key": "St. Cleophas Church, Al-Qubeiba",
-        "name": "St. Cleophas Church, Al-Qubeiba",
-        "alternate_names": [
-          "Al-Qubeiba Church",
-          "Sanctuary of Emmaus, El Qubeibeh",
-          "Parva Mahomeria",
-          "Cleopas' House",
-          "Castellum Emmaus"
-        ],
-        "category": "church",
-        "territory": "Israel",
-        "modern_location": "Al-Qubeiba, ~11 km northwest of Jerusalem, West Bank",
-        "lordship": "Royal Domain - Jerusalem",
-        "coordinate_precision": "exact",
-        "description": "St. Cleophas Church stands at Al-Qubeiba, a village about 11 km northwest of Jerusalem along an old Roman road. In the 12th century the Crusaders established a Frankish settlement here called Parva Mahomeria (\"the little dome,\" the same meaning as the Arabic name); the village is mentioned in a 1159 charter defining its borders with Beit 'Anan. Excavations beneath and around the present church have uncovered the remains of a Crusader basilica — traditionally identified with the \"house of Cleopas\" — together with a row of medieval village houses lining the old road. The Franciscan Custody of the Holy Land acquired the ruins in 1861 (donated by the Marquise Pauline de Nicolay) and rebuilt the present sanctuary in 1902 with the permission of Sultan Abdul Hamid II, incorporating the exposed 12th-century foundations. Al-Qubeiba is one of the three main candidates traditionally identified with the New Testament Emmaus; the Franciscans adopted it as such from the 14th century. The visible church above ground is the 1902 reconstruction, but the Crusader-era basilica foundations and adjoining village houses excavated at the site are genuine.",
-        "fortification": {
-          "status": "no",
-          "visible_remains": "partial",
-          "harbor": false
-        },
-        "image": "Church-of-St-Cleophas.jpg",
-        "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/St._Cleophas_Church",
-          "he": "https://he.wikipedia.org/wiki/%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%AA_%D7%90%D7%9C-%D7%A7%D7%95%D7%91%D7%99%D7%99%D7%91%D7%94"
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          35.1352,
-          31.8404
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "jifna-crusader-site-of-jifna",
-        "internal_key": "Jifna / Crusader Site of Jifna",
-        "name": "Jifna / Crusader Site of Jifna",
-        "alternate_names": [
-          "Jifna",
-          "Jafenia",
-          "Jafenie",
-          "Jifneh",
-          "Gophna"
-        ],
-        "category": "tower",
-        "territory": "Israel",
-        "modern_location": "Jifna, ~23 km north of Jerusalem, West Bank",
-        "lordship": "Lordship of Nablus",
-        "coordinate_precision": "exact",
-        "description": "Jifna sits about 23 km north of Jerusalem on the old road to Nablus. The Crusaders held it from 1099 onward as the small lordship of Jafenia (the form \"Raymundus de Jafenia\" appears in a 1182 charter). At its centre they built a fortified courtyard manor with a monumental gate guarded by a portcullis, a large vaulted hall, and thick walls of well-cut masonry — substantial remains of which still stand in the village core. They also partially rebuilt the older church of St. George with salvaged Byzantine masonry; it fell into ruin again after Saladin's victory in 1187. Later massive walls in the centre of the village are in an Arab post-Crusader style and should not be conflated with the twelfth-century work. Jifna is one of the better-preserved examples of a Frankish rural manor in the Latin Kingdom.",
+        "description": "Rock-cut church in the flank of the mountain above Antioch, venerated as the place where the apostle Peter preached to the earliest Christian community of the city. The oldest surviving elements — floor mosaics and traces of fresco — date to the fourth or fifth century. After taking Antioch in 1098 the crusaders lengthened the cave by a few metres and raised a stone facade with connecting arches; the present facade is a rebuilding of 1863 by Capuchin friars under Pope Pius IX, with funding contributed by Napoleon III. The church, thirteen metres deep, functions today as a museum in which services may still be held by permit.",
         "fortification": {
           "status": "definite",
           "visible_remains": "yes",
           "harbor": false
         },
-        "image": "Jifna-Crusader-Manor.jpg",
+        "image": "ChurchSaintPeterAntakya.jpg",
         "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/Jifna",
-          "he": "https://he.wikipedia.org/wiki/%D7%92%27%D7%99%D7%A4%D7%A0%D7%94"
+          "en": "https://en.wikipedia.org/wiki/Church_of_Saint_Peter",
+          "he": null
         }
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          35.2156,
-          31.9619
+          36.1783,
+          36.2094
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": "khan-as-sawiya-khirbet-berkit",
-        "internal_key": "Khan as-Sawiya (Khirbet Berkit)",
-        "name": "Khan as-Sawiya (Khirbet Berkit)",
+        "id": "monastery-of-saint-simeon-stylites-the-younger",
+        "internal_key": "Monastery of Saint Simeon Stylites the Younger",
+        "name": "Monastery of Saint Simeon Stylites the Younger",
         "alternate_names": [
-          "Khan as-Sawiya",
-          "Khan as-Sawiyah",
-          "Khirbet Berkit",
-          "Khirbet Berqit",
-          "As-Sawiya khan",
-          "Borceos"
+          "Aziz Simon Manastırı",
+          "Saman Dağı monastery"
         ],
-        "category": "tower",
-        "territory": "Israel",
-        "modern_location": "Edge of As-Sawiya village, ~15–18 km south of Nablus, West Bank",
-        "lordship": "Lordship of Nablus",
-        "coordinate_precision": "approximate",
-        "description": "Khan as-Sawiya, also called Khirbet Berkit, is a small square ruined caravanserai on the edge of the village of As-Sawiya, roughly 15–18 km south of Nablus on the old road to Jerusalem. Its walls still stand to some height and the corners are built with drafted ashlars — a masonry style strongly associated with Frankish secular building in the twelfth century, though the technique was reused by later builders as well. Pottery sherds of Crusader and Ayyubid date have been recovered from the site and the village itself is recorded as Muslim-inhabited during the twelfth and thirteenth centuries. The Khan is included in Pringle's catalogue of secular buildings in the Latin Kingdom, but no medieval document directly names it; its Crusader-period attribution rests on its architecture and surface finds rather than on written evidence. The 19th-century explorer C. W. Wilson tentatively identified the ruin with Borceos, a town mentioned by Josephus on the border between Samaria and Judea.",
-        "fortification": {
-          "status": "possible",
-          "visible_remains": "yes",
-          "harbor": false
-        },
-        "image": "Khan-as-Sawiya.jpg",
-        "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/As-Sawiya",
-          "he": "https://he.wikipedia.org/wiki/%D7%90-%D7%A1%D7%90%D7%95%D7%95%D7%99%D7%94"
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          35.2578,
-          32.0847
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "house-of-arches-lod-lydda",
-        "internal_key": "House of Arches (Lod / Lydda)",
-        "name": "House of Arches (Lod / Lydda)",
-        "alternate_names": [
-          "בית הקשתות",
-          "Beit HaKashtot"
-        ],
-        "category": "tower",
-        "territory": "Israel",
-        "modern_location": "Old City of Lod (Lydda), Israel",
-        "lordship": "County of Jaffa and Ascalon",
+        "category": "church",
+        "territory": "Turkey",
+        "modern_location": "6 km east of Samandağ, Hatay Province, Turkey",
+        "lordship": "Principality of Antioch",
         "coordinate_precision": "exact",
-        "description": "The House of Arches (Beit HaKashtot) is a large kurkar-sandstone building in the Old City of Lod — the town the Crusaders knew as Lydda, seat of a Latin bishop and the centre of the cult of Saint George. It is built as three successive ranges of broad arches carrying cross-vaults roofed with shallow domes, each range raised in a different era, so a single structure preserves several centuries of building. Its documented life is industrial: through the Ottoman period and the British Mandate, down to 1948, it worked as an olive-oil press (a bet bad), one of many in Lod, and the stone crushing basins still stand inside. The Crusader link is suggested rather than proven. Local heritage accounts attribute the monumental arches of the northern range to the Crusader period — possibly the substructure of a hall or grand public building — and the smaller central arches to the Mamluk period, with the simpler southern range Ottoman. The published archaeological surveys, however, describe only the oil-press phase and do not confirm a twelfth-century date, so the Crusader attribution is best treated as a local tradition awaiting excavation rather than an established fact. The building survives in sound structural condition and is earmarked for conservation within the regeneration of Lod's Old City.",
+        "description": "Ruined pilgrimage monastery spread over a hilltop south-west of Antioch, built around the pillar on which Simeon Stylites the Younger (521–597) spent the last forty-five years of his life. In the mid-eleventh century its buildings were said to cover an area half the size of Baghdad. Sacked in 1084 during the Seljuk conquest of Antioch, it was rebuilt after the First Crusade retook the city in 1098 and flourished again as a pilgrimage destination under the principality. Baibars destroyed it in his 1268 campaign against Antioch and it was never rebuilt. The extensive ruins include three churches with mosaic remnants and the base of Simeon's pillar within its octagonal court.",
         "fortification": {
-          "status": "no",
-          "visible_remains": "yes",
+          "status": "definite",
+          "visible_remains": "partial",
           "harbor": false
         },
-        "image": "136169_lod_house_of_arches_PikiWiki_Israel.jpg",
+        "image": "Monastery_St_Simeon_Younger.jpg",
         "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/Lod",
-          "he": "https://he.wikipedia.org/wiki/%D7%9C%D7%95%D7%93"
+          "en": "https://en.wikipedia.org/wiki/Monastery_of_Saint_Simeon_Stylites_the_Younger",
+          "he": null
         }
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          34.90115,
-          31.95296
+          36.0356,
+          36.0917
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": "lifta-clepsta",
-        "internal_key": "Lifta (Clepsta)",
-        "name": "Lifta (Clepsta)",
+        "id": "siege-of-antioch-1097-1098",
+        "internal_key": "Siege of Antioch (1097–1098)",
+        "name": "Siege of Antioch (1097–1098)",
         "alternate_names": [
-          "Clepsta",
-          "Nephtho",
-          "Mei Neftoah",
-          "Mey Naftoah",
-          "ליפתא"
+          "First Crusade siege of Antioch"
         ],
-        "category": "tower",
-        "territory": "Israel",
-        "modern_location": "Lifta, Jerusalem, Israel",
-        "lordship": "Royal Domain - Jerusalem",
+        "category": "siege",
+        "territory": "Turkey",
+        "modern_location": "Antakya, Hatay Province, Turkey",
+        "lordship": "Principality of Antioch",
         "coordinate_precision": "approximate",
-        "description": "Lifta — the Clepsta of the Crusaders, and the Nephtho of Roman and Byzantine writers — clings to the steep northwestern edge of Jerusalem above a perennial spring, on the old descent toward the coastal plain. At the centre of the village stand the remains of a Crusader-period courtyard building, recorded by Denys Pringle in his gazetteer of the kingdom's secular buildings (p. 66); the place is traditionally identified with the biblical spring of Nephtoah (Mei Neftoah). Lifta's far more conspicuous ruins are the domed stone houses of the Ottoman-era Arab village, depopulated in 1948 and never resettled — which, with the spring, the pool, and the terraced hillside, have made it one of the best-preserved historic villages around Jerusalem and a candidate for heritage protection.",
-        "fortification": {
-          "status": "uncertain",
-          "visible_remains": "yes",
-          "harbor": false
-        },
-        "image": "lifta.jpg",
+        "description": "The pivotal engagement of the First Crusade. The crusader princes invested Antioch on 20 October 1097 and starved before its walls through the winter — famine killed perhaps one man in seven — while beating off relief armies from Damascus in December 1097 and Aleppo in February 1098. On 3 June 1098 Bohemond of Taranto's men scaled the wall at a tower betrayed by the Armenian guard Firouz and the city fell, only for Kerbogha of Mosul to trap the crusaders inside it days later. Rallied by the discovery of the Holy Lance, the starving army marched out and routed Kerbogha's coalition on 28 June 1098. Bohemond kept the city and founded the Principality of Antioch.",
+        "fortification": null,
+        "has_extended_narrative": true,
+        "image": "SiegeofAntioch.jpeg",
         "wikipedia": {
-          "en": "https://en.wikipedia.org/wiki/Lifta",
-          "he": "https://he.wikipedia.org/wiki/%D7%9C%D7%99%D7%A4%D7%AA%D7%90"
+          "en": "https://en.wikipedia.org/wiki/Siege_of_Antioch",
+          "he": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%A6%D7%95%D7%A8_%D7%A2%D7%9C_%D7%90%D7%A0%D7%98%D7%99%D7%95%D7%9B%D7%99%D7%94_(1097%E2%80%931098)"
         }
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          35.19667,
-          31.79444
+          36.1614,
+          36.2022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "siege-of-antioch-1268",
+        "internal_key": "Siege of Antioch (1268)",
+        "name": "Siege of Antioch (1268)",
+        "alternate_names": [
+          "Fall of Antioch"
+        ],
+        "category": "siege",
+        "territory": "Turkey",
+        "modern_location": "Antakya, Hatay Province, Turkey",
+        "lordship": "Principality of Antioch",
+        "coordinate_precision": "approximate",
+        "description": "The end of the Principality of Antioch. The Mamluk sultan Baibars appeared before the city in May 1268 while Prince Bohemond VI was away in Tripoli, leaving the constable Simon Mansel to organise the defence. The walls were stormed on 18 May 1268 and the citadel surrendered two days later. The sack that followed was among the worst atrocities of the period — chroniclers' figures speak of some 17,000 killed and 100,000 enslaved — and the churches of St Paul and St Peter were destroyed. Antioch, held by the Franks for 170 years, never recovered its former size, and the loss dragged down the remaining Frankish strongholds of the north: Templar Baghras was abandoned in its immediate aftermath.",
+        "fortification": null,
+        "has_extended_narrative": true,
+        "image": null,
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Siege_of_Antioch_(1268)",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.15,
+          36.2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edessa",
+        "internal_key": "Edessa",
+        "name": "Edessa",
+        "alternate_names": [
+          "Urhai",
+          "Urfa",
+          "Şanlıurfa",
+          "al-Ruha",
+          "Comitatus Edessanus"
+        ],
+        "category": "capital",
+        "territory": "Turkey",
+        "modern_location": "Şanlıurfa Castle, Şanlıurfa Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Capital of the first Crusader state. Baldwin of Boulogne entered the Armenian-Christian city in February 1098, was adopted by its ruler Thoros, and assumed power after Thoros was killed in March. Baldwin left for Jerusalem in 1100, but the inland county survived under Baldwin of Bourcq and the Courtenay counts. Zengi stormed Edessa in December 1144 while Joscelin II was at Turbessel, and Nur ad-Din crushed Joscelin's failed recovery in November 1146. The high citadel above modern Şanlıurfa preserves the city's fortified setting, although much of its standing fabric predates or postdates the Frankish occupation.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sanliurfa%20Castle.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Edessa",
+          "he": "https://he.wikipedia.org/wiki/%D7%90%D7%95%D7%A8%D7%A4%D7%94"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.784,
+          37.1454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fortress-of-kaysun",
+        "internal_key": "Fortress of Kaysun",
+        "name": "Fortress of Kaysun",
+        "alternate_names": [
+          "K'esun",
+          "Kaysum",
+          "Keysun",
+          "Keysun Kalesi"
+        ],
+        "category": "major_castle",
+        "territory": "Turkey",
+        "modern_location": "near Çakırhüyük, Adıyaman Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Kaysun was an Armenian frontier stronghold associated with the northern County of Edessa and the subordinate Lordship of Marash. Baldwin II forced Vasil Dgha to surrender the fortress and its neighbouring domains in 1116. In 1131 the dying Count Joscelin I had himself carried on a litter at the head of a relief force; the Danishmendid emir Ghazi abandoned the siege on hearing of his approach. Masud I of Rum captured Kaysun during the collapse of the northern Edessan frontier in 1150.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": null,
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Fortress_of_Kaysun",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.85,
+          37.567
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ravendel-castle",
+        "internal_key": "Ravendel Castle",
+        "name": "Ravendel Castle",
+        "alternate_names": [
+          "Ravanda Kalesi",
+          "Ravendan",
+          "Rawandan",
+          "Ravenel"
+        ],
+        "category": "major_castle",
+        "territory": "Turkey",
+        "modern_location": "Belenözü, Kilis Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Ravendel guarded the western road between Antioch and Edessa from a steep conical hill east of the Afrin River. Baldwin of Boulogne seized the largely Armenian-held fortress in late 1097 on his march toward Edessa, and it became one of the county's principal western strongholds. It formed part of the territory transferred to Byzantium after Joscelin II's capture and fell during the collapse of the remnant county in 1151. Angular and semicircular towers, cisterns, and part of the enceinte survive at the summit.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": null,
+        "wikipedia": {
+          "en": "https://it.wikipedia.org/wiki/Castello_di_Ravendel",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.0539,
+          36.873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "rumkale-hromgla",
+        "internal_key": "Rumkale (Hromgla)",
+        "name": "Rumkale (Hromgla)",
+        "alternate_names": [
+          "Hromgla",
+          "Qal'at al-Rum",
+          "Ranculat",
+          "Rum Kale"
+        ],
+        "category": "major_castle",
+        "territory": "Turkey",
+        "modern_location": "Yavuzeli district, Gaziantep Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Hromgla occupies a sheer promontory above the Euphrates and the Merzimen stream. It belonged to the Armenian lord Kogh Vasil before Baldwin II forced Vasil Dgha to relinquish the surrounding domains in 1116, after which it was associated with the northern Edessan and Marash frontier. Refugees reached the fortress after Edessa fell in 1144. Around 1150 Beatrice transferred Hromgla to the Armenian catholicos Gregory III, and it became the seat of the Armenian Catholicosate rather than sharing the fate of the county's other surrendered fortresses.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "https://upload.wikimedia.org/wikipedia/commons/a/a3/The_Euphrates_River_in_Turkey%2C_Rumkale_%2852031477798%29.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Rumkale",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8381,
+          37.2719
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "turbessel-castle",
+        "internal_key": "Turbessel Castle",
+        "name": "Turbessel Castle",
+        "alternate_names": [
+          "Tell Bashir",
+          "Tilbeşar",
+          "Turbessel",
+          "Tell Bâchir"
+        ],
+        "category": "major_castle",
+        "territory": "Turkey",
+        "modern_location": "Tilbeşar, near Gündoğan, Gaziantep Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Turbessel was the western stronghold of the County of Edessa and the centre of Joscelin of Courtenay's lordship from 1101. Its position in the Sajur valley controlled the route between Upper Mesopotamia and northern Syria. After Zengi captured Edessa in 1144, Joscelin II governed the surviving county from Turbessel. His wife Beatrice transferred the remaining fortresses to the Byzantine emperor Manuel I in 1150; Nur ad-Din's forces took Turbessel in 1151. The tell still preserves stretches of the medieval enceinte and gates.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": null,
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Turbessel",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5456,
+          36.8789
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "aintab-gaziantep-castle",
+        "internal_key": "Aintab (Gaziantep Castle)",
+        "name": "Aintab (Gaziantep Castle)",
+        "alternate_names": [
+          "Hantab",
+          "Hamtab",
+          "Antep",
+          "Gaziantep Kalesi"
+        ],
+        "category": "urban",
+        "territory": "Turkey",
+        "modern_location": "Gaziantep Castle, Gaziantep Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Aintab was a fortified western centre of the County of Edessa, administered through the neighbouring Lordship of Marash after the First Crusade. Its ancient hilltop fort had been enlarged by the Romans and Byzantines before entering Frankish territory in 1098. Near Aintab in August 1150, Baldwin III protected the evacuation of the county's Christian population from Nur ad-Din. The town passed briefly to Byzantium and was taken by the Seljuk sultan Masud in 1151. The circular citadel still dominates the modern city, though it was badly damaged by the 2023 earthquake.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "yes",
+          "harbor": false
+        },
+        "image": "https://upload.wikimedia.org/wikipedia/commons/9/99/AntepKale2_%28cropped%29.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Gaziantep",
+          "he": "https://he.wikipedia.org/wiki/%D7%98%D7%99%D7%A8%D7%AA_%D7%92%D7%96%D7%99%D7%90%D7%A0%D7%98%D7%A4"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3833,
+          37.0664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "birecik-castle-bira",
+        "internal_key": "Birecik Castle (Bira)",
+        "name": "Birecik Castle (Bira)",
+        "alternate_names": [
+          "Bira",
+          "al-Bira",
+          "Birtha",
+          "Birecik Kalesi"
+        ],
+        "category": "urban",
+        "territory": "Turkey",
+        "modern_location": "Birecik Castle, Şanlıurfa Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "exact",
+        "description": "Bira controlled the principal medieval crossing of the Euphrates between northern Syria and Edessa. An Armenian lord held it when the First Crusade reached the region, and it became a strongly fortified minor lordship within the County of Edessa. Zengi besieged Bira after the fall of Edessa in January 1145, but the western fortress remained with Joscelin II until the remnants were ceded to Byzantium in 1150. Artuqid forces captured it in spring 1151. Parts of the white limestone citadel survive above the east bank of the river.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "partial",
+          "harbor": false
+        },
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Birecik%20Beyaz%20Kale%209270.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Birecik",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9794,
+          37.0318
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "duluk-doliche",
+        "internal_key": "Dülük (Doliche)",
+        "name": "Dülük (Doliche)",
+        "alternate_names": [
+          "Tulupa",
+          "Doliche",
+          "Dolikhe",
+          "Duluk"
+        ],
+        "category": "urban",
+        "territory": "Turkey",
+        "modern_location": "Dülük, Gaziantep Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "Medieval Tulupa was one of the County of Edessa's main western centres, paired with nearby Aintab on the approaches from the Taurus to the Euphrates. Byzantine forces had recovered the old city of Doliche in 962, and it passed into the county during the early Crusader period. In August 1150 the evacuated Edessan population and Baldwin III's army moved through the country between Dülük and Aintab under attack by Nur ad-Din. The site fell during the final partition of the county in 1151.",
+        "fortification": {
+          "status": "probable",
+          "visible_remains": "fragmentary",
+          "harbor": false
+        },
+        "image": null,
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Doliche_(Commagene)",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.367,
+          37.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "samosata-samsat",
+        "internal_key": "Samosata (Samsat)",
+        "name": "Samosata (Samsat)",
+        "alternate_names": [
+          "Samosata",
+          "Sumaysat",
+          "Shamshat",
+          "Samsat"
+        ],
+        "category": "urban",
+        "territory": "Turkey",
+        "modern_location": "Old Samsat, Adıyaman Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "The ancient fortress-city of Samosata commanded an upper Euphrates crossing north-west of Edessa. Baldwin of Boulogne attacked it during his February 1098 expedition and later bought the city from its Turkish ruler Balduk, adding it to the new county. Samosata remained one of Edessa's principal Euphrates strongholds until Artuqid forces captured it during the collapse of the remnant county in 1151. The historic settlement was evacuated in 1988 and submerged beneath the Atatürk Reservoir in 1989, so the marker identifies the lost locality.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "no",
+          "harbor": false
+        },
+        "image": null,
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Samsat",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4814,
+          37.5794
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "saruj-suruc",
+        "internal_key": "Saruj (Suruç)",
+        "name": "Saruj (Suruç)",
+        "alternate_names": [
+          "Saruj",
+          "Saroug",
+          "Serugh",
+          "Batnae",
+          "Suruç"
+        ],
+        "category": "urban",
+        "territory": "Turkey",
+        "modern_location": "Suruç, Şanlıurfa Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "Saruj was the county's southern town between the Euphrates and Edessa. Baldwin I captured it from an Artuqid ruler in 1101, and it remained an Edessan frontier centre for more than forty years. Near the town on 13 September 1122, Belek Ghazi defeated Joscelin I and captured the count after drawing his heavy cavalry into marshy ground. Saruj remained within the county at the c. 1135 snapshot but was taken by Zengi in January 1145, soon after the fall of Edessa.",
+        "fortification": {
+          "status": "definite",
+          "visible_remains": "unknown",
+          "harbor": false
+        },
+        "image": null,
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Suru%C3%A7",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4244,
+          36.975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "battle-of-aintab-1150",
+        "internal_key": "Battle of Aintab (1150)",
+        "name": "Battle of Aintab (1150)",
+        "alternate_names": [
+          "Evacuation of the County of Edessa"
+        ],
+        "category": "battle",
+        "territory": "Turkey",
+        "modern_location": "near Gaziantep, Gaziantep Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "In August 1150 Baldwin III of Jerusalem escorted the Christian population of the surrendered Edessan fortresses toward Antioch. Nur ad-Din attacked the column between Dülük and Aintab, pressing it against the northern Syrian hills. Baldwin kept the refugees moving under a disciplined cavalry screen and beat off the Zengid attacks, winning a tactical success while abandoning the county strategically. The survivors reached Antioch, but the transferred fortresses fell to Muslim rulers within the following year.",
+        "fortification": null,
+        "has_extended_narrative": true,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/4/43/Coronation_of_Baldwin_III.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Battle_of_Aintab",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3781,
+          37.0658
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "battle-of-harran-1104",
+        "internal_key": "Battle of Harran (1104)",
+        "name": "Battle of Harran (1104)",
+        "alternate_names": [
+          "Battle of Balikh",
+          "Battle near Raqqa"
+        ],
+        "category": "battle",
+        "territory": "Turkey",
+        "modern_location": "plain south of Harran, Şanlıurfa Province, Turkey",
+        "lordship": null,
+        "coordinate_precision": "approximate",
+        "description": "On 7 May 1104 the combined forces of Edessa and Antioch met the Seljuk commanders Jikirmish of Mosul and Sokman of Mardin in the plain south of Harran. A feigned retreat broke the Frankish line: Baldwin of Bourcq and Joscelin of Courtenay were captured while Bohemond and Tancred escaped with the Antiochene wing. The defeat ended the Crusader states' attempt to extend across the Jazira and left Edessa exposed, beginning years of regency and captivity. The marker follows the article's approximate battlefield coordinate.",
+        "fortification": null,
+        "has_extended_narrative": true,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Harranruins2.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Battle_of_Harran",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.0333,
+          36.8667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "battle-of-saruj-1122",
+        "internal_key": "Battle of Saruj (1122)",
+        "name": "Battle of Saruj (1122)",
+        "alternate_names": [
+          "Battle near Suruç",
+          "Capture of Joscelin I"
+        ],
+        "category": "battle",
+        "territory": "Turkey",
+        "modern_location": "near Suruç, Şanlıurfa Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "On 13 September 1122 Count Joscelin I rode out with about one hundred knights to intercept Belek Ghazi near Saruj. Belek drew the armoured cavalry into marshy low ground beside a river, where their horses foundered under Turkish arrow fire. Joscelin and dozens of his men surrendered and were taken to Harput. His capture forced Baldwin II of Jerusalem to intervene in the north; Baldwin was himself captured by Belek the following year. The exact field is unknown, so the marker is placed at Suruç.",
+        "fortification": null,
+        "has_extended_narrative": true,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/0/06/Joscelin_of_Courtenay.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Battle_of_Saruj",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4244,
+          36.975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "siege-of-edessa-1144",
+        "internal_key": "Siege of Edessa (1144)",
+        "name": "Siege of Edessa (1144)",
+        "alternate_names": [
+          "Fall of Edessa",
+          "Zengi's siege of Edessa"
+        ],
+        "category": "siege",
+        "territory": "Turkey",
+        "modern_location": "Şanlıurfa, Şanlıurfa Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "Zengi invested Edessa on 28 November 1144 while Joscelin II was across the Euphrates at Turbessel. With no Frankish field army inside, Archbishop Hugh led the defence until Zengid miners collapsed part of the wall on 24 December. The city was stormed and the citadel surrendered on 26 December. The loss destroyed the eastern half of the county and shocked Latin Christendom; Pope Eugenius III answered with Quantum praedecessores in 1145, the call that launched the Second Crusade.",
+        "fortification": null,
+        "has_extended_narrative": true,
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sanliurfa%20Castle.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Siege_of_Edessa_(1144)",
+          "he": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%A6%D7%95%D7%A8_%D7%A2%D7%9C_%D7%90%D7%93%D7%A1%D7%94_(1144)"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8,
+          37.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "siege-of-edessa-1146",
+        "internal_key": "Siege of Edessa (1146)",
+        "name": "Siege of Edessa (1146)",
+        "alternate_names": [
+          "Joscelin II's recovery of Edessa",
+          "Second siege of Edessa"
+        ],
+        "category": "siege",
+        "territory": "Turkey",
+        "modern_location": "Şanlıurfa, Şanlıurfa Province, Turkey",
+        "lordship": "County of Edessa",
+        "coordinate_precision": "approximate",
+        "description": "After Zengi was assassinated in September 1146, Joscelin II and the Armenian commander Baldwin of Marash attempted to recover Edessa. They entered the city on 27 October but could not take the citadel before Nur ad-Din arrived from Aleppo. The Franks abandoned the city in early November and their retreat toward the Euphrates became a massacre. Nur ad-Din then destroyed much of Edessa's defences and expelled or enslaved much of its remaining Christian population, ending any realistic prospect of restoration.",
+        "fortification": null,
+        "has_extended_narrative": true,
+        "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sanliurfa%20Castle.jpg",
+        "wikipedia": {
+          "en": "https://en.wikipedia.org/wiki/Siege_of_Edessa_(1146)",
+          "he": null
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8,
+          37.15
         ]
       }
     }
